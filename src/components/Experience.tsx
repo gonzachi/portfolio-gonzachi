@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { experiences, personalInfo } from '@/data/content';
+import { experiences } from '@/data/content';
 import ExperienceCard from './ExperienceCard';
 import styles from './Experience.module.css';
 
