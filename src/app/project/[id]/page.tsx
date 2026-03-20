@@ -208,7 +208,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 </div>
                                 <div className={styles.closingMetaItem}>
                                     <span className={styles.closingMetaLabel}>Herramientas</span>
-                                    <span className={styles.closingMetaValue}>{tools.join(' · ')}</span>
+                                    <span className={styles.closingMetaValue}>{tools?.join(' · ')}</span>
                                 </div>
                             </div>
                         </ScrollReveal>
