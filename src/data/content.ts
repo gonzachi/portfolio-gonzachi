@@ -95,16 +95,6 @@ export const projects = [
     },
     badge: "Más reciente ✨",
     roles: [],
-    tools: ["Figma", "Gemini", "OpenAI", "PostHog"],
-    timeline: ["Discovery", "Prototipo", "Testing", "Lanzamiento", "Iteración"],
-    metrics: [
-      { value: "1.5", label: "años de desarrollo" },
-      { value: "0→1", label: "producto desde cero" },
-      { value: "6", label: "personas en el equipo" }
-    ],
-    roleDescription: "Participé en la priorización del backlog, balanceando necesidades de usuario, experiencia de uso y objetivos de negocio. En los momentos donde no contábamos con un PO dedicado, asumí esa responsabilidad.",
-    challenge: "Cuando empezamos, la IA generativa apenas existía. No había un problema claro que resolver, sino una oportunidad por descubrir: optimizar los flujos creativos internos.",
-    team: "2 Frontend · 2 Backend · Data/ML · PO",
     description: [
       "Este proyecto nació hace un año y medio, cuando la inteligencia artificial generativa todavía no era mainstream. Desde Mango, detectamos una oportunidad: desarrollar desde cero una plataforma interna de generación de imágenes con IA.",
       "Comenzamos con los equipos de diseño de moda, realizando discovery para entender su flujo de trabajo. No partimos de un problema evidente, sino de una hipótesis: podíamos ayudarlos a optimizar tareas rutinarias y transmitir ideas creativas de forma más ágil.",
