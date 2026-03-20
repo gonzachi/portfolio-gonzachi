@@ -1,0 +1,220 @@
+.section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.header {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.05;
+}
+
+.titleAccent {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.05;
+}
+
+/* Each project is a row of two cards */
+.projectList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.projectRow {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--spacing-md);
+    min-height: 320px;
+}
+
+/* Alternate: odd rows = text left, image right. Even rows = image left, text right */
+.projectRow.reverse {
+    grid-template-columns: 1.6fr 1fr;
+}
+
+.projectRow.reverse .textCard {
+    order: 2;
+}
+
+.projectRow.reverse .imageCard {
+    order: 1;
+}
+
+/* Text card */
+.textCard {
+    background: var(--color-bg-card);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.textCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.textCard:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.cardTop {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.recentBadge {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    background: var(--gradient-accent);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+}
+
+.cardTitle {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.cardSubtitle {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.cardBottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.plusBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+    cursor: pointer;
+    transition: background var(--transition-fast), transform var(--transition-fast);
+    flex-shrink: 0;
+}
+
+.textCard:hover .plusBtn {
+    background: var(--color-accent);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Image card */
+.imageCard {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 280px;
+}
+
+.projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projectVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-card) 100%);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+    .projectRow,
+    .projectRow.reverse {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .projectRow.reverse .textCard {
+        order: 0;
+    }
+
+    .projectRow.reverse .imageCard {
+        order: 1;
+    }
+
+    .imageCard {
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 600px) {
+    .imageCard {
+        min-height: 180px;
+    }
+}

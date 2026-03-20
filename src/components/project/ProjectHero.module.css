@@ -1,0 +1,111 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--spacing-3xl) var(--container-padding);
+    gap: var(--spacing-md);
+}
+
+.number {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    
+    opacity: 0;
+    animation: heroReveal 1400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0s;
+}
+
+.title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.05;
+    max-width: 900px;
+    letter-spacing: -0.02em;
+    
+    opacity: 0;
+    animation: heroReveal 1400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.15s;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    
+    opacity: 0;
+    animation: heroReveal 1400ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.45s;
+}
+
+.badge {
+    padding: 0.35rem 0.85rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-top: var(--spacing-sm);
+    
+    opacity: 0;
+    animation: heroReveal 1200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+.scrollArrow {
+    margin-top: auto;
+    padding-top: var(--spacing-xl);
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    
+    opacity: 0;
+    animation: heroReveal 1400ms cubic-bezier(0.16, 1, 0.3, 1) forwards, bounceDown 2s infinite 1.5s;
+    transition: color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scrollArrow:hover {
+    color: var(--color-text-primary);
+    opacity: 1;
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(10px);
+    }
+    60% {
+        transform: translateY(5px);
+    }
+}
+
+@keyframes heroReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

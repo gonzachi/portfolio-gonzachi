@@ -1,0 +1,19 @@
+.wrapper {
+    transition: opacity 1400ms cubic-bezier(0.16, 1, 0.3, 1), transform 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.hiddenUp {
+    opacity: 0;
+    transform: translateY(80px);
+}
+
+.hiddenNone {
+    opacity: 0;
+    transform: none;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

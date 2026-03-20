@@ -1,0 +1,220 @@
+.project {
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    border: 1px solid var(--color-border);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.textContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.number {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+}
+
+.title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.type,
+.role {
+    padding: 0.3rem 0.75rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+}
+
+.divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: var(--spacing-sm) 0;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.description p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
+.description p strong {
+    color: var(--color-text-primary);
+}
+
+.behanceBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: #1769ff;
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: var(--spacing-md);
+    width: fit-content;
+    transition: all var(--transition-base);
+}
+
+.behanceBtn:hover {
+    background: #0050d8;
+    transform: translateY(-2px);
+}
+
+.mediaContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.videoContainer {
+    width: 100%;
+    aspect-ratio: 9/16;
+    max-height: 500px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+}
+
+.videoContainer video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.videoPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.videoPlaceholder span {
+    font-size: 3rem;
+}
+
+.videoPlaceholder p {
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.infoBox {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-accent);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.infoBox svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.imageCard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.imagePlaceholder {
+    aspect-ratio: 1;
+    background: var(--color-bg-card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+.imagePlaceholder span {
+    font-size: 2rem;
+}
+
+.imagePlaceholder p {
+    font-size: 0.75rem;
+}
+
+.imageCaption {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    .mediaContent {
+        order: -1;
+    }
+
+    .videoContainer {
+        max-height: 400px;
+    }
+
+    .imageGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .project {
+        padding: var(--spacing-md);
+    }
+
+    .imageGrid {
+        grid-template-columns: 1fr;
+    }
+}

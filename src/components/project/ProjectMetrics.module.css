@@ -1,0 +1,41 @@
+.section {
+    padding: var(--spacing-3xl) var(--container-padding);
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-3xl);
+    text-align: center;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.value {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        flex-direction: column;
+        gap: var(--spacing-xl);
+        align-items: center;
+    }
+}
