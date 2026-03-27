@@ -7,6 +7,7 @@
     text-align: center;
     padding: var(--spacing-3xl) var(--container-padding);
     gap: var(--spacing-md);
+    background: radial-gradient(ellipse at 50% 40%, rgba(64, 84, 178, 0.08) 0%, transparent 60%);
 }
 
 .number {
@@ -48,12 +49,20 @@
 
 .badge {
     padding: 0.35rem 0.85rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
     border-radius: 9999px;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
     font-weight: 400;
+    transition: border-color var(--transition-base), background var(--transition-base);
+}
+
+.badge:hover {
+    border-color: var(--glass-border-hover);
+    background: var(--glass-bg-hover);
 }
 
 .subtitle {

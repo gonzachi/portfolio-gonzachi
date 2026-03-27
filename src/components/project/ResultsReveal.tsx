@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './ResultsReveal.module.css';
 
 interface Stat {
-    value: string;
-    label: string;
+    highlight: string;
+    detail: string;
+    icon?: string;
 }
 
 interface ResultsRevealProps {
@@ -121,8 +122,13 @@ function StatCard({ stat, index }: { stat: Stat; index: number }) {
             className={`${styles.statCard} ${isVisible ? styles.statVisible : ''}`}
             style={{ transitionDelay: `${index * 0.1}s` }}
         >
-            <span className={styles.statValue} style={{ transitionDelay: `${index * 0.15}s` }}>{stat.value}</span>
-            <span className={styles.statLabel} style={{ transitionDelay: `${index * 0.15 + 0.2}s` }}>{stat.label}</span>
+            {stat.icon && (
+                <svg className={styles.statIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d={stat.icon} />
+                </svg>
+            )}
+            <span className={styles.statHighlight} style={{ transitionDelay: `${index * 0.15}s` }}>{stat.highlight}</span>
+            <span className={styles.statDetail} style={{ transitionDelay: `${index * 0.15 + 0.2}s` }}>{stat.detail}</span>
         </div>
     );
 }

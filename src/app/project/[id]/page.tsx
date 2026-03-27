@@ -56,7 +56,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     const roadmap = (project as Record<string, unknown>).roadmap as { intro: string; items: { icon: string; title: string; description: string }[] } | undefined;
     const context = (project as Record<string, unknown>).context as { title: string; description: string[]; milestones?: string[] } | undefined;
     const problem = (project as Record<string, unknown>).problem as { title: string; statement: string; description: string[] } | undefined;
-    const resultsReveal = (project as Record<string, unknown>).resultsReveal as { title: string; stats: { value: string; label: string }[]; closingText: string; showGrowthCurve?: boolean } | undefined;
+    const resultsReveal = (project as Record<string, unknown>).resultsReveal as { title: string; stats: { highlight: string; detail: string; icon?: string }[]; closingText: string; showGrowthCurve?: boolean } | undefined;
     const decisions = (project as Record<string, unknown>).decisions as { title: string; description: string } | undefined;
 
     // Build sidebar sections dynamically
@@ -128,9 +128,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {problem && (
                     <div id="sec-problem" className={styles.problemSection}>
                         <div className={styles.problemContent}>
-                            <ScrollReveal delay={0}>
-                                <h2 className={styles.problemTitle}>{problem.title}</h2>
-                            </ScrollReveal>
                             <div className={styles.problemColumns}>
                                 <ScrollReveal delay={0.1} className={styles.problemColLeft}>
                                     <blockquote className={styles.problemStatement}>
@@ -138,6 +135,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     </blockquote>
                                 </ScrollReveal>
                                 <ScrollReveal delay={0.2} className={styles.problemColRight}>
+                                    <h2 className={styles.problemTitle}>{problem.title}</h2>
                                     {problem.description.map((paragraph, index) => (
                                         <p key={index} className={styles.problemText}>{paragraph}</p>
                                     ))}
@@ -197,20 +195,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </p>
                         </ScrollReveal>
                         <ScrollReveal delay={0.4}>
-                            <div className={styles.closingMeta}>
-                                <div className={styles.closingMetaItem}>
-                                    <span className={styles.closingMetaLabel}>Rol</span>
-                                    <span className={styles.closingMetaValue}>{roleDescription}</span>
-                                </div>
-                                <div className={styles.closingMetaItem}>
-                                    <span className={styles.closingMetaLabel}>Equipo</span>
-                                    <span className={styles.closingMetaValue}>{team}</span>
-                                </div>
-                                <div className={styles.closingMetaItem}>
-                                    <span className={styles.closingMetaLabel}>Herramientas</span>
-                                    <span className={styles.closingMetaValue}>{tools?.join(' · ')}</span>
-                                </div>
-                            </div>
+                            <table className={styles.closingTable}>
+                                <tbody>
+                                    <tr>
+                                        <td className={styles.closingTableLabel}>Rol</td>
+                                        <td className={styles.closingTableValue}>{roleDescription}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={styles.closingTableLabel}>Equipo</td>
+                                        <td className={styles.closingTableValue}>{team}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className={styles.closingTableLabel}>Herramientas</td>
+                                        <td className={styles.closingTableValue}>{tools?.join(' · ')}</td>
+                                    </tr>
+                                    {(project as any).closing?.timeline && (
+                                        <tr>
+                                            <td className={styles.closingTableLabel}>Timeline</td>
+                                            <td className={styles.closingTableValue}>{(project as any).closing.timeline}</td>
+                                        </tr>
+                                    )}
+                                    {(project as any).closing?.extra && (
+                                        <tr>
+                                            <td className={styles.closingTableLabel}>Extra</td>
+                                            <td className={styles.closingTableValue}>{(project as any).closing.extra}</td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
                         </ScrollReveal>
                     </div>
                 )}

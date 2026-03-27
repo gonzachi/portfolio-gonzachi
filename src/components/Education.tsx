@@ -8,8 +8,10 @@ export default function Education() {
             <div className={styles.container}>
                 <div className={styles.content}>
                     <div className={styles.header}>
-                        <h2 className={styles.title}>Sobre mis</h2>
-                        <h2 className={styles.titleAccent}>estudios</h2>
+                        <div className={styles.titleGroup}>
+                            <h2 className={styles.title}>Sobre mis</h2>
+                            <h2 className={styles.titleAccent}>estudios</h2>
+                        </div>
 
                         <a
                             href={personalInfo.linkedin}
@@ -31,8 +33,8 @@ export default function Education() {
                                     <Image
                                         src={edu.logo}
                                         alt={`${edu.institution} logo`}
-                                        width={40}
-                                        height={40}
+                                        width={60}
+                                        height={60}
                                         className={styles.institutionLogo}
                                     />
                                 ) : (

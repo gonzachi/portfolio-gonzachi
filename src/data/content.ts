@@ -55,43 +55,37 @@ export const projects = [
   {
     id: "agilidad-inspiracional",
     number: "",
-    title: "De la referencia abstracta a la imagen real. En segundos.",
+    title: "Una plataforma de IA que nadie pidió — y que hoy usan 10 departamentos.",
     type: "Plataforma interna",
-    subtitle: "Plataforma interna de generación de imágenes con Inteligencia Artificial | @Mango · Inicio de proyecto: Jun 2024",
+    subtitle: "Plataforma interna de generación de imágenes con IA · Mango · Desde junio 2024",
     context: {
       title: "Contexto — La apuesta",
       description: [
-        "Junio de 2024. La IA generativa de imágenes era todavía territorio sin mapear. Midjourney existía pero era poco controlable para uso profesional. DALL·E 3 acababa de salir. Los modelos open source requerían setup técnico y daban resultados inconsistentes.",
-        "No había ninguna solución lista para integrarse en un flujo de trabajo de moda. Y tampoco había un problema que los usuarios nos estuvieran gritando. Había una hipótesis estratégica: si la tecnología podía generar imágenes realistas de ropa, podíamos cortar horas del proceso creativo antes de que el mercado lo descubriera.",
-        "Arrancamos con un equipo de data dispuesto a entrenar modelos propios. Esa fue la primera apuesta."
+        "Junio de 2024. La IA generativa de imágenes existía, pero ninguna solución servía para un flujo de trabajo de moda. Los modelos open source daban resultados inconsistentes, las herramientas comerciales no ofrecían el control que necesitaban los equipos creativos y entrenar modelos propios era una apuesta sin garantías.",
+        "No había demanda interna. Había una hipótesis estratégica: si la tecnología podía generar imágenes realistas de ropa, podíamos comprimir horas del proceso creativo antes de que el mercado lo resolviera. Arrancamos con un equipo de data entrenando modelos propios. Esa fue la primera apuesta — y la primera que tuvimos que soltar."
       ],
-      milestones: [
-        "Jun 2024 — inicio",
-        "Pivote temprano",
-        "2025 — mainstream"
-      ]
+      milestones: []
     },
     problem: {
       title: "El problema",
-      statement: "Horas buscando la imagen perfecta para explicar una idea.",
+      statement: "El diseñador sabe lo que quiere. El problema es mostrarlo.",
       description: [
-        "En el discovery con los equipos de diseño de moda detectamos el cuello de botella: la fase de inspiración. Antes de diseñar cualquier pieza, los diseñadores pasaban horas buscando referencias en competidores, editoriales y redes.",
-        "El trabajo era invisible, tedioso y bloqueante. La oportunidad no era reemplazar el diseño final — era acelerar ese primer paso."
+        "Los equipos de diseño de moda no tenían un problema de inspiración — tenían un problema de comunicación visual. Las referencias existían, pero la idea final vivía en la cabeza del diseñador. Para hacerla tangible había que pasar por Photoshop, collage manual, montajes que llevaban horas y nunca terminaban de transmitir la intención real.",
+        "La oportunidad era comprimir ese salto: de la idea a la imagen. Que un diseñador pudiera mezclar referencias, visualizar una prenda sobre una modelo real y mostrar exactamente lo que tiene en mente — antes de enviar nada al proveedor."
       ]
     },
     resultsReveal: {
-      title: "Resultados — Los números",
+      title: "Los números",
       stats: [
-        { value: "300", label: "usuarios únicos en 30 días" },
-        { value: "40K", label: "imágenes generadas al mes" },
-        { value: "10+", label: "departamentos activos" }
+        { highlight: "Diseñada para 1 departamento.", detail: "Hoy la usan +10.", icon: "M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" },
+        { highlight: "Empezó con 10 usuarios invitados.", detail: "Hoy tiene 300 activos al mes.", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm8 4v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" },
+        { highlight: "40K imágenes generadas al mes.", detail: "Antes, cada una era Photoshop o collage manual.", icon: "M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" }
       ],
-      closingText: "Arrancamos con 10 usuarios a los que tuvimos que invitar. Nadie pedía la herramienta porque nadie imaginaba que podía existir. La adopción fue orgánica, impulsada por resultados, y creció más allá del departamento para el que fue diseñada.",
+      closingText: "No hubo rollout forzado ni push desde arriba. La adopción fue progresiva — alguien veía un resultado, preguntaba con qué se había hecho, y pedía acceso.",
       footerText: "Los datos vienen de un stack de medición que definí e implementé: Google Analytics, Hotjar, Product Fruits y un dashboard personalizado con IA que diseñé y desplegué para dar visibilidad desde el equipo hasta el CTO.",
     },
     decisions: {
       title: "Decisiones",
-      description: "El mayor desafío no fue el diseño. Fue tomar decisiones de producto cuando la tecnología era impredecible y el equipo tenía sus propias convicciones técnicas."
     },
     badge: "Más reciente ✨",
     roles: [],
@@ -111,27 +105,23 @@ export const projects = [
     storySteps: [
       {
         number: "Decisión 1",
-        title: "El pivote",
-        description: "Escuchar al usuario por encima de la preferencia técnica\nEl feedback era claro: los resultados no justificaban la fricción. La decisión fue dejar de entrenar modelos propios e integrar los mejores modelos existentes del mercado. Nunca íbamos a competir con Google o OpenAI en capacidad de entrenamiento — pero sí podíamos construir la mejor experiencia encima de sus modelos.",
+        title: "Soltar la apuesta técnica cuando el usuario no la validaba",
+        description: "Arrancamos entrenando modelos propios con el equipo de data. Era la apuesta más ambiciosa — y la más cara. Pero los resultados no llegaban, y para mejorarlos había que forzar el flujo de usuario de formas que no tenían sentido: más pasos, más fricción, más tiempo para obtener imágenes que seguían sin convencer.\n\nEl feedback era claro. La decisión fue dejar los modelos propios e integrar los mejores del mercado. Nunca íbamos a competir con Google o OpenAI en capacidad de entrenamiento — pero sí podíamos construir la mejor experiencia encima de sus modelos.\n\nFue una decisión incómoda porque el equipo de data había invertido meses. Pero el producto no es el modelo. El producto es lo que el usuario puede hacer con él.",
         illustrationTitle: "La tensión",
         illustrationText: "El equipo de data quería entrenar modelos propios. Era la apuesta técnica más ambiciosa. Pero los resultados no llegaban, y para obtenerlos había que forzar el flujo de usuario de formas que no tenían sentido."
       },
       {
         number: "Decisión 2",
-        title: "Construir desde el feedback, no desde supuestos",
-        description: "Paleta de colores personalizada, estilos guardados, prompts reutilizables, virtual try-on, eliminación de fondo, inpainting, upscaler. Ninguna de estas herramientas estaba en el roadmap inicial — surgieron de sesiones con usuarios reales usando la plataforma.",
+        title: "Construir lo que desbloqueaba, no lo que parecía más completo",
+        description: "Cuando la plataforma empezó a tener usuarios reales, las peticiones se multiplicaron. Paleta de colores personalizada, estilos guardados, virtual try-on, quitar fondo, inpainting, upscaler — todo surgió del discovery, todo tenía sentido. El problema era el orden.\n\nCon un equipo de seis personas no podíamos construir todo a la vez, y cada feature tenía un coste de integración distinto. El criterio fue siempre el mismo: ¿esto desbloquea un flujo que hoy el usuario no puede completar, o solo mejora uno que ya funciona? Lo que desbloqueaba entraba primero. Lo que mejoraba, esperaba.\n\nParece obvio escrito así. En la práctica significó decir que no a cosas que los usuarios pedían explícitamente.",
         illustrationTitle: "Cada funcionalidad salió del discovery"
       },
       {
         number: "Decisión 3",
-        title: "Diseñar para dos tipos de usuario",
-        description: "A medida que crecía la base de usuarios, apareció una tensión nueva: los usuarios expertos querían libertad total, los nuevos querían resultados rápidos sin pensar tanto. La respuesta fue no elegir entre uno y otro.",
-        bullets: [
-          "**Modo conversacional**: El usuario tiene control total. Describe libremente, itera, ajusta parámetros. Para quienes ya saben lo que quieren y cómo pedirlo.",
-          "**Acciones rápidas**: Flujos guiados paso a paso, con prompts predefinidos y parámetros simples. Para obtener resultados concretos sin fricción ni conocimiento previo de la IA."
-        ],
+        title: "Diseñar para dos perfiles sin partir la plataforma en dos",
+        description: "A medida que crecía la base de usuarios apareció una tensión: los expertos querían libertad total para iterar y ajustar parámetros. Los nuevos querían resultados rápidos sin entender cómo funciona la IA.\n\nLa solución fácil era elegir un perfil y optimizar para él. La decisión fue no elegir — pero tampoco hacer una interfaz llena de toggles y opciones. Diseñamos dos modos dentro de la misma plataforma: un modo conversacional con control total para el usuario experto, y Acciones Rápidas — flujos guiados paso a paso con prompts predefinidos — para quien necesita un resultado concreto sin fricción.",
         illustrationTitle: "Misma plataforma, dos experiencias.",
-        illustrationText: "La decisión de diseño más importante del proyecto."
+        illustrationText: "La decisión de diseño más importante del proyecto porque definió la arquitectura de toda la interacción."
       }
     ],
     results: {
@@ -153,11 +143,13 @@ export const projects = [
       ]
     },
     roleDescription: "Product Designer con ownership de backlog",
-    team: "6 personas",
+    team: "2 frontend · 2 backend · Data/ML · Product Owner",
     tools: ["Figma", "PostHog", "OpenAI", "Gemini", "Google Analytics", "Hotjar", "Product Fruits", "Dashboard IA propio"],
     closing: {
       title: "El cierre",
-      message: "El trabajo más valioso de producto no es diseñar interfaces.\nEs tomar decisiones cuando no hay información suficiente."
+      message: "El trabajo más valioso de producto no es diseñar interfaces.\nEs tomar decisiones cuando no hay información suficiente.",
+      timeline: "Junio 2024 → presente",
+      extra: "Diseñé y desplegué el dashboard de métricas con IA (queries provistas por backend)"
     }
   },
   {

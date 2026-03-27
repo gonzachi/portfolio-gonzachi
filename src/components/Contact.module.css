@@ -1,6 +1,16 @@
 .section {
     padding: var(--spacing-3xl) 0;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    background: var(--color-bg-secondary);
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(64, 84, 178, 0.15) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .container {
@@ -24,11 +34,10 @@
 
 .titleAccent {
     font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-text-primary);
     line-height: 1.1;
     margin-bottom: var(--spacing-md);
 }

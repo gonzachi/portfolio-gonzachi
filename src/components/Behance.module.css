@@ -53,7 +53,7 @@
 
 .projectCard {
     display: block;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-card);
     overflow: hidden;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }

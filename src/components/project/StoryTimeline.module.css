@@ -18,7 +18,7 @@
 }
 
 .sectionIntro {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text-secondary);
     border-left: 2px solid var(--color-accent);
@@ -48,8 +48,10 @@
     justify-content: center;
     padding: var(--spacing-3xl) 0;
     opacity: 0.3;
-    transition: opacity 600ms ease;
+    transition: opacity 600ms ease, border-color 600ms ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 2px solid transparent;
+    padding-left: var(--spacing-md);
 }
 
 .step:last-child {
@@ -58,6 +60,7 @@
 
 .stepActive {
     opacity: 1;
+    border-left-color: var(--color-accent);
 }
 
 .stepNumber {
@@ -94,7 +97,7 @@
 }
 
 .stepBullets li {
-    font-size: 0.95rem;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--color-text-secondary);
     padding-left: 1.5rem;
@@ -130,8 +133,10 @@
 .illustrationCard {
     width: 100%;
     border-radius: var(--radius-xl);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,8 +216,10 @@
         display: block;
         margin-top: var(--spacing-md);
         border-radius: var(--radius-xl);
-        background: var(--color-bg-secondary);
-        border: 1px solid var(--color-border);
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
+        border: 1px solid var(--glass-border);
         padding: var(--spacing-lg);
     }
 
@@ -224,7 +231,7 @@
     }
 
     .mobileIllustration p {
-        font-size: 0.95rem;
+        font-size: 1rem;
         line-height: 1.7;
         color: var(--color-text-secondary);
     }
