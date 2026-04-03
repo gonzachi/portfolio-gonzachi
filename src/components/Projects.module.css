@@ -1,226 +1,187 @@
 .section {
-    padding: var(--spacing-3xl) 0;
-    background: linear-gradient(to bottom, var(--color-bg-secondary) 0%, var(--color-bg-primary) 40%, var(--color-bg-primary) 60%, var(--color-bg-secondary) 100%);
+  padding-top: 240px;
+  padding-bottom: var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
-.container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--container-padding);
-}
-
-.header {
-    margin-bottom: var(--spacing-2xl);
-}
-
-.title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    color: var(--color-text-primary);
-    line-height: 1.05;
-}
-
-.titleAccent {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-family: var(--font-accent);
-    font-style: italic;
-    font-weight: 500;
-    color: var(--color-text-primary);
-    line-height: 1.05;
-}
-
-/* Each project is a row of two cards */
-.projectList {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-}
-
+/* Each project row: text | media */
 .projectRow {
-    display: grid;
-    grid-template-columns: 1fr 1.6fr;
-    gap: var(--spacing-md);
-    min-height: 320px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: start;
 }
 
-/* Alternate: odd rows = text left, image right. Even rows = image left, text right */
 .projectRow.reverse {
-    grid-template-columns: 1.6fr 1fr;
+  direction: rtl;
 }
 
-.projectRow.reverse .textCard {
-    order: 2;
+.projectRow.reverse > * {
+  direction: ltr;
 }
 
-.projectRow.reverse .imageCard {
-    order: 1;
+/* Text column */
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* Text card */
-.textCard {
-    background: var(--color-bg-card);
-    border-radius: var(--radius-card);
-    padding: var(--spacing-xl);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: var(--spacing-md);
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
+.projectTitle {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text-primary);
 }
 
-.textCard:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  align-self: flex-start;
 }
 
-.textCard:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.cardTop {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    align-items: flex-start;
+.description p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
 }
 
-.recentBadge {
-    display: inline-block;
-    padding: 0.35rem 0.8rem;
-    background: var(--gradient-accent);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: var(--radius-sm);
-    margin-bottom: 0.5rem;
+/* Media column */
+.mediaCol {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #181A1F;
 }
 
-.cardTitle {
-    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-    font-weight: 800;
-    color: var(--color-text-primary);
-    line-height: 1.2;
+.media {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.cardSubtitle {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
+/* Video wrapper with restart button */
+.videoWrapper {
+  position: relative;
 }
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+.restartBtn {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-base), background var(--transition-fast);
+  white-space: nowrap;
 }
 
-.tag {
-    padding: 0.25rem 0.75rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 9999px;
-    font-size: 0.72rem;
-    color: var(--color-text-secondary);
-    font-weight: 500;
+.restartBtn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
-.cardBottom {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+.videoWrapper:hover .restartBtn {
+  opacity: 1;
 }
 
-.plusBtn {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    background: var(--color-text-primary);
-    color: var(--color-bg-primary);
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: 300;
-    cursor: pointer;
-    transition: background var(--transition-fast), transform var(--transition-fast);
-    flex-shrink: 0;
+.restartBtn:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-.textCard:hover .plusBtn {
-    background: var(--color-accent);
-    color: #fff;
-    transform: scale(1.1);
+.placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg-card);
 }
 
-/* Image card */
-.imageCard {
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    min-height: 280px;
+/* Project block: row + optional gallery (contained) */
+.projectBlock {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.projectImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Gallery: 4 cards grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
 }
 
-.projectVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.galleryCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.imagePlaceholder {
-    width: 100%;
-    height: 100%;
-    min-height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-card) 100%);
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
+.galleryImageWrapper {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-card);
 }
 
-@media (max-width: 900px) {
-    .projectRow,
-    .projectRow.reverse {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        gap: 0;
-    }
-
-    .projectRow .imageCard,
-    .projectRow.reverse .imageCard {
-        order: 1;
-        z-index: 2;
-        margin-bottom: -80px;
-        min-height: 220px;
-    }
-
-    .projectRow .textCard,
-    .projectRow.reverse .textCard {
-        order: 2;
-        z-index: 1;
-        padding-top: calc(var(--spacing-xl) + 96px);
-    }
+.galleryImage {
+  object-fit: cover;
 }
 
-@media (max-width: 600px) {
-    .projectRow .imageCard,
-    .projectRow.reverse .imageCard {
-        min-height: 180px;
-    }
+.galleryCaption {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .projectRow,
+  .projectRow.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .mediaCol {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }

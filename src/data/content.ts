@@ -7,6 +7,16 @@ export const personalInfo = {
     "Hoy trabajo en la intersección entre diseño, producto e inteligencia artificial. Me interesan los problemas sin manual de instrucciones: los que requieren investigar, decidir con información incompleta y construir desde cero. Especialmente cuando hay ownership real de por medio.",
     "Este portfolio recoge proyectos donde el diseño fue el punto de partida, pero las decisiones de producto fueron el trabajo."
   ],
+  landingBio: [
+    "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
+    "En coherencia con mis formaciones, actualmente busco evolucionar hacia el rol de Product Manager, aplicando mi capacidad para conectar las necesidades del usuario con los objetivos técnicos y de negocio.",
+    "Tengo más de 8 años de experiencia en diseño de producto y otros tantos en comunicación digital."
+  ],
+  bioHighlights: [
+    "mindset de ownership",
+    "evolucionar hacia el rol de Product Manager",
+    "más de 8 años de experiencia"
+  ],
   email: "gonzalo.chiavassa@gmail.com",
   linkedin: "https://www.linkedin.com/in/gonzalochiavassa/",
   behance: "https://www.behance.net/gonzachi"
@@ -55,8 +65,8 @@ export const projects = [
   {
     id: "agilidad-inspiracional",
     number: "",
-    title: "Una plataforma de IA que nadie pidió — y que hoy usan 10 departamentos.",
-    type: "Plataforma interna",
+    title: "Agilidad Inspiracional — Plataforma interna de generación de imágenes con IA",
+    type: "Product Design · Mango · 2024",
     subtitle: "Plataforma interna de generación de imágenes con IA · Mango · Desde junio 2024",
     context: {
       title: "Contexto — La apuesta",
@@ -90,10 +100,9 @@ export const projects = [
     badge: "Más reciente ✨",
     roles: [],
     description: [
-      "Este proyecto nació hace un año y medio, cuando la inteligencia artificial generativa todavía no era mainstream. Desde Mango, detectamos una oportunidad: desarrollar desde cero una plataforma interna de generación de imágenes con IA.",
-      "Comenzamos con los equipos de diseño de moda, realizando discovery para entender su flujo de trabajo. No partimos de un problema evidente, sino de una hipótesis: podíamos ayudarlos a optimizar tareas rutinarias y transmitir ideas creativas de forma más ágil.",
-      "Al inicio la IA no daba los resultados esperados. Pero con cada funcionalidad nueva, los resultados mejoraban. Planificamos formaciones y jornadas con usuarios para impulsar la adopción y recoger feedback real.",
-      "Hoy la plataforma es utilizada por cada vez más equipos y la adopción sigue creciendo. Lo que comenzó como un piloto se convirtió en una herramienta de referencia interna."
+      "Mango apostó por explorar la IA generativa de imágenes antes de que el mercado lo adoptara. En el discovery con los equipos de diseño de moda detectamos un cuello de botella concreto: los diseñadores pasaban horas buscando referencias visuales en competidores, editoriales y redes antes de empezar a diseñar. La oportunidad no era reemplazar el diseño, sino acelerar esa primera fase de inspiración.",
+      "Como Product Designer con ownership del backlog, trabajé con un equipo de 6 personas. La decisión de producto más relevante fue un pivote temprano: el equipo de data quería entrenar modelos propios, pero el feedback de usuarios no justificaba la fricción. Como equipo, decidimos dejar los modelos propios e integrar los mejores del mercado (OpenAI, Google), construyendo la mejor experiencia por encima. Las funcionalidades se fueron añadiendo iterativamente desde sesiones de discovery con usuarios reales.",
+      "Hoy la plataforma tiene 300 usuarios únicos activos al mes, genera más de 40K imágenes mensuales y se usa en más de 10 departamentos — habiendo arrancado con solo 10 usuarios invitados."
     ],
     highlights: [
       { title: "De referencias abstractas a conceptos visuales en segundos", description: "Los diseñadores podían tardar horas buscando y creando moodboards. Con la plataforma, generan variaciones realistas al instante.", emoji: "⚡" },
@@ -132,9 +141,7 @@ export const projects = [
         { icon: "🏗️", label: "Producto", title: "De 0 a 1 con éxito", description: "Una plataforma estable que ha superado la fase experimental y se ha convertido en herramienta de referencia interna." }
       ]
     },
-    images: [
-      { src: "/assets/projects/moda/img-project-moda.jpg", alt: "Agilidad Inspiracional en la moda" }
-    ],
+    images: [],
     roadmap: {
       intro: "Como el producto ya está encaminado, mi foco ha vuelto al Product Design de alta fidelidad, pero la visión de producto sigue clara:",
       items: [
@@ -150,7 +157,27 @@ export const projects = [
       message: "El trabajo más valioso de producto no es diseñar interfaces.\nEs tomar decisiones cuando no hay información suficiente.",
       timeline: "Junio 2024 → presente",
       extra: "Diseñé y desplegué el dashboard de métricas con IA (queries provistas por backend)"
-    }
+    },
+    showcaseTitle: "Plataforma interna de generación de imágenes con IA para Mango",
+    textPanels: [
+      [
+        "Este proyecto nace de una pregunta estratégica: ¿en qué parte del proceso de trabajo de los diseñadores de moda podríamos introducir la IA generativa de imágenes? No era un problema que los diseñadores tuvieran en ese momento — era una visión a futuro.",
+        "Después de una serie de discoverys con diferentes equipos, llegamos a una conclusión: por el nivel de control que ofrecían los modelos de IA en ese momento, el foco tenía que ser optimizar cómo los diseñadores comunicaban sus ideas creativas."
+      ],
+      [
+        "La visión de producto iba más allá: sabíamos que los modelos iban a mejorar y que eventualmente podríamos atacar etapas del proceso que requerían mayor precisión.",
+        "A partir de ahí fuimos construyendo la plataforma de forma iterativa — testeando con los equipos, midiendo uso real y ajustando en base a lo que funcionaba y lo que no."
+      ],
+      [
+        "Hoy, con esta herramienta, los diseñadores redujeron significativamente las horas que destinaban a comunicar la idea final que solo vivía en su cabeza. Redujimos las iteraciones con proveedores — ahora cuentan con resultados digitales y solicitan solo las prendas puntuales que necesitan producir.",
+        "Superamos los 300 usuarios únicos activos al mes, que generan más de 40.000 imágenes mensuales. La plataforma se expandió a más de 10 departamentos — algo que estaba en la visión desde el inicio, no fue casualidad."
+      ]
+    ],
+    textPanelHighlights: [
+      ["pregunta estratégica", "visión a futuro"],
+      ["La visión de producto iba más allá", "construyendo la plataforma de forma iterativa"],
+      ["300 usuarios únicos activos al mes", "40.000 imágenes mensuales", "más de 10 departamentos"]
+    ],
   },
   {
     id: "proyecto-nuevo",
@@ -171,8 +198,8 @@ export const projects = [
   {
     id: "project-1",
     number: "#3",
-    title: "Nuevo canal para nuestros usuarios",
-    type: "App Mobile",
+    title: "App móvil MVP",
+    type: "Product Design",
     roles: ["UX/UI Designer"],
     subtitle: "Diseñé la app mobile de una plataforma de inversión donde el 80% de los usuarios ya accedían desde el celular.",
     tools: ["Figma", "PostHog", "Clarity"],
@@ -186,18 +213,39 @@ export const projects = [
     challenge: "La plataforma responsive no estaba optimizada para mobile. Necesitábamos crear un nuevo canal nativo que entregara una experiencia robusta sin replicar toda la plataforma desktop.",
     team: "Product Designer · Product Manager · 2 Frontend · Backend",
     description: [
-      "Este proyecto comienza como una necesidad de negocio y producto, pensando a futuro en los usuarios.",
-      "Como datos duros, sabemos que el 80% de nuestros usuarios ingresan a la plataforma desde su dispositivo celular. Nuestra plataforma es responsive, pero no está 100% optimizada, y se optó por entregar al usuario una mejor experiencia con una solución mobile más robusta y así tener un nuevo canal de comunicación con los clientes.",
-      "Se decidió en equipo que lanzaremos un MVP friends&family y luego un MVP a los usuarios en general, donde la app mobile sea solo de consulta. Las limitaciones se deben al tiempo de desarrollo. Con el pasar del tiempo, la idea es que la app siga creciendo hasta igualar a la plataforma desktop.",
-      "En el proceso de diseño tuvimos muchas iteraciones, hasta obtener el resultado final. El usuario podrá acceder a la plataforma, revisar sus cuentas de inversiones y realizar una inversión.",
-      "Actualmente nos encontramos esperando el lanzamiento MVP a los usuarios para comenzar a obtener información de relevancia para realizar las iteraciones pertinentes."
+      "Holdo es una fintech chilena regulada por la CMF. Su plataforma de inversión nació como producto desktop, pero el 80% de los usuarios accedía desde el móvil. La experiencia no estaba pensada para ese contexto, y la decisión fue construir una app nativa que superara lo que ofrecían competidores tradicionales como los bancos.",
+      "Como Product Designer, fui responsable del diseño completo de la app, trabajando directamente con el equipo de desarrollo. Participé en la definición del alcance del MVP junto al CEO, analizando datos de comportamiento en Hotjar, Analytics y Postlog para proponer qué funcionalidades priorizar y qué dejar fuera. También realicé un benchmark competitivo del mercado fintech chileno y regional para informar las decisiones de diseño.",
+      "El MVP se enfocó en dos flujos: consulta de portafolio — la acción más frecuente según los datos — y depósito de fondos, una prioridad de negocio para reducir la fricción a la hora de invertir. Funcionalidades como creación de cuenta de usuario, creación de cuenta de inversión o rebalanceos quedaron fuera deliberadamente, disponibles solo en la web.",
+      "La mayoría de los usuarios con cuenta se descargaron la app y comenzaron a usarla activamente."
     ],
-    video: "/videos/app-mobile-1.mp4",
+    video: "/assets/projects/app-holdo/app_mobile_1.mp4",
     images: [
-      { src: "/images/project1-1.png", alt: "App Mobile Screen 1" },
-      { src: "/images/project1-2.png", alt: "App Mobile Screen 2" },
-      { src: "/images/project1-3.png", alt: "App Mobile Screen 3" },
-      { src: "/images/project1-4.png", alt: "App Mobile Screen 4" }
+      { src: "/assets/projects/app-holdo/Mask-group.png", alt: "App Mobile Screen 1", caption: "" },
+      { src: "/assets/projects/app-holdo/Mask-group-1.png", alt: "App Mobile Screen 2", caption: "" },
+      { src: "/assets/projects/app-holdo/Mask-group-2.png", alt: "App Mobile Screen 3", caption: "" },
+      { src: "/assets/projects/app-holdo/Mask-group-3.png", alt: "App Mobile Screen 4", caption: "" }
+    ],
+    showcaseTitle: "App móvil MVP en holdo.cl",
+    textPanels: [
+      [
+        "Holdo nace en el 2021. En aquel momento su plataforma de inversión se comenzó a idear como un producto desktop.",
+        "Los datos recolectados a los pocos meses del lanzamiento nos indicaban que el 80% de los usuarios accedía desde el móvil. La experiencia no estaba pensada para ese contexto, y la decisión fue construir una app móvil que superara ampliamente lo que ofrecían competidores tradicionales como los bancos."
+      ],
+      [
+        "Como Product Designer, fui responsable del diseño completo de la app, trabajando directamente con el equipo de desarrollo.",
+        "Participé en la definición del alcance del MVP junto al CEO & CTO, analizando datos de comportamiento en Hotjar, Analytics y PostHog para proponer qué funcionalidades priorizar y qué dejar fuera.",
+        "También realicé un benchmark competitivo del mercado fintech chileno y regional para informar las decisiones de diseño."
+      ]
+    ],
+    textPanelHighlights: [
+      ["el 80% de los usuarios accedía desde el móvil."],
+      ["definición del alcance", "qué funcionalidades priorizar y qué dejar fuera"]
+    ],
+    steps: [
+      "El MVP se enfocó en dos flujos: consulta de portafolio — la acción más frecuente según los datos —",
+      "y depósito de fondos, una prioridad de negocio para reducir la fricción a la hora de invertir.",
+      "Funcionalidades como creación de cuenta de usuario, creación de cuenta de inversión o rebalanceos quedaron fuera, facilitando la re-dirección a la web y optimizando estos flujos a responsive.",
+      "La mayoría de los usuarios con cuenta se descargaron la app y comenzaron a usarla activamente."
     ],
     note: "Lo que estás viendo se trata de un prototipo armado en Figma"
   },
@@ -205,7 +253,7 @@ export const projects = [
     id: "project-2",
     number: "#4",
     title: "Mejora de propuesta de inversión",
-    type: "UX/UI Designer",
+    type: "UX/UI Designer · Product Designer",
     roles: ["UX/UI Designer", "Product Designer"],
     subtitle: "Rediseñé el onboarding de inversión reduciendo la complejidad informativa para aumentar conversiones.",
     tools: ["Figma", "PostHog", "Clarity"],
@@ -225,12 +273,33 @@ export const projects = [
       "A su vez, desde UX y UI, le dimos un estilo más narrativo, para que sea sencillo de leer e incluso sencillo de escanear a simple vista, haciendo foco en datos de gran relevancia para el usuario y que permitan aumentar las conversiones por parte de negocio.",
       "Para finalizar este proceso, enviamos al equipo de desarrollo en formato de pitch todos los requisitos y pantallas diseñadas para que se lleven a cabo. Luego, en equipo realizamos QA para optimizar resultados."
     ],
-    video: "/videos/new-ladrillo.mp4",
+    video: "/assets/projects/ladrillo/new_ladrillo.mp4",
     images: [
-      { src: "/images/project2-1.jpg", alt: "Rendimiento histórico del portafolio", caption: "Buscamos mostrar de forma clara cuánto rindió el portafolio seleccionado en el pasado (ya que no se puede predecir el futuro). A su vez, agregamos un \"viaje en el tiempo\" que permitirá al usuario ver un número más realista de cuánto tendría si hubiera invertido X dinero." },
-      { src: "/images/project2-2.jpg", alt: "Empresas del ETF", caption: "Decidimos darle más importancia a las empresas que componen los ETF en los cuáles se invierte. Esto permite que el usuario esté más familiarizado con el portfolio y se interese más en invertir." },
-      { src: "/images/project2-3.jpg", alt: "Video IA", caption: "Con los datos recabados, decidimos darle mayor importancia a lo que nuestra Inteligencia Artificial había construido, por eso agregamos un pequeño video que introduce al usuario en el tema." },
-      { src: "/images/project2-4.jpg", alt: "CTA ampliado", caption: "Por supuesto, ampliamos el llamado a la acción al finalizar el scroll del portafolio seleccionado. Con esto buscamos que los usuarios conviertan de forma más simple y rápida." }
+      { src: "/assets/projects/ladrillo/Mask-group-1-1.jpg", alt: "Rendimiento histórico del portafolio", caption: "Buscamos mostrar de forma clara cuánto rindió el portafolio seleccionado en el pasado (ya que no se puede predecir el futuro). A su vez, agregamos un \"viaje en el tiempo\" que permitirá al usuario ver un número más realista de cuánto tendría si hubiera invertido X dinero." },
+      { src: "/assets/projects/ladrillo/Mask-group-2-1.jpg", alt: "Empresas del ETF", caption: "Decidimos darle más importancia a las empresas que componen los ETF en los cuáles se invierte. Esto permite que el usuario esté más familiarizado con el portfolio y se interese más en invertir." },
+      { src: "/assets/projects/ladrillo/Mask-group-3-1.jpg", alt: "Video IA", caption: "Con los datos recabados, decidimos darle mayor importancia a lo que nuestra Inteligencia Artificial había construido, por eso agregamos un pequeño video que introduce al usuario en el tema." },
+      { src: "/assets/projects/ladrillo/Mask-group-4.jpg", alt: "CTA ampliado", caption: "Por supuesto, ampliamos el llamado a la acción al finalizar el scroll del portafolio seleccionado. Con esto buscamos que los usuarios conviertan de forma más simple y rápida." }
+    ],
+    showcaseTitle: "Mejora de propuesta de inversión en holdo.cl",
+    textPanels: [
+      [
+        "Los datos de Clarity y PostHog lo dejaban claro: los usuarios abandonaban el onboarding antes de completarlo. Las entrevistas de research confirmaron la hipótesis — la información era abrumadora, confusa, y no terminaban de leerla.",
+        "El problema no era la cantidad de información per se. Era que toda parecía igual de importante. El usuario no sabía qué mirar primero."
+      ],
+      [
+        "Desde producto y UX, hicimos un análisis junto al equipo de expertos en finanzas para priorizar qué información era realmente imprescindible. El resultado: podíamos reducir significativamente el volumen sin perder nada crítico.",
+        "Le dimos un estilo más narrativo — fácil de leer, fácil de escanear — haciendo foco en los datos de mayor relevancia para el usuario y que permitieran aumentar las conversiones."
+      ]
+    ],
+    textPanelHighlights: [
+      ["abandonaban el onboarding", "la información era abrumadora"],
+      ["qué información era realmente imprescindible", "reducir significativamente el volumen"]
+    ],
+    steps: [
+      "Rendimiento histórico presentado de forma clara, con un 'viaje en el tiempo' para que el usuario vea cuánto hubiera ganado invirtiendo una cantidad determinada.",
+      "Mayor protagonismo para las empresas que componen los ETF — para que el usuario se familiarice con el portfolio y se interese más en invertir.",
+      "Más peso a lo que la IA había construido: un pequeño video que introduce al usuario en el tema antes de presentar el portfolio completo.",
+      "CTA ampliado al finalizar el scroll — para que los usuarios conviertan de forma más simple y rápida."
     ]
   },
   {
@@ -297,6 +366,64 @@ export const projects = [
   }
 ];
 
+export const landingExperiences = [
+  {
+    role: "Senior Product Designer",
+    company: "Mango",
+    period: "jun. 2024 - actualidad",
+    companyInfo: {
+      logo: "/assets/home/logo-mango.jpg",
+      url: "mango.com",
+      founded: "1984",
+      description: "Mango es una multinacional de moda fundada en Barcelona. Diseña, fabrica y comercializa prendas y accesorios para hombre y mujer con presencia en más de 110 países."
+    }
+  },
+  {
+    role: "Product Designer",
+    company: "Holdo",
+    period: "jun. 2022 - jun. 2024",
+    companyInfo: {
+      logo: "/assets/home/logo-holdo.jpg",
+      url: "holdo.cl",
+      founded: "2021",
+      description: "Holdo es la primera plataforma chilena que te entrega una asesoría profesional con inteligencia artificial. Nuestra misión es llevar a las personas las inversiones de alto nivel, con un proceso de registro simple y 100% digital.\n\nOfrecemos productos personalizados, gracias a nuestra inteligencia artificial, que nos permite generar estrategias adaptadas a las necesidades de nuestros clientes, además con ajustes periódicos. Nuestro enfoque es crear una experiencia de inversión de primer nivel y con costos transparentes.\n\nEstamos inscritos en la Comisión para el Mercado Financiero (CMF) y en proceso de regulación. Además, estamos respaldados por la Administradora General de Fondos Toesca y transamos a través de Interactive Brokers."
+    }
+  },
+  {
+    role: "Freelance Product Designer",
+    company: "gonzachi.com",
+    period: "ene. 2019 - ago. 2022",
+    companyInfo: {
+      logo: "/assets/home/gonzachi_com_logo.jpeg",
+      url: "gonzachi.com",
+      founded: "2019",
+      description: "Proyecto personal de diseño UX/UI. Proyectos end-to-end para clientes diversos: desde el discovery hasta la entrega de sitios responsive en WordPress."
+    }
+  },
+  {
+    role: "Lead Graphic Designer",
+    company: "Quo",
+    period: "feb. 2020 - jul. 2022",
+    companyInfo: {
+      logo: "/assets/home/quo_estrategia_y_comunicacin_logo.jpeg",
+      url: "quoeyc.com",
+      founded: "2010",
+      description: "Nos especializamos en la comunicación de líderes, gobiernos y ONGs, ofreciendo una amplia gama de servicios de comunicación política que contemplan el desarrollo de estrategias, la gestión de campañas electorales y la creación de contenido digital.\n\nSomos un equipo de profesionales altamente capacitados, experimentados y profundamente comprometidos con la excelencia en cada paso que damos. En QUO, no nos conformamos: nos atrevemos a innovar y utilizar las últimas tendencias y herramientas de comunicación para brindar soluciones efectivas y de vanguardia a nuestros clientes."
+    }
+  },
+  {
+    role: "Graphic Designer & Web Designer",
+    company: "Quo",
+    period: "feb. 2018 - feb. 2020",
+    companyInfo: {
+      logo: "/assets/home/quo_estrategia_y_comunicacin_logo.jpeg",
+      url: "quoeyc.com",
+      founded: "2010",
+      description: "Nos especializamos en la comunicación de líderes, gobiernos y ONGs, ofreciendo una amplia gama de servicios de comunicación política que contemplan el desarrollo de estrategias, la gestión de campañas electorales y la creación de contenido digital.\n\nSomos un equipo de profesionales altamente capacitados, experimentados y profundamente comprometidos con la excelencia en cada paso que damos. En QUO, no nos conformamos: nos atrevemos a innovar y utilizar las últimas tendencias y herramientas de comunicación para brindar soluciones efectivas y de vanguardia a nuestros clientes."
+    }
+  },
+];
+
 export const behanceProjects = [
   {
     title: "Proclub App",
@@ -321,41 +448,65 @@ export const education = [
     title: "Master en Digital Product Management",
     institution: "Nuclio Digital School",
     period: "2025–2026",
-    logo: "/assets/home/nuclio-digital-school-squarelogo-1646726789081.png"
+    logo: "/assets/home/nuclio-digital-school-squarelogo-1646726789081.png",
+    institutionInfo: {
+      url: "nuclio.school",
+      description: "Escuela de negocios digitales con sede en Barcelona, especializada en programas de postgrado en tecnología, producto y data."
+    }
   },
   {
     id: "siglo21",
     title: "Licenciado en Diseño Gráfico",
     institution: "Universidad Siglo 21",
     period: "2012-2017",
-    logo: "/assets/home/lasiglo21_logo.jpeg"
+    logo: "/assets/home/lasiglo21_logo.jpeg",
+    institutionInfo: {
+      url: "21.edu.ar",
+      description: "Universidad privada argentina con sede en Córdoba. Referente en educación a distancia y presencial con más de 60.000 alumnos."
+    }
   },
   {
     id: "coder-ux-avanzado",
     title: "Diseño UX/UI Avanzado",
     institution: "Coderhouse",
     period: "2020-2021",
-    logo: "/assets/home/coderhouse_logo-150x150.jpeg"
+    logo: "/assets/home/coderhouse_logo-150x150.jpeg",
+    institutionInfo: {
+      url: "coderhouse.com",
+      description: "Plataforma de educación online en tecnología y diseño con clases en vivo y proyectos prácticos. Presente en toda Latinoamérica."
+    }
   },
   {
     id: "coder-pm",
     title: "Product Manager",
     institution: "Coderhouse",
     period: "2020-2020",
-    logo: "/assets/home/coderhouse_logo-150x150.jpeg"
+    logo: "/assets/home/coderhouse_logo-150x150.jpeg",
+    institutionInfo: {
+      url: "coderhouse.com",
+      description: "Plataforma de educación online en tecnología y diseño con clases en vivo y proyectos prácticos. Presente en toda Latinoamérica."
+    }
   },
   {
     id: "coder-ux",
     title: "Diseño UX/UI",
     institution: "Coderhouse",
     period: "2019-2020",
-    logo: "/assets/home/coderhouse_logo-150x150.jpeg"
+    logo: "/assets/home/coderhouse_logo-150x150.jpeg",
+    institutionInfo: {
+      url: "coderhouse.com",
+      description: "Plataforma de educación online en tecnología y diseño con clases en vivo y proyectos prácticos. Presente en toda Latinoamérica."
+    }
   },
   {
     id: "udemy",
     title: "UX: Máster en Diseño web y Experiencia de Usuario",
     institution: "Udemy",
     period: "sept. 2019",
-    logo: "/assets/home/udemy_logo.jpeg"
+    logo: "/assets/home/udemy_logo.jpeg",
+    institutionInfo: {
+      url: "udemy.com",
+      description: "Plataforma global de aprendizaje online con más de 200.000 cursos en tecnología, diseño, negocios y desarrollo personal."
+    }
   }
 ];

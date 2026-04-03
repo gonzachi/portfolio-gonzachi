@@ -1,0 +1,1171 @@
+{
+  "version": "2.9",
+  "children": [
+    {
+      "type": "frame",
+      "id": "x4gwi",
+      "x": 94,
+      "y": -17,
+      "name": "Portfolio Home",
+      "width": 1440,
+      "fill": "#181A1F",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "72mDU",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 64,
+          "fill": "#121a1fe6",
+          "stroke": {
+            "align": "outside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#2a2a2a"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "gmEAF",
+              "name": "logoZone",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "rXr8p",
+                  "name": "logoRect",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "boliviainteligente",
+                    "link": "https://unsplash.com/@boliviainteligente",
+                    "author": "BoliviaInteligente"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1761044590861-71df31e43d0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzUwMjE4OTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": 180,
+                  "height": 45
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "QWobQ",
+              "name": "langBtn",
+              "cornerRadius": 8,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#2a2a2a"
+              },
+              "gap": 6,
+              "padding": [
+                6,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "4iW79",
+                  "name": "langES",
+                  "fill": "#FFFFFF",
+                  "content": "ES",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "d29ec",
+                  "name": "langDiv",
+                  "fill": "#666666",
+                  "content": "/",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "2YoYf",
+                  "name": "langEN",
+                  "fill": "#666666",
+                  "content": "EN",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Lz8TY",
+          "name": "Hero",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            160,
+            310,
+            100,
+            310
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "9LjQX",
+              "name": "hello",
+              "fill": "#FFFFFF",
+              "content": "Hola,",
+              "fontFamily": "Poppins",
+              "fontSize": 88,
+              "fontWeight": "bold"
+            },
+            {
+              "type": "text",
+              "id": "jWm7L",
+              "name": "welcome",
+              "fill": "#FFFFFF",
+              "content": "welcome.",
+              "fontFamily": "Lora",
+              "fontSize": 88,
+              "fontWeight": "normal",
+              "fontStyle": "italic"
+            },
+            {
+              "type": "frame",
+              "id": "YGddw",
+              "name": "bioWrap",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MyLA1",
+                  "name": "bio1",
+                  "fill": "#a0a0a0",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta encontrar soluciones end-to-end.",
+                  "lineHeight": 1.75,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "DLcan",
+                  "name": "bio2",
+                  "fill": "#a0a0a0",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "En coherencia con mis formaciones, actualmente busco evolucionar hacia el rol de Product Manager, aplicando mi capacidad para conectar las necesidades del usuario con los objetivos técnicos y de negocio.",
+                  "lineHeight": 1.75,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "y7d4O",
+                  "name": "bio3",
+                  "fill": "#a0a0a0",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Tengo más de 8 años de experiencia en diseño de producto y otros tantos en comunicación digital.",
+                  "lineHeight": 1.75,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OnpMa",
+          "name": "Experience",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            80,
+            310
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "FxxLz",
+              "name": "er1",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "bt9ok",
+                  "name": "R1",
+                  "fill": "#FFFFFF",
+                  "content": "Senior Product Designer en Mango",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "TKcSD",
+                  "name": "P1",
+                  "fill": "#666666",
+                  "content": "jun. 2024 - actualidad",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "y5FUe",
+              "name": "er2",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ig6hT",
+                  "name": "R2",
+                  "fill": "#FFFFFF",
+                  "content": "Product Designer en Holdo",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "4VbiP",
+                  "name": "P2",
+                  "fill": "#666666",
+                  "content": "jun. 2022 - jun. 2024",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kdTvm",
+              "name": "er3",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lENpD",
+                  "name": "R3",
+                  "fill": "#FFFFFF",
+                  "content": "Freelance Product Designer en gonzachi.com",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "WaEht",
+                  "name": "P3",
+                  "fill": "#666666",
+                  "content": "ene. 2019 - ago. 2022",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LvPSx",
+              "name": "er4",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "3znIv",
+                  "name": "R4",
+                  "fill": "#FFFFFF",
+                  "content": "Lead Graphic Designer en Quo",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ZIjYB",
+                  "name": "P4",
+                  "fill": "#666666",
+                  "content": "feb. 2020 - jul. 2022",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hlGjn",
+              "name": "er5",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1,
+                  "bottom": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "e7uDq",
+                  "name": "R5",
+                  "fill": "#FFFFFF",
+                  "content": "Graphic Designer & Web Designer en Quo",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "qyPEu",
+                  "name": "P5",
+                  "fill": "#666666",
+                  "content": "feb. 2018 - feb. 2020",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "u6Rdx",
+          "name": "ProjectsDisclaimer",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            240,
+            120,
+            80,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "QABlH",
+              "name": "hZone",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "WoJay",
+                  "fill": "#FFFFFF",
+                  "content": "Algunos",
+                  "fontFamily": "Poppins",
+                  "fontSize": 56,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "XwWUZ",
+                  "fill": "#FFFFFF",
+                  "content": "proyectos",
+                  "fontFamily": "Lora",
+                  "fontSize": 56,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "DSFr8",
+              "fill": "#a0a0a0",
+              "textGrowth": "fixed-width",
+              "width": 560,
+              "content": "Aquí presento algunos proyectos. No puedo mostrar mucha más información por cuestiones de NDA. Hablemos y profundizamos.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "57vz8",
+          "name": "Projects",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 240,
+          "padding": [
+            80,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "pHpqN",
+              "name": "Proj1Row",
+              "width": "fill_container",
+              "gap": 64,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "6zrEp",
+                  "name": "p1text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "TDgOR",
+                      "name": "pt1",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Agilidad Inspiracional — Plataforma interna de generación de imágenes con IA",
+                      "lineHeight": 1.15,
+                      "fontFamily": "Poppins",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cXJDV",
+                      "name": "badge1",
+                      "fill": "#4054b233",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        4,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pvrV9",
+                          "name": "badgeTxt1",
+                          "fill": "#6EC1E4",
+                          "content": "Más reciente",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "ftt5O",
+                      "name": "pd1",
+                      "fill": "#a0a0a0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Mango apostó por explorar la IA generativa de imágenes antes de que el mercado lo adoptara. En el discovery con los equipos de diseño de moda detectamos un cuello de botella concreto: los diseñadores pasaban horas buscando referencias visuales en competidores, editoriales y redes antes de empezar a diseñar.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "0juR9",
+                  "name": "p1media",
+                  "width": "fill_container",
+                  "height": 520,
+                  "fill": "#252830",
+                  "cornerRadius": 48
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Cjh8D",
+              "name": "Proj2Row",
+              "width": "fill_container",
+              "gap": 64,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "tbDs9",
+                  "name": "p2media",
+                  "width": "fill_container",
+                  "height": 520,
+                  "fill": "#252830",
+                  "cornerRadius": 48
+                },
+                {
+                  "type": "frame",
+                  "id": "IKiWv",
+                  "name": "p2text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "0VQUr",
+                      "name": "pt2",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "App móvil MVP",
+                      "lineHeight": 1.15,
+                      "fontFamily": "Poppins",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "6sWXb",
+                      "name": "badge2",
+                      "fill": "#4054b233",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        4,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "XQGZ6",
+                          "name": "btxt2",
+                          "fill": "#6EC1E4",
+                          "content": "Product Design",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "YDz1m",
+                      "name": "pd2",
+                      "fill": "#a0a0a0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Holdo es una fintech chilena regulada por la CMF. Su plataforma de inversión nació como producto desktop, pero el 80% de los usuarios accedía desde el móvil. La experiencia no estaba pensada para ese contexto, y la decisión fue construir una app nativa que superara lo que ofrecían competidores tradicionales como los bancos.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "H9gum",
+              "name": "Proj3Row",
+              "width": "fill_container",
+              "gap": 64,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "1vg4e",
+                  "name": "p3text",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bZweC",
+                      "name": "pt3",
+                      "fill": "#FFFFFF",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Mejora de propuesta de inversión",
+                      "lineHeight": 1.15,
+                      "fontFamily": "Poppins",
+                      "fontSize": 28,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gwi7E",
+                      "name": "badge3",
+                      "fill": "#4054b233",
+                      "cornerRadius": 9999,
+                      "padding": [
+                        4,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BzLwp",
+                          "name": "btxt3",
+                          "fill": "#6EC1E4",
+                          "content": "UX/UI Designer · Product Designer",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "k1kgM",
+                      "name": "pd3",
+                      "fill": "#a0a0a0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Este proyecto nace de los inputs recolectados por el comportamiento de los usuarios en la etapa de onboarding del producto. Gran parte de las hipótesis se centraban en que los usuarios no comprendían la gran cantidad de información que se brindaba, les resultaba abrumador, confuso.",
+                      "lineHeight": 1.7,
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CfMo8",
+                  "name": "p3media",
+                  "width": "fill_container",
+                  "height": 520,
+                  "fill": "#252830",
+                  "cornerRadius": 48
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JX6OX",
+          "name": "Education",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            160,
+            310,
+            80,
+            310
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "b8MqK",
+              "name": "er1",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "92NmZ",
+                  "name": "R1",
+                  "fill": "#FFFFFF",
+                  "content": "Nuclio Digital School — Master en Digital Product Management",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "pnyPm",
+                  "name": "P1",
+                  "fill": "#666666",
+                  "content": "2025-2026",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Ur9MZ",
+              "name": "er2",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5T2UM",
+                  "name": "R2",
+                  "fill": "#FFFFFF",
+                  "content": "Universidad Siglo 21 — Licenciado en Diseño Gráfico",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "eLicO",
+                  "name": "P2",
+                  "fill": "#666666",
+                  "content": "2012-2017",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SoczT",
+              "name": "er3",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aJ4jt",
+                  "name": "R3",
+                  "fill": "#FFFFFF",
+                  "content": "Coderhouse — Diseño UX/UI Avanzado",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "OoVRy",
+                  "name": "P3",
+                  "fill": "#666666",
+                  "content": "2020-2021",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RYPoM",
+              "name": "er4",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vcrit",
+                  "name": "R4",
+                  "fill": "#FFFFFF",
+                  "content": "Coderhouse — Product Manager",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "U9dHi",
+                  "name": "P4",
+                  "fill": "#666666",
+                  "content": "2020-2020",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6FEpp",
+              "name": "er5",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "IrqEh",
+                  "name": "R5",
+                  "fill": "#FFFFFF",
+                  "content": "Coderhouse — Diseño UX/UI",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "sXfdN",
+                  "name": "P5",
+                  "fill": "#666666",
+                  "content": "2019-2020",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "MRu4x",
+              "name": "er6",
+              "width": "fill_container",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "top": 1,
+                  "bottom": 1
+                },
+                "fill": "#2a2a2a"
+              },
+              "padding": [
+                20,
+                0
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "KfwlI",
+                  "name": "R6",
+                  "fill": "#FFFFFF",
+                  "content": "Udemy — UX: Máster en Diseño web y Experiencia de Usuario",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Sr0fj",
+                  "name": "P6",
+                  "fill": "#666666",
+                  "content": "sept. 2019",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "iULO9",
+          "name": "Contact",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            160,
+            310,
+            80,
+            310
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "9xbrM",
+              "name": "chZone",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Xye1k",
+                  "fill": "#FFFFFF",
+                  "content": "Hablemos,",
+                  "fontFamily": "Poppins",
+                  "fontSize": 56,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "text",
+                  "id": "aZgAz",
+                  "fill": "#FFFFFF",
+                  "content": "contacto.",
+                  "fontFamily": "Lora",
+                  "fontSize": 56,
+                  "fontWeight": "normal",
+                  "fontStyle": "italic"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "xrU3u",
+              "name": "ctext1",
+              "fill": "#a0a0a0",
+              "textGrowth": "fixed-width",
+              "width": 560,
+              "content": "Si te interesa lo que viste, escribime a gonzalo.chiavassa@gmail.com y coordinamos una llamada.",
+              "lineHeight": 1.7,
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "Rg2yi",
+              "name": "linksRow",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LlGXZ",
+                  "fill": "#666666",
+                  "content": "LinkedIn",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "NYZmc",
+                  "fill": "#666666",
+                  "content": "Behance",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "n8uV1",
+          "name": "Footer",
+          "width": "fill_container",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#2a2a2a"
+          },
+          "padding": [
+            24,
+            120
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ZWpHP",
+              "name": "fLeft",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xIpA0",
+                  "fill": "#FFFFFF",
+                  "content": "Gonzalo Chiavassa",
+                  "fontFamily": "Poppins",
+                  "fontSize": 16,
+                  "fontWeight": "bold"
+                },
+                {
+                  "type": "frame",
+                  "id": "GcPbG",
+                  "name": "iconsRow",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "3RTZU",
+                      "name": "li",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "linkedin",
+                      "iconFontFamily": "lucide",
+                      "fill": "#666666"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "k1GUk",
+                      "name": "be",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "globe",
+                      "iconFontFamily": "lucide",
+                      "fill": "#666666"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "30RKE",
+                      "name": "ma",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "mail",
+                      "iconFontFamily": "lucide",
+                      "fill": "#666666"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "msxrM",
+              "name": "fRight",
+              "fill": "#666666",
+              "textGrowth": "fixed-width",
+              "width": 500,
+              "content": "Portfolio creado íntegramente con Inteligencia Artificial en Antigravity · Desplegado en Vercel · © 2026 · Todos los derechos reservados",
+              "textAlign": "right",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
