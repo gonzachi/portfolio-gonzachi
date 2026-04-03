@@ -1,126 +1,52 @@
-'use client';
-
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { experiences } from '@/data/content';
-import ExperienceCard from './ExperienceCard';
+import { landingExperiences } from '@/data/content';
+import Image from 'next/image';
 import styles from './Experience.module.css';
 
 export default function Experience() {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const trackRef = useRef<HTMLDivElement>(null);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-    const scrollToSlide = useCallback((index: number) => {
-        const track = trackRef.current;
-        if (!track) return;
-        const card = track.children[index] as HTMLElement;
-        if (!card) return;
-        track.scrollTo({ left: card.offsetLeft - 24, behavior: 'smooth' });
-    }, []);
-
-    const nextSlide = useCallback(() => {
-        const next = (activeIndex + 1) % experiences.length;
-        setActiveIndex(next);
-        scrollToSlide(next);
-    }, [activeIndex, scrollToSlide]);
-
-    const goToSlide = useCallback((index: number) => {
-        setActiveIndex(index);
-        scrollToSlide(index);
-    }, [scrollToSlide]);
-
-    const togglePlay = useCallback(() => {
-        setIsPlaying((prev) => !prev);
-    }, []);
-
-    // Track scroll position to update active dot
-    useEffect(() => {
-        const track = trackRef.current;
-        if (!track) return;
-
-        const handleScroll = () => {
-            const scrollLeft = track.scrollLeft;
-            const children = Array.from(track.children) as HTMLElement[];
-            let closest = 0;
-            let minDist = Infinity;
-            children.forEach((child, i) => {
-                const dist = Math.abs(child.offsetLeft - 24 - scrollLeft);
-                if (dist < minDist) {
-                    minDist = dist;
-                    closest = i;
-                }
-            });
-            setActiveIndex(closest);
-        };
-
-        track.addEventListener('scroll', handleScroll, { passive: true });
-        return () => track.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    // Auto-play logic
-    useEffect(() => {
-        if (isPlaying) {
-            intervalRef.current = setInterval(nextSlide, 4000);
-        } else if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = null;
-        }
-
-        return () => {
-            if (intervalRef.current) {
-                clearInterval(intervalRef.current);
-            }
-        };
-    }, [isPlaying, nextSlide]);
-
-    return (
-        <section className={styles.section} id="experience">
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <h2 className={styles.title}>Sobre mi</h2>
-                    <h2 className={styles.titleAccent}>experiencia</h2>
-                </div>
-            </div>
-
-            <div className={styles.carouselTrack} ref={trackRef}>
-                {experiences.map((exp) => (
-                    <div key={exp.id} className={styles.carouselSlide}>
-                        <ExperienceCard experience={exp} />
+  return (
+    <section className={styles.section} id="experience">
+      <div className={styles.container}>
+        <ul className={styles.list}>
+          {landingExperiences.map((exp, index) => (
+            <li key={index} className={styles.item}>
+              <span className={styles.role}>
+                {exp.role} en{' '}
+                <span className={styles.companyWrapper}>
+                  <span className={styles.companyName}>{exp.company}</span>
+                  <span className={styles.tooltip}>
+                    <span className={styles.tooltipHeader}>
+                      <Image
+                        src={exp.companyInfo.logo}
+                        alt={exp.company}
+                        width={40}
+                        height={40}
+                        className={styles.tooltipLogo}
+                      />
+                      <span className={styles.tooltipMeta}>
+                        <span className={styles.tooltipCompany}>
+                          {exp.company}
+                          <svg className={styles.tooltipLink} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                          </svg>
+                        </span>
+                        <span className={styles.tooltipUrl}>
+                          {exp.companyInfo.url} | Fundada en {exp.companyInfo.founded}
+                        </span>
+                      </span>
+                    </span>
+                    <div className={styles.tooltipDesc}>
+                      {exp.companyInfo.description.split('\n\n').map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
                     </div>
-                ))}
-            </div>
-
-            <div className={styles.controls}>
-                <div className={styles.dots}>
-                    {experiences.map((_, index) => (
-                        <button
-                            key={index}
-                            className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ''}`}
-                            onClick={() => goToSlide(index)}
-                            aria-label={`Ir a experiencia ${index + 1}`}
-                        />
-                    ))}
-                </div>
-
-                <button
-                    className={styles.playBtn}
-                    onClick={togglePlay}
-                    aria-label={isPlaying ? 'Pausar' : 'Reproducir'}
-                >
-                    {isPlaying ? (
-                        <svg viewBox="0 0 24 24">
-                            <rect x="6" y="4" width="4" height="16" rx="1" />
-                            <rect x="14" y="4" width="4" height="16" rx="1" />
-                        </svg>
-                    ) : (
-                        <svg viewBox="0 0 24 24">
-                            <path d="M8 5.14v14.72a1 1 0 001.5.86l11-7.36a1 1 0 000-1.72l-11-7.36A1 1 0 008 5.14z" />
-                        </svg>
-                    )}
-                </button>
-            </div>
-
-        </section>
-    );
+                  </span>
+                </span>
+              </span>
+              <span className={styles.period}>{exp.period}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
 }

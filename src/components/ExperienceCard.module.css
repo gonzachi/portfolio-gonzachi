@@ -1,16 +1,33 @@
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
 .card {
-    background: var(--color-bg-secondary);
-    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+        conic-gradient(from var(--angle), rgba(64, 84, 178, 0.2), rgba(110, 193, 228, 0.2), rgba(64, 84, 178, 0.2)) border-box;
+    border: 1px solid transparent;
+    border-radius: var(--radius-card);
     padding: var(--spacing-lg);
-    border: 1px solid var(--color-border);
-    transition: transform var(--transition-base), box-shadow var(--transition-base);
     height: 100%;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
 .card:hover {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background:
+        linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+        conic-gradient(from var(--angle), #4054B2, #6EC1E4, #4054B2) border-box;
+    animation: rotateBorder 5s linear infinite;
 }
+
+@keyframes rotateBorder {
+    to { --angle: 360deg; }
+}
+
 
 .header {
     display: flex;
@@ -20,8 +37,8 @@
 }
 
 .logoPlaceholder {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     border-radius: var(--radius-sm);
     background: var(--gradient-accent);
     display: flex;
@@ -34,11 +51,12 @@
 }
 
 .companyLogo {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     border-radius: var(--radius-sm);
     object-fit: cover;
     flex-shrink: 0;
+    border: 1px solid var(--color-border);
 }
 
 .companyInfo {
@@ -47,15 +65,25 @@
 }
 
 .company {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 0.25rem;
 }
 
 .location {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.location::before {
+    content: '·';
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--color-accent-secondary);
 }
 
 .roleInfo {
@@ -69,12 +97,13 @@
 .role {
     font-size: 1rem;
     font-weight: 600;
-    color: var(--color-accent);
+    color: var(--color-accent-secondary);
 }
 
 .period {
     font-size: 0.85rem;
     color: var(--color-text-muted);
+    font-weight: 400;
 }
 
 .description {

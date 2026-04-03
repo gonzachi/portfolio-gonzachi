@@ -29,7 +29,8 @@
 
 .line.active {
     width: 16px;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--color-accent);
+    box-shadow: 0 0 8px rgba(64, 84, 178, 0.5);
 }
 
 @media (max-width: 1200px) {

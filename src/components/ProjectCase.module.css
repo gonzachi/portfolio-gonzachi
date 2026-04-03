@@ -1,6 +1,6 @@
 .project {
     background: var(--color-bg-secondary);
-    border-radius: var(--radius-xl);
+    border-radius: var(--radius-card);
     padding: var(--spacing-xl);
     border: 1px solid var(--color-border);
 }

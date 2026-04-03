@@ -22,7 +22,7 @@
 .statsGrid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-sm);
     padding: 0 var(--container-padding);
     max-width: var(--container-max);
     margin: 0 auto var(--spacing-3xl) auto;
@@ -31,39 +31,54 @@
 .statCard {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: var(--spacing-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
 }
 
-.statValue {
-    font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 700;
+.statIcon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-accent);
+    margin-bottom: var(--spacing-md);
+    opacity: 0.7;
+    flex-shrink: 0;
+}
+
+.statHighlight {
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    font-weight: 600;
     color: var(--color-text-primary);
-    line-height: 1;
-    letter-spacing: -0.04em;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
     opacity: 0;
-    transform: translateY(80px);
-    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.statLabel {
-    font-size: clamp(1rem, 2.5vw, 1.4rem);
-    color: var(--color-text-muted);
-    margin-top: var(--spacing-md);
-    letter-spacing: 0.02em;
+.statDetail {
+    font-size: 1rem;
+    color: var(--color-accent-secondary);
+    font-weight: 500;
+    line-height: 1.5;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s,
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+    transform: translateY(10px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s,
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
 }
 
-.statVisible .statValue {
+.statVisible .statHighlight {
     opacity: 1;
     transform: translateY(0);
 }
 
-.statVisible .statLabel {
+.statVisible .statDetail {
     opacity: 1;
     transform: translateY(0);
 }
@@ -148,7 +163,7 @@
 }
 
 .footerText {
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--color-text-muted);
     max-width: 800px;
     line-height: 1.6;
