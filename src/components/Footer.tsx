@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <p className={styles.credit}>
-                Portfolio creado íntegramente con{' '}
+                Portfolio creado y desarrollado con{' '}
                 <span className={styles.aiHighlight}>Inteligencia Artificial</span>
                 {' '}en{' '}
                 <a href="https://antigravity.ai" target="_blank" rel="noopener noreferrer">Antigravity</a>

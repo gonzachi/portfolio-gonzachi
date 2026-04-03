@@ -37,7 +37,7 @@
 }
 
 .bio p {
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   line-height: 1.75;
   color: var(--color-text-secondary);
 }

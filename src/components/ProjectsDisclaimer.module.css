@@ -30,7 +30,7 @@
 }
 
 .disclaimer {
-  font-size: 18px;
+  font-size: clamp(16px, 4vw, 18px);
   line-height: 1.7;
   color: var(--color-text-secondary);
   max-width: 560px;
