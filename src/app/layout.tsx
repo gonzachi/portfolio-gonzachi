@@ -16,15 +16,14 @@ const lora = Lora({
   variable: "--font-lora",
   display: "swap",
 });
-
 export const metadata: Metadata = {
   title: "Gonzalo Chiavassa | Product Designer",
-  description: "Visita mi portfolio digital. Product Designer con más de 6 años de experiencia en startups, especializado en UX/UI Design.",
+  description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
   keywords: ["Product Designer", "UX Designer", "UI Designer", "Portfolio", "Gonzalo Chiavassa"],
   authors: [{ name: "Gonzalo Chiavassa" }],
   openGraph: {
     title: "Gonzalo Chiavassa | Product Designer",
-    description: "Product Designer con más de 6 años de experiencia en startups",
+    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
     type: "website",
   },
 };
