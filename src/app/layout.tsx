@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Lora } from "next/font/google";
 import Script from "next/script";
+import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -37,7 +38,21 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${poppins.variable} ${lora.variable}`}>
       <body>
-        {children}
+        {/* Google Consent Mode v2 — must run BEFORE gtag.js loads */}
+        <Script id="consent-mode-defaults" strategy="beforeInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('consent', 'default', {
+              analytics_storage: 'denied',
+              ad_storage: 'denied',
+              ad_user_data: 'denied',
+              ad_personalization: 'denied',
+              wait_for_update: 500,
+            });
+          `}
+        </Script>
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-CX90Q6CS5W"
@@ -51,19 +66,11 @@ export default function RootLayout({
             gtag('config', 'G-CX90Q6CS5W');
           `}
         </Script>
-        {/* Hotjar Tracking Code for Portfolio 2026 */}
-        <Script id="hotjar" strategy="afterInteractive">
-          {`
-            (function(h,o,t,j,a,r){
-              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-              h._hjSettings={hjid:6685057,hjsv:6};
-              a=o.getElementsByTagName('head')[0];
-              r=o.createElement('script');r.async=1;
-              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-              a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-          `}
-        </Script>
+
+        {children}
+
+        {/* Cookie consent banner — also loads Hotjar when accepted */}
+        <CookieBanner />
       </body>
     </html>
   );
