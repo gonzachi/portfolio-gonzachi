@@ -65,7 +65,7 @@ export const projects = [
   {
     id: "agilidad-inspiracional",
     number: "",
-    title: "Agilidad Inspiracional — Plataforma interna de generación de imágenes con IA",
+    title: "Plataforma interna de generación de imágenes con IA",
     type: "Product Design · Mango · 2024",
     subtitle: "Plataforma interna de generación de imágenes con IA · Mango · Desde junio 2024",
     context: {
@@ -427,19 +427,125 @@ export const landingExperiences = [
 export const behanceProjects = [
   {
     title: "Proclub App",
+    subtitle: "Propuesta UX/UI",
     image: "/images/behance-proclub.webp",
     link: "https://www.behance.net/gallery/120076233/Proclub-app-Propuesta-UXUI"
   },
   {
     title: "Payoneer Case Study",
+    subtitle: "UX/UI Case Study",
     image: "/images/behance-payoneer.webp",
     link: "https://www.behance.net/gallery/114698225/UXUI-Case-Study-Payoneer"
   },
   {
     title: "Comodinshop E-commerce",
+    subtitle: "UX/UI Design",
     image: "/images/behance-comodin.webp",
     link: "https://www.behance.net/gallery/81411145/Comodinshop-UX-UI-design-e-commerce"
   }
+];
+
+/* Landing projects — simplified for the home page design */
+export const landingProjects = [
+  {
+    id: "agilidad-inspiracional",
+    number: "01",
+    featured: true,
+    title: "Plataforma creativa interna",
+    subtitle: "Integramos los mejores modelos de IA para la generación de imágenes.",
+    company: "Mango · 2024 → presente",
+    description: "Diseñé la plataforma de IA generativa de imágenes para los equipos creativos de Mango. De 0 a 1: discovery, arquitectura de producto, decisiones de pivote, medición con stack propio.",
+    stats: [
+      { value: 300, suffix: "", label: "usuarios activos/mes" },
+      { value: 40, suffix: "K", label: "imágenes/mes" },
+      { value: 10, suffix: "+", label: "departamentos" },
+    ],
+    role: "Product Designer · Ownership de backlog",
+    team: "2 frontend · 2 backend · Data/ML · Product Owner",
+    tools: ["Figma", "PostHog", "OpenAI", "Gemini", "Google Analytics", "Hotjar", "Product Fruits"],
+    tags: ["AI", "GenAI", "Product Design", "Discovery", "Internal Tools", "UX Research", "Adoption Strategy", "Fashion Tech"],
+    decisions: [
+      {
+        number: "Decisión 1",
+        title: "Soltar la apuesta técnica cuando el usuario no la validaba",
+        body: "Arrancamos entrenando modelos propios con el equipo de data. Era la apuesta más ambiciosa — y la más cara. Pero los resultados no llegaban, y para mejorarlos había que forzar el flujo de usuario de formas que no tenían sentido: más pasos, más fricción, más tiempo para obtener imágenes que seguían sin convencer.\n\nEl feedback era claro. La decisión fue dejar los modelos propios e integrar los mejores del mercado. Nunca íbamos a competir con Google o OpenAI en capacidad de entrenamiento — pero sí podíamos construir la mejor experiencia encima de sus modelos.\n\nFue una decisión incómoda porque el equipo de data había invertido meses. Pero el producto no es el modelo. El producto es lo que el usuario puede hacer con él.",
+      },
+      {
+        number: "Decisión 2",
+        title: "Construir lo que desbloqueaba, no lo que parecía más completo",
+        body: "Cuando la plataforma empezó a tener usuarios reales, las peticiones se multiplicaron. Paleta de colores personalizada, estilos guardados, virtual try-on, quitar fondo, inpainting, upscaler — todo surgía del discovery, todo tenía sentido. El problema era el orden.\n\nCon un equipo de seis personas no podíamos construir todo a la vez. El criterio fue siempre el mismo: ¿esto desbloquea un flujo que hoy el usuario no puede completar, o solo mejora uno que ya funciona? Lo que desbloqueaba entraba primero. Lo que mejoraba, esperaba.\n\nParece obvio escrito así. En la práctica significó decir que no a cosas que los usuarios pedían explícitamente.",
+      },
+      {
+        number: "Decisión 3",
+        title: "Diseñar para dos perfiles sin partir la plataforma en dos",
+        body: "A medida que crecía la base de usuarios apareció una tensión: los expertos querían libertad total para iterar y ajustar parámetros. Los nuevos querían resultados rápidos sin entender cómo funciona la IA.\n\nLa solución fácil era elegir un perfil y optimizar para él. La decisión fue no elegir — pero tampoco hacer una interfaz llena de toggles y opciones. Diseñamos dos modos dentro de la misma plataforma: un modo conversacional con control total para el usuario experto, y Acciones Rápidas — flujos guiados paso a paso con prompts predefinidos — para quien necesita un resultado concreto sin fricción.",
+      },
+    ],
+    closing: "El trabajo más valioso de producto no es diseñar interfaces. Es tomar decisiones cuando no hay información suficiente.",
+    timeline: "Junio 2024 → presente",
+    image: "/assets/projects/moda.jpg",
+    expandedDescription: "Me sumé a este proyecto desde el inicio, cuando la decisión de introducir IA en el proceso de diseño de moda ya estaba tomada pero no se sabía dónde ni cómo. Lideré una etapa de discovery exhaustiva con perfiles creativos, donde documentamos el ciclo de vida completo de un producto y testeamos diferentes puntos de intervención de la IA. Construimos una plataforma de generación de imágenes pensada para este proceso pero diseñada para ser escalable a cualquier departamento. Medimos el éxito a través de la adopción —usuarios únicos diarios, volumen de imágenes generadas y penetración por departamento—, complementado con feedback cualitativo directo con usuarios, lo que nos permitió trazar estrategias para expandirla a toda la compañía.",
+  },
+  {
+    id: "proyecto-nuevo",
+    number: "02",
+    comingSoon: true,
+    title: "Próximamente",
+    subtitle: "Aquí sumaré otro proyecto reciente muy pronto.",
+  },
+  {
+    id: "app-holdo",
+    number: "03",
+    title: "Aplicación fintech-roboadvisor",
+    subtitle: "MVP de aplicación móvil",
+    company: "Holdo · 2023",
+    description: "El 80% de los usuarios accedía desde mobile, pero la plataforma era desktop. Diseñé el MVP de la app nativa: benchmark competitivo del mercado fintech chileno, priorización de alcance con el CEO y CTO, y dos flujos clave — consulta de portafolio y depósito de fondos.",
+    expandedDescription: "Holdo nació en 2021 como una plataforma de inversiones destinada a personas con gran patrimonio, pensada exclusivamente para desktop. Tras el lanzamiento, los datos mostraron que el 80% de los usuarios accedía desde el móvil, con una experiencia muy limitada para ese contexto. La decisión fue construir una app móvil que superara lo que ofrecían competidores tradicionales como los bancos. Como Product Designer, fui responsable del diseño completo de la app, trabajando directamente con el CEO, CTO y el equipo de desarrollo. Participé en la definición del alcance del MVP, combinando un benchmark del mercado fintech chileno y regional con datos de comportamiento en Hotjar, Analytics y PostHog para decidir qué funcionalidades priorizar.",
+    role: "Product Designer",
+    tags: ["Fintech", "Mobile App", "MVP Definition", "Data-Informed Design", "Competitive Analysis", "Product Design"],
+    stat: { value: "80%", label: "usuarios en mobile" },
+    thumbnail: "/assets/projects/app-holdo-1.png",
+    expandedImages: [
+      "/assets/projects/app-holdo/Mask-group.png",
+      "/assets/projects/app-holdo/Mask-group-1.png",
+      "/assets/projects/app-holdo/Mask-group-2.png",
+    ],
+  },
+  {
+    id: "onboarding-holdo",
+    number: "04",
+    title: "Mejora de propuesta de inversión",
+    subtitle: "Rediseño del onboarding para reducir abandono",
+    company: "Holdo · 2023",
+    description: "Los datos de Clarity y PostHog mostraban abandono masivo en el onboarding. Trabajé con el equipo de finanzas para priorizar la información imprescindible y rediseñar el flujo con un estilo más narrativo y escaneable, haciendo foco en datos de mayor relevancia.",
+    role: "UX/UI · Product Designer",
+    tags: ["UX Research", "Conversión", "Onboarding"],
+    stat: { value: "↓ info", label: "↑ conversión" },
+    thumbnail: "/assets/projects/ladrillo-1.jpg",
+  },
+  {
+    id: "web-holdo",
+    number: "05",
+    title: "Un website a la altura",
+    subtitle: "Rediseño y desarrollo del sitio en WebFlow",
+    company: "Holdo · 2022",
+    description: "El sitio era una sola página que no explicaba el producto. Diseñé y desarrollé el sitio completo en WebFlow desde cero: benchmarking, sitemap, Style Guide basado en el Design System, y definición de mobile first. Monitoreo constante con Analytics para iterar.",
+    role: "UX/UI Designer · WebFlow Dev",
+    tags: ["Web Design", "WebFlow", "Design System"],
+    stat: { value: "1→6", label: "páginas · mobile first" },
+  },
+  {
+    id: "reservadisimo",
+    number: "06",
+    title: "Reservadísimo",
+    subtitle: "App de reservas y protocolo sanitario para bares",
+    company: "Proyecto personal · 2020",
+    description: "Durante la pandemia diseñé una app de reservas autónoma para bares: turnos online, firma digital de declaración jurada y validación por QR al ingreso. Llevada hasta el MVP con presentaciones comerciales y alta intención de adopción.",
+    role: "UX/UI · End-to-end",
+    tags: ["App Mobile", "Proyecto personal", "MVP"],
+    stat: { value: "MVP", label: "alta intención de adopción" },
+    behanceLink: "https://www.behance.net/gallery/107614515/Reservadisimo-App-de-turnos",
+  },
 ];
 
 export const education = [

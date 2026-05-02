@@ -1,133 +1,180 @@
 'use client';
 
-import { useRef } from 'react';
-import { projects } from '@/data/content';
-import styles from './Projects.module.css';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import ProjectShowcase from './ProjectShowcase';
+import { landingProjects } from '@/data/content';
+import styles from './Projects.module.css';
 
-const featuredIds = ['agilidad-inspiracional', 'project-1', 'project-2'];
-const featuredProjects = featuredIds
-  .map((id) => projects.find((p) => p.id === id))
-  .filter((p): p is (typeof projects)[number] => p !== undefined);
+/* ── Hooks ── */
+function useCountUp(target: number, inView: boolean, dur = 1500) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let cur = 0;
+    const steps = Math.ceil(dur / 16);
+    const inc = target / steps;
+    const t = setInterval(() => {
+      cur = Math.min(cur + inc, target);
+      setVal(Math.round(cur));
+      if (cur >= target) clearInterval(t);
+    }, 16);
+    return () => clearInterval(t);
+  }, [inView, target, dur]);
+  return val;
+}
 
-function VideoPlayer({ src, className }: { src: string; className: string }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+function useInView(ref: React.RefObject<HTMLElement | null>, threshold = 0.15) {
+  const [v, setV] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setV(true); obs.disconnect(); } },
+      { threshold }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [ref, threshold]);
+  return v;
+}
 
-  const restart = () => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.currentTime = 0;
-    video.play();
-  };
-
+/* ── Stat Counter ── */
+function StatCounter({ value, suffix, label, inView }: { value: number; suffix: string; label: string; inView: boolean }) {
+  const count = useCountUp(value, inView);
   return (
-    <div className={styles.videoWrapper}>
-      <video
-        ref={videoRef}
-        src={src}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className={className}
-      />
-      <button className={styles.restartBtn} onClick={restart}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polyline points="1 4 1 10 7 10" />
-          <path d="M3.51 15a9 9 0 105.64-11.36L1 10" />
-        </svg>
-        Iniciar video desde el principio
-      </button>
+    <div className={styles.statItem}>
+      <div className={styles.statValue}>{count}{suffix}</div>
+      <div className={styles.statLabel}>{label}</div>
     </div>
   );
 }
 
-export default function Projects() {
+/* ── Decisions Accordion (for featured project) ── */
+function DecisionsAccordion({ project }: { project: any }) {
+  const [open, setOpen] = useState<number | null>(null);
+  if (!project.decisions) return null;
+
   return (
-    <section className={styles.section} id="projects">
-      {featuredProjects.map((project, index) => {
-        const p = project as any;
-
-        // Showcase layout for projects with textPanels + steps
-        if (p.textPanels) {
-          return (
-            <ProjectShowcase
-              key={project.id}
-              projectIndex={index + 1}
-              totalProjects={featuredProjects.length}
-              title={p.showcaseTitle || project.title}
-              textPanels={p.textPanels}
-              textPanelHighlights={p.textPanelHighlights}
-              steps={p.steps}
-              stepImages={p.images || []}
-            />
-          );
-        }
-
-        // Default layout
-        const imageSrc = p.images?.[0]?.src;
-        const videoSrc = p.video;
-        const isReverse = index % 2 !== 0;
-        const images = p.images as
-          | { src: string; alt: string; caption?: string }[]
-          | undefined;
-
-        return (
-          <div key={project.id} className={styles.projectBlock}>
-            <div
-              className={`${styles.projectRow} ${isReverse ? styles.reverse : ''}`}
-            >
-              <div className={styles.textCol}>
-                <h2 className={styles.projectTitle}>{project.title}</h2>
-                <span className={styles.badge}>{project.type}</span>
-                <div className={styles.description}>
-                  {project.description.slice(0, 5).map((para, i) => (
-                    <p key={i}>{para}</p>
-                  ))}
-                </div>
-              </div>
-
-              <div className={styles.mediaCol}>
-                {videoSrc ? (
-                  <VideoPlayer src={videoSrc} className={styles.media} />
-                ) : imageSrc ? (
-                  <Image
-                    src={imageSrc}
-                    alt={project.title}
-                    fill
-                    className={styles.media}
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                  />
-                ) : (
-                  <div className={styles.placeholder} />
-                )}
-              </div>
+    <div className={styles.decisions}>
+      <div className={styles.decisionsLabel}>Decisiones de producto</div>
+      {project.decisions.map((d: any, i: number) => (
+        <div key={i} className={`${styles.accordion} ${open === i ? styles.accordionOpen : ''}`}>
+          <button onClick={(e) => { e.stopPropagation(); setOpen(open === i ? null : i); }} className={styles.accordionBtn}>
+            <div>
+              <div className={styles.accordionNumber}>{d.number}</div>
+              <div className={styles.accordionTitle}>{d.title}</div>
             </div>
+            <span className={`${styles.accordionIcon} ${open === i ? styles.accordionIconOpen : ''}`}>+</span>
+          </button>
+          <div className={styles.accordionBody} style={{ maxHeight: open === i ? 400 : 0 }}>
+            <div className={styles.accordionContent}>
+              {d.body.split('\n\n').map((para: string, j: number) => (
+                <p key={j}>{para}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
-            {images && images.length > 0 && (
-              <div className={styles.gallery}>
-                {images.map((img, i) => (
-                  <div key={i} className={styles.galleryCard}>
-                    <div className={styles.galleryImageWrapper}>
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        className={styles.galleryImage}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      />
-                    </div>
-                    {img.caption && (
-                      <p className={styles.galleryCaption}>{img.caption}</p>
-                    )}
+/* ── Unified Project Card ── */
+function ProjectCard({ project, delay, expanded, onToggle }: {
+  project: typeof landingProjects[0];
+  delay: number;
+  expanded: boolean;
+  onToggle: () => void;
+}) {
+  const p = project as any;
+  const ref = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
+
+  if (p.comingSoon) {
+    return (
+      <div className={`reveal reveal-delay-${delay % 4} ${styles.rowComingSoon}`}>
+        <span className={styles.rowNumberInline}>{p.number}</span>
+        <p className={styles.rowComingSoonText}>{p.subtitle}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`reveal reveal-delay-${delay % 4}`} ref={ref}>
+      <div
+        className={`${styles.card} ${hovered || expanded ? styles.cardActive : ''}`}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        {/* ── Row header: number left, title + badges right ── */}
+        <div className={styles.rowHeader} onClick={onToggle}>
+          <span className={styles.rowNumber}>{p.number}</span>
+          <div className={styles.rowContent}>
+            <h3 className={styles.rowTitle}>{p.title}</h3>
+            {p.subtitle && <p className={styles.rowSubtitle}>{p.subtitle}</p>}
+            <div className={styles.rowBadges}>
+              {p.badge && <span className={styles.badge}>{p.badge}</span>}
+              {p.tags?.map((t: string) => (
+                <span key={t} className={styles.rowTag}>{t}</span>
+              ))}
+            </div>
+          </div>
+          <span className={`${styles.rowToggleIcon} ${expanded ? styles.rowToggleIconOpen : ''}`}>+</span>
+        </div>
+
+        {/* ── Expanded content: only description ── */}
+        <div className={styles.expandedWrapper} style={{ maxHeight: expanded ? 2000 : 0 }}>
+          <div className={styles.expandedInner}>
+            {(p.expandedDescription || p.description || '').split('\n\n').map((para: string, i: number) => (
+              <p key={i} className={styles.simpleDesc}>{para}</p>
+            ))}
+            {p.expandedImages && (
+              <div className={styles.expandedImages}>
+                {p.expandedImages.map((src: string, i: number) => (
+                  <div key={i} className={styles.expandedImageItem}>
+                    <Image src={src} alt={`${p.title} - ${i + 1}`} width={300} height={500} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
                   </div>
                 ))}
               </div>
             )}
           </div>
-        );
-      })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── Section Label ── */
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="reveal section-label">
+      <span style={{ color: 'var(--color-accent-secondary)' }}>{children}</span>
+      <div className="section-label-line" />
+    </div>
+  );
+}
+
+export { SectionLabel };
+
+/* ── Main Projects Section ── */
+export default function Projects() {
+  const [openId, setOpenId] = useState<string | null>(landingProjects[0]?.id ?? null);
+  const toggle = (id: string) => setOpenId(prev => prev === id ? null : id);
+
+  return (
+    <section id="proyectos" className={styles.section}>
+      <div className={styles.container}>
+        <SectionLabel>Proyectos</SectionLabel>
+        {landingProjects.map((p, i) => (
+          <ProjectCard
+            key={p.id}
+            project={p}
+            delay={i}
+            expanded={openId === p.id}
+            onToggle={() => toggle(p.id)}
+          />
+        ))}
+      </div>
     </section>
   );
 }

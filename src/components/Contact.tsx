@@ -1,29 +1,36 @@
 import { personalInfo } from '@/data/content';
 import styles from './Contact.module.css';
 
+const links = [
+  { href: `mailto:${personalInfo.email}`, label: personalInfo.email, primary: true },
+  { href: personalInfo.linkedin, label: 'LinkedIn ↗', primary: false },
+  { href: personalInfo.behance, label: 'Behance ↗', primary: false },
+];
+
 export default function Contact() {
   return (
-    <section className={styles.section} id="contact">
+    <section id="contacto" className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.heading}>
-          <h2 className={styles.title}>Hablemos,</h2>
-          <h2 className={styles.titleAccent}>contacto.</h2>
+        <div className="reveal section-label">
+          <span>Contacto</span>
+          <div className="section-label-line" />
         </div>
-        <p className={styles.text}>
-          Si te interesa lo que viste, escribime a{' '}
-          <a href={`mailto:${personalInfo.email}`} className={styles.email}>
-            {personalInfo.email}
-          </a>
-          {' '}y coordinamos una llamada.
+        <h2 className={`reveal reveal-delay-1 ${styles.title}`}>Hablemos.</h2>
+        <div className={`reveal reveal-delay-2 ${styles.links}`}>
+          {links.map(({ href, label, primary }) => (
+            <a
+              key={href}
+              href={href}
+              {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
+              className={primary ? styles.linkPrimary : styles.linkOutline}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+        <p className={`reveal reveal-delay-3 ${styles.copyright}`}>
+          © {new Date().getFullYear()} Gonzalo Chiavassa — Diseñado con intención.
         </p>
-        <div className={styles.links}>
-          <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className={styles.link}>
-            LinkedIn
-          </a>
-          <a href={personalInfo.behance} target="_blank" rel="noopener noreferrer" className={styles.link}>
-            Behance
-          </a>
-        </div>
       </div>
     </section>
   );
