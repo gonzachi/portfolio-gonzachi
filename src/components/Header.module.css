@@ -10,10 +10,10 @@
 }
 
 .scrolled {
-  background: rgba(24, 26, 31, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom-color: rgba(255, 255, 255, 0.06);
+  background: var(--nav-scrolled-bg);
+  backdrop-filter: blur(80px);
+  -webkit-backdrop-filter: blur(80px);
+  border-bottom-color: rgba(var(--fg-rgb), 0.06);
 }
 
 .container {
@@ -31,7 +31,7 @@
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: -0.02em;
-  color: #fff;
+  color: var(--color-text-primary);
   text-decoration: none;
 }
 
@@ -48,7 +48,7 @@
 .link {
   font-size: 0.78rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(var(--fg-rgb), 0.45);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: color 0.2s;
@@ -56,7 +56,13 @@
 }
 
 .link:hover {
-  color: #fff;
+  color: var(--color-text-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .cvButton {
@@ -75,5 +81,11 @@
 
 .cvButton:hover {
   background: var(--color-accent-secondary);
-  color: #111;
+  color: var(--color-bg-primary);
+}
+
+.cvButtonDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
 }

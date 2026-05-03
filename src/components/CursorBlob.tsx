@@ -38,13 +38,13 @@ export default function CursorBlob() {
     <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
       <div
         ref={blobRef}
+        className="cursor-blob"
         style={{
           position: 'absolute',
           width: 760,
           height: 760,
           borderRadius: '50%',
           willChange: 'transform',
-          background: 'radial-gradient(circle, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, transparent 70%)',
         }}
       />
     </div>

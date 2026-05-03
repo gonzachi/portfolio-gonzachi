@@ -1,35 +1,53 @@
 /* Fonts loaded via next/font in layout.tsx */
 
 :root {
-  /* Colors */
+  /* Foreground/background RGB triplets — used for translucent overlays.
+     Flip these and most borders/text-with-opacity adapt automatically. */
+  --fg-rgb: 255, 255, 255;
+  --bg-rgb: 24, 26, 31;
+
+  /* Colors — dark theme defaults */
   --color-bg-primary: #181A1F;
   --color-bg-secondary: #1E2026;
   --color-bg-card: #252830;
+  --color-bg-elevated: #1a1a1a;
   --color-text-primary: #ffffff;
   --color-text-secondary: #b8b8b8;
   --color-text-muted: #888888;
+  --color-text-on-accent: #ffffff;
   --color-accent: #4054B2;
   --color-accent-secondary: #6EC1E4;
   --color-border: #2a2a2a;
-  
+
   /* Gradients */
   --gradient-card: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
   --gradient-accent: linear-gradient(135deg, #4054B2 0%, #6EC1E4 100%);
 
   /* Glass */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-bg-hover: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-hover: rgba(255, 255, 255, 0.14);
+  --glass-bg: rgba(var(--fg-rgb), 0.03);
+  --glass-bg-hover: rgba(var(--fg-rgb), 0.06);
+  --glass-border: rgba(var(--fg-rgb), 0.08);
+  --glass-border-hover: rgba(var(--fg-rgb), 0.14);
   --glass-blur: 20px;
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-rgb: 0, 0, 0;
+  --shadow-glass: 0 8px 32px rgba(var(--shadow-rgb), 0.25);
+  --shadow-card: 0 24px 60px rgba(var(--shadow-rgb), 0.45);
+  --shadow-tooltip: 0 20px 60px rgba(var(--shadow-rgb), 0.55);
+  --shadow-banner: 0 8px 32px rgba(var(--shadow-rgb), 0.4);
+  --shadow-device: 0 30px 80px rgba(var(--shadow-rgb), 0.6);
   --shadow-glow-accent: 0 0 40px rgba(64, 84, 178, 0.12);
-  
+
+  /* Ambient bg + grain (overridable per theme) */
+  --ambient-1: rgba(64, 84, 178, 0.08);
+  --ambient-2: rgba(110, 193, 228, 0.05);
+  --grain-opacity: 0.022;
+  --nav-scrolled-bg: rgba(var(--bg-rgb), 0.92);
+
   /* Typography — variables injected by next/font in layout.tsx */
   --font-heading: var(--font-poppins), sans-serif;
   --font-body: var(--font-poppins), sans-serif;
   --font-accent: var(--font-lora), serif;
-  
+
   /* Spacing */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
@@ -38,24 +56,60 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
-  
+
   /* Container */
   --container-max: 1200px;
   --container-max-narrow: 800px;
   --container-padding: 1.5rem;
   --container-padding-xl: 3rem;
-  
+
   /* Border radius */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-card: 48px;
-  
+
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --fg-rgb: 24, 26, 31;
+  --bg-rgb: 255, 255, 255;
+
+  --color-bg-primary: #f7f7f8;
+  --color-bg-secondary: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-text-primary: #181A1F;
+  --color-text-secondary: #4b5159;
+  --color-text-muted: #6b7280;
+  --color-text-on-accent: #ffffff;
+  --color-accent: #3a4ea8;
+  --color-accent-secondary: #2c8bb8;
+  --color-border: #e4e6eb;
+
+  --gradient-card: linear-gradient(135deg, #ffffff 0%, #f3f4f7 100%);
+  --gradient-accent: linear-gradient(135deg, #3a4ea8 0%, #2c8bb8 100%);
+
+  --shadow-rgb: 15, 23, 42;
+  --shadow-glass: 0 8px 32px rgba(var(--shadow-rgb), 0.08);
+  --shadow-card: 0 24px 60px rgba(var(--shadow-rgb), 0.12);
+  --shadow-tooltip: 0 20px 60px rgba(var(--shadow-rgb), 0.14);
+  --shadow-banner: 0 10px 32px rgba(var(--shadow-rgb), 0.1);
+  --shadow-device: 0 30px 80px rgba(var(--shadow-rgb), 0.18);
+  --shadow-glow-accent: 0 0 40px rgba(58, 78, 168, 0.12);
+
+  --ambient-1: rgba(64, 84, 178, 0.07);
+  --ambient-2: rgba(44, 139, 184, 0.06);
+  --grain-opacity: 0.04;
+
+  color-scheme: light;
 }
 
 * {
@@ -76,6 +130,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -189,7 +244,7 @@ button {
 
 .btn-primary {
   background: var(--gradient-accent);
-  color: white;
+  color: var(--color-text-on-accent);
 }
 
 .btn-primary:hover {
@@ -431,7 +486,7 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(var(--fg-rgb), 0.18);
   border-radius: 3px;
 }
 
@@ -441,10 +496,19 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   background:
-    radial-gradient(ellipse 55% 45% at 8% 12%, rgba(64, 84, 178, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 35% at 92% 75%, rgba(110, 193, 228, 0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 55% 45% at 8% 12%, var(--ambient-1) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 35% at 92% 75%, var(--ambient-2) 0%, transparent 60%);
+}
+
+/* Cursor blob — soft halo following the cursor */
+.cursor-blob {
+  background: radial-gradient(circle, rgba(34, 37, 48, 0.40) 0%, rgba(34, 37, 48, 0.15) 40%, transparent 70%);
+}
+
+[data-theme="light"] .cursor-blob {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 40%, transparent 70%);
 }
 
 /* Grain texture */
@@ -453,8 +517,8 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.022;
+  z-index: -1;
+  opacity: var(--grain-opacity);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 180px;
 }
@@ -496,14 +560,14 @@ body::after {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   white-space: nowrap;
 }
 
 .section-label-line {
   flex: 1;
   height: 1px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(var(--fg-rgb), 0.07);
 }
 
 /* Mobile nav links */

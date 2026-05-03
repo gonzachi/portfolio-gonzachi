@@ -49,7 +49,7 @@
     padding: var(--spacing-3xl) 0;
     opacity: 0.3;
     transition: opacity 600ms ease, border-color 600ms ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(var(--fg-rgb), 0.05);
     border-left: 2px solid transparent;
     padding-left: var(--spacing-md);
 }

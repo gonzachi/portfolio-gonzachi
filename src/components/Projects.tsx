@@ -94,7 +94,10 @@ function ProjectCard({ project, delay, expanded, onToggle }: {
     return (
       <div className={`reveal reveal-delay-${delay % 4} ${styles.rowComingSoon}`}>
         <span className={styles.rowNumberInline}>{p.number}</span>
-        <p className={styles.rowComingSoonText}>{p.subtitle}</p>
+        <div>
+          <p className={styles.rowComingSoonTitle}>{p.title}</p>
+          <p className={styles.rowComingSoonText}>{p.subtitle}</p>
+        </div>
       </div>
     );
   }

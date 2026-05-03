@@ -19,7 +19,7 @@
   align-items: center;
   gap: 1.1rem;
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(var(--fg-rgb), 0.05);
 }
 
 .logo {
@@ -42,13 +42,13 @@
 
 .institution {
   font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(var(--fg-rgb), 0.38);
   margin-top: 0.15rem;
 }
 
 .period {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(var(--fg-rgb), 0.25);
   font-style: italic;
   flex-shrink: 0;
 }

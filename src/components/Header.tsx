@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from './Header.module.css';
+import ThemeToggle from './ThemeToggle';
 
 const links = [
   ['#proyectos', 'Proyectos'],
@@ -23,7 +24,7 @@ export default function Header() {
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.container}>
         <a href="#" className={styles.logo}>
-          gonzachi<span className={styles.logoDot}>.</span>
+          Gonzalo Chiavassa
         </a>
         <ul className={`${styles.links} nav-links`}>
           {links.map(([href, label]) => (
@@ -32,13 +33,15 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <a
-          href="/cv.pdf"
-          download
-          className={styles.cvButton}
-        >
-          Descargar CV
-        </a>
+        <div className={styles.actions}>
+          <span
+            className={`${styles.cvButton} ${styles.cvButtonDisabled}`}
+            aria-disabled="true"
+          >
+            Descargar CV
+          </span>
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );

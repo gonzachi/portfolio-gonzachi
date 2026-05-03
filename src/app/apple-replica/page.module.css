@@ -137,7 +137,7 @@
 
 .highlightsNavItem:hover {
     color: #f5f5f7;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(var(--fg-rgb), 0.06);
 }
 
 .highlightsNavItem:focus-visible {
@@ -147,7 +147,7 @@
 
 .highlightsNavItemActive {
     color: #f5f5f7;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(var(--fg-rgb), 0.1);
 }
 
 .highlightsGrid {
@@ -287,7 +287,7 @@
     height: 36px;
     border-radius: 50%;
     border: none;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(var(--fg-rgb), 0.08);
     color: #f5f5f7;
     cursor: pointer;
     display: flex;
@@ -297,7 +297,7 @@
 }
 
 .galleryBtn:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(var(--fg-rgb), 0.15);
 }
 
 .galleryBtn:disabled {
@@ -451,7 +451,7 @@
     flex-direction: column;
     gap: 8px;
     padding-bottom: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(var(--fg-rgb), 0.06);
 }
 
 .specLabel {

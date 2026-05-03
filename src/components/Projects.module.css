@@ -14,7 +14,7 @@
 .card {
   border-radius: 12px;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(var(--fg-rgb), 0.05);
   margin-bottom: 0.4rem;
   transition: background 0.25s, border-color 0.25s;
   cursor: pointer;
@@ -22,8 +22,8 @@
 }
 
 .cardActive {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(var(--fg-rgb), 0.03);
+  border-color: rgba(var(--fg-rgb), 0.12);
 }
 
 /* ── Row Header ── */
@@ -84,13 +84,13 @@
   font-size: 0.72rem;
   padding: 0.18rem 0.55rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.65);
+  background: rgba(var(--fg-rgb), 0.1);
+  color: rgba(var(--fg-rgb), 0.65);
 }
 
 .rowRole {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--fg-rgb), 0.3);
   flex-shrink: 0;
 }
 
@@ -105,7 +105,7 @@
 
 .rowSubtitle {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(var(--fg-rgb), 0.38);
   line-height: 1.4;
   margin-bottom: 1rem;
 }
@@ -113,7 +113,7 @@
 .rowToggleIcon {
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   flex-shrink: 0;
   transition: transform 0.3s;
   line-height: 1;
@@ -127,7 +127,7 @@
 
 .rowCompany {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   font-style: italic;
 }
 
@@ -139,14 +139,22 @@
   align-items: center;
   padding: 1.25rem 1.5rem;
   border-radius: 10px;
-  border: 1px dashed rgba(255, 255, 255, 0.07);
+  border: 1px dashed rgba(var(--fg-rgb), 0.07);
   margin-bottom: 0.5rem;
   opacity: 0.35;
 }
 
+.rowComingSoonTitle {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(var(--fg-rgb), 0.5);
+  margin-bottom: 0.15rem;
+}
+
 .rowComingSoonText {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--fg-rgb), 0.3);
   font-style: italic;
 }
 
@@ -158,7 +166,7 @@
 
 .expandedInner {
   padding: 0 1.25rem 1.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(var(--fg-rgb), 0.06);
   margin: 0 1.25rem;
   padding-top: 1.5rem;
 }
@@ -202,8 +210,8 @@
   font-size: 0.66rem;
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.4);
+  background: rgba(var(--fg-rgb), 0.05);
+  color: rgba(var(--fg-rgb), 0.4);
 }
 
 .featuredTitle {
@@ -217,13 +225,13 @@
 
 .featuredCompany {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   font-style: italic;
 }
 
 .featuredRole {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--fg-rgb), 0.3);
   flex-shrink: 0;
 }
 
@@ -239,7 +247,7 @@
 .featuredDesc {
   font-size: clamp(0.88rem, 1.8vw, 1rem);
   line-height: 1.82;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(var(--fg-rgb), 0.52);
   margin-bottom: 1.5rem;
 }
 
@@ -252,8 +260,8 @@
 .featuredImage {
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 /* ── Stat Counter ── */
@@ -266,13 +274,13 @@
   font-weight: 700;
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   letter-spacing: -0.04em;
-  color: #fff;
+  color: var(--color-text-primary);
   line-height: 1;
 }
 
 .statLabel {
   font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(var(--fg-rgb), 0.38);
   margin-top: 0.4rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -287,9 +295,9 @@
   gap: 0.5rem;
   padding: 0.55rem 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(var(--fg-rgb), 0.1);
   background: transparent;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(var(--fg-rgb), 0.45);
   font-size: 0.78rem;
   font-family: var(--font-heading);
   font-weight: 500;
@@ -343,7 +351,7 @@
 .accordion {
   margin-bottom: 0.4rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(var(--fg-rgb), 0.06);
   overflow: hidden;
   transition: border-color 0.25s;
 }
@@ -361,7 +369,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: #fff;
+  color: var(--color-text-primary);
   font-family: var(--font-heading);
   text-align: left;
   gap: 1rem;
@@ -382,7 +390,7 @@
 
 .accordionIcon {
   font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   flex-shrink: 0;
   transition: transform 0.3s;
   line-height: 1;
@@ -404,7 +412,7 @@
 .accordionContent p {
   font-size: 0.83rem;
   line-height: 1.75;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(var(--fg-rgb), 0.52);
   margin-bottom: 0.6rem;
 }
 
@@ -421,13 +429,13 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(var(--fg-rgb), 0.25);
   margin-bottom: 0.5rem;
 }
 
 .metaValue {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(var(--fg-rgb), 0.5);
   line-height: 1.6;
 }
 
@@ -441,12 +449,12 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.45);
+  background: rgba(var(--fg-rgb), 0.05);
+  color: rgba(var(--fg-rgb), 0.45);
 }
 
 .expandedClosing {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(var(--fg-rgb), 0.06);
   padding-top: 1.25rem;
 }
 
@@ -454,13 +462,13 @@
   font-family: var(--font-accent);
   font-style: italic;
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(var(--fg-rgb), 0.55);
   line-height: 1.65;
 }
 
 .closingTimeline {
   font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(var(--fg-rgb), 0.25);
   margin-top: 0.6rem;
 }
 
@@ -468,7 +476,7 @@
 .simpleDesc {
   font-size: 14px;
   line-height: 1.82;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(var(--fg-rgb), 0.72);
   margin-bottom: 1rem;
 }
 
@@ -482,7 +490,7 @@
 .expandedImageItem {
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
 }
 
 .simpleMeta {
@@ -495,10 +503,10 @@
 .simpleRole {
   font-size: 0.7rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(var(--fg-rgb), 0.35);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(var(--fg-rgb), 0.05);
 }
 
 .simpleLink {

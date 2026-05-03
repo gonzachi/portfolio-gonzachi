@@ -36,7 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${lora.variable}`}>
+    <html lang="es" className={`${poppins.variable} ${lora.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Anti-flash: apply theme before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
+          }}
+        />
+      </head>
       <body>
         {/* Google Consent Mode v2 — must run BEFORE gtag.js loads */}
         <Script id="consent-mode-defaults" strategy="beforeInteractive">

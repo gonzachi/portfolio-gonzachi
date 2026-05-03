@@ -12,7 +12,7 @@
 
 .card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(var(--fg-rgb), 0.15);
 }
 
 .card:focus-visible {
@@ -41,8 +41,8 @@
 
 .badge {
     padding: 0.3rem 0.7rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(var(--fg-rgb), 0.06);
+    border: 1px solid rgba(var(--fg-rgb), 0.1);
     border-radius: 9999px;
     font-size: 0.75rem;
     color: var(--color-text-secondary);

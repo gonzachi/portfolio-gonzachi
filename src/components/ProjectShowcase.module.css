@@ -195,7 +195,7 @@
 
 .stepDotActive {
   background: var(--color-accent, #4054b2);
-  color: #fff;
+  color: var(--color-text-on-accent);
 }
 
 /* ── Step text (crossfade) ── */

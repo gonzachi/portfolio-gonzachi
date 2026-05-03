@@ -130,7 +130,7 @@
 
 .playBtn:hover {
     border-color: var(--color-text-secondary);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(var(--fg-rgb), 0.05);
 }
 
 .playBtn svg {

@@ -21,14 +21,14 @@
   flex-direction: column;
   padding: 1.5rem;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(var(--fg-rgb), 0.07);
+  background: rgba(var(--fg-rgb), 0.02);
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(var(--fg-rgb), 0.14);
+  background: rgba(var(--fg-rgb), 0.04);
   transform: translateY(-3px);
 }
 
@@ -39,7 +39,7 @@
 
 .cardType {
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(var(--fg-rgb), 0.3);
   letter-spacing: 0.05em;
   margin-bottom: 0.4rem;
 }
@@ -53,7 +53,7 @@
 
 .cardDesc {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(var(--fg-rgb), 0.4);
   line-height: 1.6;
 }
 
