@@ -34,12 +34,13 @@ export default function Header() {
           ))}
         </ul>
         <div className={styles.actions}>
-          <span
-            className={`${styles.cvButton} ${styles.cvButtonDisabled}`}
-            aria-disabled="true"
+          <a
+            href="/cv/resumen-curriculum-gonzalo_chiavassa.pdf"
+            download
+            className={styles.cvButton}
           >
             Descargar CV
-          </span>
+          </a>
           <ThemeToggle />
         </div>
       </div>

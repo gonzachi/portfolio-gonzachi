@@ -493,6 +493,31 @@
   border: 1px solid rgba(var(--fg-rgb), 0.08);
 }
 
+.expandedTwoCols {
+  display: grid;
+  grid-template-columns: 1fr 0.55fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.expandedText {
+  min-width: 0;
+}
+
+.expandedVideoCol {
+  position: sticky;
+  top: 6rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
+}
+
+.expandedVideoPlayer {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .simpleMeta {
   display: flex;
   align-items: center;
@@ -555,6 +580,14 @@
   .expandedInner {
     margin: 0 0.5rem;
     padding: 0 0.5rem 1.25rem;
+  }
+
+  .expandedTwoCols {
+    grid-template-columns: 1fr;
+  }
+
+  .expandedVideoCol {
+    position: static;
   }
 
   .rowComingSoon {

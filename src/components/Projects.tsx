@@ -127,17 +127,31 @@ function ProjectCard({ project, delay, expanded, onToggle }: {
 
         {/* ── Expanded content: only description ── */}
         <div className={styles.expandedWrapper} style={{ maxHeight: expanded ? 2000 : 0 }}>
-          <div className={styles.expandedInner}>
-            {(p.expandedDescription || p.description || '').split('\n\n').map((para: string, i: number) => (
-              <p key={i} className={styles.simpleDesc}>{para}</p>
-            ))}
-            {p.expandedImages && (
-              <div className={styles.expandedImages}>
-                {p.expandedImages.map((src: string, i: number) => (
-                  <div key={i} className={styles.expandedImageItem}>
-                    <Image src={src} alt={`${p.title} - ${i + 1}`} width={300} height={500} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
-                  </div>
-                ))}
+          <div className={`${styles.expandedInner} ${p.videoSide ? styles.expandedTwoCols : ''}`}>
+            <div className={styles.expandedText}>
+              {(p.expandedDescription || p.description || '').split('\n\n').map((para: string, i: number) => (
+                <p key={i} className={styles.simpleDesc}>{para}</p>
+              ))}
+              {p.expandedImages && (
+                <div className={styles.expandedImages}>
+                  {p.expandedImages.map((src: string, i: number) => (
+                    <div key={i} className={styles.expandedImageItem}>
+                      <Image src={src} alt={`${p.title} - ${i + 1}`} width={300} height={500} style={{ width: '100%', height: 'auto', objectFit: 'cover' }} />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            {p.video && (
+              <div className={styles.expandedVideoCol}>
+                <video
+                  src={p.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className={styles.expandedVideoPlayer}
+                />
               </div>
             )}
           </div>
