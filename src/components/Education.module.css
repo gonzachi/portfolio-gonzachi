@@ -52,3 +52,28 @@
   font-style: italic;
   flex-shrink: 0;
 }
+
+.languages {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(var(--fg-rgb), 0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.langItem {
+  font-size: 0.82rem;
+  color: rgba(var(--fg-rgb), 0.45);
+}
+
+.langItem em {
+  font-style: italic;
+  color: rgba(var(--fg-rgb), 0.3);
+}
+
+.langSep {
+  color: rgba(var(--fg-rgb), 0.15);
+  font-size: 0.8rem;
+}

@@ -4,13 +4,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <p className={styles.credit}>
-                Portfolio creado y desarrollado con{' '}
-                <span className={styles.aiHighlight}>Inteligencia Artificial</span>
-                {' '}en{' '}
-                <a href="https://antigravity.ai" target="_blank" rel="noopener noreferrer">Antigravity</a>
-                {' '}· Desplegado en{' '}
-                <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel</a>
-                {' '}· © {new Date().getFullYear()} · Todos los derechos reservados
+                © {new Date().getFullYear()} Gonzalo Chiavassa — Diseñado y desarrollado con Claude Code.
             </p>
         </footer>
     );

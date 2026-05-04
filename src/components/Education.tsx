@@ -28,6 +28,11 @@ export default function Education() {
             </li>
           ))}
         </ul>
+        <div className={`reveal ${styles.languages}`}>
+          <span className={styles.langItem}>Español nativo</span>
+          <span className={styles.langSep}>·</span>
+          <span className={styles.langItem}>Inglés A2 — <em>Actualmente estudiando</em></span>
+        </div>
       </div>
     </section>
   );
