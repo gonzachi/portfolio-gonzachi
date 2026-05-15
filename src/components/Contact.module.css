@@ -30,7 +30,7 @@
 .linkPrimary {
   display: inline-flex;
   padding: 0.7rem 1.3rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 600;
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
@@ -47,7 +47,7 @@
 .linkOutline {
   display: inline-flex;
   padding: 0.7rem 1.3rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 0.85rem;
   font-weight: 500;
   border: 1px solid rgba(var(--fg-rgb), 0.1);

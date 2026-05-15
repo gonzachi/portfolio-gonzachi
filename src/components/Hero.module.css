@@ -24,9 +24,10 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.3rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(110, 193, 228, 0.19);
-  background: rgba(110, 193, 228, 0.03);
+  border-radius: 0;
+  border: 1px solid rgba(var(--fg-rgb), 0.15);
+  background: rgba(var(--fg-rgb), 0.03);
+  font-family: var(--font-mono);
   font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -58,7 +59,7 @@
   font-size: clamp(3rem, 7.5vw, 6rem);
   color: var(--color-text-primary);
   letter-spacing: -0.03em;
-  display: block;
+  display: inline;
   transition: transform 0.4s ease-out;
 }
 
@@ -69,7 +70,7 @@
   font-size: clamp(3rem, 7.5vw, 6rem);
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
-  display: block;
+  display: inline;
   transition: transform 0.5s ease-out;
 }
 
@@ -84,7 +85,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  max-width: 560px;
+  max-width: 680px;
   margin-bottom: 3rem;
 }
 
@@ -95,11 +96,19 @@
 }
 
 .highlight {
-  background: #4054b29c;
+  background: rgba(var(--fg-rgb), 0.25);
   color: var(--color-text-on-accent);
   padding: 0.05em 0.3em;
-  border-radius: 4px;
+  border-radius: 0;
   font-style: normal;
+}
+
+:global([data-theme="light"]) .highlight {
+  background: rgba(var(--fg-rgb), 0.25);
+}
+
+:global([data-theme="dark"]) .highlight {
+  background: rgba(var(--fg-rgb), 0.20);
 }
 
 .ctas {
@@ -113,7 +122,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-weight: 600;
   font-size: 0.88rem;
   letter-spacing: -0.01em;
@@ -133,7 +142,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-weight: 600;
   font-size: 0.88rem;
   letter-spacing: -0.01em;

@@ -38,7 +38,7 @@
     position: absolute;
     width: 280px;
     height: 560px;
-    border-radius: 40px;
+    border-radius: 0;
     border: 4px solid #444;
     background: #111;
     box-shadow: 0 0 0 2px #222, var(--shadow-device);
@@ -86,6 +86,7 @@
 }
 
 .phoneLabel {
+    font-family: var(--font-mono);
     font-size: 0.7rem;
     color: rgba(var(--fg-rgb), 0.6);
     text-align: center;
@@ -98,7 +99,7 @@
     position: absolute;
     inset: -20px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(var(--fg-rgb), 0.15) 0%, transparent 70%);
     opacity: 0;
     will-change: transform, opacity;
 }
@@ -118,7 +119,7 @@
     width: 100%;
     height: 440px;
     background: #1a1a1a;
-    border-radius: 16px 16px 0 0;
+    border-radius: 0;
     border: 3px solid #333;
     border-bottom: none;
     overflow: hidden;
@@ -129,7 +130,7 @@
     position: absolute;
     inset: 12px 12px 0 12px;
     background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%);
-    border-radius: 8px 8px 0 0;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,6 +152,7 @@
 }
 
 .laptopLabel {
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     color: rgba(var(--fg-rgb), 0.5);
     text-align: center;
@@ -214,6 +216,7 @@
 }
 
 .showcaseLabel {
+    font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--color-accent);
@@ -265,7 +268,7 @@
     .phone {
         width: 200px;
         height: 400px;
-        border-radius: 28px;
+        border-radius: 0;
     }
 
     .laptop {
@@ -289,7 +292,7 @@
     .phone {
         width: 160px;
         height: 320px;
-        border-radius: 24px;
+        border-radius: 0;
     }
 
     .laptop {
@@ -298,7 +301,7 @@
 
     .laptopLid {
         height: 190px;
-        border-radius: 12px 12px 0 0;
+        border-radius: 0;
     }
 
     .laptopBase {

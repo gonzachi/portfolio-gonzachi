@@ -7,7 +7,7 @@
 .card {
     background:
         linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
-        conic-gradient(from var(--angle), rgba(64, 84, 178, 0.2), rgba(110, 193, 228, 0.2), rgba(64, 84, 178, 0.2)) border-box;
+        conic-gradient(from var(--angle), rgba(var(--fg-rgb), 0.1), rgba(var(--fg-rgb), 0.05), rgba(var(--fg-rgb), 0.1)) border-box;
     border: 1px solid transparent;
     border-radius: var(--radius-card);
     padding: var(--spacing-lg);
@@ -20,7 +20,7 @@
 .card:hover {
     background:
         linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
-        conic-gradient(from var(--angle), #4054B2, #6EC1E4, #4054B2) border-box;
+        conic-gradient(from var(--angle), rgba(var(--fg-rgb), 0.3), rgba(var(--fg-rgb), 0.15), rgba(var(--fg-rgb), 0.3)) border-box;
     animation: rotateBorder 5s linear infinite;
 }
 

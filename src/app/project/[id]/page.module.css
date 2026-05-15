@@ -144,7 +144,7 @@
 }
 
 .problemStatement {
-    font-family: var(--font-lora), serif;
+    font-family: var(--font-accent), serif;
     font-style: italic;
     font-size: clamp(2rem, 4.5vw, 2.8rem);
     font-weight: 400;
@@ -154,7 +154,7 @@
     border-left: 2px solid var(--color-accent);
     padding-left: var(--spacing-lg);
     letter-spacing: -0.02em;
-    filter: drop-shadow(0 0 20px rgba(64, 84, 178, 0.08));
+    filter: none;
 }
 
 .problemText {
@@ -236,7 +236,7 @@
 }
 
 .closingStatement {
-    font-family: var(--font-lora), serif;
+    font-family: var(--font-accent), serif;
     font-style: italic;
     font-size: clamp(1.6rem, 3.5vw, 2.6rem);
     line-height: 1.5;

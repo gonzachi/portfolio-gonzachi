@@ -17,6 +17,7 @@
 }
 
 .label {
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -37,10 +38,11 @@
 }
 
 .pill {
+    font-family: var(--font-mono);
     padding: 0.35rem 0.85rem;
     background: rgba(var(--fg-rgb), 0.06);
     border: 1px solid rgba(var(--fg-rgb), 0.1);
-    border-radius: 9999px;
+    border-radius: 0;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
 }

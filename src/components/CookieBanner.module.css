@@ -13,7 +13,7 @@
   pointer-events: all;
   background: var(--color-bg-card);
   border: 1px solid rgba(var(--fg-rgb), 0.1);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 20px 24px;
   max-width: 600px;
   width: 100%;
@@ -40,7 +40,7 @@
 }
 
 .text {
-  font-family: var(--font-poppins, sans-serif);
+  font-family: var(--font-body, sans-serif);
   font-size: 13px;
   line-height: 1.6;
   color: rgba(var(--fg-rgb), 0.7);
@@ -55,10 +55,10 @@
 
 .btnReject,
 .btnAccept {
-  font-family: var(--font-poppins, sans-serif);
+  font-family: var(--font-body, sans-serif);
   font-size: 13px;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 8px 16px;
   cursor: pointer;
   white-space: nowrap;

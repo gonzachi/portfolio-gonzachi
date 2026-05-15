@@ -35,7 +35,7 @@ export default function Header() {
         </ul>
         <div className={styles.actions}>
           <a
-            href="/cv/resumen-curriculum-gonzalo_chiavassa.pdf"
+            href="/cv/Gonzalo Chiavassa, Product Designer - CV.pdf"
             download
             className={styles.cvButton}
           >

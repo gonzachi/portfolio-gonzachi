@@ -7,10 +7,11 @@
     text-align: center;
     padding: var(--spacing-3xl) var(--container-padding);
     gap: var(--spacing-md);
-    background: radial-gradient(ellipse at 50% 40%, rgba(64, 84, 178, 0.08) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 50% 40%, rgba(var(--fg-rgb), 0.03) 0%, transparent 60%);
 }
 
 .number {
+    font-family: var(--font-mono);
     font-size: 1rem;
     font-weight: 500;
     color: var(--color-text-muted);
@@ -48,12 +49,13 @@
 }
 
 .badge {
+    font-family: var(--font-mono);
     padding: 0.35rem 0.85rem;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    border-radius: 9999px;
+    border-radius: 0;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
     font-weight: 400;

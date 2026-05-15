@@ -1,21 +1,28 @@
 import type { Metadata } from "next";
-import { Poppins, Lora } from "next/font/google";
+import { Playfair_Display, Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
 import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
-const poppins = Poppins({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const lora = Lora({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-lora",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-roboto-mono",
   display: "swap",
 });
 export const metadata: Metadata = {
@@ -36,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${poppins.variable} ${lora.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${playfair.variable} ${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
       <head>
         {/* Anti-flash: apply theme before first paint */}
         <script

@@ -6,9 +6,9 @@ import styles from './Hero.module.css';
 
 const roles = personalInfo.roles;
 const bio = [
-  { text: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.", highlight: "mindset de ownership" },
-  { text: "Actualmente busco evolucionar hacia el rol de Product Manager, conectando las necesidades del usuario con los objetivos técnicos y de negocio.", highlight: "evolucionar hacia el rol de Product Manager" },
-  { text: "Más de 8 años de experiencia en diseño de producto y otros tantos en comunicación digital.", highlight: "Más de 8 años de experiencia" },
+  { text: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Cuento con más de 8 años de experiencia en diseño de producto y otros extras en comunicación digital.", highlight: "" },
+  { text: "Mi experiencia siempre estuvo ligada a mantener una visión end-to-end en el proceso de diseño: desde el descubrimiento del problema hasta la validación post-lanzamiento. Actualmente se extiende a tener una visión más amplia, cubriendo la dimensión de negocio y estrategia, buscando una evolución hacia un rol de Product Manager / Owner.", highlight: "" },
+  { text: "Creo que la inteligencia artificial vino para quedarse y es por eso que me he subido a la ola desde el día cero. La utilizo en mi flujo de trabajo diario, tanto para consultar, diseñar, testear con usuarios, agilizar decisiones con negocio, detectar nuevos insights, generar MVP's funcionales y explorar cada nueva funcionalidad que sale a la luz.", highlight: "" },
 ];
 
 function renderBio(text: string, phrase: string) {
@@ -63,21 +63,21 @@ export default function Hero() {
           </span>
         </div>
 
-        <div className={`reveal reveal-delay-1 ${styles.heading}`}>
-          <h1
+        <h1 className={`reveal reveal-delay-1 ${styles.heading}`}>
+          <span
             className={styles.hello}
             style={{ transform: `translate(${mouse.x * 8}px, ${mouse.y * 4}px)` }}
           >
-            Hola,
-          </h1>
-          <h1
+            Hola,{' '}
+          </span>
+          <span
             className={styles.welcome}
             style={{ transform: `translate(${mouse.x * 13}px, ${mouse.y * 7}px)` }}
           >
             welcome
             <span className={styles.cursor} style={{ opacity: blink ? 1 : 0 }}>|</span>
-          </h1>
-        </div>
+          </span>
+        </h1>
 
         <div className={`reveal reveal-delay-2 ${styles.bio}`}>
           {bio.map((b, i) => (

@@ -4,7 +4,7 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: 0;
   border: 1px solid rgba(var(--fg-rgb), 0.18);
   background: transparent;
   color: rgba(var(--fg-rgb), 0.75);
