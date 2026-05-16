@@ -6,23 +6,39 @@ import styles from './Hero.module.css';
 
 const roles = personalInfo.roles;
 const bio = [
-  { text: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Cuento con más de 8 años de experiencia en diseño de producto y otros extras en comunicación digital.", highlight: "" },
-  { text: "Mi experiencia siempre estuvo ligada a mantener una visión end-to-end en el proceso de diseño: desde el descubrimiento del problema hasta la validación post-lanzamiento. Actualmente se extiende a tener una visión más amplia, cubriendo la dimensión de negocio y estrategia, buscando una evolución hacia un rol de Product Manager / Owner.", highlight: "" },
-  { text: "Creo que la inteligencia artificial vino para quedarse y es por eso que me he subido a la ola desde el día cero. La utilizo en mi flujo de trabajo diario, tanto para consultar, diseñar, testear con usuarios, agilizar decisiones con negocio, detectar nuevos insights, generar MVP's funcionales y explorar cada nueva funcionalidad que sale a la luz.", highlight: "" },
+  { text: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Cuento con más de 8 años de experiencia en diseño de producto y otros extras en comunicación digital.", bold: ["más de 8 años de experiencia en diseño de producto"] },
+  { text: "Mi experiencia siempre estuvo ligada a mantener una visión end-to-end en el proceso de diseño: desde el descubrimiento del problema hasta la validación post-lanzamiento. Actualmente se extiende a tener una visión más amplia, cubriendo la dimensión de negocio y estrategia, buscando una evolución hacia un rol de Product Manager / Owner.", bold: ["visión end-to-end en el proceso de diseño:", "cubriendo la dimensión de negocio y estrategia,"] },
+  { text: "Creo que la inteligencia artificial vino para quedarse y es por eso que me he subido a la ola desde el día cero. La utilizo en mi flujo de trabajo diario, tanto para consultar, diseñar, testear con usuarios, agilizar decisiones con negocio, detectar nuevos insights, generar MVP's funcionales y explorar cada nueva funcionalidad que sale a la luz.", bold: ["la inteligencia artificial vino para quedarse"] },
 ];
 
-function renderBio(text: string, phrase: string) {
-  if (!phrase || !text.includes(phrase)) return text;
-  const idx = text.indexOf(phrase);
-  const before = text.slice(0, idx);
-  const after = text.slice(idx + phrase.length);
-  return (
-    <>
-      {before}
-      <mark className={styles.highlight}>{phrase}</mark>
-      {after}
-    </>
-  );
+function renderBio(text: string, boldPhrases: string[]) {
+  if (!boldPhrases.length) return text;
+
+  const parts: (string | JSX.Element)[] = [text];
+
+  for (const phrase of boldPhrases) {
+    const newParts: (string | JSX.Element)[] = [];
+    for (const part of parts) {
+      if (typeof part !== 'string') {
+        newParts.push(part);
+        continue;
+      }
+      const idx = part.indexOf(phrase);
+      if (idx === -1) {
+        newParts.push(part);
+        continue;
+      }
+      const before = part.slice(0, idx);
+      const after = part.slice(idx + phrase.length);
+      if (before) newParts.push(before);
+      newParts.push(<strong key={phrase} className={styles.bold}>{phrase}</strong>);
+      if (after) newParts.push(after);
+    }
+    parts.length = 0;
+    parts.push(...newParts);
+  }
+
+  return <>{parts}</>;
 }
 
 export default function Hero() {
@@ -81,7 +97,7 @@ export default function Hero() {
 
         <div className={`reveal reveal-delay-2 ${styles.bio}`}>
           {bio.map((b, i) => (
-            <p key={i}>{renderBio(b.text, b.highlight)}</p>
+            <p key={i}>{renderBio(b.text, b.bold)}</p>
           ))}
         </div>
 

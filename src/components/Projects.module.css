@@ -13,7 +13,7 @@
 /* ── Unified Card ── */
 .card {
   border-radius: 0;
-  background: transparent;
+  background: #FAFAF9;
   border: 1px solid rgba(var(--fg-rgb), 0.05);
   margin-bottom: 0.4rem;
   transition: background 0.25s, border-color 0.25s;
@@ -21,18 +21,61 @@
   overflow: hidden;
 }
 
-.cardActive {
+:global([data-theme="dark"]) .card {
   background: rgba(var(--fg-rgb), 0.03);
-  border-color: rgba(var(--fg-rgb), 0.12);
+}
+
+.cardBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0 clamp(1.25rem, 2.5vw, 2rem) clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.moreTagsBtn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 0;
+  background: rgba(var(--fg-rgb), 0.06);
+  color: rgba(var(--fg-rgb), 0.45);
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.08em;
+}
+
+.moreTagsBtn:hover {
+  background: rgba(var(--fg-rgb), 0.12);
+  color: rgba(var(--fg-rgb), 0.65);
+}
+
+.cardHovered {
+  background: #F5F5F4;
+  border-color: rgba(var(--fg-rgb), 0.10);
+}
+
+:global([data-theme="dark"]) .cardHovered {
+  background: rgba(var(--fg-rgb), 0.05);
+}
+
+.cardExpanded {
+  background: #FAFAF9;
+  border-color: rgba(var(--fg-rgb), 0.10);
+}
+
+:global([data-theme="dark"]) .cardExpanded {
+  background: rgba(var(--fg-rgb), 0.05);
 }
 
 /* ── Row Header ── */
 .rowHeader {
   display: grid;
-  grid-template-columns: 4.5rem 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
   align-items: center;
-  padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 2.5vw, 2rem) 0;
   cursor: pointer;
 }
 
@@ -63,6 +106,16 @@
   align-items: center;
   gap: 0.6rem;
   flex-wrap: wrap;
+}
+
+.expandedBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(var(--fg-rgb), 0.06);
 }
 
 .rowNumberInline {
@@ -137,8 +190,8 @@
 /* ── Coming Soon Row ── */
 .rowComingSoon {
   display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   align-items: center;
   padding: 1.25rem 1.5rem;
   border-radius: 0;

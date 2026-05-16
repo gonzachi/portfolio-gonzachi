@@ -95,6 +95,11 @@
   color: rgba(var(--fg-rgb), 0.55);
 }
 
+.bold {
+  font-weight: 600;
+  color: rgba(var(--fg-rgb), 0.75);
+}
+
 .highlight {
   background: rgba(var(--fg-rgb), 0.25);
   color: var(--color-text-on-accent);

@@ -90,10 +90,16 @@ function ProjectCard({ project, delay, expanded, onToggle }: {
   const ref = useRef<HTMLDivElement>(null);
   const [hovered, setHovered] = useState(false);
 
+  const [tagsOpen, setTagsOpen] = useState(false);
+
+  const allTags: string[] = [...(p.badge ? [p.badge] : []), ...(p.tags || [])];
+  const showAll = expanded || tagsOpen;
+  const visibleTags = showAll ? allTags : allTags.slice(0, 3);
+  const hasMore = allTags.length > 3;
+
   if (p.comingSoon) {
     return (
       <div className={`reveal reveal-delay-${delay % 4} ${styles.rowComingSoon}`}>
-        <span className={styles.rowNumberInline}>{p.number}</span>
         <div>
           <p className={styles.rowComingSoonTitle}>{p.title}</p>
           <p className={styles.rowComingSoonText}>{p.subtitle}</p>
@@ -105,27 +111,20 @@ function ProjectCard({ project, delay, expanded, onToggle }: {
   return (
     <div className={`reveal reveal-delay-${delay % 4}`} ref={ref}>
       <div
-        className={`${styles.card} ${hovered || expanded ? styles.cardActive : ''}`}
+        className={`${styles.card} ${expanded ? styles.cardExpanded : ''} ${hovered && !expanded ? styles.cardHovered : ''}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* ── Row header: number left, title + badges right ── */}
+        {/* ── Row header: title + subtitle ── */}
         <div className={styles.rowHeader} onClick={onToggle}>
-          <span className={styles.rowNumber}>{p.number}</span>
           <div className={styles.rowContent}>
             <h3 className={styles.rowTitle}>{p.title}</h3>
             {p.subtitle && <p className={styles.rowSubtitle}>{p.subtitle}</p>}
-            <div className={styles.rowBadges}>
-              {p.badge && <span className={styles.badge}>{p.badge}</span>}
-              {p.tags?.map((t: string) => (
-                <span key={t} className={styles.rowTag}>{t}</span>
-              ))}
-            </div>
           </div>
           <span className={`${styles.rowToggleIcon} ${expanded ? styles.rowToggleIconOpen : ''}`}>+</span>
         </div>
 
-        {/* ── Expanded content: only description ── */}
+        {/* ── Expanded content: description ── */}
         <div className={styles.expandedWrapper} style={{ maxHeight: expanded ? 2000 : 0 }}>
           <div className={`${styles.expandedInner} ${p.videoSide ? styles.expandedTwoCols : ''}`}>
             <div className={styles.expandedText}>
@@ -155,6 +154,31 @@ function ProjectCard({ project, delay, expanded, onToggle }: {
               </div>
             )}
           </div>
+        </div>
+
+        {/* ── Tags: always visible at bottom ── */}
+        <div className={styles.cardBadges}>
+          {visibleTags.map((t, i) => (
+            <span key={t} className={i === 0 && p.badge ? styles.badge : styles.rowTag}>{t}</span>
+          ))}
+          {hasMore && !showAll && (
+            <button
+              className={styles.moreTagsBtn}
+              onClick={(e) => { e.stopPropagation(); setTagsOpen(true); }}
+              aria-label="Ver más tags"
+            >
+              •••
+            </button>
+          )}
+          {tagsOpen && !expanded && (
+            <button
+              className={styles.moreTagsBtn}
+              onClick={(e) => { e.stopPropagation(); setTagsOpen(false); }}
+              aria-label="Cerrar tags"
+            >
+              ✕
+            </button>
+          )}
         </div>
       </div>
     </div>
