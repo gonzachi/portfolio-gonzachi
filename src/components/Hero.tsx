@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { personalInfo } from '@/data/content';
 import styles from './Hero.module.css';
 
@@ -14,10 +14,10 @@ const bio = [
 function renderBio(text: string, boldPhrases: string[]) {
   if (!boldPhrases.length) return text;
 
-  const parts: (string | JSX.Element)[] = [text];
+  const parts: (string | React.ReactNode)[] = [text];
 
   for (const phrase of boldPhrases) {
-    const newParts: (string | JSX.Element)[] = [];
+    const newParts: (string | React.ReactNode)[] = [];
     for (const part of parts) {
       if (typeof part !== 'string') {
         newParts.push(part);
