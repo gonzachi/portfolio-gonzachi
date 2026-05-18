@@ -192,7 +192,11 @@ export const projects = [
     roleDescription: "Pronto habrá más detalles.",
     challenge: "",
     team: "",
-    description: ["Pronto publicaré por aquí los detalles de este nuevo proyecto en el que estuve sumando valor."],
+    description: [
+      "Me propusieron liderar un proyecto desafiante: unificar criterios entre más de 5 equipos para construir una plataforma interna que orqueste la ideación y creación de contenido de journeys, con visión de escalar a campañas.",
+      "El equipo era reducido por diseño: yo como referente de producto y desarrollador del frontend mediante vibe coding con IA, un backend, y distintos equipos proveyendo las APIs de las plataformas que ya usaban. Sin overhead, sin burocracia.",
+      "Un proyecto que cuestiona cómo se construye producto hoy: menos recursos, más autonomía, IA como palanca real de ejecución."
+    ],
     video: ""
   },
   {
@@ -485,9 +489,10 @@ export const landingProjects = [
   {
     id: "proyecto-nuevo",
     number: "02",
-    comingSoon: true,
     title: "Plataforma orquestadora de equipos",
-    subtitle: "En construcción",
+    subtitle: "Herramienta corporativa diseñada para unificar y agilizar la creación de contenido de journeys de comunicación",
+    description: "Me propusieron liderar un proyecto desafiante: unificar criterios entre más de 5 equipos para construir una plataforma interna que orqueste la ideación y creación de contenido de journeys, con visión de escalar a campañas. El equipo era reducido por diseño: yo como referente de producto y desarrollador del frontend mediante vibe coding con IA, un backend, y distintos equipos proveyendo las APIs de las plataformas que ya usaban. Sin overhead, sin burocracia. Un proyecto que cuestiona cómo se construye producto hoy: menos recursos, más autonomía, IA como palanca real de ejecución.",
+    tags: ["Product Ownership", "Discovery", "Vibe Coding", "Claude Code", "v0", "Frontend Development", "MVP", "UX Research", "Journey Mapping"],
   },
   {
     id: "app-holdo",
