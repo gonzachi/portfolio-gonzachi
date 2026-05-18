@@ -34,6 +34,20 @@ export const metadata: Metadata = {
     title: "Gonzalo Chiavassa | Product Designer",
     description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
     type: "website",
+    images: [
+      {
+        url: "/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Gonzalo Chiavassa — Portfolio & CV · Product Designer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gonzalo Chiavassa | Product Designer",
+    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
+    images: ["/opengraph-image.jpg"],
   },
 };
 
