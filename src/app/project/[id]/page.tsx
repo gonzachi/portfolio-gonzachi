@@ -11,6 +11,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import WireframeIllustration from '@/components/project/WireframeIllustration';
 import ViewportCarousel from '@/components/project/ViewportCarousel';
 import DeviceShowcase from '@/components/project/DeviceShowcase';
+import InteractiveWireframe from '@/components/project/InteractiveWireframe';
 import styles from './page.module.css';
 
 interface ProjectPageProps {
@@ -193,7 +194,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 <div className={styles.customWidgets} style={{ marginTop: '2rem' }}>
                                     <ScrollReveal delay={0.2}>
                                         <ViewportCarousel
-                                            label="Antes del rediseño"
                                             urlLabel="holdo.cl · propuesta de inversión — versión anterior"
                                             height={480}
                                             slides={[
@@ -212,7 +212,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 {/* Banner Image 1 */}
-                {project.heroImage && (
+                {project.heroImage && project.id !== 'reduciendo-drop-off-onboarding' && (
                     <div className={styles.bannerImageContainer}>
                         <Image
                             src={project.heroImage}
@@ -236,9 +236,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     <p key={index} className={styles.bodyText}>{paragraph}</p>
                                 ))}
                             </ScrollReveal>
-                            <ScrollReveal delay={0.2} className={styles.illustrationWrapper}>
-                                <WireframeIllustration type="findings" projectId={project.id} />
-                            </ScrollReveal>
+                            {project.id !== 'reduciendo-drop-off-onboarding' && (
+                                <ScrollReveal delay={0.2} className={styles.illustrationWrapper}>
+                                    <WireframeIllustration type="findings" projectId={project.id} />
+                                </ScrollReveal>
+                            )}
                         </div>
                     </section>
                 )}
@@ -263,79 +265,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </ScrollReveal>
                             {project.id === 'reduciendo-drop-off-onboarding' ? (
                                 <ScrollReveal delay={0.2}>
-                                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', margin: '2rem auto var(--spacing-xl)' }}>
-                                        <div style={{ position: 'relative', width: '60%', margin: '0 auto' }}>
-                                            <Image
-                                                src="/assets/projects/ladrillo/ladrillo-lofi/lofi-ladrillo.png"
-                                                alt="Wireframe de baja fidelidad de la propuesta de inversión de Holdo"
-                                                width={1140}
-                                                height={2820}
-                                                style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid #d5d3ce' }}
-                                                priority={false}
-                                            />
-
-                                            {/* Pin 1: Chart */}
-                                            <div className={styles.pinContainer} style={{ top: '22%', left: 0, width: '100%', height: 0 }}>
-                                                <div className={styles.pinCard} style={{ position: 'absolute', right: 'calc(100% + 20px)', top: 0, transform: 'translateY(-50%)' }}>
-                                                    <div className={styles.pinBadge}>Llamada de atención de UX</div>
-                                                    <h4 className={styles.pinTitle}>Histórico en dinero real</h4>
-                                                    <p className={styles.pinDesc}>Muestra la evolución del portafolio en dinero tangible en vez de métricas financieras confusas.</p>
-                                                </div>
-                                                <svg style={{ position: 'absolute', left: '-20px', top: 0, width: 'calc(42% + 20px)', height: '16px', transform: 'translateY(-50%)', overflow: 'visible', pointerEvents: 'none' }}>
-                                                    <circle cx="100%" cy="8" r="7" className={styles.pinDotOuter} strokeWidth="1" fill="none" />
-                                                    <circle cx="100%" cy="8" r="3.5" className={styles.pinDotInner} />
-                                                    <line x1="0" y1="8" x2="100%" y2="8" className={styles.pinLine} strokeWidth="1" strokeDasharray="1 1" />
-                                                </svg>
-                                            </div>
-
-                                            {/* Pin 2: Slider */}
-                                            <div className={styles.pinContainer} style={{ top: '35.5%', left: 0, width: '100%', height: 0 }}>
-                                                <div className={styles.pinCard} style={{ position: 'absolute', right: 'calc(100% + 20px)', top: 0, transform: 'translateY(-50%)' }}>
-                                                    <div className={styles.pinBadge}>Llamada de atención de UX</div>
-                                                    <h4 className={styles.pinTitle}>Simulador de viaje en el tiempo</h4>
-                                                    <p className={styles.pinDesc}>Permite proyectar escenarios de inversión interactivos con montos reales, atrayendo al usuario.</p>
-                                                </div>
-                                                <svg style={{ position: 'absolute', left: '-20px', top: 0, width: 'calc(18% + 20px)', height: '16px', transform: 'translateY(-50%)', overflow: 'visible', pointerEvents: 'none' }}>
-                                                    <circle cx="100%" cy="8" r="7" className={styles.pinDotOuter} strokeWidth="1" fill="none" />
-                                                    <circle cx="100%" cy="8" r="3.5" className={styles.pinDotInner} />
-                                                    <line x1="0" y1="8" x2="100%" y2="8" className={styles.pinLine} strokeWidth="1" strokeDasharray="1 1" />
-                                                </svg>
-                                            </div>
-
-                                            {/* Pin 3: ETF list */}
-                                            <div className={styles.pinContainer} style={{ top: '48%', left: 0, width: '100%', height: 0 }}>
-                                                <div className={styles.pinCard} style={{ position: 'absolute', right: 'calc(100% + 20px)', top: 0, transform: 'translateY(-50%)' }}>
-                                                    <div className={styles.pinBadge}>Llamada de atención de UX</div>
-                                                    <h4 className={styles.pinTitle}>Familiaridad de marcas en ETFs</h4>
-                                                    <p className={styles.pinDesc}>Destaca las empresas más conocidas del portafolio (como Apple o Microsoft) para generar seguridad inmediata.</p>
-                                                </div>
-                                                <svg style={{ position: 'absolute', left: '-20px', top: 0, width: 'calc(8% + 20px)', height: '16px', transform: 'translateY(-50%)', overflow: 'visible', pointerEvents: 'none' }}>
-                                                    <circle cx="100%" cy="8" r="7" className={styles.pinDotOuter} strokeWidth="1" fill="none" />
-                                                    <circle cx="100%" cy="8" r="3.5" className={styles.pinDotInner} />
-                                                    <line x1="0" y1="8" x2="100%" y2="8" className={styles.pinLine} strokeWidth="1" strokeDasharray="1 1" />
-                                                </svg>
-                                            </div>
-
-                                            {/* Pin 4: Video (row-reverse) */}
-                                            <div className={styles.pinContainer} style={{ top: '65.5%', left: 0, width: '100%', height: 0 }}>
-                                                <div className={styles.pinCard} style={{ position: 'absolute', left: 'calc(100% + 20px)', top: 0, transform: 'translateY(-50%)' }}>
-                                                    <div className={styles.pinBadge}>Llamada de atención de UX</div>
-                                                    <h4 className={styles.pinTitle}>Video explicativo de la IA</h4>
-                                                    <p className={styles.pinDesc}>Un breve soporte audiovisual para explicar la lógica detrás del portafolio optimizado por algoritmos.</p>
-                                                </div>
-                                                <svg style={{ position: 'absolute', left: '52%', top: 0, width: 'calc(48% + 20px)', height: '16px', transform: 'translateY(-50%)', overflow: 'visible', pointerEvents: 'none' }}>
-                                                    <circle cx="0" cy="8" r="7" className={styles.pinDotOuter} strokeWidth="1" fill="none" />
-                                                    <circle cx="0" cy="8" r="3.5" className={styles.pinDotInner} />
-                                                    <line x1="0" y1="8" x2="100%" y2="8" className={styles.pinLine} strokeWidth="1" strokeDasharray="1 1" />
-                                                </svg>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                    <InteractiveWireframe />
                                 </ScrollReveal>
                             ) : (
                                 <ScrollReveal delay={0.2} className={styles.illustrationWrapper}>
                                     <WireframeIllustration type="solution" projectId={project.id} />
+                                </ScrollReveal>
+                            )}
+
+                            {/* Transition to UI Section */}
+                            {project.id === 'reduciendo-drop-off-onboarding' && (
+                                <ScrollReveal delay={0.1}>
+                                    <p className={styles.bodyText} style={{ marginTop: '3rem', marginBottom: '1.5rem' }}>
+                                        Con las decisiones de diseño validadas, pasamos a la etapa de UI. El desafío era mantener la claridad funcional del wireframe mientras construíamos una interfaz que transmitiera la solidez y confianza que una plataforma fintech regulada requiere.
+                                    </p>
                                 </ScrollReveal>
                             )}
 
@@ -403,18 +346,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </ScrollReveal>
 
                             {/* Stats Columns */}
-                            <ScrollReveal delay={0.2} className={project.id === 'agilidad-inspiracional' ? styles.metricsGridBrutalist : styles.metricsGrid}>
-                                {(resultsReveal?.stats || project.metrics)?.map((stat: { highlight?: string; value?: string; detail?: string; label?: string }, index: number) => {
-                                    const value = stat.highlight || stat.value;
-                                    const label = stat.detail || stat.label;
-                                    return (
-                                        <div key={index} className={project.id === 'agilidad-inspiracional' ? styles.metricCardBrutalist : styles.metricCard}>
-                                            <span className={project.id === 'agilidad-inspiracional' ? styles.metricValueBrutalist : styles.metricValue}>{value}</span>
-                                            <span className={project.id === 'agilidad-inspiracional' ? styles.metricLabelBrutalist : styles.metricLabel}>{label}</span>
-                                        </div>
-                                    );
-                                })}
-                            </ScrollReveal>
+                            {((resultsReveal?.stats && resultsReveal.stats.length > 0) || (project.metrics && project.metrics.length > 0)) && (
+                                <ScrollReveal delay={0.2} className={project.id === 'agilidad-inspiracional' ? styles.metricsGridBrutalist : styles.metricsGrid}>
+                                    {(resultsReveal?.stats || project.metrics)?.map((stat: { highlight?: string; value?: string; detail?: string; label?: string }, index: number) => {
+                                        const value = stat.highlight || stat.value;
+                                        const label = stat.detail || stat.label;
+                                        return (
+                                            <div key={index} className={project.id === 'agilidad-inspiracional' ? styles.metricCardBrutalist : styles.metricCard}>
+                                                <span className={project.id === 'agilidad-inspiracional' ? styles.metricValueBrutalist : styles.metricValue}>{value}</span>
+                                                <span className={project.id === 'agilidad-inspiracional' ? styles.metricLabelBrutalist : styles.metricLabel}>{label}</span>
+                                            </div>
+                                        );
+                                    })}
+                                </ScrollReveal>
+                            )}
 
                             {resultsReveal?.paragraphsAfter && (
                                 <ScrollReveal delay={0.25}>
@@ -450,7 +395,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <span className={styles.bannerCaption}>Detalle de la interfaz</span>
                     </div>
                 )}
-                {project.id !== 'agilidad-inspiracional' && project.images && project.images.length > 0 && (
+                {project.id !== 'agilidad-inspiracional' && project.id !== 'reduciendo-drop-off-onboarding' && project.images && project.images.length > 0 && (
                     <div className={styles.bannerImageContainer}>
                         <Image
                             src={project.images[0].src}
@@ -464,7 +409,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 {/* Image + Caption Gallery (two-column) */}
-                {project.images && project.images.length > 1 && (
+                {project.images && project.id !== 'reduciendo-drop-off-onboarding' && project.images.length > 1 && (
                     <section className={styles.section}>
                         <div className={styles.sectionContainer}>
                             {project.images.slice(1).map((img: { src: string; alt: string; caption?: string }, index: number) => (
@@ -512,55 +457,46 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </ScrollReveal>
 
                             {/* Project details table */}
-                            <ScrollReveal delay={0.3} className={styles.detailsTableWrapper}>
-                                <table className={styles.detailsTable}>
-                                    <tbody>
-                                        <tr>
-                                            <td className={styles.tableLabel}>Rol</td>
-                                            <td className={styles.tableValue}>{project.roleDescription || role}</td>
-                                        </tr>
-                                        {project.team && (
+                            {project.id !== 'reduciendo-drop-off-onboarding' && (
+                                <ScrollReveal delay={0.3} className={styles.detailsTableWrapper}>
+                                    <table className={styles.detailsTable}>
+                                        <tbody>
                                             <tr>
-                                                <td className={styles.tableLabel}>Equipo</td>
-                                                <td className={styles.tableValue}>{project.team}</td>
+                                                <td className={styles.tableLabel}>Rol</td>
+                                                <td className={styles.tableValue}>{project.roleDescription || role}</td>
                                             </tr>
-                                        )}
-                                        {project.tools && project.tools.length > 0 && (
-                                            <tr>
-                                                <td className={styles.tableLabel}>Herramientas</td>
-                                                <td className={styles.tableValue}>{project.tools.join(' · ')}</td>
-                                            </tr>
-                                        )}
-                                        {project.closing?.timeline && (
-                                            <tr>
-                                                <td className={styles.tableLabel}>Timeline</td>
-                                                <td className={styles.tableValue}>{project.closing.timeline}</td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
-                            </ScrollReveal>
+                                            {project.team && (
+                                                <tr>
+                                                    <td className={styles.tableLabel}>Equipo</td>
+                                                    <td className={styles.tableValue}>{project.team}</td>
+                                                </tr>
+                                            )}
+                                            {project.tools && project.tools.length > 0 && (
+                                                <tr>
+                                                    <td className={styles.tableLabel}>Herramientas</td>
+                                                    <td className={styles.tableValue}>{project.tools.join(' · ')}</td>
+                                                </tr>
+                                            )}
+                                            {project.closing?.timeline && (
+                                                <tr>
+                                                    <td className={styles.tableLabel}>Timeline</td>
+                                                    <td className={styles.tableValue}>{project.closing.timeline}</td>
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </ScrollReveal>
+                            )}
                         </div>
                     </section>
                 )}
 
                 {/* Back Nav Link footer */}
-                {(prevProject || nextProject) && (
-                    <nav className={styles.footerNav} aria-label="Navegación entre proyectos">
-                        {prevProject && (
-                            <Link href={`/project/${prevProject.id}`} className={styles.footerLink}>
-                                <span className={styles.footerLinkLabel}>← Anterior</span>
-                                <span className={styles.footerLinkTitle}>{prevProject.title}</span>
-                            </Link>
-                        )}
-                        {nextProject && (
-                            <Link href={`/project/${nextProject.id}`} className={styles.footerLink}>
-                                <span className={styles.footerLinkLabel}>Siguiente →</span>
-                                <span className={styles.footerLinkTitle}>{nextProject.title}</span>
-                            </Link>
-                        )}
-                    </nav>
-                )}
+                <footer className={styles.footerNav}>
+                    <Link href="/" className={styles.backButton}>
+                        Volver a la home
+                    </Link>
+                </footer>
             </main>
         </>
     );

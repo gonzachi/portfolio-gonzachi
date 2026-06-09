@@ -674,3 +674,9 @@ body::after {
   }
 }
 
+@media (max-width: 768px) {
+  p {
+    font-size: 16px !important;
+  }
+}
+

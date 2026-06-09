@@ -274,36 +274,33 @@ export const projects = [
     subtitle: "Reducir la complejidad de la propuesta de inversión para aumentar la conversión.",
     tools: ["Figma", "PostHog", "Clarity"],
     timeline: ["Análisis de datos", "Hipótesis", "Priorización", "Diseño", "QA"],
-    metrics: [
-      { value: "↓", label: "información reducida" },
-      { value: "↑", label: "conversiones mejoradas" },
-      { value: "5", label: "pantallas rediseñadas" }
-    ],
     roleDescription: "Lideré el análisis UX junto al equipo de finanzas para priorizar la información clave. Diseñé un estilo más narrativo y escaneable, y entregué el pitch al equipo de desarrollo.",
     challenge: "Los usuarios abandonaban el onboarding porque la información era abrumadora y confusa. Necesitábamos simplificar sin perder datos críticos para la decisión de inversión.",
     team: "UX/UI Designer · Product Manager · Research · Finanzas · Frontend",
     description: [
-      "Holdo es una fintech / robo-advisor chilena regulada por la CMF (Comisión para el Mercado Financiero).",
-      "Teniamos una sección muy tecnica y habia que bajarla mas a tierra para que los usuarios la entendieran."
+      "Holdo es una fintech / robo-advisor chilena regulada por la CMF (Comisión para el Mercado Financiero Chileno). Holdo comenzó siendo una plataforma 100% desktop y dentro de su flujo de onboarding, cuando el usuario creaba una cuenta tenía que configurar su perfil y su portfolio de inversión.",
+      "Para esta configuración existían una serie de parámetros que el usuario completaría y en base a eso le mostraríamos una propuesta de inversión o dicho de otra manera un portfolio de inversión personalizado que se lo propondría Harry (la IA de Holdo). ¿Te imaginas cuál era el problema? Te lo cuento…"
     ],
     problem: {
       title: "El problema",
       description: [
-        "Durante el proceso de onboarding digital, un alto porcentaje de usuarios abandonaba el proceso justo en el paso donde se les presentaba la propuesta de inversión (el portafolio de inversión seleccionado). Un paso clave, ya que aquí el usuario tomaba la decisión de aceptar o no la propuesta.",
-        "Datos extraídos de las plataformas como PostHog y Clarity."
+        "Durante el proceso de onboarding, un alto porcentaje de usuarios abandonaba el proceso justo en el último paso donde se les presentaba la propuesta de inversión (el portafolio de inversión en base a su perfil). Este es un paso clave, aceptar no implicaba una obligación de inversión pero si era un paso necesario para que el usuario pudiera acceder a la plataforma de Holdo.",
+        "Estos datos los hemos extraído de las plataformas como PostHog y Clarity.",
+        "A continuación te muestro como era el diseño al momento de detectar el problema: 5 tabs informativas por donde el usuario debía navegar y leer para entender en dónde pondría su dinero."
       ]
     },
     findings: [
-      "El embudo de onboarding mostraba una gran caída justo antes del paso de confirmación de la inversión.",
-      "A través de entrevistas cualitativas descubrimos que la presentación técnica de las carteras (ETFs, desviaciones estándar, históricos complejos) resultaba abrumadora y confusa para los inversores minoristas, quienes sentían desconfianza ante la falta de una jerarquía clara."
+      "Con esta problemática detectada comenzamos a realizar una investigación cualitativas a través de entrevistas con usuarios reales y descubrimos un punto de dolor en común: la información que mostrábamos en el portafolio era excesiva y resultaba muy compleja de entender. Causaba miedo. Parecía un contrato hipotecario y en realidad no los comprometía a nada. Era sobre información.",
+      "Con ese insight sobre la mesa, iniciamos un proceso para redefinir el diseño del portafolio, un trabajo exhaustivo junto a nuestro experto en finanzas e IA. El desafío no era solo simplificar la UI — era determinar qué información era regulatoriamente necesaria, qué era útil para el usuario y qué simplemente estaba ahí por inercia. Esa distinción no la podía resolver el diseño solo."
     ],
     solutionText: [
-      "Rediseñamos la propuesta de inversión estructurándola como una narrativa visual escaneable. Introdujimos un simulador interactivo de 'viaje en el tiempo' para proyectar el rendimiento histórico en dinero real.",
-      "Dimos visibilidad y contexto a las marcas de los ETF familiares (como Apple, Microsoft) y simplificamos el flujo hasta el botón final de confirmación de inversión."
+      "Rediseñamos la propuesta de inversión desde cero, transformando lo que era un bloque denso de información técnica en una narrativa visual escaneable y progresiva. El principio rector fue simple: el usuario necesitaba entender antes de confiar, y para eso la información tenía que fluir, no abrumar.",
+      "Estas fueron las decisiones clave:"
     ],
     challengesText: [
-      "La simplificación de la información financiera requiere un delicado equilibrio reglamentario y de diseño.",
-      "Aprendimos que dar explicaciones contextuales sencillas e interacciones de alto valor (como simulaciones personalizadas) genera mayor confianza y conversión que el bombardeo de datos crudos."
+      "Diseñar en un entorno regulado te obliga a ser creativo dentro de constraints reales — la solución no era eliminar información sino encontrarle el lugar correcto en el flujo.",
+      "Aprendí que en productos financieros la confianza se construye con claridad, no con exhaustividad. Mostrar menos, en el momento justo, genera más seguridad que mostrar todo de golpe.",
+      "Trabajar directamente con el CTO, CEO y el experto en finanzas me enseñó a separar qué era un requisito real de qué era inercia del diseño anterior."
     ],
     video: "/assets/projects/ladrillo/new_ladrillo.mp4",
     images: [
@@ -315,17 +312,10 @@ export const projects = [
     showcaseTitle: "Mejora de propuesta de inversión en holdo.cl",
     resultsReveal: {
       title: "Los números",
-      stats: [
-        { highlight: "Información simplificada.", detail: "Reducción de datos redundantes.", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
-        { highlight: "Mayor conversión.", detail: "Alza significativa en registros validados.", icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" },
-        { highlight: "Pantallas clave.", detail: "5 interfaces principales rediseñadas.", icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" }
-      ],
-      closingText: "Con el rediseño narrativo y la reestructuración del onboarding, el porcentaje de abandono disminuyó drásticamente.",
-      footerText: "Datos obtenidos tras un periodo de QA y medición continua de 4 semanas post-lanzamiento en producción."
+      closingText: "Al momento de mi salida de Holdo, el rediseño estaba en fase de implementación, por lo que no cuento con métricas finales de impacto. Sin embargo, el proyecto fue validado internamente y avanzó a producción."
     },
     closing: {
       title: "El cierre",
-      message: "La mejor interfaz es la que educa mientras guía.\nReducir la complejidad visual convirtió desconfianza en inversión.",
       timeline: "Noviembre 2023 → Diciembre 2023"
     },
     heroImage: "/assets/projects/ladrillo-1.jpg"

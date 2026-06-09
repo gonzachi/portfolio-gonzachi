@@ -472,6 +472,11 @@
     position: absolute;
     display: none;
     z-index: 10;
+    pointer-events: none;
+}
+
+.pinContainer svg {
+    pointer-events: none;
 }
 
 @media (min-width: 1024px) {
@@ -491,26 +496,122 @@
     color: var(--color-text-primary);
 }
 
+.pinHitArea {
+    fill: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.pinLineHitArea {
+    fill: none;
+    stroke: transparent;
+    pointer-events: stroke;
+    cursor: pointer;
+}
+
 .pinDotOuter {
     stroke: var(--color-text-primary);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .pinDotInner {
     fill: var(--color-text-primary);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .pinLine {
     stroke: var(--color-text-primary);
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .pinCard {
-    background-color: #ffffff;
-    border: 1px solid #d5d3ce;
+    background-color: transparent;
+    border: 1.5px solid #d5d3ce;
     width: 240px;
     padding: 0.75rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    /* Border animation variables - light mode */
+    --card-border-moving: #000000;
+    --card-border-trail: rgba(0, 0, 0, 0.08);
+}
+
+.pinCard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1.5px solid transparent;
+    z-index: -1;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+}
+
+.pinCard::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg,
+        var(--card-border-moving) 0deg,
+        var(--card-border-moving) 90deg,
+        var(--card-border-trail) 90deg,
+        var(--card-border-trail) 360deg
+    );
+    z-index: -2;
+    animation: rotateBorder 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.pinContainer:hover .pinCard::before {
+    opacity: 1;
+}
+
+.pinContainer:hover .pinCard {
+    border-color: transparent;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes rotateBorder {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+:global([data-theme="dark"]) .pinCard {
+    background-color: transparent;
+    border-color: #403e3b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    /* Border animation variables - dark mode */
+    --card-border-moving: #ffffff;
+    --card-border-trail: rgba(255, 255, 255, 0.08);
+}
+
+:global([data-theme="dark"]) .pinCard::after {
+    background-color: #1a1917;
+}
+
+:global([data-theme="dark"]) .pinContainer:hover .pinCard {
+    border-color: transparent;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 .pinBadge {
@@ -687,4 +788,138 @@
     .footerLink {
         padding: var(--spacing-sm) 0;
     }
+}
+
+/* ── Interactive Wireframe Container ── */
+.wireframeContainer {
+    position: relative;
+    width: 90%;
+    margin: 2rem auto var(--spacing-xl);
+}
+
+@media (min-width: 1024px) {
+    .wireframeContainer {
+        width: 60%;
+    }
+}
+
+/* ── Mobile Pins ── */
+.mobilePin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 700;
+    border: 1.5px solid var(--color-bg-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.mobilePin:active {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+@media (min-width: 1024px) {
+    .mobilePin {
+        display: none;
+    }
+}
+
+/* ── Bottom Sheet ── */
+.bottomSheetBackdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    animation: fadeIn 0.25s ease forwards;
+}
+
+.bottomSheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    border-top: 2px solid var(--color-text-primary);
+    padding: 1.5rem;
+    z-index: 9999;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+:global([data-theme="dark"]) .bottomSheet {
+    background-color: #1a1917;
+    border-top-color: var(--color-text-primary);
+}
+
+.bottomSheetHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.bottomSheetBadge {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg-primary);
+    padding: 0.15rem 0.4rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: -0.1px;
+    align-self: flex-start;
+}
+
+.bottomSheetClose {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.bottomSheetClose:hover {
+    color: var(--color-text-primary);
+}
+
+.bottomSheetTitle {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.bottomSheetDesc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
 }

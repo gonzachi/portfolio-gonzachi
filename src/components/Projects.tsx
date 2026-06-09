@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { landingProjects } from '@/data/content';
 import styles from './Projects.module.css';
 
@@ -45,7 +46,9 @@ function ProjectCard({
   delay: number;
   onHover: (id: string | null) => void;
 }) {
+  const router = useRouter();
   const [hovered, setHovered] = useState(false);
+  const isActive = project.id === 'reduciendo-drop-off-onboarding';
 
   const allTags: string[] = [
     ...(project.badge ? [project.badge] : []),
@@ -66,8 +69,9 @@ function ProjectCard({
   const fusedText = project.description;
 
   const handleClick = () => {
-    // All cases are locked/coming soon
-    return;
+    if (isActive) {
+      router.push(`/project/${project.id}`);
+    }
   };
 
   return (
@@ -107,8 +111,8 @@ function ProjectCard({
               </span>
             ))}
           </div>
-          <span className={`${styles.viewCaseBtn} ${styles.disabledBtn}`}>
-            <span>En construcción</span>
+          <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
+            <span>{isActive ? 'Ver caso →' : 'En construcción'}</span>
           </span>
         </div>
       </div>
@@ -120,6 +124,7 @@ function ProjectCard({
 export default function Projects() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const isHoveredProjectActive = hoveredId === 'reduciendo-drop-off-onboarding';
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (cursorRef.current) {
@@ -147,7 +152,7 @@ export default function Projects() {
           ref={cursorRef}
           className={`${styles.cardCursorLabel} ${hoveredId !== null ? styles.cardCursorLabelVisible : ''}`}
         >
-          <span>en construcción</span>
+          <span>{isHoveredProjectActive ? 'ver caso' : 'en construcción'}</span>
         </div>
       </section>
     </>

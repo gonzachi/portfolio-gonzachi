@@ -10,7 +10,7 @@ interface Slide {
 }
 
 interface ViewportCarouselProps {
-    label: string;
+    label?: string;
     urlLabel: string;
     slides: Slide[];
     height?: number;
@@ -38,7 +38,7 @@ export default function ViewportCarousel({
 
     return (
         <div className={styles.viewportSection}>
-            <div className={styles.viewportLabel}>{label}</div>
+            {label && <div className={styles.viewportLabel}>{label}</div>}
             <div className={styles.viewportBrowser}>
                 {/* Browser bar */}
                 <div className={styles.viewportBar}>

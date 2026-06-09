@@ -15,6 +15,7 @@ interface ProjectNavProps {
     title: string;
     prevProject?: ProjectRef | null;
     nextProject?: ProjectRef | null;
+    showArrows?: boolean;
 }
 
 function NavArrow({
@@ -64,7 +65,7 @@ function NavArrow({
     );
 }
 
-export default function ProjectNav({ title, prevProject, nextProject }: ProjectNavProps) {
+export default function ProjectNav({ title, prevProject, nextProject, showArrows = false }: ProjectNavProps) {
     return (
         <nav className={styles.nav} aria-label="Navegación del proyecto">
             <div className={styles.container}>
@@ -72,20 +73,20 @@ export default function ProjectNav({ title, prevProject, nextProject }: ProjectN
                     ← Volver
                 </Link>
 
-                <span className={styles.projectTitle}>{title}</span>
-
-                <div className={styles.arrows}>
-                    {prevProject ? (
-                        <NavArrow project={prevProject} direction="prev" />
-                    ) : (
-                        <button className={styles.arrowBtn} disabled aria-label="No hay proyecto anterior">←</button>
-                    )}
-                    {nextProject ? (
-                        <NavArrow project={nextProject} direction="next" />
-                    ) : (
-                        <button className={styles.arrowBtn} disabled aria-label="No hay próximo proyecto">→</button>
-                    )}
-                </div>
+                {showArrows && (
+                    <div className={styles.arrows}>
+                        {prevProject ? (
+                            <NavArrow project={prevProject} direction="prev" />
+                        ) : (
+                            <button className={styles.arrowBtn} disabled aria-label="No hay proyecto anterior">←</button>
+                        )}
+                        {nextProject ? (
+                            <NavArrow project={nextProject} direction="next" />
+                        ) : (
+                            <button className={styles.arrowBtn} disabled aria-label="No hay próximo proyecto">→</button>
+                        )}
+                    </div>
+                )}
             </div>
         </nav>
     );
