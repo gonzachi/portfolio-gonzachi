@@ -44,11 +44,21 @@ export default function DeviceShowcase({
     const phoneScreenRef = useRef<HTMLDivElement>(null);
     const laptopScreenRef = useRef<HTMLDivElement>(null);
 
+    const phoneContentRef = useRef(phoneContent);
+    const laptopContentRef = useRef(laptopContent);
+
+    useEffect(() => {
+        phoneContentRef.current = phoneContent;
+        laptopContentRef.current = laptopContent;
+    }, [phoneContent, laptopContent]);
+
     // Easing function
     const ease = (t: number) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
 
     const animate = useCallback(() => {
+        const phoneContent = phoneContentRef.current;
+        const laptopContent = laptopContentRef.current;
         const wrapper = wrapperRef.current;
         const phone = phoneRef.current;
         const laptop = laptopRef.current;

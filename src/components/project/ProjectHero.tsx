@@ -10,7 +10,7 @@ interface ProjectHeroProps {
     subtitle?: string;
 }
 
-export default function ProjectHero({ number, title, roles, tools, subtitle }: ProjectHeroProps) {
+export default function ProjectHero({ number, title, roles, subtitle }: ProjectHeroProps) {
     return (
         <section className={styles.hero} aria-label="Introducción del proyecto">
             <span className={styles.number}>{number}</span>

@@ -10,7 +10,7 @@ export function useCountUp(target: number, isActive: boolean, duration: number =
 
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReducedMotion) {
-            setCount(target);
+            setTimeout(() => setCount(target), 0);
             return;
         }
 

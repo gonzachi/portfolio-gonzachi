@@ -10,7 +10,7 @@
         conic-gradient(from var(--angle), rgba(var(--fg-rgb), 0.1), rgba(var(--fg-rgb), 0.05), rgba(var(--fg-rgb), 0.1)) border-box;
     border: 1px solid transparent;
     border-radius: var(--radius-card);
-    padding: var(--spacing-lg);
+    padding: 16px;
     height: 100%;
     box-sizing: border-box;
     position: relative;
@@ -65,7 +65,7 @@
 }
 
 .company {
-    font-size: 1.25rem;
+    font-size: 32px;
     font-weight: 600;
     color: var(--color-text-primary);
     margin-bottom: 0.25rem;
@@ -107,9 +107,10 @@
 }
 
 .description {
-    font-size: 0.9rem;
+    font-size: 14px;
     line-height: 1.6;
     color: var(--color-text-secondary);
+    margin-top: 12px;
 }
 
 @media (max-width: 768px) {

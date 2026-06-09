@@ -130,7 +130,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.35s ease, color 0.35s ease;
 }
 
@@ -363,6 +363,10 @@ button {
 
 /* --- lg and below (≤ 1023px) — Tablets / small laptops --- */
 @media (max-width: 1023px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
   .grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -551,26 +555,42 @@ body::after {
 
 /* Section label */
 .section-label {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  display: block;
   margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 .section-label span {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(var(--fg-rgb), 0.35);
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 
+/* Sub-section label (Experience, Education) */
+.section-label-sub {
+  display: block;
+  margin-bottom: clamp(1.2rem, 2.5vw, 2.2rem);
+}
+
+.section-label-sub span {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: rgba(var(--fg-rgb), 0.7);
+  white-space: nowrap;
+}
+
+
 .section-label-line {
-  flex: 1;
-  height: 1px;
-  background: rgba(var(--fg-rgb), 0.07);
+  display: none;
+}
+
+/* Hide the section label only in the unified top block (Trabajos) */
+#trabajos .section-label {
+  display: none;
 }
 
 /* Mobile nav links */
@@ -607,3 +627,50 @@ body::after {
     display: none !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   TWO-COLUMN PORTFOLIO LAYOUT
+   ══════════════════════════════════════════════════════════════
+   Mobile-first: single column, standard flow.
+   Desktop (≥ 1024px): fixed sidebar (left) + scrollable content (right).
+   ============================================================== */
+
+/* Wrapper — mobile: single column */
+.portfolio-layout {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Main content — mobile: full width, no fixed header padding needed */
+.main-content {
+  padding-top: 0;
+}
+
+/* ── Desktop Layout ── */
+@media (min-width: 1024px) {
+  .portfolio-layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .main-content {
+    margin-left: calc(280px + 6rem);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    min-width: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .main-content {
+    margin-left: calc(280px + 7rem);
+  }
+}
+
+@media (min-width: 1536px) {
+  .main-content {
+    margin-left: calc(280px + 8rem);
+  }
+}
+

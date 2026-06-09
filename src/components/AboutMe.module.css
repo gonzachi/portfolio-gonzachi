@@ -1,0 +1,30 @@
+.section {
+  padding: clamp(60px, 8vw, 120px) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+.paragraph {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.bold {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}

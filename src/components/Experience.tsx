@@ -6,7 +6,7 @@ export default function Experience() {
   return (
     <section className={styles.section} id="experiencia">
       <div className={styles.container}>
-        <div className="reveal section-label">
+        <div className="reveal section-label-sub">
           <span>Experiencia</span>
           <div className="section-label-line" />
         </div>

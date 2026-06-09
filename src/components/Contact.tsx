@@ -11,10 +11,7 @@ export default function Contact() {
   return (
     <section id="contacto" className={styles.section}>
       <div className={styles.container}>
-        <div className="reveal section-label">
-          <span>Contacto</span>
-          <div className="section-label-line" />
-        </div>
+
         <h2 className={`reveal reveal-delay-1 ${styles.title}`}>Hablemos.</h2>
         <div className={`reveal reveal-delay-2 ${styles.links}`}>
           {links.map(({ href, label, primary }) => (
@@ -28,9 +25,6 @@ export default function Contact() {
             </a>
           ))}
         </div>
-        <p className={`reveal reveal-delay-3 ${styles.copyright}`}>
-          © {new Date().getFullYear()} Gonzalo Chiavassa — Diseñado con intención.
-        </p>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
 import { CookieBanner } from "@/components/CookieBanner";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -26,6 +27,7 @@ const robotoMono = Roboto_Mono({
   display: "swap",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL('https://gonzachi.com'),
   title: "Gonzalo Chiavassa | Product Designer",
   description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
   keywords: ["Product Designer", "UX Designer", "UI Designer", "Portfolio", "Gonzalo Chiavassa"],
@@ -96,7 +98,9 @@ export default function RootLayout({
           `}
         </Script>
 
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
 
         {/* Cookie consent banner — also loads Hotjar when accepted */}
         <CookieBanner />

@@ -1,17 +1,18 @@
 .hero {
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(100px, 12vw, 160px) 0 clamp(60px, 8vw, 100px);
+  padding: 1.5rem 0 0 0;
   position: relative;
   z-index: 1;
 }
 
+
 .container {
   max-width: 860px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 var(--container-padding);
   width: 100%;
 }
 
@@ -56,7 +57,7 @@
 .hello {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-size: clamp(3.8rem, 8vw, 5.8rem);
   color: var(--color-text-primary);
   letter-spacing: -0.03em;
   display: inline;
@@ -67,7 +68,7 @@
   font-family: var(--font-accent);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(3rem, 7.5vw, 6rem);
+  font-size: clamp(3.8rem, 8vw, 5.8rem);
   color: var(--color-text-primary);
   letter-spacing: -0.02em;
   display: inline;
@@ -90,9 +91,27 @@
 }
 
 .bio p {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.78;
-  color: rgba(var(--fg-rgb), 0.55);
+  color: var(--color-text-secondary);
+}
+
+.bio strong {
+  font-weight: 600;
+  color: rgba(var(--fg-rgb), 0.75);
+}
+
+.bio a {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.bio a:hover {
+  opacity: 0.7;
 }
 
 .bold {
@@ -116,54 +135,34 @@
   background: rgba(var(--fg-rgb), 0.20);
 }
 
-.ctas {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+.underlineLink {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
-.ctaPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0;
-  font-weight: 600;
-  font-size: 0.88rem;
-  letter-spacing: -0.01em;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
-  color: var(--color-text-on-accent);
-  transition: opacity 0.2s, transform 0.2s;
-  text-decoration: none;
-}
-
-.ctaPrimary:hover {
-  opacity: 0.82;
-  transform: translateY(-2px);
-}
-
-.ctaOutline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0;
-  font-weight: 600;
-  font-size: 0.88rem;
-  letter-spacing: -0.01em;
-  border: 1px solid rgba(var(--fg-rgb), 0.12);
-  color: rgba(var(--fg-rgb), 0.6);
-  transition: opacity 0.2s, transform 0.2s;
-  text-decoration: none;
-}
-
-.ctaOutline:hover {
-  opacity: 0.82;
-  transform: translateY(-2px);
+.underlineLink:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 640px) {
   .bio {
     max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .bio p {
+    font-size: 18px;
   }
 }

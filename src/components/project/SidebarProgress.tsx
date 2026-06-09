@@ -46,7 +46,9 @@ export default function SidebarProgress({ sections }: SidebarProgressProps) {
 
     // Only render if page has those sections
     const [mounted, setMounted] = useState(false);
-    useEffect(() => setMounted(true), []);
+    useEffect(() => {
+        setTimeout(() => setMounted(true), 0);
+    }, []);
     if (!mounted) return null;
 
     return (

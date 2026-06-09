@@ -7,27 +7,45 @@ const CONSENT_KEY = "cookie_consent";
 
 type ConsentValue = "granted" | "denied";
 
+interface CustomWindow {
+  gtag?: (command: string, action: string, params?: Record<string, unknown>) => void;
+  hj?: {
+    (...args: unknown[]): void;
+    q?: unknown[];
+  };
+  _hjSettings?: { hjid: number; hjsv: number };
+}
+
 function updateGtagConsent(analytics: ConsentValue) {
-  if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-    (window as any).gtag("consent", "update", {
-      analytics_storage: analytics,
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
+  if (typeof window !== "undefined") {
+    const win = window as unknown as CustomWindow;
+    if (typeof win.gtag === "function") {
+      win.gtag("consent", "update", {
+        analytics_storage: analytics,
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    }
   }
 }
 
 function loadHotjar() {
-  if (typeof window !== "undefined" && !(window as any).hj) {
-    (function (h: any, o: any, t: any, j: any, a?: any, r?: any) {
-      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments); };
-      h._hjSettings = { hjid: 6685057, hjsv: 6 };
-      a = o.getElementsByTagName("head")[0];
-      r = o.createElement("script"); r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+  if (typeof window !== "undefined") {
+    const win = window as unknown as CustomWindow;
+    if (!win.hj) {
+      win.hj = function (...args: unknown[]) {
+        if (!win.hj) return;
+        win.hj.q = win.hj.q || [];
+        win.hj.q.push(args);
+      };
+      win._hjSettings = { hjid: 6685057, hjsv: 6 };
+      const head = document.getElementsByTagName("head")[0];
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://static.hotjar.com/c/hotjar-${win._hjSettings.hjid}.js?sv=${win._hjSettings.hjsv}`;
+      head.appendChild(script);
+    }
   }
 }
 
@@ -37,7 +55,8 @@ export function CookieBanner() {
   useEffect(() => {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (!stored) {
-      setVisible(true);
+      // Defer state update to avoid synchronous state setter warnings in useEffect
+      setTimeout(() => setVisible(true), 0);
     } else {
       // Apply saved consent on every load
       const analytics = stored === "granted" ? "granted" : "denied";

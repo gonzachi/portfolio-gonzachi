@@ -1,22 +1,20 @@
 .toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
+  justify-content: flex-start;
+  width: auto;
+  height: 24px;
   border-radius: 0;
-  border: 1px solid rgba(var(--fg-rgb), 0.18);
+  border: none;
   background: transparent;
   color: rgba(var(--fg-rgb), 0.75);
   cursor: pointer;
   padding: 0;
-  transition: color 0.25s, background 0.25s, border-color 0.25s;
+  transition: color 0.25s;
 }
 
 .toggle:hover {
   color: var(--color-text-primary);
-  background: rgba(var(--fg-rgb), 0.06);
-  border-color: rgba(var(--fg-rgb), 0.32);
 }
 
 .toggle:focus-visible {
@@ -29,32 +27,34 @@
   width: 16px;
   height: 16px;
   display: inline-block;
+  overflow: visible;
 }
 
 .icon {
   position: absolute;
   inset: 0;
-  transition: opacity 0.25s, transform 0.35s;
+  transform-origin: 50% 240%;
+  transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.45s ease-out;
 }
 
-/* Default (dark theme): show moon */
+/* Default (dark theme): show moon at the zenith, sun set in the west */
 .sun {
   opacity: 0;
-  transform: rotate(-90deg) scale(0.6);
+  transform: rotate(-160deg);
 }
 
 .moon {
   opacity: 1;
-  transform: rotate(0) scale(1);
+  transform: rotate(0deg);
 }
 
-/* Light theme: show sun */
+/* Light theme: show sun at the zenith, moon set in the east */
 .iconWrap[data-active='true'] .sun {
   opacity: 1;
-  transform: rotate(0) scale(1);
+  transform: rotate(0deg);
 }
 
 .iconWrap[data-active='true'] .moon {
   opacity: 0;
-  transform: rotate(90deg) scale(0.6);
+  transform: rotate(160deg);
 }

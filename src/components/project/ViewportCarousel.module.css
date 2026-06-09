@@ -1,0 +1,160 @@
+.viewportSection {
+    padding: var(--spacing-lg) 0;
+    width: 100%;
+}
+
+.viewportLabel {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+}
+
+.viewportBrowser {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1.5px solid #d1d5db;
+    background: var(--glass-bg);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* Browser top bar */
+.viewportBar {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: 0.6rem 1rem;
+    background: rgba(var(--fg-rgb), 0.04);
+    border-bottom: 1px solid #d1d5db;
+    flex-shrink: 0;
+}
+
+.viewportDots {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.viewportDots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+}
+
+.viewportDots span:nth-child(1) { background: #ff5f57; }
+.viewportDots span:nth-child(2) { background: #ffbd2e; }
+.viewportDots span:nth-child(3) { background: #28c840; }
+
+.viewportUrl {
+    flex: 1;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    background: rgba(var(--fg-rgb), 0.06);
+    border-radius: 6px;
+    padding: 0.25rem 0.75rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.slideCounter {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Carousel wrapper — position relative for arrow overlay */
+.carouselWrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.scrollH {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    height: 100%;
+    scrollbar-width: none; /* Firefox */
+}
+
+.scrollH::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollHItem {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    overflow-y: auto;
+    height: 100%;
+}
+
+/* Navigation group in bar */
+.barNav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.barArrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid rgba(var(--fg-rgb), 0.12);
+    background: rgba(var(--fg-rgb), 0.05);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.15s ease, opacity 0.15s ease;
+    padding: 0;
+}
+
+.barArrow:hover:not(:disabled) {
+    background: rgba(var(--fg-rgb), 0.12);
+}
+
+.barArrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* Dots */
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 0;
+    background: rgba(var(--fg-rgb), 0.02);
+    border-top: 1px solid #d1d5db;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(var(--fg-rgb), 0.2);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: rgba(var(--fg-rgb), 0.4);
+}
+
+.dotActive {
+    background: var(--color-accent, #4f46e5);
+    transform: scale(1.3);
+}

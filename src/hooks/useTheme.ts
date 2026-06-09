@@ -22,12 +22,11 @@ export function useTheme() {
 
   useEffect(() => {
     const stored = getStoredTheme();
-    if (stored) {
-      setThemeState(stored);
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-      setThemeState('light');
-    }
-    setMounted(true);
+    const initialTheme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    setTimeout(() => {
+      setThemeState(initialTheme);
+      setMounted(true);
+    }, 0);
   }, []);
 
   const setTheme = (next: Theme) => {

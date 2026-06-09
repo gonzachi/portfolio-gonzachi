@@ -6,7 +6,7 @@ export default function Education() {
   return (
     <section className={styles.section} id="formacion">
       <div className={styles.container}>
-        <div className="reveal section-label">
+        <div className="reveal section-label-sub">
           <span>Formación</span>
           <div className="section-label-line" />
         </div>
@@ -16,8 +16,8 @@ export default function Education() {
               <Image
                 src={item.logo}
                 alt={item.institution}
-                width={38}
-                height={38}
+                width={46}
+                height={46}
                 className={styles.logo}
               />
               <div className={styles.info}>

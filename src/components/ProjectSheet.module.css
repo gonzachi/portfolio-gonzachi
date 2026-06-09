@@ -1,0 +1,72 @@
+/* ── Backdrop ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 9998;
+  pointer-events: none;
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdropOpen {
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: auto;
+}
+
+/* ── Sheet ── */
+.sheet {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 95vw;
+  z-index: 9999;
+  background: var(--color-bg-primary);
+  border-left: 1px solid rgba(var(--fg-rgb), 0.08);
+  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.12);
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sheetOpen {
+  transform: translateX(0);
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 64px;
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(var(--fg-rgb), 0.06);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(var(--fg-rgb), 0.1);
+  background: transparent;
+  color: rgba(var(--fg-rgb), 0.5);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.closeBtn:hover {
+  color: var(--color-text-primary);
+  border-color: rgba(var(--fg-rgb), 0.3);
+}
+
+/* ── Content ── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}

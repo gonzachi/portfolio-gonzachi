@@ -1,12 +1,22 @@
+/* ══════════════════════════════════════════
+   MOBILE & GENERAL STYLES (Mobile First)
+   ══════════════════════════════════════════ */
+
 .nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  /* Mobile first: top static section */
+  position: relative;
+  width: 100%;
+  height: auto;
   z-index: 100;
-  transition: background 0.35s, border-color 0.35s, backdrop-filter 0.35s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 1.5rem var(--container-padding);
+  gap: 1.5rem;
   background: transparent;
-  border-bottom: 1px solid transparent;
+  border-bottom: none;
+  transition: background 0.35s, border-color 0.35s, backdrop-filter 0.35s;
 }
 
 .scrolled {
@@ -16,42 +26,208 @@
   border-bottom-color: rgba(var(--fg-rgb), 0.06);
 }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  height: 64px;
+/* ── Brand Wrapper & Brand ── */
+.brandWrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.brandContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transform: rotate(-2deg);
+  transform-origin: left bottom;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.avatarWrapper {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+.brandContainer:hover .avatarWrapper {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .logo {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--color-text-primary);
   text-decoration: none;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
-.logoDot {
-  color: var(--color-accent-secondary);
+.role {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(var(--fg-rgb), 0.35);
+  display: block;
 }
 
-.links {
+/* ── 3-Dots Ellipsis Menu (Mobile) ── */
+.menuContainer {
+  position: relative;
+  display: block;
+}
+
+.menuButton {
   display: flex;
-  gap: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 0;
+}
+
+.menuButton:hover {
+  opacity: 0.7;
+}
+
+.menuIcon {
+  display: block;
+  color: var(--color-text-primary);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 160px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-tooltip);
+  padding: 0.5rem 0;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: var(--glass-bg-hover);
+  color: var(--color-text-primary);
+}
+
+.dropdownIcon {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: color 0.2s;
+}
+
+.dropdownItem:hover .dropdownIcon {
+  color: var(--color-text-primary);
+}
+
+/* ── Middle Container & Meta Info ── */
+.middleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.metaInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  border-top: none;
+  padding-top: 0;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--fg-rgb), 0.35);
+}
+
+.metaValue {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* ── Links ── */
+.links {
+  display: none; /* Hidden on mobile */
+  gap: 2rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 16px;
   font-weight: 500;
-  color: rgba(var(--fg-rgb), 0.45);
+  color: rgba(var(--fg-rgb), 0.4);
   letter-spacing: 0.05em;
-  text-transform: uppercase;
   transition: color 0.2s;
   text-decoration: none;
 }
@@ -60,34 +236,157 @@
   color: var(--color-text-primary);
 }
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+.linkActive {
+  color: var(--color-text-primary);
+}
+
+/* ── Footer actions (hidden on mobile, CV + ThemeToggle visible on desktop) ── */
+.footerSection {
+  display: none;
 }
 
 .cvButton {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
   color: var(--color-accent-secondary);
-  border: 1px solid var(--color-accent-secondary);
-  padding: 0.45rem 1.1rem;
+  border: none;
+  padding: 0.45rem 0;
   border-radius: 0;
-  transition: background 0.25s, color 0.25s;
+  transition: color 0.25s, text-decoration-color 0.25s;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.cvIcon {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .cvButton:hover {
-  background: var(--color-accent-secondary);
-  color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
-.cvButtonDisabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-  pointer-events: none;
+.cvButton:hover .cvIcon {
+  transform: translateY(1.5px);
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP: Sidebar mode (≥ 1024px)
+   ══════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .nav {
+    position: fixed;
+    top: 0;
+    left: max(2rem, calc(50vw - 640px + 2rem));
+    width: 280px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 4rem 0.5rem 4rem 0.5rem;
+    border-bottom: none;
+    border-right: none;
+    background: transparent;
+    z-index: 100;
+    gap: 0;
+  }
+
+  .scrolled {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  .brandWrapper {
+    display: block;
+    width: 100%;
+    position: relative;
+  }
+
+  .avatarWrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .brand {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .role {
+    display: block;
+  }
+
+  .menuContainer {
+    display: none;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .link {
+    font-size: 16px;
+    padding: 0.45rem 0;
+  }
+
+  .footerSection {
+    margin-top: auto; /* space pushing footer to bottom */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .cvButton {
+    width: auto;
+    text-align: left;
+    padding: 0.45rem 0;
+  }
+
+  .middleContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    margin-top: 3.5rem;
+  }
+
+  .metaInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    border-top: none;
+    padding-top: 0;
+  }
 }

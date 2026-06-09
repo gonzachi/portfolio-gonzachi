@@ -1,0 +1,141 @@
+.section {
+  padding: 2.5rem 0;
+  position: relative;
+  z-index: 5;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+/* Card base containing the SVGs */
+.card {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease,
+              box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.toolImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Hover active state */
+.cardActive {
+  transform: translateY(-5px);
+  border-color: rgba(var(--fg-rgb), 0.24);
+  background: rgba(var(--fg-rgb), 0.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+:global([data-theme="light"]) .cardActive {
+  background: var(--color-bg-primary);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+}
+
+/* Tooltip floating bubble */
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  left: 50%;
+  background: #e8e8e7; /* Premium light greyish-white matching the screenshot */
+  color: #121212; /* Very dark grey for optimal readability */
+  padding: 0.55rem 0.95rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.tooltipArrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #e8e8e7;
+}
+
+/* Text label container below the icon */
+.labelContainer {
+  height: 20px;
+  margin-top: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: rgba(var(--fg-rgb), 0.5);
+  white-space: nowrap;
+}
+
+/* Adjustments for smaller screen sizes */
+@media (max-width: 600px) {
+  .row {
+    gap: 0.9rem;
+  }
+  
+  .card {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+  }
+  
+  .tooltip {
+    white-space: normal;
+    width: 180px;
+    text-align: center;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.74rem;
+  }
+}

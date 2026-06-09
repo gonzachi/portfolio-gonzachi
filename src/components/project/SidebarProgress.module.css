@@ -6,31 +6,30 @@
     z-index: 50;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: flex-start;
 }
 
 .line {
     display: block;
-    width: 8px;
-    height: 2px;
+    width: 10px;
+    height: 1.5px;
     border-radius: 0;
-    background: rgba(var(--fg-rgb), 0.2);
+    background: rgba(var(--fg-rgb), 0.18);
     border: none;
     padding: 0;
     cursor: pointer;
-    transition: width 0.3s ease, background 0.3s ease;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.35s ease, opacity 0.35s ease;
 }
 
 .line:hover {
-    background: rgba(var(--fg-rgb), 0.5);
-    width: 13px;
+    background: rgba(var(--fg-rgb), 0.45);
+    width: 16px;
 }
 
 .line.active {
-    width: 16px;
-    background: var(--color-accent);
-    box-shadow: 0 0 8px rgba(var(--fg-rgb), 0.25);
+    width: 20px;
+    background: var(--color-text-primary);
 }
 
 @media (max-width: 1200px) {
