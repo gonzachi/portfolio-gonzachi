@@ -613,19 +613,6 @@ export const landingProjects = [
       "/assets/projects/app-holdo/Mask-group-2.png",
     ],
   },
-  {
-    id: "holdo-website-mobile-first",
-    number: "05",
-    title: "Website mobile-first",
-    subtitle: "Rediseñé y desarrollé el sitio web de Holdo en WebFlow, desde la ideación hasta la implementación mobile first.",
-    company: "Holdo · 2022",
-    description: "Uno de los primeros proyectos al llegar a Holdo. De mi lado no contaba con conocimientos de esta plataforma, pero sí de WordPress, así que fue una etapa de adaptación y aprendizaje para poder desarrollar el sitio de principio (ideación en Figma) hasta el final (desarrollar en WebFlow).",
-    expandedDescription: "El sitio web se encontraba desde un principio desarrollado en WebFlow, solamente era una página, la cuál no explicaba bien lo que se ofrecía. Desde allí comenzamos a realizar benchmarking de nuestros competidores y a entrevistar al equipo gerencial para poder priorizar aquella información de relevancia que debíamos contarle a nuestros usuarios.\n\nDecidimos sentar unas bases sólidas para que se pueda continuar y modificar por parte de cualquier miembro del equipo: creamos un Style Guide, basado en nuestro Design System, con reglas claras para continuar con el trabajo. A su vez, dejamos escrito el sitemap y la AI para comprender su estructura.\n\nEl sitio web está en constante cambio y crecimiento, como toda startup, por eso hacemos un monitoreo constante con diferentes herramientas que nos brindan información del comportamiento de los usuarios, con esta información tomamos decisiones para realizar optimizaciones, una de ellas y la más reciente es definir que el sitio será mobile first.",
-    role: "UX/UI Designer · WebFlow",
-    tags: ["WebFlow", "UX/UI Design", "Style Guide", "Mobile First", "Benchmarking", "Information Architecture"],
-    stat: { value: "1→6", label: "páginas del sitio" },
-    video: "/assets/projects/web-holdo-nueva.mp4",
-  },
 ];
 
 export const education = [
