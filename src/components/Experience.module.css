@@ -40,6 +40,16 @@
 .companyWrapper {
   position: relative;
   display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: inherit;
+  line-height: inherit;
+  cursor: pointer;
 }
 
 .companyName {
@@ -124,6 +134,7 @@
 }
 
 .tooltipDesc {
+  display: block;
   font-size: 0.76rem;
   line-height: 1.6;
   color: rgba(var(--fg-rgb), 0.5);

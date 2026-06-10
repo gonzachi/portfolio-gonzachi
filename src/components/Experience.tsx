@@ -43,7 +43,11 @@ export default function Experience() {
             <li key={index} className={`reveal reveal-delay-${index % 4} ${styles.item}`}>
               <span className={styles.role}>
                 {exp.role} en{' '}
-                <span className={styles.companyWrapper} onClick={() => handleCompanyClick(index)}>
+                <button
+                  type="button"
+                  className={styles.companyWrapper}
+                  onClick={() => handleCompanyClick(index)}
+                >
                   <span className={styles.companyName}>{exp.company}</span>
                   <span className={`${styles.tooltip} exp-tooltip`}>
                     <span className={styles.tooltipHeader}>
@@ -61,13 +65,13 @@ export default function Experience() {
                         </span>
                       </span>
                     </span>
-                    <p className={styles.tooltipDesc}>
+                    <span className={styles.tooltipDesc}>
                       {exp.companyInfo.description.split('\n\n').map((para, i) => (
                         <span key={i}>{i > 0 && <br />}{para}</span>
                       ))}
-                    </p>
+                    </span>
                   </span>
-                </span>
+                </button>
               </span>
               <span className={styles.period}>{exp.period}</span>
             </li>
