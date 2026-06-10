@@ -52,9 +52,10 @@
   cursor: default;
   transition: text-decoration-color 0.2s;
 }
-
-.companyWrapper:hover .companyName {
-  text-decoration-color: var(--color-accent-secondary);
+@media (hover: hover) {
+  .companyWrapper:hover .companyName {
+    text-decoration-color: var(--color-accent-secondary);
+  }
 }
 
 /* Tooltip */
@@ -84,11 +85,12 @@
   width: 20px;
   height: 100%;
 }
-
-.companyWrapper:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+@media (hover: hover) {
+  .companyWrapper:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .tooltipHeader {
