@@ -20,6 +20,12 @@
   margin-bottom: 2rem;
 }
 
+@media (max-width: 768px) {
+  .roleBadge {
+    display: none;
+  }
+}
+
 .roleTag {
   display: inline-flex;
   align-items: center;

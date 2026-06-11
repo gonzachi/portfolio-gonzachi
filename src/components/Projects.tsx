@@ -78,14 +78,24 @@ function ProjectCard({
     <div className={`reveal reveal-delay-${delay % 4}`}>
       <div
         className={`${styles.card} ${hovered ? styles.cardHovered : ''}`}
-        onMouseEnter={() => { setHovered(true); onHover(project.id); }}
-        onMouseLeave={() => { setHovered(false); onHover(null); }}
+        onMouseEnter={() => {
+          if (window.matchMedia('(hover: hover)').matches) {
+            setHovered(true);
+            onHover(project.id);
+          }
+        }}
+        onMouseLeave={() => {
+          if (window.matchMedia('(hover: hover)').matches) {
+            setHovered(false);
+            onHover(null);
+          }
+        }}
         onClick={handleClick}
       >
         {/* Header: title + company */}
         <div className={styles.cardHeader}>
           <div className={styles.cardHeaderLeft}>
-            {project.company && <p className={styles.rowCompany}>{project.company}</p>}
+            {project.company && <div className={styles.rowCompany}>{project.company}</div>}
             <h3 className={styles.rowTitle}>{project.title}</h3>
           </div>
         </div>

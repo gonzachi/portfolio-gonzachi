@@ -5,7 +5,7 @@
 }
 
 .credit {
-    font-size: 0.78rem;
+    font-size: 12px;
     color: var(--color-text-muted);
 }
 
@@ -16,8 +16,10 @@
     transition: color var(--transition-fast);
 }
 
-.credit a:hover {
-    color: var(--color-text-secondary);
+@media (hover: hover) {
+    .credit a:hover {
+        color: var(--color-text-secondary);
+    }
 }
 
 .aiHighlight {

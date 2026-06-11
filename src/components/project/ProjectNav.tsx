@@ -30,8 +30,16 @@ function NavArrow({
     return (
         <div
             className={styles.arrowWrapper}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            onMouseEnter={() => {
+                if (window.matchMedia('(hover: hover)').matches) {
+                    setHovered(true);
+                }
+            }}
+            onMouseLeave={() => {
+                if (window.matchMedia('(hover: hover)').matches) {
+                    setHovered(false);
+                }
+            }}
         >
             <Link
                 href={`/project/${project.id}`}

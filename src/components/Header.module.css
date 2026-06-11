@@ -63,8 +63,10 @@
   object-fit: cover;
 }
 
-.brandContainer:hover .avatarWrapper {
-  transform: scale(1.1) rotate(6deg);
+@media (hover: hover) {
+  .brandContainer:hover .avatarWrapper {
+    transform: scale(1.1) rotate(6deg);
+  }
 }
 
 .brand {
@@ -115,8 +117,10 @@
   padding: 0;
 }
 
-.menuButton:hover {
-  opacity: 0.7;
+@media (hover: hover) {
+  .menuButton:hover {
+    opacity: 0.7;
+  }
 }
 
 .menuIcon {
@@ -156,9 +160,11 @@
   transition: background-color 0.2s, color 0.2s;
 }
 
-.dropdownItem:hover {
-  background-color: var(--glass-bg-hover);
-  color: var(--color-text-primary);
+@media (hover: hover) {
+  .dropdownItem:hover {
+    background-color: var(--glass-bg-hover);
+    color: var(--color-text-primary);
+  }
 }
 
 .dropdownIcon {
@@ -167,8 +173,10 @@
   transition: color 0.2s;
 }
 
-.dropdownItem:hover .dropdownIcon {
-  color: var(--color-text-primary);
+@media (hover: hover) {
+  .dropdownItem:hover .dropdownIcon {
+    color: var(--color-text-primary);
+  }
 }
 
 /* ── Middle Container & Meta Info ── */
@@ -232,8 +240,10 @@
   text-decoration: none;
 }
 
-.link:hover {
-  color: var(--color-text-primary);
+@media (hover: hover) {
+  .link:hover {
+    color: var(--color-text-primary);
+  }
 }
 
 .linkActive {
@@ -271,12 +281,14 @@
   flex-shrink: 0;
 }
 
-.cvButton:hover {
-  color: var(--color-text-primary);
-}
+@media (hover: hover) {
+  .cvButton:hover {
+    color: var(--color-text-primary);
+  }
 
-.cvButton:hover .cvIcon {
-  transform: translateY(1.5px);
+  .cvButton:hover .cvIcon {
+    transform: translateY(1.5px);
+  }
 }
 
 /* ══════════════════════════════════════════
