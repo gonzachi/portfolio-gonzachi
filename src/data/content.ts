@@ -187,7 +187,7 @@ export const projects = [
   {
     id: "app-movil-holdo",
     number: "",
-    title: "App móvil MVP",
+    title: "Aplicación mobile fintech-roboadvisor",
     type: "Product Design",
     year: "2023",
     role: "Product Designer",
@@ -201,14 +201,11 @@ export const projects = [
       { value: "MVP", label: "lanzado como friends & family" },
       { value: "3", label: "flujos principales" }
     ],
-    roleDescription: "Diseñé el flujo completo de la app mobile: desde acceso, consulta de cuentas hasta inversión. Participé en múltiples iteraciones con el equipo de producto.",
+    roleDescription: "Fui el Product Designer responsable del diseño completo de la app. Además, participé activamente en la definición del alcance del MVP junto al CEO: analicé datos de comportamiento en Hotjar, Analytics y Posthog para proponer qué priorizar, y realicé un benchmark competitivo del mercado fintech chileno y regional para informar las decisiones de diseño.",
     challenge: "La plataforma responsive no estaba optimizada para mobile. Necesitábamos crear un nuevo canal nativo que entregara una experiencia robusta sin replicar toda la plataforma desktop.",
     team: "Product Designer · Product Manager · 2 Frontend · Backend",
     description: [
-      "Holdo es una fintech chilena regulada por la CMF. Su plataforma de inversión nació como producto desktop, pero el 80% de los usuarios accedía desde el móvil. La experiencia no estaba pensada para ese contexto, y la decisión fue construir una app nativa que superara lo que ofrecían competidores tradicionales como los bancos.",
-      "Como Product Designer, fui responsable del diseño completo de la app, trabajando directamente con el equipo de desarrollo. Participé en la definición del alcance del MVP junto al CEO, analizando datos de comportamiento en Hotjar, Analytics y Postlog para proponer qué funcionalidades priorizar y qué dejar fuera. También realicé un benchmark competitivo del mercado fintech chileno y regional para informar las decisiones de diseño.",
-      "El MVP se enfocó en dos flujos: consulta de portafolio — la acción más frecuente según los datos — y depósito de fondos, una prioridad de negocio para reducir la fricción a la hora de invertir. Funcionalidades como creación de cuenta de usuario, creación de cuenta de inversión o rebalanceos quedaron fuera deliberadamente, disponibles solo en la web.",
-      "La mayoría de los usuarios con cuenta se descargaron la app y comenzaron a usarla activamente."
+      "Holdo es una fintech chilena regulada por la CMF. Su plataforma de inversión nació en desktop, y ahí vivía toda la experiencia: desde la consulta del portafolio hasta la operación de fondos."
     ],
     context: {
       title: "Contexto — El comportamiento",
@@ -219,19 +216,15 @@ export const projects = [
     },
     problem: {
       title: "El problema",
-      statement: "El 80% accede en mobile, pero la experiencia solo brilla en desktop.",
       description: [
-        "Los usuarios querían inmediatez. Revisar su saldo del día, hacer depósitos rápidos o seguir sus metas no podía requerir abrir la computadora ni lidiar con un sitio web responsive lento y con sobrecarga de información.",
-        "Necesitábamos diseñar un canal de comunicación y operación nativo, ligero pero robusto, que entregara una experiencia mobile a la altura del producto financiero."
+        "El 80% de los usuarios accedía desde mobile. La experiencia no estaba diseñada para ese contexto: sitio web responsive lento, sobrecarga de información, flujos pensados para mouse y pantalla grande. Los usuarios que querían revisar su saldo o hacer un depósito tenían que abrir la computadora para hacerlo."
       ]
     },
     findings: [
-      "El análisis de comportamiento en Hotjar, Clarity y PostHog reveló que el 80% de las visitas provenían de dispositivos móviles, pero la experiencia mobile responsive actual presentaba altas tasas de abandono en el onboarding.",
-      "Los usuarios demandaban inmediatez y facilidad para revisar sus saldos y estados de cuenta en el día a día."
+      "Los datos mostraron que las acciones más frecuentes eran simples: revisar el portafolio y hacer depósitos. Los usuarios no necesitaban toda la plataforma en su teléfono — necesitaban inmediatez para las tareas cotidianas. El benchmark confirmó que los competidores tradicionales, principalmente bancos, no ofrecían una experiencia mobile a la altura de un producto financiero moderno."
     ],
     solutionText: [
-      "Diseñamos y lanzamos un MVP nativo mobile enfocado exclusivamente en los dos flujos de mayor volumen y valor de negocio: la consulta en tiempo real del portafolio de inversión y el depósito simplificado de fondos.",
-      "Decidimos postergar las funcionalidades administrativas complejas (como creación de cuentas o rebalanceos) redirigiéndolas a la plataforma web para optimizar los tiempos de desarrollo."
+      "Diseñamos un MVP nativo enfocado exclusivamente en los dos flujos de mayor volumen y valor: la consulta en tiempo real del portafolio y el depósito de fondos. Funcionalidades complejas como la creación de cuentas o los rebalanceos quedaron deliberadamente fuera del scope, redirigidas a la web — una decisión que nos permitió lanzar antes y con mejor calidad en lo que más importaba. Como excepción, el registro de usuario se adaptó a responsive con un viewport desde la app, para no bloquear la conversión de nuevos usuarios."
     ],
     challengesText: [
       "Reducir el alcance del MVP fue una decisión difícil de alinear con todos los stakeholders, pero nos permitió salir al mercado en tiempo récord.",
@@ -246,13 +239,13 @@ export const projects = [
     ],
     showcaseTitle: "App móvil MVP en holdo.cl",
     resultsReveal: {
-      title: "Los números",
+      title: "Resultados",
       stats: [
         { highlight: "Usuarios mobile.", detail: "80% de los accesos totales.", icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" },
         { highlight: "Fase de pruebas.", detail: "Lanzado a Friends & Family.", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" },
         { highlight: "MVP enfocado.", detail: "3 flujos clave de operación.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" }
       ],
-      closingText: "La mayoría de los usuarios activos descargaron la app móvil desde las primeras semanas de su publicación en beta cerrado.",
+      closingText: "La app tuvo una adopción rápida entre la base de usuarios existente: la mayoría de quienes tenían cuenta activa la descargaron y comenzaron a usarla como su canal habitual de consulta y operación. Para un MVP de primer lanzamiento, esa señal de comportamiento fue la validación más directa de que el canal resolvía una necesidad real.",
       footerText: "Métricas validadas a través del stack de analytics implementado: PostHog y Clarity para la navegación y feedback cualitativo en tiendas."
     },
     closing: {
@@ -576,7 +569,7 @@ export const landingProjects = [
   {
     id: "app-movil-holdo",
     number: "02",
-    title: "Aplicación fintech-roboadvisor",
+    title: "Aplicación mobile fintech-roboadvisor",
     subtitle: "MVP de aplicación móvil",
     company: "Holdo · 2023",
     description: "El 80% de los usuarios accedía desde mobile, pero la plataforma era desktop. Diseñé el MVP de la app nativa: benchmark competitivo del mercado fintech chileno, priorización de alcance con el CEO y CTO, y dos flujos clave — consulta de portafolio y depósito de fondos.",

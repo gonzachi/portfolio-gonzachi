@@ -48,7 +48,8 @@ function ProjectCard({
 }) {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
-  const isActive = project.id === 'reduciendo-drop-off-onboarding';
+  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo'];
+  const isActive = activeProjectIds.includes(project.id);
 
   const allTags: string[] = [
     ...(project.badge ? [project.badge] : []),
@@ -134,7 +135,7 @@ function ProjectCard({
 export default function Projects() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const isHoveredProjectActive = hoveredId === 'reduciendo-drop-off-onboarding';
+  const isHoveredProjectActive = hoveredId ? ['reduciendo-drop-off-onboarding', 'app-movil-holdo'].includes(hoveredId) : false;
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (cursorRef.current) {

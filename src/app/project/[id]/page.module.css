@@ -119,6 +119,34 @@
     max-width: 500px;
 }
 
+.fullWidthIllustration {
+    max-width: 100% !important;
+}
+
+.twoByTwoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 600px) {
+    .twoByTwoGrid {
+        gap: 1rem;
+    }
+}
+
+.oneColumnGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5rem;
+    width: 100%;
+    max-width: 420px;
+    margin: 2.5rem auto 0;
+}
+
 /* ── Gallery (image + caption rows) ── */
 .galleryRow {
     display: grid;

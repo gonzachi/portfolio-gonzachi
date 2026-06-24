@@ -101,12 +101,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     // Build sidebar sections dynamically for completed projects
     const sidebarSections: { id: string; label: string }[] = [
         { id: 'sec-intro', label: 'Descripción general' },
-        ...(context || project.startingPoint ? [{ id: 'sec-partida', label: 'Punto de partida' }] : []),
+        ...(context || project.startingPoint ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-partida', label: 'Punto de partida' }] : []) : []),
         ...(problem || project.challenge ? [{ id: 'sec-problema', label: 'El problema' }] : []),
+        ...(project.id === 'app-movil-holdo' ? [{ id: 'sec-rol', label: 'Mi rol' }] : []),
         ...(findings ? [{ id: 'sec-hallazgos', label: 'Hallazgos' }] : []),
         ...(solutionText || project.storySteps ? [{ id: 'sec-solucion', label: 'Solución propuesta' }] : []),
         ...(resultsReveal || project.metrics ? [{ id: 'sec-impacto', label: 'Impacto' }] : []),
-        ...(challengesText || project.closing ? [{ id: 'sec-desafios', label: 'Desafíos' }] : []),
+        ...(challengesText || project.closing ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-desafios', label: 'Desafíos' }] : []) : []),
     ];
 
     // Thumbnail map for nav tooltips
@@ -157,7 +158,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 </section>
 
                 {/* 3. Punto de partida */}
-                {(context || project.startingPoint) && (
+                {(context || project.startingPoint) && project.id !== 'app-movil-holdo' && (
                     <section id="sec-partida" className={styles.section}>
                         <div className={styles.sectionContainer}>
                             <ScrollReveal delay={0.1}>
@@ -189,6 +190,19 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 ))}
                             </ScrollReveal>
 
+                            {/* Render original Holdo desktop screenshot for app-movil-holdo */}
+                            {project.id === 'app-movil-holdo' && (
+                                <ScrollReveal delay={0.2} className={`${styles.illustrationWrapper} ${styles.fullWidthIllustration}`}>
+                                    <Image
+                                        src="/assets/projects/app-holdo/platform-holdo.png"
+                                        alt="Plataforma original desktop de Holdo"
+                                        width={800}
+                                        height={560}
+                                        style={{ width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid rgba(var(--fg-rgb), 0.1)' }}
+                                    />
+                                </ScrollReveal>
+                            )}
+
                             {/* Original Viewport Carousel for reduciendo-drop-off-onboarding */}
                             {project.id === 'reduciendo-drop-off-onboarding' && (
                                 <div className={styles.customWidgets} style={{ marginTop: '2rem' }}>
@@ -211,8 +225,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </section>
                 )}
 
+                {/* Mi rol */}
+                {project.id === 'app-movil-holdo' && (
+                    <section id="sec-rol" className={styles.section}>
+                        <div className={styles.sectionContainer}>
+                            <ScrollReveal delay={0.1}>
+                                <h2 className={styles.sectionLabel}>Mi rol</h2>
+                                <p className={styles.bodyText}>{project.roleDescription}</p>
+                            </ScrollReveal>
+                        </div>
+                    </section>
+                )}
+
                 {/* Banner Image 1 */}
-                {project.heroImage && project.id !== 'reduciendo-drop-off-onboarding' && (
+                {project.heroImage && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && (
                     <div className={styles.bannerImageContainer}>
                         <Image
                             src={project.heroImage}
@@ -236,7 +262,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     <p key={index} className={styles.bodyText}>{paragraph}</p>
                                 ))}
                             </ScrollReveal>
-                            {project.id !== 'reduciendo-drop-off-onboarding' && (
+                            {project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && (
                                 <ScrollReveal delay={0.2} className={styles.illustrationWrapper}>
                                     <WireframeIllustration type="findings" projectId={project.id} />
                                 </ScrollReveal>
@@ -267,6 +293,89 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 <ScrollReveal delay={0.2}>
                                     <InteractiveWireframe />
                                 </ScrollReveal>
+                            ) : project.id === 'app-movil-holdo' ? (
+                                <>
+                                    <ScrollReveal delay={0.2} className={styles.fullWidthIllustration}>
+                                        <div className={styles.twoByTwoGrid}>
+                                            {[
+                                                {
+                                                    imgName: 'app-holdo-0.png',
+                                                    title: 'Home / Dashboard',
+                                                    desc: 'El home muestra el balance consolidado y el estado de cada meta de inversión. El número ocupa el primer plano del header oscuro para que la información más consultada esté disponible sin ninguna acción previa — abrir la app ya es suficiente.'
+                                                },
+                                                {
+                                                    imgName: 'app-holdo-1.png',
+                                                    title: 'Detalle de portafolio',
+                                                    desc: 'La vista de cuenta desglosa cada activo con su variación del día y su peso en el portafolio. Mantuvimos la misma estructura de header para crear consistencia entre pantallas, y agrupamos los movimientos recientes al final para no competir visualmente con los datos de inversión.'
+                                                },
+                                                {
+                                                    imgName: 'app-holdo-2.png',
+                                                    title: 'Balance desglosado',
+                                                    desc: 'El balance total se desglosa en tres estados: invertido, en tránsito y sin asignar. Esta distinción era importante para Holdo porque el dinero en tránsito genera confusión frecuente en productos financieros — hacerlo visible y etiquetarlo explícitamente reduce la necesidad de soporte.'
+                                                },
+                                                {
+                                                    imgName: 'app-holdo-3.png',
+                                                    title: 'Confirmación de depósito',
+                                                    desc: 'El estado de dinero en tránsito tiene su propia pantalla de confirmación, con el monto y la cuenta destino en el centro. La decisión fue tratar este estado como un momento de cierre del flujo de depósito, no como un error ni una advertencia — el tono y el verde refuerzan que todo está en orden.'
+                                                }
+                                            ].map((item, idx) => (
+                                                <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                                    <div style={{ width: '100%' }}>
+                                                        <Image
+                                                            src={`/assets/projects/app-holdo/${item.imgName}`}
+                                                            alt={item.title}
+                                                            width={300}
+                                                            height={600}
+                                                            style={{ width: '100%', height: 'auto', display: 'block' }}
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <strong style={{ display: 'block', fontSize: '1.2rem', marginBottom: '0.6rem', color: 'var(--color-text-primary)', fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
+                                                            {item.title}
+                                                        </strong>
+                                                        <p className={styles.bodyText} style={{ margin: 0 }}>
+                                                            {item.desc}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </ScrollReveal>
+                                    <ScrollReveal delay={0.3} className={styles.fullWidthIllustration}>
+                                        <div style={{ marginTop: '6rem', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem', marginBottom: '2.5rem' }}>
+                                                <span style={{ 
+                                                    fontFamily: 'var(--font-mono)', 
+                                                    fontSize: '0.72rem', 
+                                                    textTransform: 'uppercase', 
+                                                    letterSpacing: '0.15em', 
+                                                    color: 'var(--color-text-muted)',
+                                                }}>
+                                                    Figma Interactive
+                                                </span>
+                                                <h3 style={{ 
+                                                    fontFamily: 'var(--font-heading)', 
+                                                    fontSize: '1.4rem', 
+                                                    fontWeight: 600, 
+                                                    color: 'var(--color-text-primary)',
+                                                    margin: 0,
+                                                    textAlign: 'center'
+                                                }}>
+                                                    Prototipo en Figma
+                                                </h3>
+                                                <div style={{ width: '30px', height: '1.5px', backgroundColor: 'var(--color-text-primary)', marginTop: '0.6rem', opacity: 0.8 }} />
+                                            </div>
+                                            <video
+                                                src="/assets/projects/app-holdo/app_mobile_1.mp4"
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                style={{ width: '100%', maxWidth: '540px', height: 'auto', borderRadius: '40px', border: '12px solid var(--color-text-primary)', boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)' }}
+                                            />
+                                        </div>
+                                    </ScrollReveal>
+                                </>
                             ) : (
                                 <ScrollReveal delay={0.2} className={styles.illustrationWrapper}>
                                     <WireframeIllustration type="solution" projectId={project.id} />
@@ -311,19 +420,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 </div>
                             )}
 
-                             {project.id === 'app-movil-holdo' && (
-                                <div className={styles.customWidgets}>
-                                    <ScrollReveal delay={0.2}>
-                                        <DeviceShowcase
-                                            label="De la búsqueda a la creación"
-                                            title="Juntos todo es mejor."
-                                            description="La plataforma conecta el flujo de inspiración móvil con la generación de conceptos en escritorio. Lo que antes llevaba horas, ahora se resuelve en segundos."
-                                            phoneContent={{ icon: '🔍', label: 'Búsqueda manual de referencias' }}
-                                            laptopContent={{ icon: '✨', label: 'Plataforma IA generativa' }}
-                                        />
-                                    </ScrollReveal>
-                                </div>
-                            )}
+
                         </div>
                     </section>
                 )}
@@ -346,7 +443,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </ScrollReveal>
 
                             {/* Stats Columns */}
-                            {((resultsReveal?.stats && resultsReveal.stats.length > 0) || (project.metrics && project.metrics.length > 0)) && (
+                            {((resultsReveal?.stats && resultsReveal.stats.length > 0) || (project.metrics && project.metrics.length > 0)) && project.id !== 'app-movil-holdo' && (
                                 <ScrollReveal delay={0.2} className={project.id === 'agilidad-inspiracional' ? styles.metricsGridBrutalist : styles.metricsGrid}>
                                     {(resultsReveal?.stats || project.metrics)?.map((stat: { highlight?: string; value?: string; detail?: string; label?: string }, index: number) => {
                                         const value = stat.highlight || stat.value;
@@ -371,7 +468,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 </ScrollReveal>
                             )}
 
-                            {resultsReveal?.footerText && (
+                            {resultsReveal?.footerText && project.id !== 'app-movil-holdo' && (
                                 <ScrollReveal delay={0.3}>
                                     <p className={styles.footnotes}>
                                         {resultsReveal.footerText}
@@ -395,7 +492,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <span className={styles.bannerCaption}>Detalle de la interfaz</span>
                     </div>
                 )}
-                {project.id !== 'agilidad-inspiracional' && project.id !== 'reduciendo-drop-off-onboarding' && project.images && project.images.length > 0 && (
+                {project.id !== 'agilidad-inspiracional' && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && project.images && project.images.length > 0 && (
                     <div className={styles.bannerImageContainer}>
                         <Image
                             src={project.images[0].src}
@@ -409,7 +506,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 {/* Image + Caption Gallery (two-column) */}
-                {project.images && project.id !== 'reduciendo-drop-off-onboarding' && project.images.length > 1 && (
+                {project.images && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && project.images.length > 1 && (
                     <section className={styles.section}>
                         <div className={styles.sectionContainer}>
                             {project.images.slice(1).map((img: { src: string; alt: string; caption?: string }, index: number) => (
@@ -435,7 +532,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 {/* 8. Desafíos y aprendizajes */}
-                {(challengesText || project.closing) && (
+                {(challengesText || project.closing) && project.id !== 'app-movil-holdo' && (
                     <section id="sec-desafios" className={styles.section}>
                         <div className={styles.sectionContainer}>
                             <ScrollReveal delay={0.1}>
