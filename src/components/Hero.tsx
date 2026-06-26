@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { personalInfo } from '@/data/content';
 import styles from './Hero.module.css';
 
 const roles = personalInfo.roles;
 
+const ROLE_INTERVAL = 3000;
+const FADE_MS = 350;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,14 +36,23 @@ const itemVariants = {
 };
 
 export default function Hero() {
-  const [roleIdx, setRoleIdx] = useState(0);
+  const [displayedRole, setDisplayedRole] = useState(roles[0]);
+  const [fading, setFading] = useState(false);
+  const roleIdxRef = useRef(0);
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const [blink, setBlink] = useState(true);
 
+  const cycleRole = useCallback(() => {
+    setFading(true);
+    setTimeout(() => {
+      roleIdxRef.current = (roleIdxRef.current + 1) % roles.length;
+      setDisplayedRole(roles[roleIdxRef.current]);
+      setFading(false);
+    }, FADE_MS);
+  }, []);
+
   useEffect(() => {
-    const role = setInterval(() => {
-      setRoleIdx(i => (i + 1) % roles.length);
-    }, 3000);
+    const role = setInterval(cycleRole, ROLE_INTERVAL);
     const cur = setInterval(() => setBlink(b => !b), 530);
     const move = (e: MouseEvent) =>
       setMouse({
@@ -54,7 +65,7 @@ export default function Hero() {
       clearInterval(cur);
       window.removeEventListener('mousemove', move);
     };
-  }, []);
+  }, [cycleRole]);
 
   return (
     <section className={styles.hero}>
@@ -65,24 +76,12 @@ export default function Hero() {
         className={styles.container}
       >
         <motion.div variants={itemVariants} className={styles.roleBadge}>
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={roles[roleIdx]}
-              className={styles.roleTag}
-              initial={{ scale: 0.85, y: 12, rotate: -4, opacity: 0 }}
-              animate={{ scale: 1, y: 0, rotate: 0, opacity: 1 }}
-              exit={{ scale: 0.9, y: -10, rotate: 4, opacity: 0 }}
-              transition={{
-                type: "spring",
-                stiffness: 380,
-                damping: 15,
-                mass: 0.7
-              }}
-            >
-              <span className={styles.roleDot} />
-              <span>{roles[roleIdx]}</span>
-            </motion.span>
-          </AnimatePresence>
+          <span
+            className={`${styles.roleTag} ${fading ? styles.roleTagFading : ''}`}
+          >
+            <span className={styles.roleDot} />
+            <span>{displayedRole}</span>
+          </span>
         </motion.div>
 
         <motion.h1 variants={itemVariants} className={styles.heading}>
@@ -112,3 +111,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -31,24 +31,36 @@ interface PersonalProjectCard {
   description: string;
   comingSoon: boolean;
   link?: string;
+  image?: string;
 }
 
 const cards: PersonalProjectCard[] = [
   {
     id: 'reservadisimo',
     title: 'Reservadísimo',
-    type: 'App Mobile · Figma',
-    description: 'App de reservas con QR y firma digital para bares durante la pandemia. Alcanzó el MVP con alta intención de adopción.',
+    type: 'Desarrollo de producto · Figma',
+    description: 'App de reservas con QR y firma digital para bares durante la pandemia. Alcanzó el MVP con alta intención de adopción. Desarrollado en pandemia.',
     comingSoon: false,
     link: 'https://www.behance.net/gallery/107614515/Reservadisimo-App-de-turnos',
+    image: '/assets/home/portada-1.jpg',
+  },
+  {
+    id: 'portfolio',
+    emoji: '✦',
+    title: 'Este portfolio',
+    type: 'Web · Next.js · IA',
+    description: 'Este portfolio está construido íntegramente con Inteligencia Artificial, con diferentes herramientas para testear (Claude Code, Antigravity, Cursor). Desplegado en Vercel. El diseño lo fui construyendo mientras lo desarrollaba.',
+    comingSoon: false,
+    image: '/assets/home/portada-4.jpg',
   },
   {
     id: 'finanzas-conjuntas',
     emoji: '💸',
     title: 'Finanzas Conjuntas',
     type: 'PWA · Next.js · IA',
-    description: 'App para gestionar gastos compartidos en pareja o grupo. Registro de gastos, balance automático y liquidación con un toque.',
+    description: 'Creé una webapp 100% utilizando Google Stitch para el diseño + Claude Code para desarrollar + Supabase como base de datos + Vercel para desplegar. La app viene a reemplazar mi excel de gestión de gastos compartidos en pareja.',
     comingSoon: true,
+    image: '/assets/home/portada-3.jpg',
   },
   {
     id: 'english-pwa',
@@ -57,14 +69,7 @@ const cards: PersonalProjectCard[] = [
     type: 'PWA · Next.js · IA',
     description: 'PWA para practicar inglés con ejercicios generados por IA adaptados al nivel del usuario. Vocabulario, frases y corrección en tiempo real.',
     comingSoon: true,
-  },
-  {
-    id: 'portfolio',
-    emoji: '✦',
-    title: 'Este portfolio',
-    type: 'Web · Next.js · IA',
-    description: 'Portfolio diseñado y construido íntegramente con Inteligencia Artificial en Antigravity. Desde el diseño hasta el deploy en Vercel.',
-    comingSoon: false,
+    image: '/assets/home/portada-3.jpg',
   },
 ];
 
@@ -84,7 +89,13 @@ export default function PersonalProjects() {
           const CardContent = (
             <>
               <div className={styles.cardVisual}>
-                {hasLink ? (
+                {card.image ? (
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className={styles.cardImage}
+                  />
+                ) : hasLink ? (
                   <ExternalLinkIcon />
                 ) : (
                   <span className={styles.cardEmoji}>{card.emoji}</span>
@@ -93,12 +104,44 @@ export default function PersonalProjects() {
               <div className={styles.cardBody}>
                 <div className={styles.cardHeader}>
                   <span className={styles.cardType}>{card.type}</span>
-                  {card.comingSoon && (
-                    <span className={styles.comingSoonBadge}>Desarrollo próximamente</span>
-                  )}
                 </div>
                 <h3 className={styles.cardTitle}>{card.title}</h3>
                 <p className={styles.cardDescription}>{card.description}</p>
+                <div className={styles.cardCtaContainer}>
+                  <span className={`${styles.ctaButton} ${
+                    card.comingSoon 
+                      ? styles.ctaButtonComingSoon 
+                      : (card.id === 'portfolio' ? styles.ctaButtonCurrent : styles.ctaButtonActive)
+                  }`}>
+                    {card.comingSoon ? (
+                      'En construcción'
+                    ) : card.id === 'reservadisimo' ? (
+                      <span className={styles.ctaButtonWithIcon}>
+                        <span>Ver en Behance</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className={styles.ctaIcon}
+                        >
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </span>
+                    ) : card.id === 'portfolio' ? (
+                      'Proyecto actual'
+                    ) : (
+                      'Ver proyecto'
+                    )}
+                  </span>
+                </div>
               </div>
             </>
           );
