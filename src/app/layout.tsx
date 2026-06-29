@@ -29,12 +29,12 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://gonzachi.com'),
   title: "Gonzalo Chiavassa | Product Designer",
-  description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
+  description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. Actualmente trabajo en Mango, construyendo productos corporativos orientados a mejorar la productividad de los equipos internos.",
   keywords: ["Product Designer", "UX Designer", "UI Designer", "Portfolio", "Gonzalo Chiavassa"],
   authors: [{ name: "Gonzalo Chiavassa" }],
   openGraph: {
     title: "Gonzalo Chiavassa | Product Designer",
-    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
+    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. Actualmente trabajo en Mango, construyendo productos corporativos orientados a mejorar la productividad de los equipos internos.",
     type: "website",
     images: [
       {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Gonzalo Chiavassa | Product Designer",
-    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership. Me gusta resolver problemas end-to-end, y en estos tiempos que corren, la IA me está abriendo muchas puertas.",
+    description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. Actualmente trabajo en Mango, construyendo productos corporativos orientados a mejorar la productividad de los equipos internos.",
     images: ["/opengraph-image.jpg"],
   },
 };
