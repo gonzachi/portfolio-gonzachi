@@ -3,9 +3,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import styles from './IntroModal.module.css';
 
+let hasShownIntro = false;
+
 export default function IntroModal() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isRendered, setIsRendered] = useState(false);
+  const [isRendered, setIsRendered] = useState(!hasShownIntro);
   const [isDismissed, setIsDismissed] = useState(false);
   const [blink, setBlink] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
@@ -20,6 +22,7 @@ export default function IntroModal() {
     if (closedRef.current) return;
     closedRef.current = true;
 
+    hasShownIntro = true;
     setIsDismissed(true);
 
     setTimeout(() => {
@@ -55,6 +58,7 @@ export default function IntroModal() {
 
   // Manage body scroll locking reactively
   useEffect(() => {
+    if (hasShownIntro) return;
     if (isRendered && !isDismissed) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -66,6 +70,7 @@ export default function IntroModal() {
   }, [isRendered, isDismissed]);
 
   useEffect(() => {
+    if (hasShownIntro) return;
     setIsRendered(true);
 
     const entranceTimer = setTimeout(() => setIsOpen(true), 100);
