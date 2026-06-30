@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     if (project.isComingSoon) {
         const thumbnails: Record<string, string> = {
             'agilidad-inspiracional': '/assets/projects/moda.jpg',
-            'app-movil-holdo': '/assets/projects/app-holdo-1.png',
+            'app-movil-holdo': '/assets/home/portada-caso-app-holdo.jpg',
             'reduciendo-drop-off-onboarding': '/assets/projects/ladrillo-1.jpg',
             'holdo-website-mobile-first': '/assets/projects/holdo-web-1.jpg',
             'reservadisimo': '/images/project4-4.png',
@@ -113,7 +113,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     // Thumbnail map for nav tooltips
     const thumbnails: Record<string, string> = {
         'agilidad-inspiracional': '/assets/projects/moda.jpg',
-        'app-movil-holdo': '/assets/projects/app-holdo-1.png',
+        'app-movil-holdo': '/assets/home/portada-caso-app-holdo.jpg',
         'reduciendo-drop-off-onboarding': '/assets/projects/ladrillo-1.jpg',
         'holdo-website-mobile-first': '/assets/projects/holdo-web-1.jpg',
         'reservadisimo': '/images/project4-4.png',

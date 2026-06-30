@@ -253,7 +253,7 @@ export const projects = [
       message: "Rediseñar un canal completo exige saber qué dejar fuera.\nEl minimalismo funcional aceleró el lanzamiento de la app móvil.",
       timeline: "Marzo 2023 → Septiembre 2023"
     },
-    heroImage: "/assets/projects/app-holdo-1.png"
+    heroImage: "/assets/home/portada-caso-app-holdo.jpg"
   },
   {
     id: "reduciendo-drop-off-onboarding",
@@ -559,7 +559,6 @@ export const landingProjects = [
     role: "UX/UI · Product Designer",
     tags: ["Fintech", "UX Research", "Data-Informed Design", "Onboarding Optimization", "Conversion", "Information Architecture"],
     stat: { value: "↓ info", label: "↑ conversión" },
-    thumbnail: "/assets/projects/ladrillo-1.jpg",
     expandedImages: [
       "/assets/projects/ladrillo/Mask-group-1-1.jpg",
       "/assets/projects/ladrillo/Mask-group-2-1.jpg",
@@ -577,7 +576,7 @@ export const landingProjects = [
     role: "Product Designer",
     tags: ["Fintech", "Mobile App", "MVP Definition", "Data-Informed Design", "Competitive Analysis", "Product Design"],
     stat: { value: "80%", label: "usuarios en mobile" },
-    thumbnail: "/assets/projects/app-holdo-1.png",
+    thumbnail: "/assets/home/portada-caso-app-holdo.jpg",
     expandedImages: [
       "/assets/projects/app-holdo/Mask-group.png",
       "/assets/projects/app-holdo/Mask-group-1.png",
@@ -595,7 +594,6 @@ export const landingProjects = [
     description: "Un producto que nace gracias a la aparición de la Inteligencia Artificial. Construimos algo totalmente innovador, descubriendo cómo podemos introducirnos en el proceso de diseñadores de moda para optimizar la productividad.",
     role: "Product Designer",
     tags: ["AI", "GenAI", "Product Design", "Internal Tools", "Fashion Tech"],
-    image: "/assets/projects/moda.jpg",
   },
   {
     id: "orquestadora-de-equipos",

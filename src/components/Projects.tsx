@@ -68,6 +68,7 @@ function ProjectCard({
   }
 
   const fusedText = project.description;
+  const cardCoverImage = project.thumbnail || project.image;
 
   const handleClick = () => {
     if (isActive) {
@@ -93,6 +94,17 @@ function ProjectCard({
         }}
         onClick={handleClick}
       >
+        {/* Optional Thumbnail Image */}
+        {cardCoverImage && (
+          <div className={styles.cardVisual}>
+            <img
+              src={cardCoverImage}
+              alt={project.title}
+              className={styles.cardImage}
+            />
+          </div>
+        )}
+
         {/* Header: title + company */}
         <div className={styles.cardHeader}>
           <div className={styles.cardHeaderLeft}>
