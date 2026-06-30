@@ -1,3 +1,6 @@
+'use client';
+
+import React, { useState } from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
@@ -11,10 +14,12 @@ import CursorBlob from "@/components/CursorBlob";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollRevealInit from "@/components/ScrollRevealInit";
 import Footer from "@/components/Footer";
+import IntroModal from "@/components/IntroModal";
 
 export default function Home() {
   return (
     <div className="portfolio-layout">
+      <IntroModal />
       <CursorBlob />
       <ScrollProgress />
       <ScrollRevealInit />

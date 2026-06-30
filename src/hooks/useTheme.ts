@@ -23,10 +23,25 @@ export function useTheme() {
   useEffect(() => {
     const stored = getStoredTheme();
     const initialTheme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-    setTimeout(() => {
-      setThemeState(initialTheme);
-      setMounted(true);
-    }, 0);
+    
+    setThemeState(initialTheme);
+    setMounted(true);
+
+    // Sync theme state with DOM data-theme attribute changes (e.g. from other hook instances)
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          const newTheme = document.documentElement.getAttribute('data-theme') as Theme;
+          if (newTheme === 'light' || newTheme === 'dark') {
+            setThemeState(newTheme);
+          }
+        }
+      });
+    });
+
+    observer.observe(document.documentElement, { attributes: true });
+
+    return () => observer.disconnect();
   }, []);
 
   const setTheme = (next: Theme) => {

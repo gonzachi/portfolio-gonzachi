@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTheme } from '@/hooks/useTheme';
 import styles from './ProjectNav.module.css';
 
 interface ProjectRef {
@@ -25,7 +26,13 @@ function NavArrow({
     project: ProjectRef;
     direction: 'prev' | 'next';
 }) {
+    const { theme } = useTheme();
     const [hovered, setHovered] = useState(false);
+
+    let currentThumbnail = project.thumbnail;
+    if (currentThumbnail && project.id === 'app-movil-holdo' && theme === 'dark') {
+        currentThumbnail = '/assets/home/portada-caso-app-holdo-dark.jpg';
+    }
 
     return (
         <div
@@ -51,10 +58,10 @@ function NavArrow({
 
             {/* Tooltip */}
             <div className={`${styles.tooltip} ${hovered ? styles.tooltipVisible : ''} ${direction === 'prev' ? styles.tooltipLeft : styles.tooltipRight}`}>
-                {project.thumbnail && (
+                {currentThumbnail && (
                     <div className={styles.tooltipImage}>
                         <Image
-                            src={project.thumbnail}
+                            src={currentThumbnail}
                             alt={project.title}
                             fill
                             style={{ objectFit: 'cover' }}

@@ -3,6 +3,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { landingProjects } from '@/data/content';
+import { useTheme } from '@/hooks/useTheme';
 import styles from './Projects.module.css';
 
 interface LandingProject {
@@ -67,8 +68,12 @@ function ProjectCard({
     );
   }
 
+  const { theme } = useTheme();
   const fusedText = project.description;
-  const cardCoverImage = project.thumbnail || project.image;
+  let cardCoverImage = project.thumbnail || project.image;
+  if (cardCoverImage && project.id === 'app-movil-holdo' && theme === 'dark') {
+    cardCoverImage = '/assets/home/portada-caso-app-holdo-dark.jpg';
+  }
 
   const handleClick = () => {
     if (isActive) {
