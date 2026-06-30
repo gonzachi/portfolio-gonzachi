@@ -187,7 +187,7 @@ export const projects = [
   {
     id: "app-movil-holdo",
     number: "",
-    title: "Aplicación mobile fintech-roboadvisor",
+    title: "Diseño de aplicación móvil para fintech",
     type: "Product Design",
     year: "2023",
     role: "Product Designer",
@@ -217,7 +217,7 @@ export const projects = [
     problem: {
       title: "El problema",
       description: [
-        "El 80% de los usuarios accedía desde mobile. La experiencia no estaba diseñada para ese contexto: sitio web responsive lento, sobrecarga de información, flujos pensados para mouse y pantalla grande. Los usuarios que querían revisar su saldo o hacer un depósito tenían que abrir la computadora para hacerlo."
+        "La experiencia no estaba diseñada para ese contexto: sitio web responsive lento, sobrecarga de información, flujos pensados para mouse y pantalla grande. Los usuarios que querían revisar su saldo o hacer un depósito tenían que abrir la computadora para hacerlo."
       ]
     },
     findings: [
@@ -568,7 +568,7 @@ export const landingProjects = [
   {
     id: "app-movil-holdo",
     number: "02",
-    title: "Aplicación mobile fintech-roboadvisor",
+    title: "Diseño de aplicación móvil para fintech",
     subtitle: "MVP de aplicación móvil",
     company: "Holdo · 2023",
     description: "El 80% de los usuarios accedía desde mobile, pero la plataforma era desktop. Diseñé el MVP de la app nativa: benchmark competitivo del mercado fintech chileno, priorización de alcance con el CEO y CTO, y dos flujos clave — consulta de portafolio y depósito de fondos.",

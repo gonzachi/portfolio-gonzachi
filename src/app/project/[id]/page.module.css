@@ -951,3 +951,105 @@
     from { transform: translateY(100%); }
     to { transform: translateY(0); }
 }
+
+/* ── Problem Section Two Columns ── */
+.problemTwoColumns {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: var(--spacing-lg);
+    width: 100%;
+}
+
+.problemLeftColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1.5px solid var(--color-text-primary);
+    background-color: rgba(var(--fg-rgb), 0.02);
+}
+
+.lupaIconContainer {
+    color: var(--color-text-primary);
+}
+
+.lupaIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+}
+
+.lupaText {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.problemRightColumn {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    .problemTwoColumns {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .problemLeftColumn {
+        padding: var(--spacing-lg);
+    }
+
+    .findingsGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* ── Findings Section Cards ── */
+.findingsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: var(--spacing-lg);
+    width: 100%;
+}
+
+.findingCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    border: 1.5px solid var(--color-text-primary);
+    background-color: rgba(var(--fg-rgb), 0.02);
+}
+
+.findingIconContainer {
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.findingIcon {
+    width: 2rem;
+    height: 2rem;
+    display: block;
+}
+
+.findingText {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--color-text-primary);
+    margin: 0;
+}

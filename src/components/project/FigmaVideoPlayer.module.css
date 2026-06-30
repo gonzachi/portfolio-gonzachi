@@ -1,0 +1,25 @@
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoWrapper {
+    width: 100%;
+    height: auto;
+    border-radius: 40px;
+    border: 12px solid var(--color-text-primary);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background-color: #000000;
+    transition: border-color 0.3s ease;
+}
+
+.video {
+    width: 100%;
+    height: auto;
+    display: block;
+}

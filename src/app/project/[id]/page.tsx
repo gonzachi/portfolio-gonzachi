@@ -12,6 +12,8 @@ import WireframeIllustration from '@/components/project/WireframeIllustration';
 import ViewportCarousel from '@/components/project/ViewportCarousel';
 import DeviceShowcase from '@/components/project/DeviceShowcase';
 import InteractiveWireframe from '@/components/project/InteractiveWireframe';
+import FigmaVideoPlayer from '@/components/project/FigmaVideoPlayer';
+import CardsCarousel from '@/components/project/CardsCarousel';
 import styles from './page.module.css';
 
 interface ProjectPageProps {
@@ -100,7 +102,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
     // Build sidebar sections dynamically for completed projects
     const sidebarSections: { id: string; label: string }[] = [
-        { id: 'sec-intro', label: 'Descripción general' },
+        { id: 'sec-intro', label: 'Contexto' },
         ...(context || project.startingPoint ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-partida', label: 'Punto de partida' }] : []) : []),
         ...(problem || project.challenge ? [{ id: 'sec-problema', label: 'El problema' }] : []),
         ...(project.id === 'app-movil-holdo' ? [{ id: 'sec-rol', label: 'Mi rol' }] : []),
@@ -145,11 +147,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </ScrollReveal>
                 </header>
 
-                {/* 2. Descripción general */}
+                {/* 2. Contexto */}
                 <section id="sec-intro" className={styles.section}>
                     <div className={styles.sectionContainer}>
                         <ScrollReveal delay={0.1}>
-                            <h2 className={styles.sectionLabel}>Descripción general</h2>
+                            <h2 className={styles.sectionLabel}>Contexto</h2>
                             {project.description.map((paragraph, index) => (
                                 <p key={index} className={styles.bodyText}>{paragraph}</p>
                             ))}
@@ -185,9 +187,28 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                         {problem.statement}
                                     </blockquote>
                                 )}
-                                {(problem?.description || (project.challenge ? [project.challenge] : [])).map((paragraph: string, index: number) => (
-                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
-                                ))}
+                                {project.id === 'app-movil-holdo' ? (
+                                    <div className={styles.problemTwoColumns}>
+                                        <div className={styles.problemLeftColumn}>
+                                            <div className={styles.lupaIconContainer}>
+                                                <svg className={styles.lupaIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                                                    <circle cx="11" cy="11" r="8" />
+                                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                                </svg>
+                                            </div>
+                                            <p className={styles.lupaText}>Descubrimos que el 80% de los usuarios accedían diariamente desde mobile.</p>
+                                        </div>
+                                        <div className={styles.problemRightColumn}>
+                                            {(problem?.description || (project.challenge ? [project.challenge] : [])).map((paragraph: string, index: number) => (
+                                                <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    (problem?.description || (project.challenge ? [project.challenge] : [])).map((paragraph: string, index: number) => (
+                                        <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    ))
+                                )}
                             </ScrollReveal>
 
                             {/* Render original Holdo desktop screenshot for app-movil-holdo */}
@@ -198,7 +219,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                         alt="Plataforma original desktop de Holdo"
                                         width={800}
                                         height={560}
-                                        style={{ width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid rgba(var(--fg-rgb), 0.1)' }}
+                                        style={{ width: '100%', height: 'auto', border: '1px solid rgba(var(--fg-rgb), 0.1)' }}
                                     />
                                 </ScrollReveal>
                             )}
@@ -258,6 +279,41 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className={styles.sectionContainer}>
                             <ScrollReveal delay={0.1}>
                                 <h2 className={styles.sectionLabel}>Hallazgos</h2>
+                                {project.id === 'app-movil-holdo' && (
+                                    <div className={styles.findingsGrid}>
+                                        {/* Card 1 */}
+                                        <div className={styles.findingCard}>
+                                            <div className={styles.findingIconContainer}>
+                                                <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <line x1="18" y1="20" x2="18" y2="10" />
+                                                    <line x1="12" y1="20" x2="12" y2="4" />
+                                                    <line x1="6" y1="20" x2="6" y2="14" />
+                                                </svg>
+                                            </div>
+                                            <p className={styles.findingText}>Las acciones más frecuentes eran simples: revisar el portafolio y hacer depósitos.</p>
+                                        </div>
+                                        {/* Card 2 */}
+                                        <div className={styles.findingCard}>
+                                            <div className={styles.findingIconContainer}>
+                                                <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                                                    <line x1="12" y1="18" x2="12.01" y2="18" />
+                                                </svg>
+                                            </div>
+                                            <p className={styles.findingText}>Los usuarios no necesitaban toda la plataforma en su teléfono, sino inmediatez.</p>
+                                        </div>
+                                        {/* Card 3 */}
+                                        <div className={styles.findingCard}>
+                                            <div className={styles.findingIconContainer}>
+                                                <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                    <circle cx="12" cy="8" r="7" />
+                                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                                                </svg>
+                                            </div>
+                                            <p className={styles.findingText}>El benchmark confirmó que la banca tradicional no ofrecía una experiencia a la altura.</p>
+                                        </div>
+                                    </div>
+                                )}
                                 {findings.map((paragraph, index) => (
                                     <p key={index} className={styles.bodyText}>{paragraph}</p>
                                 ))}
@@ -288,6 +344,63 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                         </p>
                                     )
                                 )}
+                                {project.id === 'app-movil-holdo' && (
+                                    <>
+                                        <div className={styles.illustrationWrapper} style={{ maxWidth: '100%', margin: '2.5rem auto 0' }}>
+                                            <Image
+                                                src="/assets/projects/app-holdo/flujo-app.png"
+                                                alt="Flujo de la aplicación Holdo"
+                                                width={1200}
+                                                height={800}
+                                                style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid rgba(var(--fg-rgb), 0.1)' }}
+                                                priority
+                                            />
+                                        </div>
+                                        <p className={styles.bodyText} style={{ marginTop: '2.5rem' }}>
+                                            Para lograr un MVP sólido en tiempo récord, definimos los pilares de la solución centrándonos en la inmediatez y la viabilidad técnica:
+                                        </p>
+                                        <div className={styles.findingsGrid} style={{ marginTop: '1.5rem', marginBottom: '0' }}>
+                                            {/* Card 1 */}
+                                            <div className={styles.findingCard}>
+                                                <div className={styles.findingIconContainer}>
+                                                    <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                                        <circle cx="12" cy="12" r="3" />
+                                                    </svg>
+                                                </div>
+                                                <p className={styles.findingText}>Consulta y depósitos: Priorizamos los flujos cotidianos de mayor volumen y valor.</p>
+                                            </div>
+                                            {/* Card 2 */}
+                                            <div className={styles.findingCard}>
+                                                <div className={styles.findingIconContainer}>
+                                                    <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <circle cx="6" cy="6" r="3" />
+                                                        <circle cx="6" cy="18" r="3" />
+                                                        <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                                                        <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                                                        <line x1="8.12" y1="8.12" x2="12" y2="12" />
+                                                    </svg>
+                                                </div>
+                                                <p className={styles.findingText}>Scope acotado: Excluimos funcionalidades complejas para acelerar el desarrollo.</p>
+                                            </div>
+                                            {/* Card 3 */}
+                                            <div className={styles.findingCard}>
+                                                <div className={styles.findingIconContainer}>
+                                                    <svg className={styles.findingIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                                        <circle cx="8.5" cy="7" r="4" />
+                                                        <line x1="20" y1="8" x2="20" y2="14" />
+                                                        <line x1="23" y1="11" x2="17" y2="11" />
+                                                    </svg>
+                                                </div>
+                                                <p className={styles.findingText}>Registro adaptado: Integración responsive para no bloquear la conversión.</p>
+                                            </div>
+                                        </div>
+                                        <p className={styles.bodyText} style={{ marginTop: '2.5rem', marginBottom: '0' }}>
+                                            A continuación se presentan en detalle las pantallas finales de la interfaz, donde se aprecian las decisiones de diseño aplicadas para garantizar la claridad y sencillez del producto:
+                                        </p>
+                                    </>
+                                )}
                             </ScrollReveal>
                             {project.id === 'reduciendo-drop-off-onboarding' ? (
                                 <ScrollReveal delay={0.2}>
@@ -296,50 +409,50 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             ) : project.id === 'app-movil-holdo' ? (
                                 <>
                                     <ScrollReveal delay={0.2} className={styles.fullWidthIllustration}>
-                                        <div className={styles.twoByTwoGrid}>
-                                            {[
-                                                {
-                                                    imgName: 'app-holdo-0.png',
-                                                    title: 'Home / Dashboard',
-                                                    desc: 'El home muestra el balance consolidado y el estado de cada meta de inversión. El número ocupa el primer plano del header oscuro para que la información más consultada esté disponible sin ninguna acción previa — abrir la app ya es suficiente.'
-                                                },
-                                                {
-                                                    imgName: 'app-holdo-1.png',
-                                                    title: 'Detalle de portafolio',
-                                                    desc: 'La vista de cuenta desglosa cada activo con su variación del día y su peso en el portafolio. Mantuvimos la misma estructura de header para crear consistencia entre pantallas, y agrupamos los movimientos recientes al final para no competir visualmente con los datos de inversión.'
-                                                },
-                                                {
-                                                    imgName: 'app-holdo-2.png',
-                                                    title: 'Balance desglosado',
-                                                    desc: 'El balance total se desglosa en tres estados: invertido, en tránsito y sin asignar. Esta distinción era importante para Holdo porque el dinero en tránsito genera confusión frecuente en productos financieros — hacerlo visible y etiquetarlo explícitamente reduce la necesidad de soporte.'
-                                                },
-                                                {
-                                                    imgName: 'app-holdo-3.png',
-                                                    title: 'Confirmación de depósito',
-                                                    desc: 'El estado de dinero en tránsito tiene su propia pantalla de confirmación, con el monto y la cuenta destino en el centro. La decisión fue tratar este estado como un momento de cierre del flujo de depósito, no como un error ni una advertencia — el tono y el verde refuerzan que todo está en orden.'
-                                                }
-                                            ].map((item, idx) => (
-                                                <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                                    <div style={{ width: '100%' }}>
-                                                        <Image
-                                                            src={`/assets/projects/app-holdo/${item.imgName}`}
-                                                            alt={item.title}
-                                                            width={300}
-                                                            height={600}
-                                                            style={{ width: '100%', height: 'auto', display: 'block' }}
-                                                        />
-                                                    </div>
-                                                    <div>
-                                                        <strong style={{ display: 'block', fontSize: '1.2rem', marginBottom: '0.6rem', color: 'var(--color-text-primary)', fontFamily: 'var(--font-heading)', fontWeight: 600 }}>
-                                                            {item.title}
-                                                        </strong>
-                                                        <p className={styles.bodyText} style={{ margin: 0 }}>
-                                                            {item.desc}
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            ))}
+                                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.4rem', marginBottom: '2.5rem', marginTop: '4rem' }}>
+                                            <span style={{ 
+                                                fontFamily: 'var(--font-mono)', 
+                                                fontSize: '0.72rem', 
+                                                textTransform: 'uppercase', 
+                                                letterSpacing: '0.15em', 
+                                                color: 'var(--color-text-muted)',
+                                            }}>
+                                                Detalle de Interfaz
+                                            </span>
+                                            <h3 style={{ 
+                                                fontFamily: 'var(--font-heading)', 
+                                                fontSize: '1.4rem', 
+                                                fontWeight: 600, 
+                                                color: 'var(--color-text-primary)',
+                                                margin: 0,
+                                                textAlign: 'center'
+                                            }}>
+                                                4 decisiones de diseño destacadas
+                                            </h3>
+                                            <div style={{ width: '30px', height: '1.5px', backgroundColor: 'var(--color-text-primary)', marginTop: '0.6rem', opacity: 0.8 }} />
                                         </div>
+                                        <CardsCarousel cards={[
+                                            {
+                                                imgName: 'app-holdo-0.png',
+                                                title: 'Home / Dashboard',
+                                                desc: 'El home muestra el balance consolidado y el estado de cada meta de inversión. El número ocupa el primer plano del header oscuro para que la información más consultada esté disponible sin ninguna acción previa — abrir la app ya es suficiente.'
+                                            },
+                                            {
+                                                imgName: 'app-holdo-1.png',
+                                                title: 'Detalle de portafolio',
+                                                desc: 'La vista de cuenta desglosa cada activo con su variación del día y su peso en el portafolio. Mantuvimos la misma estructura de header para crear consistencia entre pantallas, y agrupamos los movimientos recientes al final para no competir visualmente con los datos de inversión.'
+                                            },
+                                            {
+                                                imgName: 'app-holdo-2.png',
+                                                title: 'Balance desglosado',
+                                                desc: 'El balance total se desglosa en tres estados: invertido, en tránsito y sin asignar. Esta distinción era importante para Holdo porque el dinero en tránsito genera confusión frecuente en productos financieros — hacerlo visible y etiquetarlo explícitamente reduce la necesidad de soporte.'
+                                            },
+                                            {
+                                                imgName: 'app-holdo-3.png',
+                                                title: 'Confirmación de depósito',
+                                                desc: 'El estado de dinero en tránsito tiene su propia pantalla de confirmación, con el monto y la cuenta destino en el centro. La decisión fue tratar este estado como un momento de cierre del flujo de depósito, no como un error ni una advertencia — el tono y el verde refuerzan que todo está en orden.'
+                                            }
+                                        ]} />
                                     </ScrollReveal>
                                     <ScrollReveal delay={0.3} className={styles.fullWidthIllustration}>
                                         <div style={{ marginTop: '6rem', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
@@ -365,14 +478,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                                 </h3>
                                                 <div style={{ width: '30px', height: '1.5px', backgroundColor: 'var(--color-text-primary)', marginTop: '0.6rem', opacity: 0.8 }} />
                                             </div>
-                                            <video
-                                                src="/assets/projects/app-holdo/app_mobile_1.mp4"
-                                                autoPlay
-                                                loop
-                                                muted
-                                                playsInline
-                                                style={{ width: '100%', maxWidth: '540px', height: 'auto', borderRadius: '40px', border: '12px solid var(--color-text-primary)', boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)' }}
-                                            />
+                                            <FigmaVideoPlayer src="/assets/projects/app-holdo/app_mobile_1.mp4" />
                                         </div>
                                     </ScrollReveal>
                                 </>
