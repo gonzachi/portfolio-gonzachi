@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Gonzalo Chiavassa",
-  roles: ["Product Designer", "Product Maker (AI First)", "Ownership Mindset", "Product Manager"],
+  roles: ["Product Designer", "Product Maker (AI First)", "Ownership Mindset", "Product Manager", "Product builder"],
   bio: [
     {
       text: "¡Qué bueno que quieras conocerme más! Te cuento, mi formación ha comenzado con el Diseño Gráfico, y luego fue mutando. Hace poco he terminado mi Máster en Digital Product Management, algo que me entusiasma mucho para ir ganando cada más relevancia en la toma de decisiones de un producto digital.",
@@ -112,7 +112,7 @@ export interface ProjectData {
   tools?: string[];
   timeline?: string[];
   metrics?: { value: string; label: string }[];
-  roleDescription?: string;
+  roleDescription?: string | string[];
   challenge?: string;
   team?: string;
   description: string[];
@@ -145,6 +145,12 @@ export interface ProjectData {
     footerTextShort?: string;
     showGrowthCurve?: boolean;
   };
+  discovery?: {
+    title: string;
+    description: string[];
+    images?: string[];
+  };
+  contextImage?: string;
   closing?: {
     title: string;
     message: string;
@@ -160,27 +166,52 @@ export const projects = [
     id: "agilidad-inspiracional",
     requiresAccess: true,
     number: "",
-    title: "Plataforma interna de generación de imágenes con IA",
-    type: "Product Design · Mango · 2024",
-    subtitle: "Plataforma interna de generación de imágenes con IA · Mango · Desde junio 2024",
-    year: "2024",
-    role: "Product Designer",
+    title: "Diseñando una plataforma de IA para acelerar el proceso creativo de los diseñadores de moda",
+    type: "Senior Product Design · Mango · 2023 - Actualidad",
+    subtitle: "Plataforma de IA para acelerar el proceso creativo de los diseñadores de moda · Mango",
+    year: "2023 - Actualidad",
+    role: "Senior Product Designer",
     client: "Mango",
     badge: "Más reciente ✨",
-    roles: [],
-    description: [],
+    roles: [
+      "Discovery junto a otra Product Designer",
+      "Definición del MVP",
+      "UX Strategy",
+      "User Research",
+      "Prototipado y validación",
+      "Priorización junto a PM e Ingeniería",
+      "Evolución continua del producto"
+    ],
+    description: [
+      "Cuando la inteligencia artificial generativa empezó a evolucionar, en Mango vimos una oportunidad: transformar la forma en la que los diseñadores exploraban ideas y desarrollaban nuevas colecciones."
+    ],
   },
   {
     id: "orquestadora-de-equipos",
     requiresAccess: true,
     number: "",
     title: "Plataforma orquestadora de equipos",
-    type: "Coming Soon",
+    type: "Product Owner / Dev · Mango · 2026 - presente",
+    subtitle: "Herramienta corporativa para la creación de contenido de journeys · Mango · 2026 - presente",
     year: "2026 - presente",
     role: "Product Owner / Dev",
     client: "Mango",
+    isComingSoon: false,
+    roles: ["Product Owner", "Vibe Coding Frontend", "UX/UI Designer"],
+    tools: ["Figma", "Next.js", "AI First", "Miro"],
+    team: "1 Product Owner / Front · 1 Backend · APIs de +5 equipos",
+    description: [],
+  },
+  {
+    id: "club-fidelizacion-referidos",
+    number: "",
+    title: "Club de fidelización y referidos",
+    type: "Coming Soon",
+    year: "2024",
+    role: "Product Designer",
+    client: "Holdo",
     isComingSoon: true,
-    roles: ["UX Designer", "UI Designer"],
+    roles: ["Product Designer", "UX/UI Designer"],
     subtitle: "En construcción",
     description: [],
   },
@@ -258,13 +289,13 @@ export const projects = [
   {
     id: "reduciendo-drop-off-onboarding",
     number: "",
-    title: "Reduciendo el drop-off rate en la fase final del onboarding",
+    title: "Haciendo accesible un proceso financiero diseñado para expertos.",
     type: "UX/UI Designer · Product Designer",
     year: "2023",
     role: "UX/UI & Product Designer",
     client: "Holdo",
     roles: ["UX/UI Designer", "Product Designer"],
-    subtitle: "Reducir la complejidad de la propuesta de inversión para aumentar la conversión.",
+    subtitle: "El proceso de creación de portafolios concentraba uno de los mayores puntos de abandono del producto. A partir del análisis de comportamiento, investigación y rediseño de la experiencia, transformamos un recorrido largo y técnico en una experiencia más clara, progresiva y comprensible, sin perder el rigor que requería el negocio.",
     tools: ["Figma", "PostHog", "Clarity"],
     timeline: ["Análisis de datos", "Hipótesis", "Priorización", "Diseño", "QA"],
     roleDescription: "Lideré el análisis UX junto al equipo de finanzas para priorizar la información clave. Diseñé un estilo más narrativo y escaneable, y entregué el pitch al equipo de desarrollo.",
@@ -311,7 +342,7 @@ export const projects = [
       title: "El cierre",
       timeline: "Noviembre 2023 → Diciembre 2023"
     },
-    heroImage: "/assets/projects/ladrillo-1.jpg"
+    heroImage: "/assets/home/portada-caso-holdo-ladrillo-light.jpg"
   },
   {
     id: "holdo-website-mobile-first",
@@ -552,13 +583,14 @@ export const landingProjects = [
   {
     id: "reduciendo-drop-off-onboarding",
     number: "01",
-    title: "Reduciendo el drop-off rate en la fase final del onboarding",
+    title: "Haciendo accesible un proceso financiero diseñado para expertos.",
     subtitle: "Reducir la complejidad de la propuesta de inversión para aumentar la conversión.",
     company: "Holdo · 2023",
-    description: "Un gran número de usuarios abandonaba el proceso de inversión llegando al final. Investigamos el motivo, hablamos con usuarios, entendimos el problema. Descubre el proceso y la solución realizada.",
+    description: "El proceso de creación de portafolios concentraba uno de los mayores puntos de abandono del producto. A partir del análisis de comportamiento, investigación y rediseño de la experiencia, transformamos un recorrido largo y técnico en una experiencia más clara, progresiva y comprensible.",
     role: "UX/UI · Product Designer",
     tags: ["Fintech", "UX Research", "Data-Informed Design", "Onboarding Optimization", "Conversion", "Information Architecture"],
     stat: { value: "↓ info", label: "↑ conversión" },
+    thumbnail: "/assets/home/portada-caso-holdo-ladrillo-light.jpg",
     expandedImages: [
       "/assets/projects/ladrillo/Mask-group-1-1.jpg",
       "/assets/projects/ladrillo/Mask-group-2-1.jpg",
@@ -568,7 +600,7 @@ export const landingProjects = [
   {
     id: "app-movil-holdo",
     number: "02",
-    title: "Diseño de aplicación móvil para fintech",
+    title: "Rediseñando una experiencia de inversión para el mundo mobile.",
     subtitle: "MVP de aplicación móvil",
     company: "Holdo · 2023",
     description: "El 80% de los usuarios accedía desde mobile, pero la plataforma era desktop. Diseñé el MVP de la app nativa: benchmark competitivo del mercado fintech chileno, priorización de alcance con el CEO y CTO, y dos flujos clave — consulta de portafolio y depósito de fondos.",
@@ -588,12 +620,13 @@ export const landingProjects = [
     requiresAccess: true,
     number: "03",
     featured: true,
-    title: "Plataforma creativa interna",
-    subtitle: "Plataforma de IA generativa de imágenes para equipos creativos.",
+    title: "Diseñando el futuro de la creatividad en moda con IA.",
+    subtitle: "El reto no era generar imágenes. Era ayudar a los diseñadores a materializar ideas más rápido.",
     company: "Mango · 2024 → presente",
-    description: "Un producto que nace gracias a la aparición de la Inteligencia Artificial. Construimos algo totalmente innovador, descubriendo cómo podemos introducirnos en el proceso de diseñadores de moda para optimizar la productividad.",
+    description: "El reto no era generar imágenes. Era ayudar a los diseñadores a materializar ideas más rápido. Construimos algo totalmente innovador, descubriendo cómo podíamos introducirnos en el proceso creativo de diseñadores de moda para optimizar la productividad.",
     role: "Product Designer",
     tags: ["AI", "GenAI", "Product Design", "Internal Tools", "Fashion Tech"],
+    thumbnail: "/assets/projects/moda.jpg",
   },
   {
     id: "orquestadora-de-equipos",
@@ -604,6 +637,15 @@ export const landingProjects = [
     company: "Mango · 2026 - presente",
     description: "Un proyecto dedicado a orquestar diferentes equipos, optimizando procesos que actualmente se hacen manualmente, con excel, mails y diferentes plataformas. Innovamos en el proceso de desarrollo tomando una actitud AI First. Te cuento más.",
     tags: ["Product Ownership", "Discovery", "Internal Tools"],
+  },
+  {
+    id: "club-fidelizacion-referidos",
+    number: "05",
+    title: "Club de fidelización y referidos",
+    subtitle: "Plataforma de fidelización y sistema de referidos para fomentar el crecimiento orgánico",
+    company: "Holdo · 2024",
+    description: "Diseño de un programa de fidelización y referidos integrado en la plataforma de inversiones de Holdo, orientado a incentivar la recomendación entre usuarios y la recurrencia.",
+    tags: ["Product Design", "Growth", "Loyalty", "UX/UI"],
   },
 ];
 

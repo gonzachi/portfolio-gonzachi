@@ -1,0 +1,209 @@
+/* ── ONBOARDING HERO SECTION (100vh ICE-BLUE 2-COLUMN) ── */
+.heroSection {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #D0D9E2; /* Ice-blue background matching HoldoHero */
+    padding: 7rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.heroContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 960px) {
+    .heroContainer {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 1.5rem;
+    }
+}
+
+/* Left Column: Headline, Body */
+.heroLeftCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 620px;
+}
+
+/* Project Title (above headline) */
+.heroTitle {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(0, 0, 0, 0.55);
+    display: block;
+}
+
+.headline {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+    color: #000000;
+    margin: 0;
+}
+
+.headlineHighlight {
+    display: block;
+    margin-top: 0.3rem;
+    color: rgba(0, 0, 0, 0.75);
+    font-weight: 600;
+}
+
+.subheadlineBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+.subheadlineBlock p {
+    font-family: var(--font-body);
+    font-size: 1.04rem;
+    line-height: 1.65;
+    color: rgba(0, 0, 0, 0.75);
+    margin: 0;
+}
+
+/* Right Column: Transform Animation */
+.heroRightCol {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.funnelContainer {
+    position: relative;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.funnelSvg {
+    display: block;
+    overflow: visible;
+}
+
+/* Annotation Callout Floating Tag */
+.annotationCallout {
+    position: absolute;
+    right: 4%;
+    bottom: 22%;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(229, 62, 62, 0.35);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.calloutDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #e53e3e;
+}
+
+.calloutText {
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Bottom Scroll Hint */
+.scrollHintWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+    margin-top: 3.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scrollHintText {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.scrollHintQuestion {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: #000000;
+    margin: 0;
+}
+
+/* Scroll Indicator Button */
+.scrollIndicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(0, 0, 0, 0.55);
+    animation: bounce 2s infinite;
+    z-index: 20;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -8px); }
+    60% { transform: translate(-50%, -4px); }
+}
+

@@ -1,0 +1,23 @@
+/* ── HERO TRANSFORM ANIMATION ── */
+
+.canvas {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    will-change: opacity;
+}
+
+/* Block: absolutely positioned within layer */
+.block {
+    position: absolute;
+}

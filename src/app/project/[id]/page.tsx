@@ -24,7 +24,7 @@ export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {
     return projects
-        .filter((p) => !(p as { requiresAccess?: boolean }).requiresAccess)
+        .filter((p) => !(p as { requiresAccess?: boolean }).requiresAccess && p.id !== 'agilidad-inspiracional' && p.id !== 'orquestadora-de-equipos' && p.id !== 'reduciendo-drop-off-onboarding' && p.id !== 'app-movil-holdo')
         .map((project) => ({ id: project.id }));
 }
 
@@ -46,8 +46,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
     const { project: projectData, index: projectIndex } = result;
     const project = projectData as unknown as ProjectData;
-    const prevProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
-    const nextProject = projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 
     // Type-safe access to project fields
     const year = project.year || "";
@@ -65,10 +63,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         const thumbnails: Record<string, string> = {
             'agilidad-inspiracional': '/assets/projects/moda.jpg',
             'app-movil-holdo': '/assets/home/portada-caso-app-holdo.jpg',
-            'reduciendo-drop-off-onboarding': '/assets/projects/ladrillo-1.jpg',
+            'reduciendo-drop-off-onboarding': '/assets/home/portada-caso-holdo-ladrillo-light.jpg',
             'holdo-website-mobile-first': '/assets/projects/holdo-web-1.jpg',
             'reservadisimo': '/images/project4-4.png',
             'orquestadora-de-equipos': '',
+            'club-fidelizacion-referidos': '',
         };
 
         return (
@@ -76,8 +75,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <ScrollToTop />
                 <ProjectNav
                     title={project.title}
-                    prevProject={prevProject ? { id: prevProject.id, title: prevProject.title, thumbnail: thumbnails[prevProject.id] } : null}
-                    nextProject={nextProject ? { id: nextProject.id, title: nextProject.title, thumbnail: thumbnails[nextProject.id] } : null}
                 />
                 <main className={styles.page}>
                     <div className={styles.comingSoonContainer}>
@@ -103,23 +100,26 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     // Build sidebar sections dynamically for completed projects
     const sidebarSections: { id: string; label: string }[] = [
         { id: 'sec-intro', label: 'Contexto' },
+        ...(project.roleDescription && project.id !== 'app-movil-holdo' ? [{ id: 'sec-rol', label: 'Mi rol' }] : []),
+        ...(project.discovery ? [{ id: 'sec-discovery', label: 'Discovery inicial' }] : []),
         ...(context || project.startingPoint ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-partida', label: 'Punto de partida' }] : []) : []),
-        ...(problem || project.challenge ? [{ id: 'sec-problema', label: 'El problema' }] : []),
+        ...(problem || project.challenge ? [{ id: 'sec-problema', label: problem?.title || 'El problema' }] : []),
         ...(project.id === 'app-movil-holdo' ? [{ id: 'sec-rol', label: 'Mi rol' }] : []),
         ...(findings ? [{ id: 'sec-hallazgos', label: 'Hallazgos' }] : []),
         ...(solutionText || project.storySteps ? [{ id: 'sec-solucion', label: 'Solución propuesta' }] : []),
-        ...(resultsReveal || project.metrics ? [{ id: 'sec-impacto', label: 'Impacto' }] : []),
-        ...(challengesText || project.closing ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-desafios', label: 'Desafíos' }] : []) : []),
+        ...(resultsReveal || project.metrics ? [{ id: 'sec-impacto', label: resultsReveal?.title || 'Impacto' }] : []),
+        ...(challengesText || project.closing ? (project.id !== 'app-movil-holdo' ? [{ id: 'sec-desafios', label: 'Desafíos y aprendizajes' }] : []) : []),
     ];
 
     // Thumbnail map for nav tooltips
     const thumbnails: Record<string, string> = {
         'agilidad-inspiracional': '/assets/projects/moda.jpg',
         'app-movil-holdo': '/assets/home/portada-caso-app-holdo.jpg',
-        'reduciendo-drop-off-onboarding': '/assets/projects/ladrillo-1.jpg',
+        'reduciendo-drop-off-onboarding': '/assets/home/portada-caso-holdo-ladrillo-light.jpg',
         'holdo-website-mobile-first': '/assets/projects/holdo-web-1.jpg',
         'reservadisimo': '/images/project4-4.png',
         'orquestadora-de-equipos': '',
+        'club-fidelizacion-referidos': '',
     };
 
     return (
@@ -128,8 +128,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             <SidebarProgress sections={sidebarSections} />
             <ProjectNav
                 title={project.title}
-                prevProject={prevProject ? { id: prevProject.id, title: prevProject.title, thumbnail: thumbnails[prevProject.id] } : null}
-                nextProject={nextProject ? { id: nextProject.id, title: nextProject.title, thumbnail: thumbnails[nextProject.id] } : null}
             />
 
             <main className={styles.page}>
@@ -156,8 +154,70 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 <p key={index} className={styles.bodyText}>{paragraph}</p>
                             ))}
                         </ScrollReveal>
+                        {project.contextImage && (
+                            <ScrollReveal delay={0.2} className={`${styles.illustrationWrapper} ${styles.fullWidthIllustration}`}>
+                                <div style={{ marginTop: '2.5rem', width: '100%' }}>
+                                    <Image
+                                        src={project.contextImage}
+                                        alt="Ilustración de contexto"
+                                        width={1200}
+                                        height={400}
+                                        style={{ width: '100%', height: 'auto' }}
+                                    />
+                                </div>
+                            </ScrollReveal>
+                        )}
                     </div>
                 </section>
+
+                {/* Mi rol */}
+                {project.roleDescription && project.id !== 'app-movil-holdo' && (
+                    <section id="sec-rol" className={styles.section}>
+                        <div className={styles.sectionContainer}>
+                            <ScrollReveal delay={0.1}>
+                                <h2 className={styles.sectionLabel}>Mi rol</h2>
+                                {Array.isArray(project.roleDescription) ? (
+                                    project.roleDescription.map((paragraph, index) => (
+                                        <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    ))
+                                ) : (
+                                    <p className={styles.bodyText}>{project.roleDescription}</p>
+                                )}
+                            </ScrollReveal>
+                        </div>
+                    </section>
+                )}
+
+                {/* Discovery */}
+                {project.discovery && (
+                    <section id="sec-discovery" className={styles.section}>
+                        <div className={styles.sectionContainer}>
+                            <ScrollReveal delay={0.1}>
+                                <h2 className={styles.sectionLabel}>{project.discovery.title || "Discovery"}</h2>
+                                {project.discovery.description.map((paragraph, index) => (
+                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                ))}
+                            </ScrollReveal>
+                            {project.discovery.images && project.discovery.images.length > 0 && (
+                                <ScrollReveal delay={0.2} className={`${styles.illustrationWrapper} ${styles.fullWidthIllustration}`}>
+                                    <div className={styles.twoByTwoGrid} style={{ marginTop: '2.5rem' }}>
+                                        {project.discovery.images.map((imgSrc, imgIndex) => (
+                                            <div key={imgIndex} style={{ width: '100%', height: 'auto', overflow: 'hidden', border: '1px solid rgba(var(--fg-rgb), 0.08)' }}>
+                                                <Image
+                                                    src={imgSrc}
+                                                    alt={`Discovery imagen ${imgIndex + 1}`}
+                                                    width={600}
+                                                    height={450}
+                                                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </ScrollReveal>
+                            )}
+                        </div>
+                    </section>
+                )}
 
                 {/* 3. Punto de partida */}
                 {(context || project.startingPoint) && project.id !== 'app-movil-holdo' && (
@@ -259,7 +319,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
 
                 {/* Banner Image 1 */}
-                {project.heroImage && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && (
+                {project.heroImage && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && project.id !== 'agilidad-inspiracional' && (
                     <div className={styles.bannerImageContainer}>
                         <Image
                             src={project.heroImage}
@@ -585,19 +645,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </section>
                 )}
 
-                {/* Banner Image 2 */}
-                {project.id === 'agilidad-inspiracional' && (
-                    <div className={styles.bannerImageContainer}>
-                        <Image
-                            src="/assets/projects/moda/promptarea-ia.jpg"
-                            alt="Interfaz de generación de imágenes con IA"
-                            width={1600}
-                            height={900}
-                            className={styles.bannerImage}
-                        />
-                        <span className={styles.bannerCaption}>Detalle de la interfaz</span>
-                    </div>
-                )}
+
                 {project.id !== 'agilidad-inspiracional' && project.id !== 'reduciendo-drop-off-onboarding' && project.id !== 'app-movil-holdo' && project.images && project.images.length > 0 && (
                     <div className={styles.bannerImageContainer}>
                         <Image

@@ -1,0 +1,320 @@
+/* ── 02 / COMPRENDER EL PRODUCTO SECTION ── */
+.researchSection {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 6rem 0 5.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='dark']) .researchSection {
+    background-color: #09090b;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.researchContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+}
+
+/* Split 2-Column Layout */
+.researchSplitLayout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    width: 100%;
+}
+
+@media (max-width: 960px) {
+    .researchSplitLayout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.researchLeftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-muted, rgba(0, 0, 0, 0.45));
+    text-align: left;
+}
+
+:global([data-theme='dark']) .eyebrow {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.heading {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2.1rem, 3.8vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+    text-align: left;
+}
+
+:global([data-theme='dark']) .heading {
+    color: #ffffff;
+}
+
+/* Body Paragraphs Block */
+.bodyDescriptionBlock {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1.15rem;
+    margin-top: 0.5rem;
+}
+
+.bodyDescriptionBlock p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.75));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .bodyDescriptionBlock p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.researchRightCol {
+    width: 100%;
+    position: relative;
+}
+
+/* Cropped Desktop Screenshot Frame */
+.desktopCropFrame {
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    background: #ffffff;
+}
+
+:global([data-theme='dark']) .desktopCropFrame {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: #141416;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.windowHeader {
+    height: 36px;
+    background: rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    gap: 1rem;
+}
+
+:global([data-theme='dark']) .windowHeader {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.windowDots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.windowDots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+:global([data-theme='dark']) .windowDots span {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.windowAddressBar {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: rgba(0, 0, 0, 0.45);
+    letter-spacing: 0.04em;
+}
+
+:global([data-theme='dark']) .windowAddressBar {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+}
+
+@media (max-width: 960px) {
+    .imageContainer {
+        height: 320px;
+    }
+}
+
+.desktopImage {
+    width: 125%;
+    max-width: none;
+    height: auto;
+    object-fit: cover;
+    object-position: top left;
+    display: block;
+}
+
+/* Unified Visual Flow Diagram */
+.flowDiagramWrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding-left: 0.5rem;
+}
+
+.flowConnectingLine {
+    position: absolute;
+    left: 28px;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: rgba(0, 0, 0, 0.12);
+    z-index: 1;
+}
+
+:global([data-theme='dark']) .flowConnectingLine {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.flowNodesList {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    position: relative;
+    z-index: 2;
+}
+
+.flowNodeItem {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.nodeBadge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    color: var(--color-text-primary, #000000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+:global([data-theme='dark']) .nodeBadge {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: #09090b;
+    color: #ffffff;
+}
+
+.nodeBody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.012);
+    border-radius: 4px;
+}
+
+:global([data-theme='dark']) .nodeBody {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.nodeStageTag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+:global([data-theme='dark']) .nodeStageTag {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.nodeTitle {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+}
+
+:global([data-theme='dark']) .nodeTitle {
+    color: #ffffff;
+}
+
+.nodeDesc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.72));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .nodeDesc {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+/* Closing Statement Quote */
+.closingQuoteSection {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 0 0.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+:global([data-theme='dark']) .closingQuoteSection {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.editorialQuote {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(1.35rem, 2.5vw, 2.05rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+    quotes: none;
+}
+
+:global([data-theme='dark']) .editorialQuote {
+    color: #ffffff;
+}

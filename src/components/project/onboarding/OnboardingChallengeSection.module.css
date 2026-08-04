@@ -1,0 +1,302 @@
+/* ── 01 / EL DESAFÍO SECTION ── */
+.challengeSection {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 6.5rem 0 6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='dark']) .challengeSection {
+    background-color: #09090b;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.challengeContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+}
+
+/* Header & Paragraphs */
+.headerBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 880px;
+    margin: 0 auto 4rem auto;
+    gap: 1.15rem;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-muted, rgba(0, 0, 0, 0.45));
+}
+
+:global([data-theme='dark']) .eyebrow {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.heading {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2.1rem, 3.8vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+}
+
+:global([data-theme='dark']) .heading {
+    color: #ffffff;
+}
+
+.bodyDescriptionBlock {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.15rem;
+    margin-top: 0.5rem;
+}
+
+.bodyDescriptionBlock p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.75));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .bodyDescriptionBlock p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.questionText {
+    font-weight: 600 !important;
+    font-size: 1.12rem !important;
+    color: var(--color-text-primary, #000000) !important;
+}
+
+:global([data-theme='dark']) .questionText {
+    color: #ffffff !important;
+}
+
+/* Main Visual: Conceptual Conversion Funnel Diagram */
+.funnelVisualWrapper {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 5rem auto;
+    padding: 2.25rem 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+:global([data-theme='dark']) .funnelVisualWrapper {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.funnelFlowRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media (max-width: 820px) {
+    .funnelFlowRow {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+.stageCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+:global([data-theme='dark']) .stageCard {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(18, 18, 20, 0.9);
+}
+
+.stageDropOff {
+    border-color: rgba(229, 62, 62, 0.4);
+    background: rgba(229, 62, 62, 0.02);
+}
+
+:global([data-theme='dark']) .stageDropOff {
+    border-color: rgba(245, 101, 101, 0.4);
+    background: rgba(229, 62, 62, 0.05);
+}
+
+.stageNum {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .stageNum {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.stageTitle {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:global([data-theme='dark']) .stageTitle {
+    color: #ffffff;
+}
+
+.dropOffTag {
+    position: absolute;
+    top: -14px;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid rgba(229, 62, 62, 0.35);
+    background: #ffffff;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #e53e3e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+:global([data-theme='dark']) .dropOffTag {
+    background: #121214;
+    color: #fc8181;
+}
+
+.tagDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #e53e3e;
+}
+
+.stageConnector {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='dark']) .stageConnector {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Evidence Strip: 3 Horizontal Evidence Blocks */
+.evidenceStripWrapper {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 4.5rem auto;
+}
+
+.evidenceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
+
+@media (max-width: 820px) {
+    .evidenceGrid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.evidenceCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 4px;
+}
+
+:global([data-theme='dark']) .evidenceCard {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.evidenceToolBadge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-primary, #000000);
+}
+
+:global([data-theme='dark']) .evidenceToolBadge {
+    color: #ffffff;
+}
+
+.evidenceDesc {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.75));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .evidenceDesc {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Closing Statement */
+.closingStatementBlock {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='dark']) .closingStatementBlock {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.closingQuote {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+}
+
+:global([data-theme='dark']) .closingQuote {
+    color: #ffffff;
+}

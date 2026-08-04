@@ -1,0 +1,46 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  padding: 0.35rem 0;
+  cursor: pointer;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.toggle:hover {
+  opacity: 0.8;
+}
+
+.active {
+  color: var(--color-text-primary, #000000);
+  opacity: 1;
+}
+
+.inactive {
+  color: var(--color-text-muted, rgba(0, 0, 0, 0.35));
+  opacity: 1;
+}
+
+.sep {
+  color: var(--color-text-muted, rgba(0, 0, 0, 0.25));
+}
+
+:global([data-theme='dark']) .active {
+  color: #ffffff;
+}
+
+:global([data-theme='dark']) .inactive {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+:global([data-theme='dark']) .sep {
+  color: rgba(255, 255, 255, 0.2);
+}

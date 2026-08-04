@@ -49,7 +49,7 @@ function ProjectCard({
 }) {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
-  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo'];
+  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'];
   const isActive = activeProjectIds.includes(project.id);
 
   const allTags: string[] = [
@@ -73,6 +73,8 @@ function ProjectCard({
   let cardCoverImage = project.thumbnail || project.image;
   if (cardCoverImage && project.id === 'app-movil-holdo' && theme === 'dark') {
     cardCoverImage = '/assets/home/portada-caso-app-holdo-dark.jpg';
+  } else if (cardCoverImage && project.id === 'reduciendo-drop-off-onboarding' && theme === 'dark') {
+    cardCoverImage = '/assets/home/portada-caso-holdo-ladrillo-dark.jpg';
   }
 
   const handleClick = () => {
@@ -152,7 +154,7 @@ function ProjectCard({
 export default function Projects() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
-  const isHoveredProjectActive = hoveredId ? ['reduciendo-drop-off-onboarding', 'app-movil-holdo'].includes(hoveredId) : false;
+  const isHoveredProjectActive = hoveredId ? ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'].includes(hoveredId) : false;
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (cursorRef.current) {

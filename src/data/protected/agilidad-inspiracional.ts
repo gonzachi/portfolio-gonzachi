@@ -1,41 +1,53 @@
 import 'server-only';
 
 export const agilidadInspiracionalProtected = {
-  context: {
-    title: "Contexto — La apuesta",
+  discovery: {
+    title: "Discovery inicial",
     description: [
-      "Junio de 2024. La IA generativa de imágenes existía, pero ninguna solución servía para un flujo de trabajo de moda. Los modelos open source daban resultados inconsistentes, las herramientas comerciales no ofrecían el control que necesitaban los equipos creativos y entrenar modelos propios era una apuesta sin garantías.",
-      "No había demanda interna. Había una hipótesis estratégica: si la tecnología podía generar imágenes realistas de ropa, podíamos comprimir horas del proceso creativo antes de que el mercado lo resolviera. Arrancamos con un equipo de data entrenando modelos propios. Esa fue la primera apuesta — y la primera que tuvimos que soltar."
+      "Entre todos los hallazgos e insights detectados, decidimos llevar a cabo una sesión con hard-users de diseño + equipo técnico para poder definir el alcance y las especificaciones de la plataforma, al menos para un MVP.",
+      "Los diseñadores no tenían un problema para inspirarse, sino para plasmar e iterar visualmente sus conceptos de forma ágil. A su vez, cada diseñador tiene un proceso de diseño y creatividad diferente — teníamos que ofrecer una experiencia adaptable.",
+      "Los modelos que integraríamos en el momento para recibir feedback no estaban a la altura de la calidad que buscábamos. Iban a llegar, pero faltaba tiempo.",
+      "Con todo esto, comenzamos a construir una plataforma bajo una metodología ágil basada en el discovery continuo, buscando entregar valor por más pequeño que fuera a corto plazo, en cada sprint."
     ],
-    milestones: []
+    images: [
+      "/assets/projects/moda/discovery-imagen-1.jpg",
+      "/assets/projects/moda/discovery-imagen-2.jpg"
+    ]
   },
   problem: {
-    title: "El problema",
+    title: "Principales desafíos",
     statement: "El diseñador sabe lo que quiere. El problema es mostrarlo.",
     description: [
       "Los equipos de diseño de moda no tenían un problema de inspiración — tenían un problema de comunicación visual. Las referencias existían, pero la idea final vivía en la cabeza del diseñador. Para hacerla tangible había que pasar por Photoshop, collage manual, montajes que llevaban horas y nunca terminaban de transmitir la intención real.",
       "La oportunidad era comprimir ese salto: de la idea a la imagen. Que un diseñador pudiera mezclar referencias, visualizar una prenda sobre una modelo real y mostrar exactamente lo que tiene en mente — antes de enviar nada al proveedor."
     ]
   },
-  findings: [
-    "Durante la fase de discovery y entrevistas con los equipos de diseño de moda detectamos un cuello de botella crítico: los diseñadores no tenían un problema para inspirarse, sino para plasmar e iterar visualmente sus conceptos de forma ágil.",
-    "El equipo de data inicialmente propuso entrenar modelos de IA propios. Sin embargo, al realizar pruebas rápidas y discovery continuo con los usuarios, determinamos que la fricción y el tiempo de entrenamiento no compensaban el valor para el negocio en esa etapa del producto. La adopción dependía de la inmediatez."
-  ],
   solutionText: [
-    "Decidimos pivotar la estrategia técnica: en lugar de competir entrenando modelos desde cero, integramos vía API los motores líderes de la industria (OpenAI, Google) y concentramos nuestro esfuerzo en diseñar la mejor interfaz y experiencia para el flujo creativo.",
-    "Creamos dos modos diferenciados dentro de la plataforma: un modo conversacional con control granular para los diseñadores expertos y 'Acciones Rápidas' basadas en plantillas prediseñadas para los usuarios que requerían resultados inmediatos sin fricción."
+    "La plataforma comenzó siendo muy pequeña y luego la fuimos escalando a medida que validábamos y entregábamos valor a los diseñadores.",
+    "La solución se trata de una plataforma conversacional, donde los usuarios pueden generar contenido a partir de imágenes de referencia de forma ágil, e iterar con pequeños prompts.",
+    "A medida que avanzamos, fuimos añadiendo funcionalidades para agilizar su proceso de trabajo. Algunos ejemplos son las herramientas para, con un solo click, quitar fondo o escalar una imagen; o el Kit Creativo, que permite invocar con un \"@\" prompts guardados, paletas de colores o estilos guardados.",
+    "Con estas funcionalidades buscamos entregar valor y agilizar el trabajo de los diseñadores para que puedan ser más productivos."
   ],
   challengesText: [
-    "El aprendizaje principal de este proyecto fue el valor de soltar hipótesis técnicas complejas cuando el feedback del usuario real indica lo contrario. Priorizar lo que desbloquea el flujo del usuario sobre la sofisticación del modelo de datos fue clave para lograr una adopción masiva en toda la organización."
+    "Uno de los desafíos más grandes fue moderar el feedback. Los diseñadores querían muchas cosas, y no podíamos entregar todo — había pedidos que ni siquiera eran responsabilidad nuestra, o que dependían de factores externos, como que la IA todavía no daba los resultados que necesitaban. Ahí el trabajo era escucharlos, empatizar, y a la vez ir redirigiendo la conversación hacia el feedback que sí nos servía para avanzar.",
+    "También me tocó priorizar tareas sin ser PO y sin tener un PO presente de forma constante, lo cual no siempre fue fácil: había que tomar decisiones de producto sin tener siempre a quién consultar en el momento.",
+    "A esto se sumó coordinar con el equipo de Data, que centralizaba información de los modelos y que muchas veces hacía que las cosas nos salieran más costosas de lo esperado. Y por otro lado, estaba el desafío de simplemente conseguir tiempo de los hard-users — tenían su propio trabajo a tope, y conseguir sus sesiones de feedback no siempre era simple.",
+    "Por último, un aprendizaje importante fue el de bajar o alinear las expectativas de mi manager y otros superiores con lo que realmente estábamos pudiendo construir en cada sprint — gestionar esa distancia entre lo que se esperaba y lo que el contexto (modelos, recursos, tiempos) nos permitía entregar."
   ],
   resultsReveal: {
-    title: "Los números",
+    title: "Impacto principal",
     stats: [
-      { highlight: "Diseñada para 1 departamento.", detail: "Hoy la usan +10.", icon: "M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" },
-      { highlight: "Empezó con 10 usuarios invitados.", detail: "Hoy tiene 300 activos al mes.", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm8 4v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" },
-      { highlight: "40K imágenes generadas al mes.", detail: "Antes, cada una era Photoshop o collage manual.", icon: "M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" }
+      { highlight: "+200", detail: "usuarios activos actuales (de los inicios con 10)", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm8 4v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" },
+      { highlight: "+50", detail: "departamentos integrados (empezando por un único departamento)", icon: "M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" },
+      { highlight: "+30.000", detail: "generaciones mensuales en la plataforma", icon: "M12 2l2.09 6.26L20.18 10l-6.09 1.74L12 18l-2.09-6.26L3.82 10l6.09-1.74L12 2z" }
     ],
-    closingText: "No hubo rollout forzado ni push desde arriba. La adopción fue progresiva — alguien veía un resultado, preguntaba con qué se había hecho, y pedía acceso.",
+    paragraphsBefore: [
+      "Con un MVP bien logrado y resultados positivos por parte de nuestros hard-users, comenzamos a realizar pequeñas cápsulas de video para comunicar la nueva plataforma y sus funcionalidades. También se hicieron sesiones de demostración con equipos de otros departamentos para mostrar las fortalezas de la plataforma.",
+      "Si bien estas acciones fueron útiles, la adopción fue progresiva — alguien veía un resultado, preguntaba con qué se había hecho, y pedía acceso."
+    ],
+    paragraphsAfter: [
+      "Podríamos plantear que el mérito no es exclusivo de la plataforma, porque los modelos de IA cada vez son mejores y eso también fomenta la adopción. Pero en este caso los usuarios tienen acceso a cualquier plataforma del mercado, y hoy eligen usar la plataforma de la casa."
+    ],
     footerText: "Los datos vienen de un stack de medición que definí e implementé: Google Analytics, Hotjar, Product Fruits y un dashboard personalizado con IA que diseñé y desplegué para dar visibilidad desde el equipo hasta el CTO.",
     footerTextShort: "Google Analytics · Hotjar · Product Fruits · Dashboard personalizado con IA"
   },
@@ -43,16 +55,44 @@ export const agilidadInspiracionalProtected = {
     title: "Decisiones",
   },
   description: [
-    "Mango apostó por explorar la IA generativa de imágenes antes de que el mercado lo adoptara. En el discovery con los equipos de diseño de moda detectamos un cuello de botella concreto: los diseñadores pasaban horas buscando referencias visuales en competidores, editoriales y redes antes de empezar a diseñar. La oportunidad no era reemplazar el diseño, sino acelerar esa primera fase de inspiración.",
-    "Como Product Designer con ownership del backlog, trabajé con un equipo de 6 personas. La decisión de producto más relevante fue un pivote temprano: el equipo de data quería entrenar modelos propios, pero el feedback de usuarios no justificaba la fricción. Como equipo, decidimos dejar los modelos propios e integrar los mejores del mercado (OpenAI, Google), construyendo la mejor experiencia por encima. Las funcionalidades se fueron añadiendo iterativamente desde sesiones de discovery con usuarios reales.",
-    "Hoy la plataforma tiene 300 usuarios únicos activos al mes, genera más de 40K imágenes mensuales y se usa en más de 10 departamentos — habiendo arrancado con solo 10 usuarios invitados."
+    "En este resumen intentaré explicar una parte del proyecto en el que estuve involucrado: <b>la construcción de una plataforma desde cero, desde el discovery hasta la primera salida a producción.</b>",
+    "Para ello vale la pena situarnos en Junio de 2024. La IA generativa de imágenes existía — de hecho algunos usuarios ya comenzaban a utilizarla — pero no era algo muy accesible: plataformas como Midjourney eran poco intuitivas, y se temía por el riesgo a la privacidad de los datos. Es aquí donde apostamos por crear nuestra propia plataforma de IA generativa."
+  ],
+  contextImage: "/assets/projects/moda/line-time-v2.png",
+  roleDescription: [
+    "En los papeles mi rol aquí es de Product Designer, pero me gusta enlistar y destacar algunas tareas en las que estuve involucrado:"
   ],
   highlights: [
-    { title: "De referencias abstractas a conceptos visuales en segundos", description: "Los diseñadores podían tardar horas buscando y creando moodboards. Con la plataforma, generan variaciones realistas al instante.", emoji: "⚡" },
-    { title: "Discovery con equipos de diseño de moda", description: "Investigamos los flujos reales de trabajo para detectar dónde la IA podía generar mayor impacto.", emoji: "🔍" },
-    { title: "Iteración continua con feedback real", description: "Organizamos formaciones y sesiones con usuarios para mejorar tanto la herramienta como la adopción.", emoji: "🔄" },
-    { title: "De 0 a 1: construyendo sin precedentes", description: "Cuando empezamos, la IA generativa apenas existía. Diseñamos un producto sin referencias previas en el mercado.", emoji: "🚀" },
-    { title: "Adopción creciente en toda la organización", description: "Lo que comenzó como un piloto con un equipo se expandió a múltiples áreas de la compañía.", emoji: "📈" }
+    {
+      icon: "users",
+      title: "Discovery con usuarios",
+      description: "En la primera etapa de Discovery trabajé a la par de una compañera para llevar a cabo las sesiones"
+    },
+    {
+      icon: "data",
+      title: "Discovery técnico/data",
+      description: "Entender como funciona la IA y los modelos fue algo complejo. Fueron varias sesiones con el líder del área de IA generativa para entender su postura, limitaciones y hacia donde podían ir."
+    },
+    {
+      icon: "priority",
+      title: "Priorización",
+      description: "Basados en los pain points e insights obtenidos, moderé junto a mi manager las sesiones de priorización para plantear estratégicamente hacia dónde iría el producto, teniendo en cuenta limitaciones técnicas y necesidades de los usuarios."
+    },
+    {
+      icon: "design",
+      title: "UX/UI",
+      description: "Comencé con el diseño del flujo y pantallas para estructurar y darle forma a la plataforma."
+    },
+    {
+      icon: "test",
+      title: "UX/UI research",
+      description: "Testear con usuarios los principales flujos."
+    },
+    {
+      icon: "owner",
+      title: "Product Owner",
+      description: "formalmente no era el Product Owner del proyecto — esa figura existía, pero tenía otros proyectos en paralelo y no podía estar muy encima del día a día. En la práctica, terminé asumiendo buena parte de esas responsabilidades: armé el roadmap con estimaciones y prioricé el backlog durante gran parte del desarrollo."
+    }
   ],
   storySteps: [
     {
@@ -92,16 +132,14 @@ export const agilidadInspiracionalProtected = {
       { icon: "📐", title: "Escalabilidad", description: "Extender la herramienta a más departamentos creativos dentro de la compañía." },
     ]
   },
-  roleDescription: "Product Designer con ownership de backlog",
   team: "2 frontend · 2 backend · Data/ML · Product Owner",
-  tools: ["Figma", "PostHog", "OpenAI", "Gemini", "Google Analytics", "Hotjar", "Product Fruits", "Dashboard IA propio"],
+  tools: ["Figma", "Miro"],
   closing: {
     title: "El cierre",
-    message: "El trabajo más valioso de producto no es diseñar interfaces.\nEs tomar decisiones cuando no hay información suficiente.",
     timeline: "Junio 2024 → presente",
     extra: "Diseñé y desplegué el dashboard de métricas con IA (queries provistas por backend)"
   },
-  showcaseTitle: "Plataforma interna de generación de imágenes con IA para Mango",
+  showcaseTitle: "Plataforma de generación de imágenes con inteligencia artificial para Mango",
   textPanels: [
     [
       "Este proyecto nace de una pregunta estratégica: ¿en qué parte del proceso de trabajo de los diseñadores de moda podríamos introducir la IA generativa de imágenes? No era un problema que los diseñadores tuvieran en ese momento — era una visión a futuro.",

@@ -64,7 +64,7 @@ export default function RootLayout({
         {/* Anti-flash: apply theme before first paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var s=localStorage.getItem('theme');var t=s==='light'||s==='dark'?s:'light';document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
+            __html: `(function(){try{document.documentElement.setAttribute('data-theme','light');}catch(e){}})();`,
           }}
         />
       </head>

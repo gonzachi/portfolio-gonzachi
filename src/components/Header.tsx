@@ -1,11 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import styles from './Header.module.css';
-import ThemeToggle from './ThemeToggle';
-import { useTheme } from '@/hooks/useTheme';
 
 const links = [
   { href: '#trabajos', label: 'Trabajos' },
@@ -19,9 +17,7 @@ const sectionIds = links.map(l => l.href.replace('#', ''));
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, toggleTheme, mounted } = useTheme();
-  const isLight = theme === 'light';
+  const [activeTooltip, setActiveTooltip] = useState<'work' | 'location' | 'download' | null>(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 50);
@@ -49,13 +45,13 @@ export default function Header() {
     return () => observers.forEach(o => o.disconnect());
   }, []);
 
-  // Close menu when clicking outside
+  // Close tooltips and popovers when clicking outside
   useEffect(() => {
-    if (!menuOpen) return;
-    const closeMenu = () => setMenuOpen(false);
-    document.addEventListener('click', closeMenu);
-    return () => document.removeEventListener('click', closeMenu);
-  }, [menuOpen]);
+    if (!activeTooltip) return;
+    const closeTooltip = () => setActiveTooltip(null);
+    document.addEventListener('click', closeTooltip);
+    return () => document.removeEventListener('click', closeTooltip);
+  }, [activeTooltip]);
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
@@ -92,67 +88,132 @@ export default function Header() {
           </div>
         </a>
 
-        {/* 3-dots dropdown menu (mobile only) */}
-        <div className={styles.menuContainer}>
-          <button
-            type="button"
-            className={styles.menuButton}
-            onClick={(e) => {
-              e.stopPropagation(); // Prevent immediate closing by click-outside listener
-              setMenuOpen(!menuOpen);
-            }}
-            aria-label="Opciones de perfil"
-            aria-expanded={menuOpen}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className={styles.menuIcon}
+        {/* Mobile action buttons (replacing 3-dots menu) */}
+        <div className={styles.mobileActions}>
+          {/* 1. Briefcase icon button */}
+          <div className={styles.actionWrapper}>
+            <button
+              type="button"
+              className={`${styles.actionButton} ${activeTooltip === 'work' ? styles.actionActive : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveTooltip(activeTooltip === 'work' ? null : 'work');
+              }}
+              aria-label="Información de trabajo"
             >
-              <circle cx="12" cy="5" r="1.3" />
-              <circle cx="12" cy="12" r="1.3" />
-              <circle cx="12" cy="19" r="1.3" />
-            </svg>
-          </button>
-
-          {menuOpen && (
-            <div className={styles.dropdown} onClick={(e) => e.stopPropagation()}>
-              <a
-                href="/cv/Gonzalo Chiavassa, Product Designer - CV.pdf"
-                download
-                className={styles.dropdownItem}
-                onClick={() => setMenuOpen(false)}
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={styles.dropdownIcon}
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {activeTooltip === 'work' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className={styles.tooltip}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Descargar CV
-              </a>
+                  Product Designer @ Mango
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
 
-              <button
-                type="button"
-                className={styles.dropdownItem}
-                onClick={() => {
-                  toggleTheme();
-                  setMenuOpen(false);
-                }}
+          {/* 2. Location pin icon button */}
+          <div className={styles.actionWrapper}>
+            <button
+              type="button"
+              className={`${styles.actionButton} ${activeTooltip === 'location' ? styles.actionActive : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveTooltip(activeTooltip === 'location' ? null : 'location');
+              }}
+              aria-label="Ubicación"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                {mounted && isLight ? (
-                  <>
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {activeTooltip === 'location' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className={styles.tooltip}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Barcelona, España
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* 3. Download icon button (with popover) */}
+          <div className={styles.actionWrapper}>
+            <button
+              type="button"
+              className={`${styles.actionButton} ${activeTooltip === 'download' ? styles.actionActive : ''}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveTooltip(activeTooltip === 'download' ? null : 'download');
+              }}
+              aria-label="Descargas"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </button>
+            <AnimatePresence>
+              {activeTooltip === 'download' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                  transition={{ duration: 0.15 }}
+                  className={styles.popover}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <a
+                    href="/cv/Gonzalo Chiavassa, Product Designer - CV.pdf"
+                    download
+                    className={styles.popoverLink}
+                    onClick={() => setActiveTooltip(null)}
+                  >
                     <svg
                       width="14"
                       height="14"
@@ -162,34 +223,17 @@ export default function Header() {
                       strokeWidth="2.2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className={styles.dropdownIcon}
                     >
-                      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    Modo oscuro
-                  </>
-                ) : (
-                  <>
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className={styles.dropdownIcon}
-                    >
-                      <circle cx="12" cy="12" r="4" />
-                      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-                    </svg>
-                    Modo claro
-                  </>
-                )}
-              </button>
-            </div>
-          )}
+                    Descargar CV
+                  </a>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
@@ -250,7 +294,6 @@ export default function Header() {
           </svg>
           Descargar CV
         </a>
-        <ThemeToggle />
       </div>
     </nav>
   );

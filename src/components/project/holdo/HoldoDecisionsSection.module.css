@@ -1,0 +1,255 @@
+/* ── 04 / PRINCIPIOS DE DISEÑO SECTION (MANIFESTO) ── */
+.principlesSection {
+    width: 100%;
+    padding: 6.5rem 0 6rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='dark']) .principlesSection {
+    background-color: #09090b;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.principlesContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+}
+
+/* Header Centered */
+.headerCentered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 920px;
+    margin: 0 auto 2.5rem auto;
+    gap: 0.85rem;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-text-muted, rgba(0, 0, 0, 0.45));
+}
+
+:global([data-theme='dark']) .eyebrow {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.heading {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+}
+
+:global([data-theme='dark']) .heading {
+    color: #ffffff;
+}
+
+/* Body Intro Block */
+.bodyIntroBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 5rem auto;
+    gap: 1.15rem;
+}
+
+.bodyIntroBlock p {
+    font-family: var(--font-body);
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.75));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .bodyIntroBlock p {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.highlightIntro {
+    font-family: var(--font-mono);
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.1em;
+    color: rgba(0, 0, 0, 0.5) !important;
+    text-transform: uppercase;
+}
+
+:global([data-theme='dark']) .highlightIntro {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Standalone Manifesto Chapters (Full Screen Heights) */
+.manifestoChaptersList {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    max-width: 960px;
+    margin: 0 auto 6rem auto;
+}
+
+.chapterScreenItem {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+:global([data-theme='dark']) .chapterScreenItem {
+    border-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.chapterHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    max-width: 760px;
+    margin-bottom: 3.5rem;
+}
+
+.chapterTag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: rgba(0, 0, 0, 0.45);
+    text-transform: uppercase;
+}
+
+:global([data-theme='dark']) .chapterTag {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.chapterTitle {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(2rem, 3.8vw, 3.1rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+}
+
+:global([data-theme='dark']) .chapterTitle {
+    color: #ffffff;
+}
+
+.chapterDesc {
+    font-family: var(--font-body);
+    font-size: 1.12rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.75));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .chapterDesc {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+/* Small Visual Comparison Diagram inside Chapter */
+.chapterDiagram {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem 2rem;
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background: #ffffff;
+}
+
+:global([data-theme='dark']) .chapterDiagram {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: #09090b;
+}
+
+.diagramSideLeft,
+.diagramSideRight {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #000000);
+}
+
+:global([data-theme='dark']) .diagramSideLeft,
+:global([data-theme='dark']) .diagramSideRight {
+    color: #ffffff;
+}
+
+.diagramArrow {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+:global([data-theme='dark']) .diagramArrow {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Highlight Quote Section */
+.highlightQuoteSection {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+:global([data-theme='dark']) .highlightQuoteSection {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.editorialQuote {
+    font-family: var(--font-heading), serif;
+    font-size: clamp(1.4rem, 2.6vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.32;
+    letter-spacing: -0.02em;
+    color: var(--color-text-primary, #000000);
+    margin: 0;
+    quotes: none;
+}
+
+:global([data-theme='dark']) .editorialQuote {
+    color: #ffffff;
+}
+
+/* Closing Transition Section */
+.closingTransitionSection {
+    text-align: center;
+    max-width: 780px;
+    margin: 2rem auto 0 auto;
+}
+
+.transitionText {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary, rgba(0, 0, 0, 0.65));
+    margin: 0;
+}
+
+:global([data-theme='dark']) .transitionText {
+    color: rgba(255, 255, 255, 0.65);
+}

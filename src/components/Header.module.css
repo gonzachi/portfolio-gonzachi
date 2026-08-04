@@ -48,8 +48,8 @@
 .avatarWrapper {
   overflow: hidden;
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,8 +58,8 @@
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   object-fit: cover;
 }
 
@@ -97,94 +97,143 @@
   display: block;
 }
 
-/* ── 3-Dots Ellipsis Menu (Mobile) ── */
-.menuContainer {
-  position: relative;
-  display: block;
+/* ── Mobile Action Buttons (Mobile) ── */
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.menuButton {
+.actionWrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border: none;
-  background: transparent;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(var(--fg-rgb), 0.08);
+  background: rgba(var(--fg-rgb), 0.02);
   color: var(--color-text-primary);
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   padding: 0;
 }
 
-@media (hover: hover) {
-  .menuButton:hover {
-    opacity: 0.7;
-  }
+.actionButton:active {
+  transform: scale(0.92);
 }
 
-.menuIcon {
-  display: block;
-  color: var(--color-text-primary);
+.actionActive,
+.actionButton:hover {
+  background: rgba(var(--fg-rgb), 0.08);
+  border-color: rgba(var(--fg-rgb), 0.15);
 }
 
-.dropdown {
+/* Tooltip style */
+.tooltip {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  width: 160px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-tooltip);
-  padding: 0.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem 0.75rem;
+  z-index: 150;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Popover style */
+.popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.04);
+  padding: 0.5rem 0.75rem;
   z-index: 150;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.dropdownItem {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 1rem;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+.popoverLink {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 500;
-  color: var(--color-text-secondary);
-  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  color: var(--color-accent-secondary);
   background: transparent;
   border: none;
-  width: 100%;
-  text-align: left;
+  padding: 0.25rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  transition: color 0.25s, text-decoration-color 0.25s;
+  white-space: nowrap;
 }
 
-@media (hover: hover) {
-  .dropdownItem:hover {
-    background-color: var(--glass-bg-hover);
-    color: var(--color-text-primary);
-  }
+.popoverLink:active {
+  color: var(--color-text-primary);
 }
 
-.dropdownIcon {
-  flex-shrink: 0;
-  color: var(--color-text-muted);
-  transition: color 0.2s;
+/* Theme Toggle inline styles */
+.themeIconWrap {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  overflow: visible;
 }
 
-@media (hover: hover) {
-  .dropdownItem:hover .dropdownIcon {
-    color: var(--color-text-primary);
-  }
+.themeIcon {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 240%;
+  transition: transform 0.7s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.45s ease-out;
+}
+
+.sunIcon {
+  opacity: 0;
+  transform: rotate(-160deg);
+}
+
+.moonIcon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.themeIconWrap[data-active='true'] .sunIcon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.themeIconWrap[data-active='true'] .moonIcon {
+  opacity: 0;
+  transform: rotate(160deg);
 }
 
 /* ── Middle Container & Meta Info ── */
 .middleContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
+  display: none;
 }
 
 .metaInfo {
@@ -351,7 +400,7 @@
     display: block;
   }
 
-  .menuContainer {
+  .mobileActions {
     display: none;
   }
 

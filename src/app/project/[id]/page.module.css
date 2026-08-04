@@ -133,6 +133,7 @@
 
 @media (max-width: 600px) {
     .twoByTwoGrid {
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 }
@@ -261,10 +262,10 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 1.75rem 1.25rem;
     background-color: #ffffff;
     border: 1.5px solid #1a1a1a;
-    box-shadow: 5px 5px 0px 0px #1a1a1a;
+    box-shadow: 4px 4px 0px 0px #1a1a1a;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     aspect-ratio: 1 / 1;
     width: 100%;
@@ -273,28 +274,28 @@
 :global([data-theme="dark"]) .metricCardBrutalist {
     background-color: #121212;
     border-color: #ffffff;
-    box-shadow: 5px 5px 0px 0px #ffffff;
+    box-shadow: 4px 4px 0px 0px #ffffff;
 }
 
 @media (hover: hover) {
     .metricCardBrutalist:hover {
         transform: translate(-2px, -2px);
-        box-shadow: 7px 7px 0px 0px #1a1a1a;
+        box-shadow: 6px 6px 0px 0px #1a1a1a;
     }
 
     :global([data-theme="dark"]) .metricCardBrutalist:hover {
-        box-shadow: 7px 7px 0px 0px #ffffff;
+        box-shadow: 6px 6px 0px 0px #ffffff;
     }
 }
 
 .metricValueBrutalist {
     font-family: var(--font-mono);
-    font-size: clamp(2rem, 4.2vw, 3.2rem);
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
     font-weight: 700;
     color: var(--color-text-primary);
     line-height: 1;
-    margin-bottom: 1rem;
-    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 }
 
 :global([data-theme="dark"]) .metricValueBrutalist {
@@ -307,13 +308,13 @@
 
 .metricLabelBrutalist {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--color-text-primary);
-    line-height: 1.6;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.45;
     text-transform: none;
     letter-spacing: -0.01em;
     white-space: pre-line;
-    max-width: 220px;
+    max-width: 200px;
 }
 
 :global([data-theme="dark"]) .metricLabelBrutalist {
@@ -332,9 +333,9 @@
     }
 
     .metricCardBrutalist {
-        padding: 2rem 1.25rem;
+        padding: 1.75rem 1.25rem;
         box-shadow: 4px 4px 0px 0px #1a1a1a;
-        max-width: 300px;
+        max-width: 260px;
         aspect-ratio: 1 / 1;
     }
 
@@ -343,8 +344,8 @@
     }
 
     .metricValueBrutalist {
-        font-size: 2.8rem;
-        margin-bottom: 0.75rem;
+        font-size: 2.4rem;
+        margin-bottom: 0.6rem;
     }
 }
 
