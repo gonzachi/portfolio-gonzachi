@@ -1,3 +1,4 @@
+import type { NextRequest } from 'next/server';
 import {
   ATTEMPT_WINDOW_MS,
   getAttemptsCookieName,
@@ -9,6 +10,44 @@ interface AttemptState {
   count: number;
   windowStart: number;
   blockedUntil: number;
+}
+
+// Per-IP tracking, in-memory. Unlike the cookie-based limiter below, this
+// can't be defeated just by discarding cookies between requests. It resets
+// on cold start and isn't shared across serverless instances, so it's
+// defense in depth rather than a hard guarantee.
+const ipAttempts = new Map<string, AttemptState>();
+const IP_MAP_CLEANUP_THRESHOLD = 500;
+
+export function getClientIp(request: NextRequest): string {
+  const forwardedFor = request.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim();
+  }
+  const realIp = request.headers.get('x-real-ip');
+  if (realIp) return realIp;
+  return 'unknown';
+}
+
+function pruneIpState(key: string, now: number): AttemptState {
+  const existing = ipAttempts.get(key);
+  if (!existing) return { count: 0, windowStart: now, blockedUntil: 0 };
+  if (existing.blockedUntil <= now && now - existing.windowStart > ATTEMPT_WINDOW_MS) {
+    return { count: 0, windowStart: now, blockedUntil: 0 };
+  }
+  return existing;
+}
+
+function setIpState(key: string, state: AttemptState, now: number): void {
+  ipAttempts.set(key, state);
+
+  if (ipAttempts.size > IP_MAP_CLEANUP_THRESHOLD) {
+    for (const [k, s] of ipAttempts) {
+      if (s.blockedUntil <= now && now - s.windowStart > ATTEMPT_WINDOW_MS) {
+        ipAttempts.delete(k);
+      }
+    }
+  }
 }
 
 function getAttemptsSecret(): string {
@@ -88,9 +127,19 @@ export type RateLimitResult =
 
 export async function checkRateLimit(
   projectId: string,
-  attemptsCookieValue: string | undefined
+  attemptsCookieValue: string | undefined,
+  ip: string
 ): Promise<RateLimitResult> {
   const now = Date.now();
+
+  const ipKey = `${projectId}:${ip}`;
+  const ipState = pruneIpState(ipKey, now);
+  if (ipState.blockedUntil > now) {
+    const state: AttemptState = { count: MAX_ATTEMPTS, windowStart: now, blockedUntil: ipState.blockedUntil };
+    const cookie = await serializeAttemptsCookie(state);
+    return { allowed: false, retryAfterMs: ipState.blockedUntil - now, cookie };
+  }
+
   let state = (await parseAttemptsCookie(attemptsCookieValue)) ?? {
     count: 0,
     windowStart: now,
@@ -112,15 +161,25 @@ export async function checkRateLimit(
     return { allowed: false, retryAfterMs: LOCKOUT_MS, cookie };
   }
 
-  const delayMs = state.count * 500;
+  const delayMs = Math.max(state.count, ipState.count) * 500;
   return { allowed: true, delayMs };
 }
 
 export async function recordFailedAttempt(
   projectId: string,
-  attemptsCookieValue: string | undefined
+  attemptsCookieValue: string | undefined,
+  ip: string
 ): Promise<string> {
   const now = Date.now();
+
+  const ipKey = `${projectId}:${ip}`;
+  const ipState = pruneIpState(ipKey, now);
+  ipState.count += 1;
+  if (ipState.count >= MAX_ATTEMPTS) {
+    ipState.blockedUntil = now + LOCKOUT_MS;
+  }
+  setIpState(ipKey, ipState, now);
+
   let state = (await parseAttemptsCookie(attemptsCookieValue)) ?? {
     count: 0,
     windowStart: now,

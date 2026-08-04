@@ -2,12 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import {
   getAttemptsCookieName,
   isProtectedProjectId,
-  getPasswordHashEnvKey,
-  type ProtectedProjectId,
 } from '@/lib/project-auth/config';
 import {
   buildAttemptsCookieHeader,
   checkRateLimit,
+  getClientIp,
   recordFailedAttempt,
 } from '@/lib/project-auth/rate-limit';
 import { buildAccessCookieHeader, createAccessToken } from '@/lib/project-auth/tokens';
@@ -28,8 +27,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Contraseña incorrecta' }, { status: 401 });
   }
 
+  const ip = getClientIp(request);
   const attemptsCookie = request.cookies.get(getAttemptsCookieName(projectId))?.value;
-  const rateLimit = await checkRateLimit(projectId, attemptsCookie);
+  const rateLimit = await checkRateLimit(projectId, attemptsCookie, ip);
 
   const responseHeaders = new Headers();
 
@@ -48,16 +48,10 @@ export async function POST(request: NextRequest) {
     await new Promise((resolve) => setTimeout(resolve, rateLimit.delayMs));
   }
 
-  console.log('[DEBUG] API Route:', { projectId, password });
-  const envKey = getPasswordHashEnvKey(projectId as ProtectedProjectId);
-  console.log('[DEBUG] Env Key:', envKey);
-  console.log('[DEBUG] Hash in Env:', process.env[envKey]);
-
   const valid = await verifyProjectPassword(projectId, password);
-  console.log('[DEBUG] Password verification result:', valid);
 
   if (!valid) {
-    const attemptsCookieValue = await recordFailedAttempt(projectId, attemptsCookie);
+    const attemptsCookieValue = await recordFailedAttempt(projectId, attemptsCookie, ip);
     responseHeaders.append(
       'Set-Cookie',
       buildAttemptsCookieHeader(projectId, attemptsCookieValue)
