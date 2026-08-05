@@ -7,11 +7,11 @@ import styles from './OnboardingChallengeSection.module.css';
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const JOURNEY_STAGES = [
-  { id: '01', title: 'Registro', status: 'normal' },
-  { id: '02', title: 'Perfil inversor', status: 'normal' },
-  { id: '03', title: 'Personalización', status: 'normal' },
-  { id: '04', title: 'Propuesta de inversión', status: 'drop-off', annotation: 'Mayor punto de abandono' },
-  { id: '05', title: 'Activación', status: 'activated' },
+  { id: '01', titleEn: 'Sign up', titleEs: 'Registro', status: 'normal' },
+  { id: '02', titleEn: 'Investor profile', titleEs: 'Perfil inversor', status: 'normal' },
+  { id: '03', titleEn: 'Personalisation', titleEs: 'Personalización', status: 'normal' },
+  { id: '04', titleEn: 'Investment proposal', titleEs: 'Propuesta de inversión', status: 'drop-off', annotationEn: 'Biggest drop-off point', annotationEs: 'Mayor punto de abandono' },
+  { id: '05', titleEn: 'Activation', titleEs: 'Activación', status: 'activated' },
 ];
 
 export default function OnboardingChallengeSection() {
@@ -28,20 +28,29 @@ export default function OnboardingChallengeSection() {
         >
           <span className={styles.eyebrow}>01 / EL DESAFÍO</span>
           <h2 className={styles.heading}>
-            El mayor punto de abandono del producto aparecía justo cuando los usuarios debían crear su primer portafolio.
+            <span data-lang="en">The product&apos;s biggest drop-off point appeared right when users had to create their first portfolio.</span>
+            <span data-lang="es">El mayor punto de abandono del producto aparecía justo cuando los usuarios debían crear su primer portafolio.</span>
           </h2>
           <div className={styles.bodyDescriptionBlock}>
             <p>
-              El proceso de creación del portafolio era uno de los momentos más importantes de la experiencia. Era el paso donde un usuario pasaba de simplemente registrarse a construir su primera estrategia de inversión.
+              <span data-lang="en">Holdo is a Chilean robo-advisor regulated by the CMF (Comisión para el Mercado Financiero). When someone signed up, they had to complete their investor profile before reaching a personalised portfolio proposal, put together by Harry, Holdo&apos;s AI.</span>
+              <span data-lang="es">Holdo es un robo-advisor chileno regulado por la CMF (Comisión para el Mercado Financiero). Cuando alguien se registraba, tenía que completar su perfil de inversor antes de llegar a una propuesta de portafolio personalizada, armada por Harry, la IA de Holdo.</span>
             </p>
             <p>
-              Sin embargo, los datos mostraban una caída muy pronunciada precisamente en ese momento.
+              <span data-lang="en">The portfolio-creation process was one of the most important moments in the experience. It was the step where a user went from simply signing up to building their first investment strategy.</span>
+              <span data-lang="es">El proceso de creación del portafolio era uno de los momentos más importantes de la experiencia. Era el paso donde un usuario pasaba de simplemente registrarse a construir su primera estrategia de inversión.</span>
             </p>
             <p>
-              Antes de pensar en una nueva interfaz necesitábamos responder una única pregunta:
+              <span data-lang="en">However, PostHog and Hotjar showed a very sharp drop precisely at that moment: the screen presenting the investment proposal made users read through 5 informational tabs before they could accept it.</span>
+              <span data-lang="es">Sin embargo, PostHog y Hotjar mostraban una caída muy pronunciada precisamente en ese momento: la pantalla donde se presentaba la propuesta de inversión obligaba a leer 5 tabs informativas antes de poder aceptarla.</span>
+            </p>
+            <p>
+              <span data-lang="en">Before thinking about a new interface, we needed to answer a single question:</span>
+              <span data-lang="es">Antes de pensar en una nueva interfaz necesitábamos responder una única pregunta:</span>
             </p>
             <p className={styles.questionText}>
-              ¿Qué estaba haciendo que tantos usuarios abandonaran el proceso justo aquí?
+              <span data-lang="en">What was causing so many users to abandon the process right here?</span>
+              <span data-lang="es">¿Qué estaba haciendo que tantos usuarios abandonaran el proceso justo aquí?</span>
             </p>
           </div>
         </motion.div>
@@ -65,8 +74,11 @@ export default function OnboardingChallengeSection() {
                   transition={{ duration: 0.5, delay: 0.2 + idx * 0.1, ease: EASE }}
                 >
                   <span className={styles.stageNum}>{stage.id}</span>
-                  <h3 className={styles.stageTitle}>{stage.title}</h3>
-                  {stage.annotation && (
+                  <h3 className={styles.stageTitle}>
+                    <span data-lang="en">{stage.titleEn}</span>
+                    <span data-lang="es">{stage.titleEs}</span>
+                  </h3>
+                  {stage.annotationEs && (
                     <motion.div
                       className={styles.dropOffTag}
                       initial={{ opacity: 0, scale: 0.95 }}
@@ -75,7 +87,10 @@ export default function OnboardingChallengeSection() {
                       transition={{ duration: 0.4, delay: 0.65, ease: EASE }}
                     >
                       <span className={styles.tagDot} />
-                      <span>{stage.annotation}</span>
+                      <span>
+                        <span data-lang="en">{stage.annotationEn}</span>
+                        <span data-lang="es">{stage.annotationEs}</span>
+                      </span>
                     </motion.div>
                   )}
                 </motion.div>

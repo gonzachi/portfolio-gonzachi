@@ -21,14 +21,17 @@ export default function OnboardingExperienceSection() {
         >
           <span className={styles.eyebrow}>05 / EL REDISEÑO</span>
           <h2 className={styles.heading}>
-            El objetivo era conseguir que cualquier persona pudiera entenderlo.
+            <span data-lang="en">The goal was to make it understandable to anyone.</span>
+            <span data-lang="es">El objetivo era conseguir que cualquier persona pudiera entenderlo.</span>
           </h2>
           <div className={styles.bodyDescriptionBlock}>
             <p>
-              El rediseño no comenzó reorganizando componentes. Comenzó replanteando la forma en que el producto acompañaba a las personas durante la creación de su primer portafolio.
+              <span data-lang="en">The redesign didn&apos;t start by reorganising components. It started by rethinking how the product accompanied people while they created their first portfolio.</span>
+              <span data-lang="es">El rediseño no comenzó reorganizando componentes. Comenzó replanteando la forma en que el producto acompañaba a las personas durante la creación de su primer portafolio.</span>
             </p>
             <p className={styles.keyTakeawayText}>
-              Cada pantalla fue simplificada para reducir incertidumbre, explicar únicamente lo necesario y guiar al usuario paso a paso.
+              <span data-lang="en">Every screen was simplified to reduce uncertainty, explain only what was necessary, and guide the user step by step.</span>
+              <span data-lang="es">Cada pantalla fue simplificada para reducir incertidumbre, explicar únicamente lo necesario y guiar al usuario paso a paso.</span>
             </p>
           </div>
         </motion.div>
@@ -55,7 +58,8 @@ export default function OnboardingExperienceSection() {
           transition={{ duration: 0.55, delay: 0.25, ease: EASE }}
         >
           <p className={styles.closingText}>
-            El resultado no fue simplemente un flujo más limpio. Fue una experiencia que acompañaba al usuario en lugar de ponerlo a prueba.
+            <span data-lang="en">The result wasn&apos;t simply a cleaner flow. It was an experience that accompanied the user instead of testing them.</span>
+            <span data-lang="es">El resultado no fue simplemente un flujo más limpio. Fue una experiencia que acompañaba al usuario en lugar de ponerlo a prueba.</span>
           </p>
         </motion.div>
       </div>

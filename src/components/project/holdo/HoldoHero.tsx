@@ -21,7 +21,8 @@ export default function HoldoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
           >
-            Rediseñando una experiencia de inversión para el mundo mobile.
+            <span data-lang="en">Redesigning an investment experience for the mobile world.</span>
+            <span data-lang="es">Rediseñando una experiencia de inversión para el mundo mobile.</span>
           </motion.h1>
 
           <motion.p
@@ -30,7 +31,8 @@ export default function HoldoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
           >
-            Te muestro cómo transformamos una experiencia pensada para desktop en una aplicación móvil intuitiva, manteniendo la complejidad del producto sin comprometer la experiencia del usuario.
+            <span data-lang="en">Here&apos;s how we transformed a desktop-first experience into an intuitive mobile app, keeping the product&apos;s complexity intact without compromising the user experience.</span>
+            <span data-lang="es">Te muestro cómo transformamos una experiencia pensada para desktop en una aplicación móvil intuitiva, manteniendo la complejidad del producto sin comprometer la experiencia del usuario.</span>
           </motion.p>
         </div>
 

@@ -19,7 +19,8 @@ export default function OnboardingHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
           >
-            Haciendo accesible un proceso financiero diseñado para expertos.
+            <span data-lang="en">Making a financial process designed for experts accessible to everyone.</span>
+            <span data-lang="es">Haciendo accesible un proceso financiero diseñado para expertos.</span>
           </motion.h1>
 
           <motion.div
@@ -29,7 +30,8 @@ export default function OnboardingHero() {
             transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
           >
             <p>
-              El proceso de creación de portafolios concentraba uno de los mayores puntos de abandono del producto. A partir del análisis de comportamiento, investigación y rediseño de la experiencia, transformamos un recorrido largo y técnico en una experiencia más clara, progresiva y comprensible, sin perder el rigor que requería el negocio.
+              <span data-lang="en">The portfolio-creation process concentrated one of the product&apos;s biggest drop-off points. Through behavioural analysis, research and an experience redesign, we transformed a long, technical journey into one that was clearer, progressive and easier to understand, without losing the rigour the business required.</span>
+              <span data-lang="es">El proceso de creación de portafolios concentraba uno de los mayores puntos de abandono del producto. A partir del análisis de comportamiento, investigación y rediseño de la experiencia, transformamos un recorrido largo y técnico en una experiencia más clara, progresiva y comprensible, sin perder el rigor que requería el negocio.</span>
             </p>
           </motion.div>
         </div>

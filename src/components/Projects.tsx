@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { landingProjects } from '@/data/content';
 import { useTheme } from '@/hooks/useTheme';
@@ -49,8 +49,13 @@ function ProjectCard({
 }) {
   const router = useRouter();
   const [hovered, setHovered] = useState(false);
+  const [supportsHover, setSupportsHover] = useState(false);
   const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'];
   const isActive = activeProjectIds.includes(project.id);
+
+  useEffect(() => {
+    setSupportsHover(window.matchMedia('(hover: hover)').matches);
+  }, []);
 
   const allTags: string[] = [
     ...(project.badge ? [project.badge] : []),
@@ -87,18 +92,14 @@ function ProjectCard({
     <div className={`reveal reveal-delay-${delay % 4}`}>
       <div
         className={`${styles.card} ${hovered ? styles.cardHovered : ''}`}
-        onMouseEnter={() => {
-          if (window.matchMedia('(hover: hover)').matches) {
-            setHovered(true);
-            onHover(project.id);
-          }
-        }}
-        onMouseLeave={() => {
-          if (window.matchMedia('(hover: hover)').matches) {
-            setHovered(false);
-            onHover(null);
-          }
-        }}
+        onMouseEnter={supportsHover ? () => {
+          setHovered(true);
+          onHover(project.id);
+        } : undefined}
+        onMouseLeave={supportsHover ? () => {
+          setHovered(false);
+          onHover(null);
+        } : undefined}
         onClick={handleClick}
       >
         {/* Optional Thumbnail Image */}

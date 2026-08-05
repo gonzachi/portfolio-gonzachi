@@ -10,41 +10,57 @@ const MANIFESTO_CHAPTERS = [
   {
     num: '01',
     keyword: 'MANIFESTO · 01',
-    title: 'Priorizar antes que mostrar',
-    desc: 'Decidir qué información debe estar siempre visible y qué debe aparecer bajo demanda. La Home fue el mayor ejercicio de priorización.',
+    titleEn: 'Prioritise before displaying',
+    titleEs: 'Priorizar antes que mostrar',
+    descEn: 'Deciding what information should always be visible and what should appear on demand. The Home was the biggest prioritisation exercise.',
+    descEs: 'Decidir qué información debe estar siempre visible y qué debe aparecer bajo demanda. La Home fue el mayor ejercicio de priorización.',
     comparison: {
-      left: 'Desktop: Toda la información visible',
-      right: 'Mobile: Información clave + desgloses',
+      leftEn: 'Desktop: All information visible',
+      leftEs: 'Desktop: Toda la información visible',
+      rightEn: 'Mobile: Key info + breakdowns',
+      rightEs: 'Mobile: Información clave + desgloses',
     },
   },
   {
     num: '02',
     keyword: 'MANIFESTO · 02',
-    title: 'Mantener la familiaridad',
-    desc: 'Conservar la lógica principal del producto adaptando la navegación y la jerarquía a patrones nativos de dispositivos móviles.',
+    titleEn: 'Keep it familiar',
+    titleEs: 'Mantener la familiaridad',
+    descEn: "Preserving the product's core logic while adapting navigation and hierarchy to native mobile patterns.",
+    descEs: 'Conservar la lógica principal del producto adaptando la navegación y la jerarquía a patrones nativos de dispositivos móviles.',
     comparison: {
-      left: 'Lógica Original Preservada',
-      right: 'Navegación Nativa Mobile',
+      leftEn: 'Original Logic Preserved',
+      leftEs: 'Lógica Original Preservada',
+      rightEn: 'Native Mobile Navigation',
+      rightEs: 'Navegación Nativa Mobile',
     },
   },
   {
     num: '03',
     keyword: 'MANIFESTO · 03',
-    title: 'Diseñar para momentos rápidos',
-    desc: 'Optimizar la experiencia para sesiones breves de consulta de cartera y ejecución de operaciones en pocos pasos.',
+    titleEn: 'Design for quick moments',
+    titleEs: 'Diseñar para momentos rápidos',
+    descEn: 'Optimising the experience for brief portfolio-checking sessions and executing operations in just a few steps.',
+    descEs: 'Optimizar la experiencia para sesiones breves de consulta de cartera y ejecución de operaciones en pocos pasos.',
     comparison: {
-      left: 'Desktop: Sesiones de exploración',
-      right: 'Mobile: Operativa en movimiento',
+      leftEn: 'Desktop: Exploration sessions',
+      leftEs: 'Desktop: Sesiones de exploración',
+      rightEn: 'Mobile: On-the-go operations',
+      rightEs: 'Mobile: Operativa en movimiento',
     },
   },
   {
     num: '04',
     keyword: 'MANIFESTO · 04',
-    title: 'Lanzar primero lo que más valor aportaba',
-    desc: 'Priorizar el flujo de inversión en la primera versión para aportar máximo valor inmediato a usuarios y negocio.',
+    titleEn: 'Launch what mattered most, first',
+    titleEs: 'Lanzar primero lo que más valor aportaba',
+    descEn: 'Prioritising the investment flow in the first version to deliver maximum immediate value to users and business.',
+    descEs: 'Priorizar el flujo de inversión en la primera versión para aportar máximo valor inmediato a usuarios y negocio.',
     comparison: {
-      left: 'MVP: Invertir & Consultar',
-      right: 'Responsive: Gestiones secundarias',
+      leftEn: 'MVP: Invest & Check',
+      leftEs: 'MVP: Invertir & Consultar',
+      rightEn: 'Responsive: Secondary tasks',
+      rightEs: 'Responsive: Gestiones secundarias',
     },
   },
 ];
@@ -63,7 +79,8 @@ export default function HoldoDecisionsSection() {
         >
           <span className={styles.eyebrow}>04 / PRINCIPIOS DE DISEÑO</span>
           <h2 className={styles.heading}>
-            Cada decisión de diseño buscaba hacer el producto más claro, sin hacerlo menos potente.
+            <span data-lang="en">Every design decision aimed to make the product clearer, without making it less powerful.</span>
+            <span data-lang="es">Cada decisión de diseño buscaba hacer el producto más claro, sin hacerlo menos potente.</span>
           </h2>
         </motion.div>
 
@@ -76,10 +93,12 @@ export default function HoldoDecisionsSection() {
           transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
         >
           <p>
-            El objetivo nunca fue trasladar la plataforma desktop al móvil pantalla por pantalla.
+            <span data-lang="en">The goal was never to move the desktop platform to mobile screen by screen.</span>
+            <span data-lang="es">El objetivo nunca fue trasladar la plataforma desktop al móvil pantalla por pantalla.</span>
           </p>
           <p className={styles.highlightIntro}>
-            Estos fueron los cuatro principios que guiaron el manifiesto de rediseño.
+            <span data-lang="en">These were the four principles that guided the redesign manifesto.</span>
+            <span data-lang="es">Estos fueron los cuatro principios que guiaron el manifiesto de rediseño.</span>
           </p>
         </motion.div>
 
@@ -96,18 +115,26 @@ export default function HoldoDecisionsSection() {
             >
               <div className={styles.chapterHeader}>
                 <span className={styles.chapterTag}>{chapter.keyword}</span>
-                <h3 className={styles.chapterTitle}>{chapter.title}</h3>
-                <p className={styles.chapterDesc}>{chapter.desc}</p>
+                <h3 className={styles.chapterTitle}>
+                  <span data-lang="en">{chapter.titleEn}</span>
+                  <span data-lang="es">{chapter.titleEs}</span>
+                </h3>
+                <p className={styles.chapterDesc}>
+                  <span data-lang="en">{chapter.descEn}</span>
+                  <span data-lang="es">{chapter.descEs}</span>
+                </p>
               </div>
 
               {/* Small Visual Comparison Diagram */}
               <div className={styles.chapterDiagram}>
                 <div className={styles.diagramSideLeft}>
-                  <span>{chapter.comparison.left}</span>
+                  <span data-lang="en">{chapter.comparison.leftEn}</span>
+                  <span data-lang="es">{chapter.comparison.leftEs}</span>
                 </div>
                 <span className={styles.diagramArrow}>→</span>
                 <div className={styles.diagramSideRight}>
-                  <span>{chapter.comparison.right}</span>
+                  <span data-lang="en">{chapter.comparison.rightEn}</span>
+                  <span data-lang="es">{chapter.comparison.rightEs}</span>
                 </div>
               </div>
             </motion.div>
@@ -123,7 +150,8 @@ export default function HoldoDecisionsSection() {
           transition={{ duration: 0.6, delay: 0.35, ease: EASE }}
         >
           <blockquote className={styles.editorialQuote}>
-            &ldquo;Diseñar para mobile significó decidir qué merecía ocupar cada píxel de la pantalla.&rdquo;
+            <span data-lang="en">&ldquo;Designing for mobile meant deciding what deserved to occupy every pixel of the screen.&rdquo;</span>
+            <span data-lang="es">&ldquo;Diseñar para mobile significó decidir qué merecía ocupar cada píxel de la pantalla.&rdquo;</span>
           </blockquote>
         </motion.div>
 

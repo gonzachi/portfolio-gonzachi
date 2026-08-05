@@ -7,13 +7,13 @@ import styles from './OnboardingExecutiveSummary.module.css';
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const TABLE_ROWS = [
-  { key: 'Proyecto', val: 'Haciendo accesible un proceso financiero diseñado para expertos', isTitle: true },
-  { key: 'Descripción', val: 'Rediseño de la experiencia de activación y creación del primer portafolio de inversión en Holdo. Transformación de un proceso técnico en un recorrido guiado, comprensible y libre de fricciones.' },
-  { key: 'Rol', val: 'Product Designer' },
-  { key: 'Timeline', val: '2 meses (2023)' },
-  { key: 'Equipo', val: 'Product Manager · Product Designer · Research · Finanzas · Frontend' },
-  { key: 'Usuarios', val: 'Inversores particulares en fase de activación' },
-  { key: 'Estado', val: 'Lanzado' },
+  { keyEn: 'Project', keyEs: 'Proyecto', valEn: 'Making a financial process designed for experts accessible to everyone', valEs: 'Haciendo accesible un proceso financiero diseñado para expertos', isTitle: true },
+  { keyEn: 'Description', keyEs: 'Descripción', valEn: "Redesign of Holdo's activation experience and first investment-portfolio creation flow. Turning a technical process into a guided, understandable, frictionless journey.", valEs: 'Rediseño de la experiencia de activación y creación del primer portafolio de inversión en Holdo. Transformación de un proceso técnico en un recorrido guiado, comprensible y libre de fricciones.' },
+  { keyEn: 'Role', keyEs: 'Rol', valEn: 'Product Designer', valEs: 'Product Designer' },
+  { keyEn: 'Timeline', keyEs: 'Timeline', valEn: '2 months (2023)', valEs: '2 meses (2023)' },
+  { keyEn: 'Team', keyEs: 'Equipo', valEn: 'Product Manager · Product Designer · Research · Finance · Frontend', valEs: 'Product Manager · Product Designer · Research · Finanzas · Frontend' },
+  { keyEn: 'Users', keyEs: 'Usuarios', valEn: 'Individual investors in the activation phase', valEs: 'Inversores particulares en fase de activación' },
+  { keyEn: 'Status', keyEs: 'Estado', valEn: 'Launched', valEs: 'Lanzado' },
 ];
 
 const SCOPE_CHIPS = [
@@ -53,9 +53,13 @@ export default function OnboardingExecutiveSummary() {
           <div className={styles.execTableWrapper}>
             {TABLE_ROWS.map((row, idx) => (
               <div key={idx} className={styles.execTableRow}>
-                <span className={styles.execTableKey}>{row.key}</span>
+                <span className={styles.execTableKey}>
+                  <span data-lang="en">{row.keyEn}</span>
+                  <span data-lang="es">{row.keyEs}</span>
+                </span>
                 <span className={row.isTitle ? styles.execTableTitleVal : styles.execTableVal}>
-                  {row.val}
+                  <span data-lang="en">{row.valEn}</span>
+                  <span data-lang="es">{row.valEs}</span>
                 </span>
               </div>
             ))}
