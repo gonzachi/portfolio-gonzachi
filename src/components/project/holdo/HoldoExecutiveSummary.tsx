@@ -7,13 +7,13 @@ import styles from './HoldoExecutiveSummary.module.css';
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 const TABLE_ROWS = [
-  { key: 'Proyecto', val: 'Aplicación móvil de inversión para una fintech regulada.', isTitle: true },
-  { key: 'Descripción', val: 'Rediseño de una plataforma de inversión originalmente diseñada para desktop, transformándola en una experiencia mobile-first pensada para ofrecer mayor simplicidad, confianza y usabilidad.' },
-  { key: 'Rol', val: 'Product Designer' },
-  { key: 'Timeline', val: '3 meses (2023)' },
-  { key: 'Equipo', val: 'Product Manager · Product Designer · Engineering · Negocio' },
-  { key: 'Usuarios', val: 'Inversores particulares' },
-  { key: 'Estado', val: 'Lanzado' },
+  { keyEn: 'Project', keyEs: 'Proyecto', valEn: 'Investment mobile app for a regulated fintech.', valEs: 'Aplicación móvil de inversión para una fintech regulada.', isTitle: true },
+  { keyEn: 'Description', keyEs: 'Descripción', valEn: 'Redesign of an investment platform originally built for desktop, transforming it into a mobile-first experience designed to deliver greater simplicity, trust and usability.', valEs: 'Rediseño de una plataforma de inversión originalmente diseñada para desktop, transformándola en una experiencia mobile-first pensada para ofrecer mayor simplicidad, confianza y usabilidad.' },
+  { keyEn: 'Role', keyEs: 'Rol', valEn: 'Product Designer', valEs: 'Product Designer' },
+  { keyEn: 'Timeline', keyEs: 'Timeline', valEn: '3 months (2023)', valEs: '3 meses (2023)' },
+  { keyEn: 'Team', keyEs: 'Equipo', valEn: 'Product Manager · Product Designer · Engineering · Business', valEs: 'Product Manager · Product Designer · Engineering · Negocio' },
+  { keyEn: 'Users', keyEs: 'Usuarios', valEn: 'Individual investors', valEs: 'Inversores particulares' },
+  { keyEn: 'Status', keyEs: 'Estado', valEn: 'Launched', valEs: 'Lanzado' },
 ];
 
 const SCOPE_CHIPS = [
@@ -53,9 +53,13 @@ export default function HoldoExecutiveSummary() {
           <div className={styles.execTableWrapper}>
             {TABLE_ROWS.map((row, idx) => (
               <div key={idx} className={styles.execTableRow}>
-                <span className={styles.execTableKey}>{row.key}</span>
+                <span className={styles.execTableKey}>
+                  <span data-lang="en">{row.keyEn}</span>
+                  <span data-lang="es">{row.keyEs}</span>
+                </span>
                 <span className={row.isTitle ? styles.execTableTitleVal : styles.execTableVal}>
-                  {row.val}
+                  <span data-lang="en">{row.valEn}</span>
+                  <span data-lang="es">{row.valEs}</span>
                 </span>
               </div>
             ))}

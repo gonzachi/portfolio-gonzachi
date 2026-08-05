@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/data/content';
@@ -7,6 +8,8 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Contact from '@/components/Contact';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
 import ScrollRevealInit from '@/components/ScrollRevealInit';
+import LangWrapper from '@/components/project/LangWrapper';
+import LangToggle from '@/components/project/LangToggle';
 import FigmaVideoPlayer from '@/components/project/FigmaVideoPlayer';
 import CardsCarousel from '@/components/project/CardsCarousel';
 import HoldoHero from '@/components/project/holdo/HoldoHero';
@@ -19,6 +22,39 @@ import HoldoExperienceSection from '@/components/project/holdo/HoldoExperienceSe
 import HoldoImpactSection from '@/components/project/holdo/HoldoImpactSection';
 import HoldoReflectionsSection from '@/components/project/holdo/HoldoReflectionsSection';
 import styles from './page.module.css';
+
+const TITLE = 'Rediseño de la app móvil de inversión de Holdo | Gonzalo Chiavassa';
+const DESCRIPTION =
+  'Cómo diseñé el MVP nativo de Holdo cuando el 80% de los usuarios ya accedía desde el celular a una plataforma pensada solo para desktop: research, benchmark competitivo y un scope acotado a los dos flujos de mayor valor.';
+const OG_IMAGE = '/assets/home/portada-caso-app-holdo.jpg';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: '/project/app-movil-holdo',
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: '/project/app-movil-holdo',
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1250,
+        height: 400,
+        alt: 'Rediseño de la app móvil de inversión de Holdo — case study de Gonzalo Chiavassa',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+};
 
 function getHighlightIcon(iconType: string) {
     switch (iconType) {
@@ -154,7 +190,7 @@ export default function ProjectPage() {
     ];
 
     return (
-        <>
+        <LangWrapper storageKey="holdo-app-lang">
             <ScrollToTop />
             <ScrollRevealInit />
 
@@ -177,6 +213,8 @@ export default function ProjectPage() {
                             <span className={styles.role}>Product Designer</span>
                         </div>
                     </Link>
+                    {/* Language Toggle */}
+                    <LangToggle />
                 </div>
             </header>
 
@@ -209,6 +247,6 @@ export default function ProjectPage() {
 
             {/* CASE STUDY FOOTER */}
             <CaseStudyFooter />
-        </>
+        </LangWrapper>
     );
 }

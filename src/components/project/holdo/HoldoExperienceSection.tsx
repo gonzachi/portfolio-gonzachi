@@ -11,29 +11,37 @@ const SCREEN_CARDS = [
   {
     id: '0',
     img: '/assets/projects/app-holdo/app-holdo-0.png',
-    title: 'Home / Dashboard',
-    desc: 'El home muestra el balance consolidado y el estado de cada meta de inversión. El número ocupa el primer plano del header oscuro para que la información más consultada esté disponible sin ninguna acción previa — abrir la app ya es suficiente.',
+    titleEn: 'Home / Dashboard',
+    titleEs: 'Home / Dashboard',
+    descEn: "The home screen shows the consolidated balance and the status of each investment goal. The number takes centre stage in the dark header so the most-checked information is available with no prior action — opening the app is already enough.",
+    descEs: 'El home muestra el balance consolidado y el estado de cada meta de inversión. El número ocupa el primer plano del header oscuro para que la información más consultada esté disponible sin ninguna acción previa — abrir la app ya es suficiente.',
     alt: 'Home / Dashboard de la app móvil de Holdo',
   },
   {
     id: '1',
     img: '/assets/projects/app-holdo/app-holdo-1.png',
-    title: 'Detalle de portafolio',
-    desc: 'La vista de cuenta desglosa cada activo con su variación del día y su peso en el portafolio. Mantuvimos la misma estructura de header para crear consistencia entre pantallas, y agrupamos los movimientos recientes al final para no competir visualmente con los datos de inversión.',
+    titleEn: 'Portfolio detail',
+    titleEs: 'Detalle de portafolio',
+    descEn: "The account view breaks down each asset with its daily change and weight in the portfolio. We kept the same header structure to create consistency between screens, and grouped recent movements at the bottom so they wouldn't visually compete with investment data.",
+    descEs: 'La vista de cuenta desglosa cada activo con su variación del día y su peso en el portafolio. Mantuvimos la misma estructura de header para crear consistencia entre pantallas, y agrupamos los movimientos recientes al final para no competir visualmente con los datos de inversión.',
     alt: 'Detalle de portafolio de Holdo',
   },
   {
     id: '2',
     img: '/assets/projects/app-holdo/app-holdo-2.png',
-    title: 'Balance desglosado',
-    desc: 'El balance total se desglosa en tres estados: invertido, en tránsito y sin asignar. Esta distinción era importante para Holdo porque el dinero en tránsito genera confusión frecuente en productos financieros — hacerlo visible y etiquetarlo explícitamente reduce la necesidad de soporte.',
+    titleEn: 'Balance breakdown',
+    titleEs: 'Balance desglosado',
+    descEn: 'The total balance is broken down into three states: invested, in transit and unassigned. This distinction mattered to Holdo because money in transit is a frequent source of confusion in financial products — making it visible and labelling it explicitly reduces the need for support.',
+    descEs: 'El balance total se desglosa en tres estados: invertido, en tránsito y sin asignar. Esta distinción era importante para Holdo porque el dinero en tránsito genera confusión frecuente en productos financieros — hacerlo visible y etiquetarlo explícitamente reduce la necesidad de soporte.',
     alt: 'Balance desglosado en Holdo',
   },
   {
     id: '3',
     img: '/assets/projects/app-holdo/app-holdo-3.png',
-    title: 'Confirmación de depósito',
-    desc: 'El estado de dinero en tránsito tiene su propia pantalla de confirmación, con el monto y la cuenta destino en el centro. La decisión fue tratar este estado como un momento de cierre del flujo de depósito, no como un error ni una advertencia — el tono y el verde refuerzan que todo está en orden.',
+    titleEn: 'Deposit confirmation',
+    titleEs: 'Confirmación de depósito',
+    descEn: 'Money in transit has its own confirmation screen, with the amount and destination account front and centre. The decision was to treat this state as a closing moment for the deposit flow, not as an error or a warning — the tone and the green reinforce that everything is in order.',
+    descEs: 'El estado de dinero en tránsito tiene su propia pantalla de confirmación, con el monto y la cuenta destino en el centro. La decisión fue tratar este estado como un momento de cierre del flujo de depósito, no como un error ni una advertencia — el tono y el verde refuerzan que todo está en orden.',
     alt: 'Confirmación de depósito en Holdo',
   },
 ];
@@ -52,7 +60,8 @@ export default function HoldoExperienceSection() {
         >
           <span className={styles.eyebrow}>05 / DISEÑANDO LA EXPERIENCIA</span>
           <h2 className={styles.heading}>
-            Cada pantalla debía simplificar una decisión, no solo mostrar información.
+            <span data-lang="en">Every screen had to simplify a decision, not just display information.</span>
+            <span data-lang="es">Cada pantalla debía simplificar una decisión, no solo mostrar información.</span>
           </h2>
         </motion.div>
 
@@ -65,7 +74,8 @@ export default function HoldoExperienceSection() {
           transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
         >
           <p>
-            Con los principios de diseño definidos, transformamos una plataforma pensada para desktop en una experiencia específicamente diseñada para dispositivos móviles.
+            <span data-lang="en">With the design principles defined, we transformed a desktop-first platform into an experience specifically designed for mobile devices.</span>
+            <span data-lang="es">Con los principios de diseño definidos, transformamos una plataforma pensada para desktop en una experiencia específicamente diseñada para dispositivos móviles.</span>
           </p>
         </motion.div>
 
@@ -97,8 +107,14 @@ export default function HoldoExperienceSection() {
                 />
               </div>
               <div className={styles.screenContent}>
-                <h3 className={styles.screenTitle}>{card.title}</h3>
-                <p className={styles.screenDesc}>{card.desc}</p>
+                <h3 className={styles.screenTitle}>
+                  <span data-lang="en">{card.titleEn}</span>
+                  <span data-lang="es">{card.titleEs}</span>
+                </h3>
+                <p className={styles.screenDesc}>
+                  <span data-lang="en">{card.descEn}</span>
+                  <span data-lang="es">{card.descEs}</span>
+                </p>
               </div>
             </motion.div>
           ))}
