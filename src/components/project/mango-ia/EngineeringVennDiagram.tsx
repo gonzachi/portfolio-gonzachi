@@ -1,9 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './MangoIAComponents.module.css';
 
 export default function EngineeringVennDiagram() {
+  const { lang } = useLang();
+
   return (
     <div className={styles.vennWrapper}>
       <div className={styles.vennContainer}>
@@ -20,8 +23,8 @@ export default function EngineeringVennDiagram() {
             strokeDasharray="4 4"
             className={styles.vennCircle}
           />
-          <text x="120" y="110" className={styles.circleLabel}>Usuarios</text>
-          <text x="120" y="130" className={styles.circleSub}>Necesidades de Moda</text>
+          <text x="120" y="110" className={styles.circleLabel}>{lang === 'en' ? 'Users' : 'Usuarios'}</text>
+          <text x="120" y="130" className={styles.circleSub}>{lang === 'en' ? 'Fashion Needs' : 'Necesidades de Moda'}</text>
 
           {/* Negocio Circle */}
           <circle
@@ -34,8 +37,8 @@ export default function EngineeringVennDiagram() {
             strokeDasharray="4 4"
             className={styles.vennCircle}
           />
-          <text x="330" y="110" className={styles.circleLabel}>Negocio</text>
-          <text x="330" y="130" className={styles.circleSub}>Estrategia & Eficiencia</text>
+          <text x="330" y="110" className={styles.circleLabel}>{lang === 'en' ? 'Business' : 'Negocio'}</text>
+          <text x="330" y="130" className={styles.circleSub}>{lang === 'en' ? 'Strategy & Efficiency' : 'Estrategia & Eficiencia'}</text>
 
           {/* Ingeniería Circle */}
           <circle
@@ -48,8 +51,8 @@ export default function EngineeringVennDiagram() {
             strokeDasharray="4 4"
             className={styles.vennCircle}
           />
-          <text x="225" y="300" textAnchor="middle" className={styles.circleLabel}>Ingeniería</text>
-          <text x="225" y="318" textAnchor="middle" className={styles.circleSub}>Capacidad & Modelos AI</text>
+          <text x="225" y="300" textAnchor="middle" className={styles.circleLabel}>{lang === 'en' ? 'Engineering' : 'Ingeniería'}</text>
+          <text x="225" y="318" textAnchor="middle" className={styles.circleSub}>{lang === 'en' ? 'Capacity & AI Models' : 'Capacidad & Modelos AI'}</text>
 
           {/* Central Intersection Highlight */}
           <ellipse
@@ -61,10 +64,10 @@ export default function EngineeringVennDiagram() {
             className={styles.centerNode}
           />
           <text x="225" y="172" textAnchor="middle" fill="#FFFFFF" className={styles.centerTextMain}>
-            PRODUCTO
+            {lang === 'en' ? 'PRODUCT' : 'PRODUCTO'}
           </text>
           <text x="225" y="186" textAnchor="middle" fill="rgba(255,255,255,0.7)" className={styles.centerTextSub}>
-            Valor Real
+            {lang === 'en' ? 'Real Value' : 'Valor Real'}
           </text>
         </svg>
       </div>
@@ -73,7 +76,10 @@ export default function EngineeringVennDiagram() {
         <div className={styles.legendItem}>
           <span className={styles.legendDot} />
           <p>
-            <strong>Colaboración desde el Día 1:</strong> Las capacidades técnicas condicionaban la experiencia. Diseñar codo a codo con ingeniería permitió adaptar continuamente el roadmap y mitigar riesgos.
+            <strong>{lang === 'en' ? 'Collaboration from Day 1:' : 'Colaboración desde el Día 1:'}</strong>{' '}
+            {lang === 'en'
+              ? 'Technical capabilities shaped the experience. Designing shoulder to shoulder with engineering let us continuously adapt the roadmap and mitigate risk.'
+              : 'Las capacidades técnicas condicionaban la experiencia. Diseñar codo a codo con ingeniería permitió adaptar continuamente el roadmap y mitigar riesgos.'}
           </p>
         </div>
       </div>
