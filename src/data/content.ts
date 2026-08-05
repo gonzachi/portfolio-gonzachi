@@ -638,15 +638,6 @@ export const landingProjects = [
     description: "Un proyecto dedicado a orquestar diferentes equipos, optimizando procesos que actualmente se hacen manualmente, con excel, mails y diferentes plataformas. Innovamos en el proceso de desarrollo tomando una actitud AI First. Te cuento más.",
     tags: ["Product Ownership", "Discovery", "Internal Tools"],
   },
-  {
-    id: "club-fidelizacion-referidos",
-    number: "05",
-    title: "Club de fidelización y referidos",
-    subtitle: "Plataforma de fidelización y sistema de referidos para fomentar el crecimiento orgánico",
-    company: "Holdo · 2024",
-    description: "Diseño de un programa de fidelización y referidos integrado en la plataforma de inversiones de Holdo, orientado a incentivar la recomendación entre usuarios y la recurrencia.",
-    tags: ["Product Design", "Growth", "Loyalty", "UX/UI"],
-  },
 ];
 
 export const education = [
