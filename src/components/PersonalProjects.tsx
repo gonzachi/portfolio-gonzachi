@@ -62,15 +62,6 @@ const cards: PersonalProjectCard[] = [
     comingSoon: true,
     image: '/assets/home/portada-3.jpg',
   },
-  {
-    id: 'english-pwa',
-    emoji: '🇬🇧',
-    title: 'Aprende inglés',
-    type: 'PWA · Next.js · IA',
-    description: 'PWA para practicar inglés con ejercicios generados por IA adaptados al nivel del usuario. Vocabulario, frases y corrección en tiempo real.',
-    comingSoon: true,
-    image: '/assets/home/portada-3.jpg',
-  },
 ];
 
 export default function PersonalProjects() {
