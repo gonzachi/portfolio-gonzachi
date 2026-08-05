@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { projects } from '@/data/content';
@@ -12,6 +13,43 @@ import { redirect } from 'next/navigation';
 import { hasProjectAccess } from '@/lib/project-auth/access';
 import styles from './page.module.css';
 
+const TITLE = 'Diseñando el futuro de la creatividad en moda con IA | Gonzalo Chiavassa';
+const DESCRIPTION =
+  'Cómo diseñé la plataforma interna de IA generativa que usan hoy cientos de diseñadores de Mango para acelerar su proceso creativo — de la investigación en 5 departamentos a las decisiones de producto detrás de la herramienta.';
+const OG_IMAGE = '/assets/projects/moda.jpg';
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: {
+    canonical: '/project/agilidad-inspiracional',
+  },
+  robots: {
+    index: false,
+    follow: false,
+  },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: 'article',
+    url: '/project/agilidad-inspiracional',
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1440,
+        height: 747,
+        alt: 'Plataforma de IA generativa para diseñadores de moda en Mango — case study de Gonzalo Chiavassa',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+};
+
 // Import Custom Visual Components for Mango IA Case Study
 import HeroAbstractMotion from '@/components/project/mango-ia/HeroAbstractMotion';
 import OpportunityDiagram from '@/components/project/mango-ia/OpportunityDiagram';
@@ -19,7 +57,6 @@ import DiscoveryMap from '@/components/project/mango-ia/DiscoveryMap';
 import WorkflowConvergenceDiagram from '@/components/project/mango-ia/WorkflowConvergenceDiagram';
 import BigInsightVisual from '@/components/project/mango-ia/BigInsightVisual';
 import ShapingProductTimeline from '@/components/project/mango-ia/ShapingProductTimeline';
-import ProductEvolutionCycle from '@/components/project/mango-ia/ProductEvolutionCycle';
 import RetoTimeline from '@/components/project/mango-ia/RetoTimeline';
 import CanvasVsChatComparison from '@/components/project/mango-ia/CanvasVsChatComparison';
 import ModelosComparisonTable from '@/components/project/mango-ia/ModelosComparisonTable';
@@ -261,6 +298,12 @@ export default async function ProjectPage() {
               </ScrollReveal>
             </div>
 
+            {/* Department Discovery Map */}
+            <ScrollReveal delay={0.35} direction="up">
+              <div style={{ marginTop: '3.5rem' }}>
+                <DiscoveryMap />
+              </div>
+            </ScrollReveal>
 
             {/* Closing Quote Card */}
             <ScrollReveal delay={0.5} direction="up" className={styles.oppQuoteSection}>
@@ -356,9 +399,23 @@ export default async function ProjectPage() {
               </p>
             </ScrollReveal>
 
+            {/* Collaboration Model: Users / Business / Engineering */}
+            <ScrollReveal delay={0.25} direction="up">
+              <div style={{ marginBottom: '3rem' }}>
+                <EngineeringVennDiagram />
+              </div>
+            </ScrollReveal>
+
             {/* 5 Sequential Decision Blocks Timeline */}
             <ScrollReveal delay={0.3} direction="up" className={styles.shapingTimelineWrapper}>
               <ShapingProductTimeline />
+            </ScrollReveal>
+
+            {/* Own vs. External AI Models — Strategic Decision */}
+            <ScrollReveal delay={0.35} direction="up">
+              <div style={{ marginTop: '3rem' }}>
+                <ModelosComparisonTable />
+              </div>
             </ScrollReveal>
 
             {/* Validation Process Paragraph */}
@@ -405,7 +462,14 @@ export default async function ProjectPage() {
 
             {/* Main Visual Cycle Timeline */}
             <ScrollReveal delay={0.3} direction="up" className={styles.evolVisualCentered}>
-              <ProductEvolutionCycle />
+              <RetoTimeline />
+            </ScrollReveal>
+
+            {/* The Product Today */}
+            <ScrollReveal delay={0.35} direction="up">
+              <div style={{ marginTop: '3rem' }}>
+                <CleanDashboardMock />
+              </div>
             </ScrollReveal>
 
             <div className={styles.evolDivider} />
@@ -505,8 +569,8 @@ export default async function ProjectPage() {
                   </h2>
                 </div>
                 <p>
-                  <span data-lang="en">Because this is an internal product, I can&apos;t share adoption numbers or business KPIs.</span>
-                  <span data-lang="es">Al tratarse de un producto interno, no puedo compartir cifras de adopción ni KPIs de negocio.</span>
+                  <span data-lang="en">Because this is an internal product, I can&apos;t share exact adoption numbers or business KPIs — but today the platform is used by hundreds of designers across Mango.</span>
+                  <span data-lang="es">Al tratarse de un producto interno, no puedo compartir cifras exactas de adopción ni KPIs de negocio — pero hoy la plataforma la usan cientos de diseñadores en Mango.</span>
                 </p>
                 <p>
                   <span data-lang="en">What I can share is the type of impact the platform generated across the organization.</span>
