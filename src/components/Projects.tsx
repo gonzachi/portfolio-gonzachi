@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { landingProjects } from '@/data/content';
 import { useTheme } from '@/hooks/useTheme';
@@ -41,11 +41,9 @@ export { SectionLabel };
 function ProjectCard({
   project,
   delay,
-  onHover,
 }: {
   project: LandingProject;
   delay: number;
-  onHover: (id: string | null) => void;
 }) {
   const [hovered, setHovered] = useState(false);
   const [supportsHover, setSupportsHover] = useState(false);
@@ -83,14 +81,8 @@ function ProjectCard({
   }
 
   const cardClassName = `${styles.card} ${hovered ? styles.cardHovered : ''}`;
-  const handleMouseEnter = supportsHover ? () => {
-    setHovered(true);
-    onHover(project.id);
-  } : undefined;
-  const handleMouseLeave = supportsHover ? () => {
-    setHovered(false);
-    onHover(null);
-  } : undefined;
+  const handleMouseEnter = supportsHover ? () => setHovered(true) : undefined;
+  const handleMouseLeave = supportsHover ? () => setHovered(false) : undefined;
 
   const cardContent = (
     <>
@@ -134,9 +126,11 @@ function ProjectCard({
             </span>
           ))}
         </div>
-        <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
-          <span>{isActive ? 'Ver caso →' : 'En construcción'}</span>
-        </span>
+        <div className={styles.cardCta}>
+          <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
+            <span>{isActive ? 'Ver proyecto' : 'En construcción'}</span>
+          </span>
+        </div>
       </div>
     </>
   );
@@ -167,39 +161,14 @@ function ProjectCard({
 
 /* ── Main Projects Section ── */
 export default function Projects() {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const isHoveredProjectActive = hoveredId ? ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'].includes(hoveredId) : false;
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (cursorRef.current) {
-      cursorRef.current.style.left = `${e.clientX}px`;
-      cursorRef.current.style.top = `${e.clientY}px`;
-    }
-  }, []);
-
   return (
-    <>
-      <section id="trabajos" className={styles.section} onMouseMove={handleMouseMove}>
-        <div className={styles.container}>
-          <SectionLabel>Trabajos</SectionLabel>
-          {landingProjects.map((p, i) => (
-            <ProjectCard
-              key={p.id}
-              project={p as LandingProject}
-              delay={i}
-              onHover={setHoveredId}
-            />
-          ))}
-        </div>
-        {/* Custom cursor label */}
-        <div
-          ref={cursorRef}
-          className={`${styles.cardCursorLabel} ${hoveredId !== null ? styles.cardCursorLabelVisible : ''}`}
-        >
-          <span>{isHoveredProjectActive ? 'ver caso' : 'en construcción'}</span>
-        </div>
-      </section>
-    </>
+    <section id="trabajos" className={styles.section}>
+      <div className={styles.container}>
+        <SectionLabel>Trabajos</SectionLabel>
+        {landingProjects.map((p, i) => (
+          <ProjectCard key={p.id} project={p as LandingProject} delay={i} />
+        ))}
+      </div>
+    </section>
   );
 }
