@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { landingProjects } from '@/data/content';
 import { useTheme } from '@/hooks/useTheme';
 import styles from './Projects.module.css';
@@ -47,7 +47,6 @@ function ProjectCard({
   delay: number;
   onHover: (id: string | null) => void;
 }) {
-  const router = useRouter();
   const [hovered, setHovered] = useState(false);
   const [supportsHover, setSupportsHover] = useState(false);
   const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'];
@@ -56,6 +55,8 @@ function ProjectCard({
   useEffect(() => {
     setSupportsHover(window.matchMedia('(hover: hover)').matches);
   }, []);
+
+  const { theme } = useTheme();
 
   const allTags: string[] = [
     ...(project.badge ? [project.badge] : []),
@@ -73,7 +74,6 @@ function ProjectCard({
     );
   }
 
-  const { theme } = useTheme();
   const fusedText = project.description;
   let cardCoverImage = project.thumbnail || project.image;
   if (cardCoverImage && project.id === 'app-movil-holdo' && theme === 'dark') {
@@ -82,71 +82,85 @@ function ProjectCard({
     cardCoverImage = '/assets/home/portada-caso-holdo-ladrillo-dark.jpg';
   }
 
-  const handleClick = () => {
-    if (isActive) {
-      router.push(`/project/${project.id}`);
-    }
-  };
+  const cardClassName = `${styles.card} ${hovered ? styles.cardHovered : ''}`;
+  const handleMouseEnter = supportsHover ? () => {
+    setHovered(true);
+    onHover(project.id);
+  } : undefined;
+  const handleMouseLeave = supportsHover ? () => {
+    setHovered(false);
+    onHover(null);
+  } : undefined;
+
+  const cardContent = (
+    <>
+      {/* Optional Thumbnail Image */}
+      {cardCoverImage && (
+        <div className={styles.cardVisual}>
+          <img
+            src={cardCoverImage}
+            alt={project.title}
+            className={styles.cardImage}
+          />
+        </div>
+      )}
+
+      {/* Header: title + company */}
+      <div className={styles.cardHeader}>
+        <div className={styles.cardHeaderLeft}>
+          {project.company && <div className={styles.rowCompany}>{project.company}</div>}
+          <h3 className={styles.rowTitle}>{project.title}</h3>
+        </div>
+      </div>
+
+      {/* Body: fused description */}
+      <div className={styles.cardBody}>
+        <p className={styles.rowDescription}>{fusedText}</p>
+      </div>
+
+      {/* Footer: tags + ver caso */}
+      <div className={styles.cardFooter}>
+        <div className={styles.cardBadges}>
+          {allTags.map((tag, i) => (
+            <span
+              key={tag}
+              className={
+                i === 0 && project.badge
+                  ? styles.badge
+                  : styles.rowTag
+              }
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
+          <span>{isActive ? 'Ver caso →' : 'En construcción'}</span>
+        </span>
+      </div>
+    </>
+  );
 
   return (
     <div className={`reveal reveal-delay-${delay % 4}`}>
-      <div
-        className={`${styles.card} ${hovered ? styles.cardHovered : ''}`}
-        onMouseEnter={supportsHover ? () => {
-          setHovered(true);
-          onHover(project.id);
-        } : undefined}
-        onMouseLeave={supportsHover ? () => {
-          setHovered(false);
-          onHover(null);
-        } : undefined}
-        onClick={handleClick}
-      >
-        {/* Optional Thumbnail Image */}
-        {cardCoverImage && (
-          <div className={styles.cardVisual}>
-            <img
-              src={cardCoverImage}
-              alt={project.title}
-              className={styles.cardImage}
-            />
-          </div>
-        )}
-
-        {/* Header: title + company */}
-        <div className={styles.cardHeader}>
-          <div className={styles.cardHeaderLeft}>
-            {project.company && <div className={styles.rowCompany}>{project.company}</div>}
-            <h3 className={styles.rowTitle}>{project.title}</h3>
-          </div>
+      {isActive ? (
+        <Link
+          href={`/project/${project.id}`}
+          className={cardClassName}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {cardContent}
+        </Link>
+      ) : (
+        <div
+          className={cardClassName}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {cardContent}
         </div>
-
-        {/* Body: fused description */}
-        <div className={styles.cardBody}>
-          <p className={styles.rowDescription}>{fusedText}</p>
-        </div>
-
-        {/* Footer: tags + ver caso */}
-        <div className={styles.cardFooter}>
-          <div className={styles.cardBadges}>
-            {allTags.map((tag, i) => (
-              <span
-                key={tag}
-                className={
-                  i === 0 && project.badge
-                    ? styles.badge
-                    : styles.rowTag
-                }
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
-            <span>{isActive ? 'Ver caso →' : 'En construcción'}</span>
-          </span>
-        </div>
-      </div>
+      )}
     </div>
   );
 }
