@@ -12,6 +12,7 @@
 
 /* ── Card ── */
 .card {
+  display: block;
   border-radius: 0;
   background: #FAFAF9;
   border: 1px solid rgba(var(--fg-rgb), 0.05);
