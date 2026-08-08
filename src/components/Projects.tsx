@@ -155,6 +155,7 @@ function ProjectCard({
       ) : (
         <div
           className={cardClassName}
+          aria-disabled="true"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
