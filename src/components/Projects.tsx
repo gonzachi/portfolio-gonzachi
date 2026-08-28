@@ -47,7 +47,7 @@ function ProjectCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const [supportsHover, setSupportsHover] = useState(false);
-  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'];
+  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional', 'disenar-en-codigo'];
   const isActive = activeProjectIds.includes(project.id);
 
   useEffect(() => {

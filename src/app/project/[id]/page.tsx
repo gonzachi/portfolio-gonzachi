@@ -24,7 +24,7 @@ export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {
     return projects
-        .filter((p) => !(p as { requiresAccess?: boolean }).requiresAccess && p.id !== 'agilidad-inspiracional' && p.id !== 'orquestadora-de-equipos' && p.id !== 'reduciendo-drop-off-onboarding' && p.id !== 'app-movil-holdo')
+        .filter((p) => !(p as { requiresAccess?: boolean }).requiresAccess && p.id !== 'agilidad-inspiracional' && p.id !== 'orquestadora-de-equipos' && p.id !== 'reduciendo-drop-off-onboarding' && p.id !== 'app-movil-holdo' && p.id !== 'disenar-en-codigo')
         .map((project) => ({ id: project.id }));
 }
 
