@@ -3,7 +3,7 @@
     width: 100%;
     background-color: var(--color-bg-primary);
     border-top: 1px solid var(--color-border);
-    padding: 7rem 0 3.5rem;
+    padding: 4rem 0 3rem;
     position: relative;
     overflow: hidden;
 }
@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 }
 
 .eyebrow {
@@ -82,12 +82,12 @@
 /* ── HEADLINE ── */
 .headline {
     font-family: var(--font-heading), serif;
-    font-size: clamp(4.5rem, 12vw, 10rem);
-    font-weight: 800;
-    line-height: 0.92;
-    letter-spacing: -0.04em;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     color: var(--color-text-primary);
-    margin: 0 0 4rem;
+    margin: 0 0 2.5rem;
 }
 
 /* ── DIVIDER ── */
@@ -139,22 +139,22 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
     .footer {
-        padding: 5.5rem 0 3rem;
+        padding: 3.5rem 0 2.5rem;
     }
 
     .headline {
-        font-size: clamp(3.5rem, 16vw, 6rem);
-        margin-bottom: 3rem;
+        font-size: clamp(1.8rem, 6vw, 2.5rem);
+        margin-bottom: 2rem;
     }
 
     .topRow {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
     }
 }
 
 @media (max-width: 480px) {
     .footer {
-        padding: 4.5rem 0 2.5rem;
+        padding: 3rem 0 2rem;
     }
 
     .container {
@@ -162,7 +162,7 @@
     }
 
     .headline {
-        font-size: clamp(3rem, 18vw, 4.5rem);
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
     }
 
     .topRow {
