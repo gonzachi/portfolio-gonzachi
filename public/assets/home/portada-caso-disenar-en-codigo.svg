@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bg { fill: #ffffff; }
+    .figmaFrame { fill: none; stroke: rgba(0,0,0,0.18); stroke-width: 2; stroke-dasharray: 6 6; }
+    .figmaBar { fill: rgba(166,124,82,0.18); }
+    .figmaBarSolid { fill: rgba(166,124,82,0.35); }
+    .figmaLabel { font-family: 'Courier New', monospace; font-size: 15px; fill: rgba(0,0,0,0.45); letter-spacing: 0.06em; }
+    .editorWindow { fill: #14161B; }
+    .editorBar { fill: #1f2128; }
+    .dotRed { fill: #ff5f56; }
+    .dotYellow { fill: #ffbd2e; }
+    .dotGreen { fill: #27c93f; }
+    .codeLabel { font-family: 'Courier New', monospace; font-size: 15px; }
+    .tok-key { fill: #9cdcfe; }
+    .tok-kw { fill: #569cd6; }
+    .tok-str { fill: #ce9178; }
+    .tok-op { fill: #d4d4d4; }
+    .cursor { fill: #e2e8f0; animation: blink 1.1s steps(1) infinite; }
+    .connector { fill: none; stroke: #5B7A99; stroke-width: 2.5; stroke-dasharray: 8 10; animation: dash 2.4s linear infinite; }
+    .particle { fill: #5B7A99; animation: travel 2.8s ease-in-out infinite; }
+    .particle2 { fill: #A67C52; animation: travel 2.8s ease-in-out infinite; animation-delay: 1.4s; }
+    .arrowHead { fill: #5B7A99; }
+
+    @keyframes blink {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes dash {
+      to { stroke-dashoffset: -36; }
+    }
+    @keyframes travel {
+      0% { offset-distance: 0%; opacity: 0; }
+      8% { opacity: 1; }
+      92% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+  </style>
+
+  <rect class="bg" width="1200" height="700" />
+
+  <!-- Left: Figma-style frame (fading out) -->
+  <g opacity="0.85">
+    <rect class="figmaFrame" x="130" y="190" width="360" height="320" rx="4" />
+    <rect class="figmaBarSolid" x="162" y="230" width="140" height="14" rx="2" />
+    <rect class="figmaBar" x="162" y="264" width="280" height="18" rx="2" />
+    <rect class="figmaBar" x="162" y="296" width="230" height="18" rx="2" />
+    <rect class="figmaBarSolid" x="162" y="340" width="110" height="34" rx="3" />
+    <text class="figmaLabel" x="162" y="450">// maqueta estática</text>
+  </g>
+
+  <!-- Connector: design -> code -->
+  <path id="connectorPath" class="connector" d="M 500 350 C 580 350, 600 350, 680 350" />
+  <path d="M 500 350 C 580 350, 600 350, 680 350" fill="none" stroke="none" id="motionPath" />
+  <circle class="particle" r="5">
+    <animateMotion dur="2.8s" repeatCount="indefinite" path="M 500 350 C 580 350, 600 350, 680 350" />
+  </circle>
+  <circle class="particle2" r="4">
+    <animateMotion dur="2.8s" repeatCount="indefinite" begin="1.4s" path="M 500 350 C 580 350, 600 350, 680 350" />
+  </circle>
+  <polygon class="arrowHead" points="672,343 690,350 672,357" />
+
+  <!-- Right: Code editor window -->
+  <g>
+    <rect class="editorWindow" x="700" y="150" width="370" height="360" rx="6" />
+    <rect class="editorBar" x="700" y="150" width="370" height="38" rx="6" />
+    <rect class="editorBar" x="700" y="176" width="370" height="12" />
+    <circle class="dotRed" cx="724" cy="169" r="6" />
+    <circle class="dotYellow" cx="746" cy="169" r="6" />
+    <circle class="dotGreen" cx="768" cy="169" r="6" />
+
+    <text class="codeLabel" x="730" y="230">
+      <tspan class="tok-kw">const</tspan><tspan class="tok-op"> </tspan><tspan class="tok-key">Boton</tspan><tspan class="tok-op"> = () =&gt; {</tspan>
+    </text>
+    <text class="codeLabel" x="750" y="260">
+      <tspan class="tok-key">variant</tspan><tspan class="tok-op">: </tspan><tspan class="tok-str">"mango-ds"</tspan><tspan class="tok-op">,</tspan>
+    </text>
+    <text class="codeLabel" x="750" y="290">
+      <tspan class="tok-key">interactivo</tspan><tspan class="tok-op">: </tspan><tspan class="tok-kw">true</tspan>
+    </text>
+    <text class="codeLabel" x="730" y="320">
+      <tspan class="tok-op">};</tspan>
+    </text>
+    <rect class="cursor" x="730" y="335" width="9" height="18" />
+
+    <rect x="730" y="380" width="310" height="1" fill="rgba(255,255,255,0.08)" />
+    <text class="figmaLabel" x="730" y="420" fill="rgba(255,255,255,0.55)">// prototipo funcional real</text>
+  </g>
+</svg>

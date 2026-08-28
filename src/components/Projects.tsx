@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { landingProjects } from '@/data/content';
 import { useTheme } from '@/hooks/useTheme';
@@ -41,15 +41,13 @@ export { SectionLabel };
 function ProjectCard({
   project,
   delay,
-  onHover,
 }: {
   project: LandingProject;
   delay: number;
-  onHover: (id: string | null) => void;
 }) {
   const [hovered, setHovered] = useState(false);
   const [supportsHover, setSupportsHover] = useState(false);
-  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'];
+  const activeProjectIds = ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional', 'disenar-en-codigo'];
   const isActive = activeProjectIds.includes(project.id);
 
   useEffect(() => {
@@ -58,10 +56,7 @@ function ProjectCard({
 
   const { theme } = useTheme();
 
-  const allTags: string[] = [
-    ...(project.badge ? [project.badge] : []),
-    ...(project.tags || []),
-  ];
+  const allTags: string[] = [...(project.tags || [])];
 
   if (project.comingSoon) {
     return (
@@ -83,20 +78,15 @@ function ProjectCard({
   }
 
   const cardClassName = `${styles.card} ${hovered ? styles.cardHovered : ''}`;
-  const handleMouseEnter = supportsHover ? () => {
-    setHovered(true);
-    onHover(project.id);
-  } : undefined;
-  const handleMouseLeave = supportsHover ? () => {
-    setHovered(false);
-    onHover(null);
-  } : undefined;
+  const handleMouseEnter = supportsHover ? () => setHovered(true) : undefined;
+  const handleMouseLeave = supportsHover ? () => setHovered(false) : undefined;
 
   const cardContent = (
     <>
       {/* Optional Thumbnail Image */}
       {cardCoverImage && (
         <div className={styles.cardVisual}>
+          {project.badge && <span className={styles.newBadge}>{project.badge}</span>}
           <img
             src={cardCoverImage}
             alt={project.title}
@@ -105,10 +95,16 @@ function ProjectCard({
         </div>
       )}
 
-      {/* Header: title + company */}
+      {/* Header: tags (company first, bold) + title */}
       <div className={styles.cardHeader}>
         <div className={styles.cardHeaderLeft}>
-          {project.company && <div className={styles.rowCompany}>{project.company}</div>}
+          <div className={styles.cardBadges}>
+            {allTags.map((tag) => (
+              <span key={tag} className={styles.rowTag}>
+                {tag}
+              </span>
+            ))}
+          </div>
           <h3 className={styles.rowTitle}>{project.title}</h3>
         </div>
       </div>
@@ -118,24 +114,11 @@ function ProjectCard({
         <p className={styles.rowDescription}>{fusedText}</p>
       </div>
 
-      {/* Footer: tags + ver caso */}
+      {/* Footer: ver proyecto */}
       <div className={styles.cardFooter}>
-        <div className={styles.cardBadges}>
-          {allTags.map((tag, i) => (
-            <span
-              key={tag}
-              className={
-                i === 0 && project.badge
-                  ? styles.badge
-                  : styles.rowTag
-              }
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
         <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
-          <span>{isActive ? 'Ver caso →' : 'En construcción'}</span>
+          <span>{isActive ? 'Ver proyecto' : 'En construcción'}</span>
+          {isActive && <span className={styles.viewCaseArrow}>→</span>}
         </span>
       </div>
     </>
@@ -168,39 +151,14 @@ function ProjectCard({
 
 /* ── Main Projects Section ── */
 export default function Projects() {
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const isHoveredProjectActive = hoveredId ? ['reduciendo-drop-off-onboarding', 'app-movil-holdo', 'agilidad-inspiracional'].includes(hoveredId) : false;
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (cursorRef.current) {
-      cursorRef.current.style.left = `${e.clientX}px`;
-      cursorRef.current.style.top = `${e.clientY}px`;
-    }
-  }, []);
-
   return (
-    <>
-      <section id="trabajos" className={styles.section} onMouseMove={handleMouseMove}>
-        <div className={styles.container}>
-          <SectionLabel>Trabajos</SectionLabel>
-          {landingProjects.map((p, i) => (
-            <ProjectCard
-              key={p.id}
-              project={p as LandingProject}
-              delay={i}
-              onHover={setHoveredId}
-            />
-          ))}
-        </div>
-        {/* Custom cursor label */}
-        <div
-          ref={cursorRef}
-          className={`${styles.cardCursorLabel} ${hoveredId !== null ? styles.cardCursorLabelVisible : ''}`}
-        >
-          <span>{isHoveredProjectActive ? 'ver caso' : 'en construcción'}</span>
-        </div>
-      </section>
-    </>
+    <section id="trabajos" className={styles.section}>
+      <div className={styles.container}>
+        <SectionLabel>Trabajos</SectionLabel>
+        {landingProjects.map((p, i) => (
+          <ProjectCard key={p.id} project={p as LandingProject} delay={i} />
+        ))}
+      </div>
+    </section>
   );
 }

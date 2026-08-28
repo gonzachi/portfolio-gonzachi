@@ -203,6 +203,24 @@ export const projects = [
     description: [],
   },
   {
+    id: "disenar-en-codigo",
+    number: "",
+    title: "Diseñar producto directo en código.",
+    type: "Exploración Product Design · Mango · 2026",
+    subtitle: "Algunos lo llaman \"Direct Design\", \"AI First\" o solo \"Vibe coding\".",
+    year: "2026",
+    role: "Product Designer",
+    client: "Mango",
+    badge: "Nuevo ⚡",
+    roles: ["Product Designer", "Vibe Coding", "UX/UI Designer"],
+    tools: ["Claude Code", "Design System de Mango", "Next.js", "Vibe Coding"],
+    team: "Product Designer · Exploración interna junto a un compañero de equipo",
+    description: [
+      "Algunos lo llaman \"Direct Design\", \"AI First\" o solo \"Vibe coding\".",
+      "Lo cierto es que mi proceso se aceleró. Ya no abro Figma para diseñar, todo está en el código y te cuento cómo lo estoy haciendo."
+    ]
+  },
+  {
     id: "club-fidelizacion-referidos",
     number: "",
     title: "Club de fidelización y referidos",
@@ -581,14 +599,26 @@ export const behanceProjects = [
 /* Landing projects — simplified for the home page design */
 export const landingProjects = [
   {
-    id: "reduciendo-drop-off-onboarding",
+    id: "disenar-en-codigo",
     number: "01",
+    title: "Diseñar producto directo en código.",
+    subtitle: "Algunos lo llaman \"Direct Design\", \"AI First\" o solo \"Vibe coding\".",
+    company: "Mango · 2026",
+    description: "Algunos lo llaman \"Direct Design\", \"AI First\" o solo \"Vibe coding\". Lo cierto es que mi proceso se aceleró. Ya no abro Figma para diseñar, todo está en el código y te cuento cómo lo estoy haciendo.",
+    role: "Product Designer",
+    tags: ["AI First", "Vibe Coding"],
+    thumbnail: "/assets/home/portada-caso-disenar-en-codigo.svg",
+    badge: "Nuevo ⚡"
+  },
+  {
+    id: "reduciendo-drop-off-onboarding",
+    number: "02",
     title: "Haciendo accesible un proceso financiero diseñado para expertos.",
     subtitle: "Reducir la complejidad de la propuesta de inversión para aumentar la conversión.",
     company: "Holdo · 2023",
     description: "El proceso de creación de portafolios concentraba uno de los mayores puntos de abandono del producto. A partir del análisis de comportamiento, investigación y rediseño de la experiencia, transformamos un recorrido largo y técnico en una experiencia más clara, progresiva y comprensible.",
     role: "UX/UI · Product Designer",
-    tags: ["Fintech", "UX Research", "Data-Informed Design", "Onboarding Optimization", "Conversion", "Information Architecture"],
+    tags: ["UX Research", "Conversion"],
     stat: { value: "↓ info", label: "↑ conversión" },
     thumbnail: "/assets/home/portada-caso-holdo-ladrillo-light.jpg",
     expandedImages: [
@@ -599,14 +629,14 @@ export const landingProjects = [
   },
   {
     id: "app-movil-holdo",
-    number: "02",
+    number: "03",
     title: "Rediseñando una experiencia de inversión para el mundo mobile.",
     subtitle: "MVP de aplicación móvil",
     company: "Holdo · 2023",
     description: "El 80% de los usuarios accedía desde mobile, pero la plataforma era desktop. Diseñé el MVP de la app nativa: benchmark competitivo del mercado fintech chileno, priorización de alcance con el CEO y CTO, y dos flujos clave — consulta de portafolio y depósito de fondos.",
     expandedDescription: "Holdo nació en 2021 como una plataforma de inversiones destinada a personas con gran patrimonio, pensada exclusivamente para desktop. Tras el lanzamiento, los datos mostraron que el 80% de los usuarios accedía desde el móvil, con una experiencia muy limitada para ese contexto. La decisión fue construir una app móvil que superara lo que ofrecían competidores tradicionales como los bancos. Como Product Designer, fui responsable del diseño completo de la app, trabajando directamente con el CEO, CTO y el equipo de desarrollo. Participé en la definición del alcance del MVP, combinando un benchmark del mercado fintech chileno y regional con datos de comportamiento en Hotjar, Analytics y PostHog para decidir qué funcionalidades priorizar.",
     role: "Product Designer",
-    tags: ["Fintech", "Mobile App", "MVP Definition", "Data-Informed Design", "Competitive Analysis", "Product Design"],
+    tags: ["Mobile App", "MVP Definition"],
     stat: { value: "80%", label: "usuarios en mobile" },
     thumbnail: "/assets/home/portada-caso-app-holdo.jpg",
     expandedImages: [
@@ -618,25 +648,25 @@ export const landingProjects = [
   {
     id: "agilidad-inspiracional",
     requiresAccess: true,
-    number: "03",
+    number: "04",
     featured: true,
     title: "Diseñando el futuro de la creatividad en moda con IA.",
     subtitle: "El reto no era generar imágenes. Era ayudar a los diseñadores a materializar ideas más rápido.",
     company: "Mango · 2024 → presente",
     description: "El reto no era generar imágenes. Era ayudar a los diseñadores a materializar ideas más rápido. Construimos algo totalmente innovador, descubriendo cómo podíamos introducirnos en el proceso creativo de diseñadores de moda para optimizar la productividad.",
     role: "Product Designer",
-    tags: ["AI", "GenAI", "Product Design", "Internal Tools", "Fashion Tech"],
+    tags: ["GenAI", "Fashion Tech"],
     thumbnail: "/assets/projects/moda.jpg",
   },
   {
     id: "orquestadora-de-equipos",
     requiresAccess: true,
-    number: "04",
+    number: "05",
     title: "Plataforma orquestadora de equipos",
     subtitle: "Herramienta corporativa para la creación de contenido de journeys",
     company: "Mango · 2026 - presente",
     description: "Un proyecto dedicado a orquestar diferentes equipos, optimizando procesos que actualmente se hacen manualmente, con excel, mails y diferentes plataformas. Innovamos en el proceso de desarrollo tomando una actitud AI First. Te cuento más.",
-    tags: ["Product Ownership", "Discovery", "Internal Tools"],
+    tags: ["Product Ownership", "Internal Tools"],
   },
 ];
 
