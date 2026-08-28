@@ -56,10 +56,7 @@ function ProjectCard({
 
   const { theme } = useTheme();
 
-  const allTags: string[] = [
-    ...(project.badge ? [project.badge] : []),
-    ...(project.tags || []),
-  ];
+  const allTags: string[] = [...(project.tags || [])];
 
   if (project.comingSoon) {
     return (
@@ -89,6 +86,7 @@ function ProjectCard({
       {/* Optional Thumbnail Image */}
       {cardCoverImage && (
         <div className={styles.cardVisual}>
+          {project.badge && <span className={styles.newBadge}>{project.badge}</span>}
           <img
             src={cardCoverImage}
             alt={project.title}
@@ -97,10 +95,16 @@ function ProjectCard({
         </div>
       )}
 
-      {/* Header: title + company */}
+      {/* Header: tags (company first, bold) + title */}
       <div className={styles.cardHeader}>
         <div className={styles.cardHeaderLeft}>
-          {project.company && <div className={styles.rowCompany}>{project.company}</div>}
+          <div className={styles.cardBadges}>
+            {allTags.map((tag) => (
+              <span key={tag} className={styles.rowTag}>
+                {tag}
+              </span>
+            ))}
+          </div>
           <h3 className={styles.rowTitle}>{project.title}</h3>
         </div>
       </div>
@@ -110,27 +114,12 @@ function ProjectCard({
         <p className={styles.rowDescription}>{fusedText}</p>
       </div>
 
-      {/* Footer: tags + ver caso */}
+      {/* Footer: ver proyecto */}
       <div className={styles.cardFooter}>
-        <div className={styles.cardBadges}>
-          {allTags.map((tag, i) => (
-            <span
-              key={tag}
-              className={
-                i === 0 && project.badge
-                  ? styles.badge
-                  : styles.rowTag
-              }
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <div className={styles.cardCta}>
-          <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
-            <span>{isActive ? 'Ver proyecto' : 'En construcción'}</span>
-          </span>
-        </div>
+        <span className={`${styles.viewCaseBtn} ${isActive ? '' : styles.disabledBtn}`}>
+          <span>{isActive ? 'Ver proyecto' : 'En construcción'}</span>
+          {isActive && <span className={styles.viewCaseArrow}>→</span>}
+        </span>
       </div>
     </>
   );
