@@ -14,7 +14,7 @@
 .card {
   display: block;
   border-radius: 0;
-  background: #FAFAF9;
+  background: #ffffff;
   border: 1px solid rgba(var(--fg-rgb), 0.05);
   margin-bottom: 2rem;
   transition:
@@ -34,13 +34,11 @@
   background: #F5F5F4;
   border-color: rgba(var(--fg-rgb), 0.15);
   transform: rotate(-0.6deg) translateY(-2px);
-  box-shadow: 4px 6px 0px rgba(var(--fg-rgb), 0.12);
   z-index: 2;
 }
 
 :global([data-theme="dark"]) .cardHovered {
   background: rgba(var(--fg-rgb), 0.05);
-  box-shadow: 4px 6px 0px rgba(var(--fg-rgb), 0.08);
 }
 
 .cardVisual {

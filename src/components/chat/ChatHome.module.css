@@ -21,14 +21,14 @@
 .name {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
   letter-spacing: -0.02em;
   color: var(--color-text-primary);
 }
 
 .tagline {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
   max-width: 40ch;
   margin-bottom: 1rem;
@@ -43,22 +43,20 @@
 }
 
 .chip {
-  padding: 0.65rem 1.2rem;
+  padding: 0.55rem 1.05rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 @media (hover: hover) {
   .chip:hover {
-    border-color: rgba(0, 0, 0, 0.25);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -84,11 +82,11 @@
 
 .userBubble {
   max-width: 75%;
-  padding: 0.75rem 1.15rem;
+  padding: 0.7rem 1.05rem;
   border-radius: 20px 20px 4px 20px;
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
-  font-size: 0.94rem;
+  font-size: 0.88rem;
   line-height: 1.5;
 }
 
@@ -120,7 +118,7 @@
 }
 
 .assistantText {
-  font-size: 0.98rem;
+  font-size: 0.9rem;
   line-height: 1.65;
   color: var(--color-text-primary);
   white-space: pre-wrap;
@@ -143,7 +141,7 @@
 .answerLink {
   display: inline-block;
   margin-top: 0.75rem;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--color-text-primary);
   text-decoration: underline;
@@ -190,13 +188,12 @@
   background: var(--color-bg-secondary);
   overflow: hidden;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 @media (hover: hover) {
   .projectCard:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -257,13 +254,13 @@
 }
 
 .chipSmall {
-  padding: 0.45rem 0.9rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
   color: var(--color-text-secondary);
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
   white-space: nowrap;
   transition: border-color 0.2s ease, color 0.2s ease;
@@ -286,7 +283,6 @@
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 .input {
@@ -295,7 +291,7 @@
   outline: none;
   background: transparent;
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   color: var(--color-text-primary);
 }
 

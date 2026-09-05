@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Roboto_Mono } from "next/font/google";
+import { Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
 import { CookieBanner } from "@/components/CookieBanner";
 import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  style: ["normal", "italic"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
 const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-inter",
   display: "swap",
 });
@@ -59,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${playfair.variable} ${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+    <html lang="es" className={`${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
       <head>
         {/* Anti-flash: apply theme before first paint */}
         <script

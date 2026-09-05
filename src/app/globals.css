@@ -44,9 +44,9 @@
   --nav-scrolled-bg: rgba(var(--bg-rgb), 0.92);
 
   /* Typography — variables injected by next/font in layout.tsx */
-  --font-heading: var(--font-playfair), serif;
+  --font-heading: var(--font-inter), sans-serif;
   --font-body: var(--font-inter), sans-serif;
-  --font-accent: var(--font-playfair), serif;
+  --font-accent: var(--font-inter), sans-serif;
   --font-mono: var(--font-roboto-mono), monospace;
 
   /* Spacing */
@@ -81,29 +81,29 @@
 
 [data-theme="light"] {
   --fg-rgb: 0, 0, 0;
-  --bg-rgb: 242, 240, 235;
+  --bg-rgb: 255, 255, 255;
 
-  --color-bg-primary: #F2F0EB;
+  --color-bg-primary: #ffffff;
   --color-bg-secondary: #ffffff;
   --color-bg-card: #ffffff;
   --color-bg-elevated: #ffffff;
-  --color-text-primary: #000000;
+  --color-text-primary: #1d1d1d;
   --color-text-secondary: #3a3a3a;
   --color-text-muted: #666666;
   --color-text-on-accent: #ffffff;
-  --color-accent: #000000;
-  --color-accent-secondary: #000000;
+  --color-accent: #1d1d1d;
+  --color-accent-secondary: #1d1d1d;
   --color-border: #d5d3ce;
 
   --gradient-card: linear-gradient(135deg, #ffffff 0%, #F2F0EB 100%);
-  --gradient-accent: linear-gradient(135deg, #000000 0%, #333333 100%);
+  --gradient-accent: linear-gradient(135deg, #1d1d1d 0%, #333333 100%);
 
   --shadow-rgb: 0, 0, 0;
-  --shadow-glass: 0 8px 32px rgba(var(--shadow-rgb), 0.06);
-  --shadow-card: 0 24px 60px rgba(var(--shadow-rgb), 0.08);
-  --shadow-tooltip: 0 20px 60px rgba(var(--shadow-rgb), 0.1);
-  --shadow-banner: 0 10px 32px rgba(var(--shadow-rgb), 0.08);
-  --shadow-device: 0 30px 80px rgba(var(--shadow-rgb), 0.12);
+  --shadow-glass: none;
+  --shadow-card: none;
+  --shadow-tooltip: none;
+  --shadow-banner: none;
+  --shadow-device: none;
   --shadow-glow-accent: none;
 
   --ambient-1: transparent;
