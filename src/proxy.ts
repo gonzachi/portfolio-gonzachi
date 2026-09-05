@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getAccessCookieName, isProtectedProjectId } from '@/lib/project-auth/config';
 import { verifyAccessToken } from '@/lib/project-auth/tokens';
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const projectMatch = pathname.match(/^\/project\/([^/]+)(?:\/(.*))?$/);
