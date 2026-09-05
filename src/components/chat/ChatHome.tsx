@@ -8,7 +8,12 @@ import { useTypewriter } from '@/hooks/useTypewriter';
 import { useTypewriterLoop } from '@/hooks/useTypewriterLoop';
 import styles from './ChatHome.module.css';
 
-const STATUS_LINES = ['based Barcelona', 'working @ Mango'];
+const STATUS_LINES = [
+  'based in Barcelona',
+  '+8 years of experience',
+  'working @ Mango',
+  'Product Manager mindset',
+];
 
 interface Message {
   id: string;
@@ -102,13 +107,14 @@ export default function ChatHome() {
       {!started && (
         <div className={styles.emptyState}>
           <h1 className={styles.heroLine}>
-            Hi, I&apos;m <strong className={styles.heroName}>Gon</strong> 👋 {personalInfo.roles[0]}{' '}
+            Hi, I&apos;m <strong className={styles.heroName}>Gon</strong> 👋 {personalInfo.roles[0]}
+            <br />
             <span className={styles.statusLine}>
               {statusLine}
               <span className={styles.statusCaret} />
             </span>
           </h1>
-          <p className={styles.subtitle}>¿Qué te gustaría saber sobre Gon?</p>
+          <p className={styles.subtitle}>What would you like to know about Gon?</p>
           <div className={styles.chips}>
             {chatPrompts.map((prompt) => (
               <button key={prompt.id} type="button" className={styles.chip} onClick={() => handlePromptClick(prompt.id)}>
@@ -162,10 +168,10 @@ export default function ChatHome() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Preguntame algo..."
+            placeholder="Ask me something..."
             className={styles.input}
           />
-          <button type="submit" className={styles.sendButton} aria-label="Enviar">
+          <button type="submit" className={styles.sendButton} aria-label="Send">
             ↑
           </button>
         </form>
