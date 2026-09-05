@@ -5,7 +5,10 @@ import Link from 'next/link';
 import { personalInfo } from '@/data/content';
 import { chatPrompts, chatFallback, type ChatAnswer } from '@/data/chat';
 import { useTypewriter } from '@/hooks/useTypewriter';
+import { useTypewriterLoop } from '@/hooks/useTypewriterLoop';
 import styles from './ChatHome.module.css';
+
+const STATUS_LINES = ['based Barcelona', 'working @ Mango'];
 
 interface Message {
   id: string;
@@ -61,6 +64,7 @@ export default function ChatHome() {
   const [inputValue, setInputValue] = useState('');
   const transcriptRef = useRef<HTMLDivElement>(null);
   const idRef = useRef(0);
+  const statusLine = useTypewriterLoop(STATUS_LINES);
 
   const nextId = () => `msg-${idRef.current++}`;
 
@@ -97,10 +101,14 @@ export default function ChatHome() {
     <div className={styles.page}>
       {!started && (
         <div className={styles.emptyState}>
-          <h1 className={styles.name}>{personalInfo.name}</h1>
-          <p className={styles.tagline}>
-            {personalInfo.roles[0]} — preguntame lo que quieras saber sobre mi trabajo.
-          </p>
+          <h1 className={styles.heroLine}>
+            Hi, I&apos;m <strong className={styles.heroName}>Gon</strong> 👋 {personalInfo.roles[0]}{' '}
+            <span className={styles.statusLine}>
+              {statusLine}
+              <span className={styles.statusCaret} />
+            </span>
+          </h1>
+          <p className={styles.subtitle}>¿Qué te gustaría saber sobre Gon?</p>
           <div className={styles.chips}>
             {chatPrompts.map((prompt) => (
               <button key={prompt.id} type="button" className={styles.chip} onClick={() => handlePromptClick(prompt.id)}>

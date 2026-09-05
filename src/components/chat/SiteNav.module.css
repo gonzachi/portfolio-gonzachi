@@ -2,6 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,6 +11,14 @@
   background: rgba(var(--bg-rgb), 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+@media (min-width: 900px) {
+  .nav {
+    max-width: 900px;
+    margin-top: 1rem;
+    border-radius: 16px;
+  }
 }
 
 .brand {
