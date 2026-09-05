@@ -1,0 +1,325 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--color-bg-primary);
+}
+
+/* ── Empty state ── */
+.emptyState {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.tagline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 40ch;
+  margin-bottom: 1rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  max-width: 620px;
+}
+
+.chip {
+  padding: 0.65rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .chip:hover {
+    border-color: rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* ── Transcript ── */
+.transcript {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem 1.5rem 1rem;
+}
+
+.transcriptInner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.userRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.userBubble {
+  max-width: 75%;
+  padding: 0.75rem 1.15rem;
+  border-radius: 20px 20px 4px 20px;
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.assistantRow {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.assistantContent {
+  flex: 1;
+  min-width: 0;
+  padding-top: 0.15rem;
+}
+
+.assistantText {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-text-primary);
+  white-space: pre-wrap;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  background: var(--color-text-primary);
+  vertical-align: text-bottom;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.answerLink {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Thinking indicator ── */
+.thinkingDots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 0.6rem;
+}
+
+.thinkingDots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.thinkingDots span:nth-child(2) { animation-delay: 0.15s; }
+.thinkingDots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ── Project mini-cards ── */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .projectCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.projectVisual {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.projectBody {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.projectTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.projectSubtitle {
+  font-size: 0.74rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Composer ── */
+.composer {
+  flex-shrink: 0;
+  padding: 0.75rem 1.5rem 1.5rem;
+  background: linear-gradient(180deg, transparent, var(--color-bg-primary) 30%);
+}
+
+.chipsRowWrapper {
+  max-width: 700px;
+  margin: 0 auto 0.75rem;
+  overflow-x: auto;
+}
+
+.chipsRow {
+  display: flex;
+  gap: 0.5rem;
+  width: max-content;
+}
+
+.chipSmall {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .chipSmall:hover {
+    border-color: rgba(0, 0, 0, 0.25);
+    color: var(--color-text-primary);
+  }
+}
+
+.inputForm {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.sendButton {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+  .sendButton:hover {
+    opacity: 0.8;
+  }
+}
+
