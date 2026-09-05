@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: 1rem clamp(1.25rem, 4vw, 2.5rem);
   background: rgba(var(--bg-rgb), 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -22,23 +22,35 @@
 }
 
 .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 600;
+  font-size: 0.92rem;
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
   text-decoration: none;
 }
 
+.avatar {
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
 .links {
   display: flex;
   align-items: center;
-  gap: clamp(1.25rem, 3vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 1.6rem);
 }
 
 .link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   font-family: var(--font-body);
-  font-size: 0.92rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: var(--color-text-secondary);
   text-decoration: none;
@@ -48,5 +60,11 @@
 @media (hover: hover) {
   .link:hover {
     color: var(--color-text-primary);
+  }
+}
+
+@media (max-width: 480px) {
+  .link span {
+    display: none;
   }
 }

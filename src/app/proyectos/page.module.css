@@ -9,7 +9,7 @@
 
 .title {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(1.8rem, 4vw, 2.3rem);
   letter-spacing: -0.02em;
   color: var(--color-text-primary);

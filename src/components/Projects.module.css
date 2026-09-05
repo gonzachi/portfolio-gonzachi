@@ -62,7 +62,7 @@
   font-family: var(--font-mono);
   font-size: 0.66rem;
   padding: 0.3rem 0.7rem;
-  border-radius: 0;
+  border-radius: 6px;
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
   font-weight: 600;
@@ -125,7 +125,7 @@
   font-family: var(--font-mono);
   font-size: 0.66rem;
   padding: 0.18rem 0.6rem;
-  border-radius: 0;
+  border-radius: 6px;
   background: rgba(var(--fg-rgb), 0.05);
   color: var(--color-text-muted);
   font-weight: 500;
@@ -137,7 +137,7 @@
   font-family: var(--font-mono);
   font-size: 0.66rem;
   padding: 0.18rem 0.6rem;
-  border-radius: 0;
+  border-radius: 6px;
   background: rgba(var(--fg-rgb), 0.06);
   color: rgba(var(--fg-rgb), 0.45);
   letter-spacing: 0.02em;
