@@ -118,7 +118,9 @@ export const chatGreeting: ChatAnswer = {
 };
 
 export const chatNoMatch: ChatAnswer = {
-  text: `I don't have information about that in my portfolio, but you can ask me about:\n${suggestionsList()}`,
+  text: `Sorry, I'm not an LLM — I don't have that in my memory. You can get more information by reaching out at ${personalInfo.email}.`,
+  linkLabel: 'Send an email',
+  linkHref: `mailto:${personalInfo.email}`,
 };
 
 // Used when semantic search decides the person wants a browsable overview
