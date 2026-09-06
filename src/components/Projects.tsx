@@ -154,9 +154,11 @@ export default function Projects() {
     <section id="trabajos" className={styles.section}>
       <div className={styles.container}>
         <SectionLabel>Trabajos</SectionLabel>
-        {landingProjects.map((p, i) => (
-          <ProjectCard key={p.id} project={p as LandingProject} delay={i} />
-        ))}
+        <div className={styles.grid}>
+          {landingProjects.map((p, i) => (
+            <ProjectCard key={p.id} project={p as LandingProject} delay={i} />
+          ))}
+        </div>
       </div>
     </section>
   );

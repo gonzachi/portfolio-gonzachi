@@ -5,18 +5,35 @@
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.grid > div {
+  height: 100%;
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ── Card ── */
 .card {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   border-radius: 0;
   background: #ffffff;
   border: 1px solid rgba(var(--fg-rgb), 0.05);
-  margin-bottom: 2rem;
   transition:
     background 0.3s ease,
     border-color 0.3s ease,
@@ -43,7 +60,7 @@
 
 .cardVisual {
   width: 100%;
-  height: 280px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,9 +105,9 @@
 .rowTitle {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 42px;
+  font-size: 26px;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0.6rem 0 0;
   color: var(--color-text-primary);
 }
@@ -105,20 +122,21 @@
 /* ── Card Body ── */
 .cardBody {
   padding: 0 16px 12px 16px;
+  flex: 1;
 }
 
 .rowDescription {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--color-text-secondary);
   margin: 12px 0 0 0;
-  max-width: 72ch;
 }
 
 /* ── Card Footer ── */
 .cardFooter {
   padding: 8px 16px 16px 16px;
   display: flex;
+  margin-top: auto;
 }
 
 .restrictedBadge {
