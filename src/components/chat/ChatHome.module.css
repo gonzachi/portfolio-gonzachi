@@ -9,6 +9,8 @@
 /* ── Empty state ── */
 .emptyState {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,15 +56,6 @@
   animation: blink 0.9s step-end infinite;
 }
 
-.chipsLabel {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -89,23 +82,13 @@
   }
 }
 
-.chip.chipActive {
-  background: var(--color-text-primary);
-  color: var(--color-bg-primary);
-  border-color: var(--color-text-primary);
-}
-
-@media (hover: hover) {
-  .chip.chipActive:hover {
-    border-color: var(--color-text-primary);
-    opacity: 0.9;
-  }
-}
-
 /* ── Transcript ── */
 .transcript {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   padding: 2rem 1.5rem 1rem;
 }
 
@@ -188,6 +171,51 @@
   color: var(--color-text-primary);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.answerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+
+.answerLinks .answerLink {
+  margin-top: 0.75rem;
+}
+
+.resumeLink {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ctaButton {
+  display: inline-block;
+  margin-top: 0.85rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: border-color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .ctaButton:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* ── Thinking indicator ── */
@@ -286,7 +314,7 @@
 /* ── Composer ── */
 .composer {
   flex-shrink: 0;
-  padding: 0.75rem 1.5rem 1.5rem;
+  padding: 0.75rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(180deg, transparent, var(--color-bg-primary) 30%);
 }
 
@@ -294,6 +322,14 @@
   max-width: 700px;
   margin: 0 auto 0.75rem;
   overflow-x: auto;
+  /* Still scrolls (touch/trackpad/drag) — just hide the track, a bare grey
+     bar looks like a layout bug in this otherwise scrollbar-free UI. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chipsRowWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 .chipsRow {
@@ -322,21 +358,14 @@
   }
 }
 
-.chipSmall.chipActive {
-  background: var(--color-text-primary);
-  color: var(--color-bg-primary);
-  border-color: var(--color-text-primary);
-}
-
-@media (hover: hover) {
-  .chipSmall.chipActive:hover {
-    border-color: var(--color-text-primary);
-    color: var(--color-bg-primary);
-    opacity: 0.9;
-  }
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
 }
 
 .inputForm {
+  position: relative;
   max-width: 700px;
   margin: 0 auto;
   display: flex;
@@ -346,6 +375,56 @@
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
+  transition: border-color 0.4s ease;
+}
+
+/* Focused (actually typing) — lock the border solid black instead of
+   letting the comet keep spinning underneath you. */
+.inputForm:focus-within {
+  border-color: var(--color-text-primary);
+}
+
+/* Animated conic-gradient border — one soft, diffuse glow drifting slowly
+   around the pill. No sharp head, no snap: both edges of the highlight
+   fade gradually, and a single slow, constant-speed rotation reads as
+   calm ambient light rather than a comet racing around. */
+.inputForm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    rgba(var(--fg-rgb), 0.35) 20%,
+    transparent 40%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: input-border-drift 9s linear infinite;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.inputForm:focus-within::before {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+@keyframes input-border-drift {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .inputForm::before {
+    animation: none;
+  }
 }
 
 .input {

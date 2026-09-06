@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ResumeModal from './ResumeModal';
 import styles from './SiteNav.module.css';
 
 function HomeIcon() {
@@ -32,9 +36,8 @@ function AboutIcon() {
 function ResumeIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="7 10 12 15 17 10" />
-      <line x1="12" y1="15" x2="12" y2="3" />
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
     </svg>
   );
 }
@@ -43,7 +46,6 @@ const links = [
   { href: '/', label: 'Home', Icon: HomeIcon },
   { href: '/proyectos', label: 'Works', Icon: WorksIcon },
   { href: '/perfil', label: 'About', Icon: AboutIcon },
-  { href: '/cv/Gonzalo Chiavassa, Product Designer - CV.pdf', label: 'Resume', Icon: ResumeIcon, download: true },
 ];
 
 interface SiteNavProps {
@@ -52,6 +54,8 @@ interface SiteNavProps {
 }
 
 export default function SiteNav({ actions }: SiteNavProps) {
+  const [resumeOpen, setResumeOpen] = useState(false);
+
   return (
     <header className={styles.nav}>
       {/* Plain <a>, not <Link> — clicking Home while already on "/" should
@@ -70,9 +74,9 @@ export default function SiteNav({ actions }: SiteNavProps) {
       </a>
       <div className={styles.right}>
         <nav className={styles.links}>
-          {links.map(({ href, label, Icon, download }) =>
-            download || href === '/' ? (
-              <a key={href} href={href} download={download} className={styles.link}>
+          {links.map(({ href, label, Icon }) =>
+            href === '/' ? (
+              <a key={href} href={href} className={styles.link}>
                 <Icon />
                 <span>{label}</span>
               </a>
@@ -83,9 +87,15 @@ export default function SiteNav({ actions }: SiteNavProps) {
               </Link>
             )
           )}
+          <button type="button" className={styles.link} onClick={() => setResumeOpen(true)}>
+            <ResumeIcon />
+            <span>Resume</span>
+          </button>
         </nav>
         {actions && <div className={styles.actions}>{actions}</div>}
       </div>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </header>
   );
 }

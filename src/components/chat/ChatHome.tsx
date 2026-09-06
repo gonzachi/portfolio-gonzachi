@@ -16,14 +16,25 @@ import { useTypewriterLoop } from '@/hooks/useTypewriterLoop';
 import { useSemanticSearch } from '@/hooks/useSemanticSearch';
 import { isGreetingOrGeneric } from '@/lib/semantic-search/greeting';
 import { MATCH_THRESHOLD } from '@/lib/semantic-search/config';
+import ResumeModal from './ResumeModal';
 import styles from './ChatHome.module.css';
 
 const STATUS_LINES = [
-  'based in Barcelona',
-  '+8 years of experience',
-  'working @ Mango',
+  'based in Barcelona 📍',
+  '+8 years of experience 💻',
+  'working @ Mango 👗',
   'Product Manager mindset',
 ];
+
+// Contact is always kept on screen as a fallback CTA — every other chip is a
+// rotating recommendation that gets replaced (never added on top of) once
+// it's been asked, so we never show more than the original 4 at once, well
+// under the 5-chip cap.
+const MAX_VISIBLE_PROMPTS = 5;
+const INITIAL_ROTATABLE_COUNT = 3;
+const PINNED_PROMPT_ID = 'contacto';
+const pinnedPrompt = chatPrompts.find((p) => p.id === PINNED_PROMPT_ID);
+const rotatablePrompts = chatPrompts.filter((p) => p.id !== PINNED_PROMPT_ID);
 
 interface Message {
   id: string;
@@ -32,8 +43,17 @@ interface Message {
   answer?: ChatAnswer;
 }
 
-function AssistantBubble({ message }: { message: Message }) {
+function AssistantBubble({
+  message,
+  onCta,
+  onOpenResume,
+}: {
+  message: Message;
+  onCta: (userLabel: string, answer: ChatAnswer) => void;
+  onOpenResume: () => void;
+}) {
   const { output, done } = useTypewriter(message.text, 14);
+  const [ctaUsed, setCtaUsed] = useState(false);
 
   return (
     <div className={styles.assistantRow}>
@@ -62,10 +82,44 @@ function AssistantBubble({ message }: { message: Message }) {
           </div>
         )}
 
-        {done && message.answer?.linkHref && (
+        {done && message.answer?.links && message.answer.links.length > 0 && (
+          <div className={styles.answerLinks}>
+            {message.answer.links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={styles.answerLink}
+                {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {link.label} →
+              </Link>
+            ))}
+          </div>
+        )}
+
+        {done && !message.answer?.links && message.answer?.linkHref && (
           <Link href={message.answer.linkHref} className={styles.answerLink}>
             {message.answer.linkLabel} →
           </Link>
+        )}
+
+        {done && message.answer?.openResume && (
+          <button type="button" className={styles.resumeLink} onClick={onOpenResume}>
+            Preview resume →
+          </button>
+        )}
+
+        {done && message.answer?.cta && !ctaUsed && (
+          <button
+            type="button"
+            className={styles.ctaButton}
+            onClick={() => {
+              setCtaUsed(true);
+              onCta(message.answer!.cta!.userLabel, message.answer!.cta!.answer);
+            }}
+          >
+            {message.answer.cta.label}
+          </button>
         )}
       </div>
     </div>
@@ -78,11 +132,20 @@ export default function ChatHome() {
   const [thinking, setThinking] = useState(false);
   const [searchPending, setSearchPending] = useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [usedPrompts, setUsedPrompts] = useState<Set<string>>(new Set());
+  const [resumeOpen, setResumeOpen] = useState(false);
+  const [promptRotation, setPromptRotation] = useState(() => ({
+    visibleIds: rotatablePrompts.slice(0, INITIAL_ROTATABLE_COUNT).map((p) => p.id),
+    nextIndex: INITIAL_ROTATABLE_COUNT,
+  }));
   const transcriptRef = useRef<HTMLDivElement>(null);
   const idRef = useRef(0);
   const statusLine = useTypewriterLoop(STATUS_LINES);
   const { search, status: searchStatus } = useSemanticSearch();
+
+  const visiblePrompts = [
+    ...promptRotation.visibleIds.map((id) => rotatablePrompts.find((p) => p.id === id)!),
+    ...(pinnedPrompt ? [pinnedPrompt] : []),
+  ].slice(0, MAX_VISIBLE_PROMPTS);
 
   const nextId = () => `msg-${idRef.current++}`;
 
@@ -104,8 +167,23 @@ export default function ChatHome() {
   const handlePromptClick = (promptId: string) => {
     const prompt = chatPrompts.find((p) => p.id === promptId);
     if (!prompt) return;
-    setUsedPrompts((prev) => new Set(prev).add(promptId));
     respond(prompt.label, prompt.answer);
+
+    // Contacto is pinned and never rotates out.
+    if (promptId === PINNED_PROMPT_ID) return;
+
+    setPromptRotation((prev) => {
+      const idx = prev.visibleIds.indexOf(promptId);
+      if (idx === -1) return prev;
+
+      if (prev.nextIndex < rotatablePrompts.length) {
+        const visibleIds = [...prev.visibleIds];
+        visibleIds[idx] = rotatablePrompts[prev.nextIndex].id;
+        return { visibleIds, nextIndex: prev.nextIndex + 1 };
+      }
+
+      return { visibleIds: prev.visibleIds.filter((id) => id !== promptId), nextIndex: prev.nextIndex };
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -184,14 +262,12 @@ export default function ChatHome() {
             </span>
           </h1>
           <p className={styles.subtitle}>What would you like to know about Gon?</p>
-          <span className={styles.chipsLabel}>Try asking</span>
           <div className={styles.chips}>
-            {chatPrompts.map((prompt) => (
+            {visiblePrompts.map((prompt) => (
               <button
                 key={prompt.id}
                 type="button"
-                className={`${styles.chip} ${usedPrompts.has(prompt.id) ? styles.chipActive : ''}`}
-                aria-pressed={usedPrompts.has(prompt.id)}
+                className={styles.chip}
                 onClick={() => handlePromptClick(prompt.id)}
               >
                 {prompt.label}
@@ -210,7 +286,12 @@ export default function ChatHome() {
                   <span className={styles.userBubble}>{message.text}</span>
                 </div>
               ) : (
-                <AssistantBubble key={message.id} message={message} />
+                <AssistantBubble
+                  key={message.id}
+                  message={message}
+                  onCta={respond}
+                  onOpenResume={() => setResumeOpen(true)}
+                />
               )
             )}
             {thinking && (
@@ -236,12 +317,11 @@ export default function ChatHome() {
         {started && (
           <div className={styles.chipsRowWrapper}>
             <div className={styles.chipsRow}>
-              {chatPrompts.map((prompt) => (
+              {visiblePrompts.map((prompt) => (
                 <button
                   key={prompt.id}
                   type="button"
-                  className={`${styles.chipSmall} ${usedPrompts.has(prompt.id) ? styles.chipActive : ''}`}
-                  aria-pressed={usedPrompts.has(prompt.id)}
+                  className={styles.chipSmall}
                   onClick={() => handlePromptClick(prompt.id)}
                 >
                   {prompt.label}
@@ -264,6 +344,8 @@ export default function ChatHome() {
           </button>
         </form>
       </div>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </div>
   );
 }

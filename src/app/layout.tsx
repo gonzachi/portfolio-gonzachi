@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -44,6 +44,16 @@ export const metadata: Metadata = {
     description: "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. Actualmente trabajo en Mango, construyendo productos corporativos orientados a mejorar la productividad de los equipos internos.",
     images: ["/opengraph-image.jpg"],
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // When the on-screen keyboard opens on mobile, resize the layout viewport
+  // instead of overlaying it — otherwise a fixed-height, pinned-bottom
+  // layout (like the chat composer on "/") can end up hidden behind the
+  // keyboard or jump around as it opens/closes.
+  interactiveWidget: "resizes-content",
 };
 
 export default function RootLayout({

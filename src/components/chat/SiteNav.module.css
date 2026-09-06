@@ -63,6 +63,7 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.4rem 0.7rem;
+  border: none;
   border-radius: 8px;
   font-family: var(--font-body);
   font-size: 0.78rem;
@@ -70,6 +71,7 @@
   color: var(--color-text-secondary);
   text-decoration: none;
   background: transparent;
+  cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
