@@ -67,6 +67,7 @@ export default function ChatHome() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [thinking, setThinking] = useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [usedPrompts, setUsedPrompts] = useState<Set<string>>(new Set());
   const transcriptRef = useRef<HTMLDivElement>(null);
   const idRef = useRef(0);
   const statusLine = useTypewriterLoop(STATUS_LINES);
@@ -91,6 +92,7 @@ export default function ChatHome() {
   const handlePromptClick = (promptId: string) => {
     const prompt = chatPrompts.find((p) => p.id === promptId);
     if (!prompt) return;
+    setUsedPrompts((prev) => new Set(prev).add(promptId));
     respond(prompt.label, prompt.answer);
   };
 
@@ -117,7 +119,13 @@ export default function ChatHome() {
           <p className={styles.subtitle}>What would you like to know about Gon?</p>
           <div className={styles.chips}>
             {chatPrompts.map((prompt) => (
-              <button key={prompt.id} type="button" className={styles.chip} onClick={() => handlePromptClick(prompt.id)}>
+              <button
+                key={prompt.id}
+                type="button"
+                className={`${styles.chip} ${usedPrompts.has(prompt.id) ? styles.chipActive : ''}`}
+                aria-pressed={usedPrompts.has(prompt.id)}
+                onClick={() => handlePromptClick(prompt.id)}
+              >
                 {prompt.label}
               </button>
             ))}
@@ -156,7 +164,13 @@ export default function ChatHome() {
           <div className={styles.chipsRowWrapper}>
             <div className={styles.chipsRow}>
               {chatPrompts.map((prompt) => (
-                <button key={prompt.id} type="button" className={styles.chipSmall} onClick={() => handlePromptClick(prompt.id)}>
+                <button
+                  key={prompt.id}
+                  type="button"
+                  className={`${styles.chipSmall} ${usedPrompts.has(prompt.id) ? styles.chipActive : ''}`}
+                  aria-pressed={usedPrompts.has(prompt.id)}
+                  onClick={() => handlePromptClick(prompt.id)}
+                >
                   {prompt.label}
                 </button>
               ))}
