@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
-import { CookieBanner } from "@/components/CookieBanner";
 import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
@@ -72,7 +71,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* Google Consent Mode v2 — must run BEFORE gtag.js loads */}
+        {/* Google Consent Mode v2 — must run BEFORE gtag.js loads. No
+            consent banner anymore, so this default (denied) is permanent:
+            analytics_storage never flips to granted, and Hotjar (which
+            only loaded on "accept") never loads. */}
         <Script id="consent-mode-defaults" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -104,9 +106,6 @@ export default function RootLayout({
         <PageTransition>
           {children}
         </PageTransition>
-
-        {/* Cookie consent banner — also loads Hotjar when accepted */}
-        <CookieBanner />
       </body>
     </html>
   );
