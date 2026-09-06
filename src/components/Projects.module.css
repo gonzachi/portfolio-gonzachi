@@ -118,6 +118,11 @@
   }
 }
 
+.card:focus-visible {
+  outline: 2px solid var(--color-accent-secondary);
+  outline-offset: 3px;
+}
+
 .cardVisual {
   width: 100%;
   height: 220px;
