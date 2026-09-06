@@ -321,21 +321,12 @@
 .chipsRowWrapper {
   max-width: 700px;
   margin: 0 auto 0.75rem;
-  overflow-x: auto;
-  /* Still scrolls (touch/trackpad/drag) — just hide the track, a bare grey
-     bar looks like a layout bug in this otherwise scrollbar-free UI. */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.chipsRowWrapper::-webkit-scrollbar {
-  display: none;
 }
 
 .chipsRow {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  width: max-content;
 }
 
 .chipSmall {
