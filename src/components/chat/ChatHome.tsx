@@ -184,6 +184,7 @@ export default function ChatHome() {
             </span>
           </h1>
           <p className={styles.subtitle}>What would you like to know about Gon?</p>
+          <span className={styles.chipsLabel}>Try asking</span>
           <div className={styles.chips}>
             {chatPrompts.map((prompt) => (
               <button

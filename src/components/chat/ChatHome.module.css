@@ -54,6 +54,15 @@
   animation: blink 0.9s step-end infinite;
 }
 
+.chipsLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
