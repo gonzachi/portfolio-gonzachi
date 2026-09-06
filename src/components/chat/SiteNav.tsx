@@ -46,7 +46,12 @@ const links = [
   { href: '/cv/Gonzalo Chiavassa, Product Designer - CV.pdf', label: 'Resume', Icon: ResumeIcon, download: true },
 ];
 
-export default function SiteNav() {
+interface SiteNavProps {
+  /** Extra controls rendered after the nav links (e.g. a per-page LangToggle). */
+  actions?: React.ReactNode;
+}
+
+export default function SiteNav({ actions }: SiteNavProps) {
   return (
     <header className={styles.nav}>
       {/* Plain <a>, not <Link> — clicking Home while already on "/" should
@@ -63,21 +68,24 @@ export default function SiteNav() {
         />
         Gonzalo Chiavassa
       </a>
-      <nav className={styles.links}>
-        {links.map(({ href, label, Icon, download }) =>
-          download || href === '/' ? (
-            <a key={href} href={href} download={download} className={styles.link}>
-              <Icon />
-              <span>{label}</span>
-            </a>
-          ) : (
-            <Link key={href} href={href} className={styles.link}>
-              <Icon />
-              <span>{label}</span>
-            </Link>
-          )
-        )}
-      </nav>
+      <div className={styles.right}>
+        <nav className={styles.links}>
+          {links.map(({ href, label, Icon, download }) =>
+            download || href === '/' ? (
+              <a key={href} href={href} download={download} className={styles.link}>
+                <Icon />
+                <span>{label}</span>
+              </a>
+            ) : (
+              <Link key={href} href={href} className={styles.link}>
+                <Icon />
+                <span>{label}</span>
+              </Link>
+            )
+          )}
+        </nav>
+        {actions && <div className={styles.actions}>{actions}</div>}
+      </div>
     </header>
   );
 }

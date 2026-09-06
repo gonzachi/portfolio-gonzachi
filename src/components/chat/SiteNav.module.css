@@ -39,10 +39,23 @@
   border: 1px solid var(--color-border);
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.4rem, 1.5vw, 0.75rem);
+}
+
 .links {
   display: flex;
   align-items: center;
   gap: clamp(0.2rem, 0.6vw, 0.4rem);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  padding-left: clamp(0.4rem, 1.5vw, 0.75rem);
+  border-left: 1px solid var(--color-border);
 }
 
 .link {

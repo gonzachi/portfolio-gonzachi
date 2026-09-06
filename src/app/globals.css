@@ -43,6 +43,11 @@
   --grain-opacity: 0.022;
   --nav-scrolled-bg: rgba(var(--bg-rgb), 0.92);
 
+  /* SiteNav's own rendered height — case-study heroes size themselves
+     against this instead of double-counting 100vh now that the nav takes
+     real layout space (sticky) instead of floating over the hero. */
+  --nav-offset: 60px;
+
   /* Typography — variables injected by next/font in layout.tsx */
   --font-heading: var(--font-inter), sans-serif;
   --font-body: var(--font-inter), sans-serif;
@@ -111,6 +116,14 @@
   --grain-opacity: 0.04;
 
   color-scheme: light;
+}
+
+/* SiteNav gains a margin-top pill treatment at this breakpoint — see
+   SiteNav.module.css. Keep this in sync with that breakpoint. */
+@media (min-width: 900px) {
+  :root {
+    --nav-offset: 76px;
+  }
 }
 
 * {

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { projects } from '@/data/content';
-import ProjectNav from '@/components/project/ProjectNav';
+import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import ScrollReveal from '@/components/ScrollReveal';
 import Contact from '@/components/Contact';
@@ -21,7 +19,6 @@ import HoldoDecisionsSection from '@/components/project/holdo/HoldoDecisionsSect
 import HoldoExperienceSection from '@/components/project/holdo/HoldoExperienceSection';
 import HoldoImpactSection from '@/components/project/holdo/HoldoImpactSection';
 import HoldoReflectionsSection from '@/components/project/holdo/HoldoReflectionsSection';
-import styles from './page.module.css';
 
 const TITLE = 'Rediseño de la app móvil de inversión de Holdo | Gonzalo Chiavassa';
 const DESCRIPTION =
@@ -194,29 +191,7 @@ export default function ProjectPage() {
             <ScrollToTop />
             <ScrollRevealInit />
 
-            {/* TOP HEADER */}
-            <header className={styles.topHeader}>
-                <div className={styles.headerContainer}>
-                    <Link href="/" className={styles.brandContainer} aria-label="Volver al inicio">
-                        <div className={styles.avatarWrapper}>
-                            <Image
-                                src="/profile.jpg"
-                                alt="Gonzalo Chiavassa"
-                                width={56}
-                                height={56}
-                                className={styles.avatar}
-                                priority
-                            />
-                        </div>
-                        <div className={styles.brand}>
-                            <span className={styles.logo}>Gonzalo Chiavassa</span>
-                            <span className={styles.role}>Product Designer</span>
-                        </div>
-                    </Link>
-                    {/* Language Toggle */}
-                    <LangToggle />
-                </div>
-            </header>
+            <SiteNav actions={<LangToggle />} />
 
             {/* EXECUTIVE HERO SECTION */}
             <HoldoHero />

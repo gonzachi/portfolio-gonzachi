@@ -1,9 +1,9 @@
 /* ── ONBOARDING HERO SECTION (100vh ICE-BLUE 2-COLUMN) ── */
 .heroSection {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--nav-offset));
     background-color: #D0D9E2; /* Ice-blue background matching HoldoHero */
-    padding: 7rem 0 6rem;
+    padding: 4rem 0 6rem;
     position: relative;
     overflow: hidden;
     display: flex;

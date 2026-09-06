@@ -1,9 +1,9 @@
 /* ── HOLDO HERO SECTION ── */
 .heroSection {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--nav-offset));
     background-color: #D0D9E2; /* Ice-blue background */
-    padding: 7rem 0 5rem;
+    padding: 4rem 0 5rem;
     position: relative;
     overflow: hidden;
     display: flex;

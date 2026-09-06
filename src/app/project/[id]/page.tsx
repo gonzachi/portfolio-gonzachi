@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { projects, ProjectData } from '@/data/content';
 import { hasProjectAccess } from '@/lib/project-auth/access';
 import { getProjectById, projectRequiresAccess } from '@/lib/projects/get-project';
-import ProjectNav from '@/components/project/ProjectNav';
+import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import SidebarProgress from '@/components/project/SidebarProgress';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -73,9 +73,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         return (
             <>
                 <ScrollToTop />
-                <ProjectNav
-                    title={project.title}
-                />
+                <SiteNav />
                 <main className={styles.page}>
                     <div className={styles.comingSoonContainer}>
                         <ScrollReveal delay={0.1}>
@@ -126,9 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <>
             <ScrollToTop />
             <SidebarProgress sections={sidebarSections} />
-            <ProjectNav
-                title={project.title}
-            />
+            <SiteNav />
 
             <main className={styles.page}>
                 {/* 1. Hero Header */}

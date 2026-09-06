@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
 import LangWrapper from '@/components/project/LangWrapper';
@@ -14,7 +13,6 @@ import OnboardingDecisionsSection from '@/components/project/onboarding/Onboardi
 import OnboardingExperienceSection from '@/components/project/onboarding/OnboardingExperienceSection';
 import OnboardingImpactSection from '@/components/project/onboarding/OnboardingImpactSection';
 import OnboardingReflectionsSection from '@/components/project/onboarding/OnboardingReflectionsSection';
-import styles from './page.module.css';
 
 const TITLE = 'Rediseño del onboarding de inversión en Holdo | Gonzalo Chiavassa';
 const DESCRIPTION =
@@ -54,29 +52,7 @@ export default function ProjectPage() {
     <LangWrapper storageKey="holdo-onboarding-lang">
       <ScrollToTop />
 
-      {/* TOP HEADER BRANDING */}
-      <header className={styles.topHeader}>
-        <div className={styles.headerContainer}>
-          <Link href="/" className={styles.brandContainer} aria-label="Volver al inicio">
-            <div className={styles.avatarWrapper}>
-              <Image
-                src="/profile.jpg"
-                alt="Gonzalo Chiavassa"
-                width={56}
-                height={56}
-                className={styles.avatar}
-                priority
-              />
-            </div>
-            <div className={styles.brand}>
-              <span className={styles.logo}>Gonzalo Chiavassa</span>
-              <span className={styles.role}>Product Designer</span>
-            </div>
-          </Link>
-          {/* Language Toggle */}
-          <LangToggle />
-        </div>
-      </header>
+      <SiteNav actions={<LangToggle />} />
 
       {/* 00 / HERO */}
       <OnboardingHero />

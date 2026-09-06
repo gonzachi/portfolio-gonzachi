@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
+import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import ScrollReveal from '@/components/ScrollReveal';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
@@ -44,27 +43,7 @@ export default function DisenarEnCodigoPage() {
       <ScrollRevealInit />
       <SidebarProgress sections={sidebarSections} />
 
-      {/* TOP HEADER BRANDING — exact copy of reduciendo-drop-off-onboarding */}
-      <header className={styles.topHeader}>
-        <div className={styles.headerContainer}>
-          <Link href="/" className={styles.brandContainer} aria-label="Volver al inicio">
-            <div className={styles.avatarWrapper}>
-              <Image
-                src="/profile.jpg"
-                alt="Gonzalo Chiavassa"
-                width={56}
-                height={56}
-                className={styles.avatar}
-                priority
-              />
-            </div>
-            <div className={styles.brand}>
-              <span className={styles.logo}>Gonzalo Chiavassa</span>
-              <span className={styles.role}>Product Designer</span>
-            </div>
-          </Link>
-        </div>
-      </header>
+      <SiteNav />
 
       {/* HERO */}
       <DisenarEnCodigoHero />

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { projects } from '@/data/content';
-import ProjectNav from '@/components/project/ProjectNav';
+import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import ScrollReveal from '@/components/ScrollReveal';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
@@ -109,29 +107,7 @@ export default async function ProjectPage() {
       <ScrollToTop />
       <ScrollRevealInit />
 
-      {/* TOP HEADER */}
-      <header className={styles.topHeader}>
-        <div className={styles.headerContainer}>
-          <Link href="/" className={styles.brandContainer} aria-label="Volver al inicio">
-            <div className={styles.avatarWrapper}>
-              <Image
-                src="/profile.jpg"
-                alt="Gonzalo Chiavassa"
-                width={56}
-                height={56}
-                className={styles.avatar}
-                priority
-              />
-            </div>
-            <div className={styles.brand}>
-              <span className={styles.logo}>Gonzalo Chiavassa</span>
-              <span className={styles.role}>Product Designer</span>
-            </div>
-          </Link>
-          {/* Language Toggle – only on this project */}
-          <LangToggle />
-        </div>
-      </header>
+      <SiteNav actions={<LangToggle />} />
 
       {/* FULLSCREEN HERO (100VH) */}
       <section className={styles.fullscreenHero}>
