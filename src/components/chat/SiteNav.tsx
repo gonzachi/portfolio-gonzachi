@@ -49,7 +49,11 @@ const links = [
 export default function SiteNav() {
   return (
     <header className={styles.nav}>
-      <Link href="/" className={styles.brand}>
+      {/* Plain <a>, not <Link> — clicking Home while already on "/" should
+          reset the chat back to its empty state, and a same-route Link
+          navigation is a no-op that leaves the conversation as-is. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+      <a href="/" className={styles.brand}>
         <Image
           src="/profile.jpg"
           alt="Gonzalo Chiavassa"
@@ -58,11 +62,11 @@ export default function SiteNav() {
           className={styles.avatar}
         />
         Gonzalo Chiavassa
-      </Link>
+      </a>
       <nav className={styles.links}>
         {links.map(({ href, label, Icon, download }) =>
-          download ? (
-            <a key={href} href={href} download className={styles.link}>
+          download || href === '/' ? (
+            <a key={href} href={href} download={download} className={styles.link}>
               <Icon />
               <span>{label}</span>
             </a>
