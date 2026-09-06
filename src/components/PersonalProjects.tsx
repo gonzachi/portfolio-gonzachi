@@ -1,20 +1,19 @@
 'use client';
 
 import styles from './PersonalProjects.module.css';
+import { SectionLabel } from './Projects';
 
-function ExternalLinkIcon() {
+function ExternalLinkIcon({ className }: { className?: string }) {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
-      width="22"
-      height="22"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="2.5"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ opacity: 0.6 }}
     >
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
       <polyline points="15 3 21 3 21 9" />
@@ -68,15 +67,16 @@ export default function PersonalProjects() {
   return (
     <section className={styles.section} id="side-projects">
       <div className={styles.container}>
-        <div className="reveal section-label">
-          <span>Side project</span>
-          <div className="section-label-line" />
-        </div>
+        <SectionLabel>Side projects</SectionLabel>
       </div>
 
       <ul className={styles.track}>
         {cards.map((card) => {
           const hasLink = 'link' in card && card.link;
+          const tags = card.type.split(' · ');
+          const isCurrent = card.id === 'portfolio';
+          const isInert = card.comingSoon || isCurrent;
+
           const CardContent = (
             <>
               <div className={styles.cardVisual}>
@@ -86,53 +86,41 @@ export default function PersonalProjects() {
                     alt={card.title}
                     className={styles.cardImage}
                   />
-                ) : hasLink ? (
-                  <ExternalLinkIcon />
                 ) : (
                   <span className={styles.cardEmoji}>{card.emoji}</span>
                 )}
               </div>
+              <div className={styles.cardHeader}>
+                <div className={styles.cardBadges}>
+                  {tags.map((tag) => (
+                    <span key={tag} className={styles.rowTag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <h3 className={styles.rowTitle}>{card.title}</h3>
+              </div>
               <div className={styles.cardBody}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardType}>{card.type}</span>
-                </div>
-                <h3 className={styles.cardTitle}>{card.title}</h3>
-                <p className={styles.cardDescription}>{card.description}</p>
-                <div className={styles.cardCtaContainer}>
-                  <span className={`${styles.ctaButton} ${
-                    card.comingSoon 
-                      ? styles.ctaButtonComingSoon 
-                      : (card.id === 'portfolio' ? styles.ctaButtonCurrent : styles.ctaButtonActive)
-                  }`}>
-                    {card.comingSoon ? (
-                      'En construcción'
-                    ) : card.id === 'reservadisimo' ? (
-                      <span className={styles.ctaButtonWithIcon}>
-                        <span>Ver en Behance</span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className={styles.ctaIcon}
-                        >
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                          <polyline points="15 3 21 3 21 9" />
-                          <line x1="10" y1="14" x2="21" y2="3" />
-                        </svg>
-                      </span>
-                    ) : card.id === 'portfolio' ? (
-                      'Proyecto actual'
-                    ) : (
-                      'Ver proyecto'
-                    )}
-                  </span>
-                </div>
+                <p className={styles.rowDescription}>{card.description}</p>
+              </div>
+              <div className={styles.cardFooter}>
+                <span className={`${styles.viewCaseBtn} ${isInert ? styles.disabledBtn : ''}`}>
+                  {card.comingSoon ? (
+                    <span>En construcción</span>
+                  ) : isCurrent ? (
+                    <span>Proyecto actual</span>
+                  ) : card.id === 'reservadisimo' ? (
+                    <>
+                      <span>Ver en Behance</span>
+                      <ExternalLinkIcon className={styles.viewCaseArrow} />
+                    </>
+                  ) : (
+                    <>
+                      <span>Ver proyecto</span>
+                      <span className={styles.viewCaseArrow}>→</span>
+                    </>
+                  )}
+                </span>
               </div>
             </>
           );
