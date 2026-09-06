@@ -40,7 +40,7 @@ const EN_COPY: Record<string, { title: string; subtitle: string }> = {
   },
 };
 
-const latestProjects: ChatProjectCard[] = LATEST_PROJECT_IDS
+export const latestProjects: ChatProjectCard[] = LATEST_PROJECT_IDS
   .map((id) => landingProjects.find((p) => p.id === id))
   .filter((p): p is NonNullable<typeof p> => Boolean(p))
   .map((p) => ({
@@ -96,4 +96,38 @@ export const chatFallback: ChatAnswer = {
   text: `Thanks for the question! This is an interactive demo, not a real AI chat, so I can't answer just anything. For more information, email me directly at ${personalInfo.email}.`,
   linkLabel: 'Send an email',
   linkHref: `mailto:${personalInfo.email}`,
+};
+
+// Shown both for greetings/small talk (before running any search) and when
+// a search comes back with no confident match — same list either way, so
+// people always land on something they can actually ask about.
+const SEARCH_TOPIC_SUGGESTIONS = [
+  'Product design in fintech (Holdo)',
+  'Reducing onboarding drop-off (Holdo)',
+  'Mobile app MVP for investing (Holdo)',
+  'Designing directly in code, an AI-first workflow (Mango)',
+  'An internal AI platform for fashion design (Mango)',
+];
+
+function suggestionsList(): string {
+  return SEARCH_TOPIC_SUGGESTIONS.map((s) => `• ${s}`).join('\n');
+}
+
+export const chatGreeting: ChatAnswer = {
+  text: `Hi! Ask me about my experience in:\n${suggestionsList()}`,
+};
+
+export const chatNoMatch: ChatAnswer = {
+  text: `I don't have information about that in my portfolio, but you can ask me about:\n${suggestionsList()}`,
+};
+
+// Used when semantic search decides the person wants a browsable overview
+// of the work ("what projects have you worked on?") rather than an answer
+// about one specific thing — same shape, and same project list, as the
+// "My latest projects" chip above.
+export const chatProjectsOverview: ChatAnswer = {
+  text: "Here are some of the projects I've been working on lately:",
+  linkLabel: 'See all projects',
+  linkHref: '/proyectos',
+  projects: latestProjects,
 };

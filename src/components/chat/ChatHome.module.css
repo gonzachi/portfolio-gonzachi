@@ -205,6 +205,13 @@
   30% { transform: translateY(-4px); opacity: 1; }
 }
 
+/* ── Model loading label ── */
+.modelLoadingLabel {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.5rem;
+}
+
 /* ── Project mini-cards ── */
 .projectGrid {
   display: grid;
@@ -346,6 +353,10 @@
   color: var(--color-text-muted);
 }
 
+.input:disabled {
+  opacity: 0.6;
+}
+
 .sendButton {
   flex-shrink: 0;
   width: 36px;
@@ -364,5 +375,9 @@
   .sendButton:hover {
     opacity: 0.8;
   }
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
 }
 
