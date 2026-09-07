@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './SidebarProgress.module.css';
 
 interface SidebarProgressProps {
-    sections: { id: string; label: string }[];
+    sections: { id: string; label: string | { es: string; en: string } }[];
 }
 
 export default function SidebarProgress({ sections }: SidebarProgressProps) {
+    const { lang } = useLang();
     const [activeIndex, setActiveIndex] = useState(0);
     const observersRef = useRef<IntersectionObserver[]>([]);
 
@@ -60,7 +62,7 @@ export default function SidebarProgress({ sections }: SidebarProgressProps) {
                     onClick={() => {
                         document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    title={section.label}
+                    title={typeof section.label === 'string' ? section.label : section.label[lang]}
                 />
             ))}
         </div>

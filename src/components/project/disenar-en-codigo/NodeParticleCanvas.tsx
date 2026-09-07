@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './NodeParticleCanvas.module.css';
 
 interface Node {
@@ -14,6 +15,7 @@ interface Node {
 }
 
 export default function NodeParticleCanvas() {
+  const { lang } = useLang();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -125,12 +127,12 @@ export default function NodeParticleCanvas() {
       <div className={styles.overlay}>
         <div className={styles.legendItem}>
           <span className={styles.dotDesign} />
-          <span>Pensamiento de Diseño</span>
+          <span>{lang === 'en' ? 'Design Thinking' : 'Pensamiento de Diseño'}</span>
         </div>
-        <div className={styles.connectionLabel}>⚡ IA asistiendo la convergencia</div>
+        <div className={styles.connectionLabel}>{lang === 'en' ? '⚡ AI assisting the convergence' : '⚡ IA asistiendo la convergencia'}</div>
         <div className={styles.legendItem}>
           <span className={styles.dotCode} />
-          <span>Ejecución en Código</span>
+          <span>{lang === 'en' ? 'Code Execution' : 'Ejecución en Código'}</span>
         </div>
       </div>
     </div>

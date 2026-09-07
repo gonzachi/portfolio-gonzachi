@@ -2,21 +2,24 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLang, type Lang } from '@/components/project/LangWrapper';
 import styles from './DisenarEnCodigoHero.module.css';
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-const CODE_LINES = [
-  { indent: 0, tokens: [{ t: 'keyword', v: 'const ' }, { t: 'var', v: 'prototype' }, { t: 'op', v: ' = ' }, { t: 'fn', v: 'buildWithCode' }, { t: 'plain', v: '({' }] },
-  { indent: 1, tokens: [{ t: 'key', v: 'designSystem' }, { t: 'op', v: ': ' }, { t: 'str', v: '"Mango DS"' }, { t: 'plain', v: ',' }] },
-  { indent: 1, tokens: [{ t: 'key', v: 'interactive' }, { t: 'op', v: ': ' }, { t: 'bool', v: 'true' }, { t: 'plain', v: ',' }] },
-  { indent: 1, tokens: [{ t: 'key', v: 'testedBy' }, { t: 'op', v: ': ' }, { t: 'str', v: '"Real Users"' }, { t: 'plain', v: ',' }] },
-  { indent: 1, tokens: [{ t: 'key', v: 'responsive' }, { t: 'op', v: ': ' }, { t: 'bool', v: 'true' }] },
-  { indent: 0, tokens: [{ t: 'plain', v: '});' }] },
-  { indent: 0, tokens: [] },
-  { indent: 0, tokens: [{ t: 'comment', v: '// → Prototipo funcional en URL real' }] },
-  { indent: 0, tokens: [{ t: 'comment', v: '//    Sin maquetas estáticas.' }] },
-];
+function getCodeLines(lang: Lang) {
+  return [
+    { indent: 0, tokens: [{ t: 'keyword', v: 'const ' }, { t: 'var', v: 'prototype' }, { t: 'op', v: ' = ' }, { t: 'fn', v: 'buildWithCode' }, { t: 'plain', v: '({' }] },
+    { indent: 1, tokens: [{ t: 'key', v: 'designSystem' }, { t: 'op', v: ': ' }, { t: 'str', v: '"Mango DS"' }, { t: 'plain', v: ',' }] },
+    { indent: 1, tokens: [{ t: 'key', v: 'interactive' }, { t: 'op', v: ': ' }, { t: 'bool', v: 'true' }, { t: 'plain', v: ',' }] },
+    { indent: 1, tokens: [{ t: 'key', v: 'testedBy' }, { t: 'op', v: ': ' }, { t: 'str', v: '"Real Users"' }, { t: 'plain', v: ',' }] },
+    { indent: 1, tokens: [{ t: 'key', v: 'responsive' }, { t: 'op', v: ': ' }, { t: 'bool', v: 'true' }] },
+    { indent: 0, tokens: [{ t: 'plain', v: '});' }] },
+    { indent: 0, tokens: [] },
+    { indent: 0, tokens: [{ t: 'comment', v: lang === 'en' ? '// → Working prototype at a real URL' : '// → Prototipo funcional en URL real' }] },
+    { indent: 0, tokens: [{ t: 'comment', v: lang === 'en' ? '//    No static mockups.' : '//    Sin maquetas estáticas.' }] },
+  ];
+}
 
 function tokenColor(type: string) {
   switch (type) {
@@ -33,6 +36,9 @@ function tokenColor(type: string) {
 }
 
 export default function DisenarEnCodigoHero() {
+  const { lang } = useLang();
+  const CODE_LINES = getCodeLines(lang);
+
   return (
     <section className={styles.heroSection}>
       <div className={styles.heroContainer}>
@@ -44,7 +50,7 @@ export default function DisenarEnCodigoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE }}
           >
-            Metodología de trabajo
+            {lang === 'en' ? 'Working methodology' : 'Metodología de trabajo'}
           </motion.span>
 
           <motion.h1
@@ -53,7 +59,7 @@ export default function DisenarEnCodigoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1, ease: EASE }}
           >
-            Diseñar producto directo en código.
+            {lang === 'en' ? 'Designing product directly in code.' : 'Diseñar producto directo en código.'}
           </motion.h1>
 
           <motion.div
@@ -62,11 +68,19 @@ export default function DisenarEnCodigoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2, ease: EASE }}
           >
-            <p>
-              Algunos lo llaman <em>&ldquo;Direct Design&rdquo;</em>, <em>&ldquo;AI First&rdquo;</em> o solo <em>&ldquo;Vibe coding&rdquo;</em>.
-              Lo cierto es que mi proceso se aceleró. <strong>Ya no abro Figma para diseñar</strong>,
-              todo está en el código y te cuento cómo lo estoy haciendo.
-            </p>
+            {lang === 'en' ? (
+              <p>
+                Some call it <em>&ldquo;Direct Design,&rdquo;</em> <em>&ldquo;AI First,&rdquo;</em> or just <em>&ldquo;Vibe coding.&rdquo;</em>{' '}
+                What&rsquo;s true is my process got faster. <strong>I no longer open Figma to design</strong>,
+                it&rsquo;s all in the code, and I&rsquo;ll tell you how I&rsquo;m doing it.
+              </p>
+            ) : (
+              <p>
+                Algunos lo llaman <em>&ldquo;Direct Design&rdquo;</em>, <em>&ldquo;AI First&rdquo;</em> o solo <em>&ldquo;Vibe coding&rdquo;</em>.
+                Lo cierto es que mi proceso se aceleró. <strong>Ya no abro Figma para diseñar</strong>,
+                todo está en el código y te cuento cómo lo estoy haciendo.
+              </p>
+            )}
           </motion.div>
         </div>
 

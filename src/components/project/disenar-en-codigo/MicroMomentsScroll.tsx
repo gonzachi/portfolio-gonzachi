@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useLang, type Lang } from '@/components/project/LangWrapper';
 import styles from './MicroMomentsScroll.module.css';
 
 interface Moment {
@@ -13,7 +14,7 @@ interface Moment {
   previewType: 'url' | 'responsive' | 'ds' | 'feedback';
 }
 
-const MOMENTS: Moment[] = [
+const MOMENTS_ES: Moment[] = [
   {
     id: 'sin-instalar',
     tag: '01 · ACCESO INMEDIATO',
@@ -70,7 +71,70 @@ onValidateJourney((feedback) => {
   }
 ];
 
+const MOMENTS_EN: Moment[] = [
+  {
+    id: 'sin-instalar',
+    tag: '01 · INSTANT ACCESS',
+    title: 'No installs required.',
+    subtitle: "The user opens a URL in their own browser and they're in.",
+    description: "We remove the initial friction of Figma presentations. Testing happens in the user's natural environment, with no mockup plugins or extra walkthroughs needed.",
+    codeSnippet: `// Direct access via a real URL
+const session = await createTestUserSession({
+  prototypeUrl: "https://mango-internal-proto.app/flow/journey",
+  device: "User Laptop"
+});`,
+    previewType: 'url'
+  },
+  {
+    id: 'responsive',
+    tag: '02 · REAL ADAPTABILITY',
+    title: 'Responsive from day one.',
+    subtitle: 'Screens are fluid from birth, with no simulated behavior.',
+    description: "There's no extra work duplicating frames for desktop, tablet or mobile. Since it's built with Mango's real CSS and Flexbox/Grid, the layout behaves the way it should, natively.",
+    codeSnippet: `@media (min-width: 768px) {
+  .journeyGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--mango-space-4);
+  }
+}`,
+    previewType: 'responsive'
+  },
+  {
+    id: 'pixel-perfect',
+    tag: '03 · TOTAL FIDELITY',
+    title: 'Nearly pixel perfect.',
+    subtitle: "Using the real components from Mango's design system.",
+    description: 'What the user tests is, component by component, what exists in production. Not an approximate or simplified version thrown together in a hurry.',
+    codeSnippet: `import { Button, Input, Modal, Table } from '@mango/design-system';
+
+<Modal isOpen={isVerified} onClose={handleClose}>
+  <Table data={activeJourneys} columns={columns} />
+</Modal>`,
+    previewType: 'ds'
+  },
+  {
+    id: 'feedback-real',
+    tag: '04 · REAL VALIDATION',
+    title: 'Feedback in real context.',
+    subtitle: 'Testing real behavior, not static mockups.',
+    description: 'Validation focuses on the real data flow and product decisions, catching inconsistencies before handing the first line of code to engineering.',
+    codeSnippet: `// Direct validation event with the user
+onValidateJourney((feedback) => {
+  if (feedback.status === 'success') {
+    commitValidatedFlowToDevHandOff();
+  }
+});`,
+    previewType: 'feedback'
+  }
+];
+
+function getMoments(lang: Lang) {
+  return lang === 'en' ? MOMENTS_EN : MOMENTS_ES;
+}
+
 export default function MicroMomentsScroll() {
+  const { lang } = useLang();
+  const MOMENTS = getMoments(lang);
   const [activeTab, setActiveTab] = useState(0);
   const currentMoment = MOMENTS[activeTab];
 
@@ -127,7 +191,7 @@ export default function MicroMomentsScroll() {
                     <div className={styles.mockUrlBody}>
                       <div className={styles.mockRow} />
                       <div className={styles.mockRowShort} />
-                      <div className={styles.mockBtn}>Probar Prototipo Real →</div>
+                      <div className={styles.mockBtn}>{lang === 'en' ? 'Try the Real Prototype →' : 'Probar Prototipo Real →'}</div>
                     </div>
                   </div>
                 )}
@@ -152,12 +216,12 @@ export default function MicroMomentsScroll() {
                 {currentMoment.previewType === 'ds' && (
                   <div className={styles.mockupDs}>
                     <div className={styles.dsItem}>
-                      <span className={styles.dsLabel}>Componente real:</span>
+                      <span className={styles.dsLabel}>{lang === 'en' ? 'Real component:' : 'Componente real:'}</span>
                       <button className={styles.mangoBtn}>@mango/Button.Primary</button>
                     </div>
                     <div className={styles.dsItem}>
-                      <span className={styles.dsLabel}>Estado activo:</span>
-                      <input className={styles.mangoInput} defaultValue="Texto real del usuario" readOnly />
+                      <span className={styles.dsLabel}>{lang === 'en' ? 'Active state:' : 'Estado activo:'}</span>
+                      <input className={styles.mangoInput} defaultValue={lang === 'en' ? 'Real user text' : 'Texto real del usuario'} readOnly />
                     </div>
                   </div>
                 )}
@@ -167,8 +231,8 @@ export default function MicroMomentsScroll() {
                     <div className={styles.feedbackCheck}>
                       <span className={styles.checkIcon}>✓</span>
                       <div>
-                        <strong>Flujo validado por usuario</strong>
-                        <p>0 fricciones detectadas en la URL de prueba</p>
+                        <strong>{lang === 'en' ? 'Flow validated by user' : 'Flujo validado por usuario'}</strong>
+                        <p>{lang === 'en' ? '0 friction points detected in the test URL' : '0 fricciones detectadas en la URL de prueba'}</p>
                       </div>
                     </div>
                   </div>
