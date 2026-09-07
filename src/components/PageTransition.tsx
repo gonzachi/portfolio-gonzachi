@@ -25,7 +25,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         damping: 34,
         mass: 0.8,
       }}
-      style={{ width: '100%', minHeight: '100vh', overflowX: 'hidden' }}
+      style={{ width: '100%', minHeight: '100dvh', overflowX: 'hidden' }}
     >
       {children}
     </motion.div>
