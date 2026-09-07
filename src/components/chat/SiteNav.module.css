@@ -83,14 +83,19 @@
 }
 
 @media (max-width: 480px) {
-  .link span {
-    display: none;
+  /* The [data-lang] attribute bumps specificity above globals.css's
+     `[data-lang-active="es"] [data-lang="es"] { display: revert !important }`
+     — without it, that rule wins on specificity even though both are
+     !important, and the label re-appears in Spanish on mobile. */
+  .link span[data-lang] {
+    display: none !important;
   }
 }
 
-/* Below this the avatar + full name no longer fit on one line and wrap,
+/* Below this the avatar + full name no longer fit on one line next to the
+   icon-only nav links and the EN/ES toggle, and wrap onto a second line,
    eating vertical space that the chat below needs on short screens. */
-@media (max-width: 360px) {
+@media (max-width: 420px) {
   .brandName {
     display: none;
   }

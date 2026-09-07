@@ -2,10 +2,10 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-type Lang = 'en' | 'es';
+export type Lang = 'en' | 'es';
 
 const LangContext = createContext<{ lang: Lang; toggle: () => void }>({
-  lang: 'en',
+  lang: 'es',
   toggle: () => {},
 });
 

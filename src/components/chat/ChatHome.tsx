@@ -4,11 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { personalInfo } from '@/data/content';
 import {
-  chatPrompts,
-  chatFallback,
-  chatGreeting,
-  chatNoMatch,
-  chatProjectsOverview,
+  chatPromptsByLang,
+  chatFallbackByLang,
+  chatGreetingByLang,
+  chatNoMatchByLang,
+  chatProjectsOverviewByLang,
   type ChatAnswer,
 } from '@/data/chat';
 import { useTypewriter } from '@/hooks/useTypewriter';
@@ -16,15 +16,31 @@ import { useTypewriterLoop } from '@/hooks/useTypewriterLoop';
 import { useSemanticSearch } from '@/hooks/useSemanticSearch';
 import { isGreetingOrGeneric } from '@/lib/semantic-search/greeting';
 import { MATCH_THRESHOLD } from '@/lib/semantic-search/config';
+import { useLang, type Lang } from '@/components/project/LangWrapper';
 import ResumeModal from './ResumeModal';
 import styles from './ChatHome.module.css';
 
-const STATUS_LINES = [
-  'based in Barcelona 📍',
-  '+8 years of experience 💻',
-  'working @ Mango 👗',
-  'Product Manager mindset',
-];
+const STATUS_LINES: Record<Lang, string[]> = {
+  en: ['based in Barcelona 📍', '+8 years of experience 💻', 'working @ Mango 👗', 'Product Manager mindset'],
+  es: ['con base en Barcelona 📍', '+8 años de experiencia 💻', 'trabajando en Mango 👗', 'mentalidad de Product Manager'],
+};
+
+const COPY: Record<Lang, { subtitle: string; placeholder: string; heroGreeting: string; loadingModel: string; send: string }> = {
+  en: {
+    subtitle: 'What would you like to know about Gon?',
+    placeholder: 'Ask me about my experience in fintech, product design, AI...',
+    heroGreeting: "Hi, I'm",
+    loadingModel: 'Loading the model… (first time only, a few seconds)',
+    send: 'Send',
+  },
+  es: {
+    subtitle: '¿Qué te gustaría saber sobre Gon?',
+    placeholder: 'Preguntame sobre mi experiencia en fintech, product design, IA...',
+    heroGreeting: 'Hola, soy',
+    loadingModel: 'Cargando el modelo… (solo la primera vez, unos segundos)',
+    send: 'Enviar',
+  },
+};
 
 // Contact is always kept on screen as a fallback CTA — every other chip is a
 // rotating recommendation that gets replaced (never added on top of) once
@@ -33,8 +49,11 @@ const STATUS_LINES = [
 const MAX_VISIBLE_PROMPTS = 5;
 const INITIAL_ROTATABLE_COUNT = 3;
 const PINNED_PROMPT_ID = 'contacto';
-const pinnedPrompt = chatPrompts.find((p) => p.id === PINNED_PROMPT_ID);
-const rotatablePrompts = chatPrompts.filter((p) => p.id !== PINNED_PROMPT_ID);
+// Prompt ids and their order are identical across languages — only the
+// labels/answers differ — so the rotation logic below can work off ids
+// alone and look up the localized prompt object at render time.
+const ALL_PROMPT_IDS = chatPromptsByLang.en.map((p) => p.id);
+const ROTATABLE_PROMPT_IDS = ALL_PROMPT_IDS.filter((id) => id !== PINNED_PROMPT_ID);
 
 interface Message {
   id: string;
@@ -134,17 +153,20 @@ export default function ChatHome() {
   const [inputValue, setInputValue] = useState('');
   const [resumeOpen, setResumeOpen] = useState(false);
   const [promptRotation, setPromptRotation] = useState(() => ({
-    visibleIds: rotatablePrompts.slice(0, INITIAL_ROTATABLE_COUNT).map((p) => p.id),
+    visibleIds: ROTATABLE_PROMPT_IDS.slice(0, INITIAL_ROTATABLE_COUNT),
     nextIndex: INITIAL_ROTATABLE_COUNT,
   }));
   const transcriptRef = useRef<HTMLDivElement>(null);
   const idRef = useRef(0);
-  const statusLine = useTypewriterLoop(STATUS_LINES);
+  const { lang } = useLang();
+  const prompts = chatPromptsByLang[lang];
+  const promptById = (id: string) => prompts.find((p) => p.id === id)!;
+  const statusLine = useTypewriterLoop(STATUS_LINES[lang]);
   const { search, status: searchStatus } = useSemanticSearch();
 
   const visiblePrompts = [
-    ...promptRotation.visibleIds.map((id) => rotatablePrompts.find((p) => p.id === id)!),
-    ...(pinnedPrompt ? [pinnedPrompt] : []),
+    ...promptRotation.visibleIds.map((id) => promptById(id)),
+    promptById(PINNED_PROMPT_ID),
   ].slice(0, MAX_VISIBLE_PROMPTS);
 
   const nextId = () => `msg-${idRef.current++}`;
@@ -165,7 +187,7 @@ export default function ChatHome() {
   }, [messages, thinking]);
 
   const handlePromptClick = (promptId: string) => {
-    const prompt = chatPrompts.find((p) => p.id === promptId);
+    const prompt = promptById(promptId);
     if (!prompt) return;
     respond(prompt.label, prompt.answer);
 
@@ -176,9 +198,9 @@ export default function ChatHome() {
       const idx = prev.visibleIds.indexOf(promptId);
       if (idx === -1) return prev;
 
-      if (prev.nextIndex < rotatablePrompts.length) {
+      if (prev.nextIndex < ROTATABLE_PROMPT_IDS.length) {
         const visibleIds = [...prev.visibleIds];
-        visibleIds[idx] = rotatablePrompts[prev.nextIndex].id;
+        visibleIds[idx] = ROTATABLE_PROMPT_IDS[prev.nextIndex];
         return { visibleIds, nextIndex: prev.nextIndex + 1 };
       }
 
@@ -197,12 +219,13 @@ export default function ChatHome() {
     // Greetings/small talk never reach the model — no reason to load ~25MB
     // of weights just to say hi back.
     if (isGreetingOrGeneric(value)) {
+      const greeting = chatGreetingByLang[lang];
       setThinking(true);
       setTimeout(() => {
         setThinking(false);
         setMessages((prev) => [
           ...prev,
-          { id: nextId(), role: 'assistant', text: chatGreeting.text, answer: chatGreeting },
+          { id: nextId(), role: 'assistant', text: greeting.text, answer: greeting },
         ]);
       }, 400);
       return;
@@ -222,9 +245,9 @@ export default function ChatHome() {
       // generate-embeddings.mjs).
       let answer: ChatAnswer;
       if (!best) {
-        answer = chatNoMatch;
+        answer = chatNoMatchByLang[lang];
       } else if (best.projectId === 'projects-overview') {
-        answer = chatProjectsOverview;
+        answer = chatProjectsOverviewByLang[lang];
       } else {
         answer = {
           text: best.text,
@@ -239,9 +262,10 @@ export default function ChatHome() {
       setMessages((prev) => [...prev, { id: nextId(), role: 'assistant', text: answer.text, answer }]);
     } catch (err) {
       console.error('semantic search failed', err);
+      const fallback = chatFallbackByLang[lang];
       setMessages((prev) => [
         ...prev,
-        { id: nextId(), role: 'assistant', text: chatFallback.text, answer: chatFallback },
+        { id: nextId(), role: 'assistant', text: fallback.text, answer: fallback },
       ]);
     } finally {
       setThinking(false);
@@ -254,14 +278,14 @@ export default function ChatHome() {
       {!started && (
         <div className={styles.emptyState}>
           <h1 className={styles.heroLine}>
-            Hi, I&apos;m <strong className={styles.heroName}>Gon</strong> 👋 {personalInfo.roles[0]}
+            {COPY[lang].heroGreeting} <strong className={styles.heroName}>Gon</strong> 👋 {personalInfo.roles[0]}
             <br />
             <span className={styles.statusLine}>
               {statusLine}
               <span className={styles.statusCaret} />
             </span>
           </h1>
-          <p className={styles.subtitle}>What would you like to know about Gon?</p>
+          <p className={styles.subtitle}>{COPY[lang].subtitle}</p>
           <div className={styles.chips}>
             {visiblePrompts.map((prompt) => (
               <button
@@ -299,7 +323,7 @@ export default function ChatHome() {
                 <div className={styles.avatar}>G</div>
                 <div>
                   {searchPending && searchStatus === 'loading-model' && (
-                    <p className={styles.modelLoadingLabel}>Loading the model… (first time only, a few seconds)</p>
+                    <p className={styles.modelLoadingLabel}>{COPY[lang].loadingModel}</p>
                   )}
                   <div className={styles.thinkingDots}>
                     <span />
@@ -335,11 +359,11 @@ export default function ChatHome() {
             type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Ask me about my experience in fintech, product design, AI..."
+            placeholder={COPY[lang].placeholder}
             className={styles.input}
             disabled={thinking}
           />
-          <button type="submit" className={styles.sendButton} aria-label="Send" disabled={thinking}>
+          <button type="submit" className={styles.sendButton} aria-label={COPY[lang].send} disabled={thinking}>
             ↑
           </button>
         </form>
