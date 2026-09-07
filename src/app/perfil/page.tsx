@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import SiteNav from "@/components/chat/SiteNav";
 import ScrollRevealInit from "@/components/ScrollRevealInit";
@@ -8,9 +10,12 @@ import DailyDrivers from "@/components/DailyDrivers";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { personalInfo } from "@/data/content";
+import { useLang } from "@/components/project/LangWrapper";
 import styles from "./page.module.css";
 
 export default function PerfilPage() {
+  const { lang } = useLang();
+
   return (
     <>
       <SiteNav />
@@ -26,7 +31,9 @@ export default function PerfilPage() {
           priority
         />
         <h1 className={styles.name}>{personalInfo.name}</h1>
-        <p className={styles.role}>{personalInfo.roles[0]} · Barcelona, España</p>
+        <p className={styles.role}>
+          {personalInfo.roles[0]} · Barcelona, {lang === "en" ? "Spain" : "España"}
+        </p>
       </header>
 
       <main>

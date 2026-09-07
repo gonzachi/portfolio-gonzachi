@@ -3,61 +3,84 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './DailyDrivers.module.css';
 
 const tools = [
   {
     id: 'figma',
     name: 'Figma',
-    tooltip: 'Donde las ideas se convierten en píxeles y flujos reales.',
+    tooltip: {
+      es: 'Donde las ideas se convierten en píxeles y flujos reales.',
+      en: 'Where ideas become real pixels and flows.',
+    },
     image: '/assets/home/tools/figma.jpg'
   },
   {
     id: 'claude',
     name: 'Claude',
-    tooltip: 'Mi copiloto para reflexionar, estructurar código y refinar ideas.',
+    tooltip: {
+      es: 'Mi copiloto para reflexionar, estructurar código y refinar ideas.',
+      en: 'My copilot for thinking things through, structuring code, and refining ideas.',
+    },
     image: '/assets/home/tools/claude.jpg'
   },
   {
     id: 'antigravity',
     name: 'Antigravity',
-    tooltip: 'Mi agente de IA para programar a la velocidad del pensamiento.',
+    tooltip: {
+      es: 'Mi agente de IA para programar a la velocidad del pensamiento.',
+      en: 'My AI coding agent, built for moving at the speed of thought.',
+    },
     image: '/assets/home/tools/antigravity.jpg'
   },
   {
     id: 'copilot',
     name: 'Copilot',
-    tooltip: 'Autocompletado y sugerencias de código en tiempo real.',
+    tooltip: {
+      es: 'Autocompletado y sugerencias de código en tiempo real.',
+      en: 'Real-time autocomplete and code suggestions.',
+    },
     image: '/assets/home/tools/copilot.jpg'
   },
   {
     id: 'hotjar',
     name: 'Hotjar',
-    tooltip: 'Para entender cómo interactúan los usuarios reales con el producto.',
+    tooltip: {
+      es: 'Para entender cómo interactúan los usuarios reales con el producto.',
+      en: 'For understanding how real users interact with the product.',
+    },
     image: '/assets/home/tools/hotjar.jpg'
   },
   {
     id: 'notions',
     name: 'Notion',
-    tooltip: 'Mi segundo cerebro. Aquí vive todo: backlog, notas y estrategia.',
+    tooltip: {
+      es: 'Mi segundo cerebro. Aquí vive todo: backlog, notas y estrategia.',
+      en: 'My second brain. Backlog, notes and strategy all live here.',
+    },
     image: '/assets/home/tools/notions.jpg'
   },
   {
     id: 'screen',
     name: 'Screen Studio',
-    tooltip: 'Para crear grabaciones de pantalla de alta calidad con zoom dinámico.',
+    tooltip: {
+      es: 'Para crear grabaciones de pantalla de alta calidad con zoom dinámico.',
+      en: 'For high-quality screen recordings with dynamic zoom.',
+    },
     image: '/assets/home/tools/screen-studio.jpg'
   }
 ];
 
 export default function DailyDrivers() {
+  const { lang } = useLang();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <section className={styles.section} id="daily-drivers">
       <div className={styles.container}>
         <div className="reveal section-label-sub">
-          <span>Mis apps de uso diario</span>
+          <span>{lang === 'en' ? 'My daily-driver apps' : 'Mis apps de uso diario'}</span>
           <div className="section-label-line" />
         </div>
 
@@ -79,7 +102,7 @@ export default function DailyDrivers() {
                     transition={{ duration: 0.16, ease: 'easeOut' }}
                     className={styles.tooltip}
                   >
-                    {tool.tooltip}
+                    {tool.tooltip[lang]}
                     <div className={styles.tooltipArrow} />
                   </motion.div>
                 )}

@@ -1,4 +1,7 @@
+'use client';
+
 import { personalInfo } from '@/data/content';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './Contact.module.css';
 
 const links = [
@@ -8,11 +11,13 @@ const links = [
 ];
 
 export default function Contact() {
+  const { lang } = useLang();
+
   return (
     <section id="contacto" className={styles.section}>
       <div className={styles.container}>
 
-        <h2 className={`reveal reveal-delay-1 ${styles.title}`}>Hablemos.</h2>
+        <h2 className={`reveal reveal-delay-1 ${styles.title}`}>{lang === 'en' ? "Let's talk." : 'Hablemos.'}</h2>
         <div className={`reveal reveal-delay-2 ${styles.links}`}>
           {links.map(({ href, label, primary }) => (
             <a
