@@ -6,8 +6,6 @@ import ScrollReveal from '@/components/ScrollReveal';
 import Contact from '@/components/Contact';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
 import ScrollRevealInit from '@/components/ScrollRevealInit';
-import LangWrapper from '@/components/project/LangWrapper';
-import LangToggle from '@/components/project/LangToggle';
 import FigmaVideoPlayer from '@/components/project/FigmaVideoPlayer';
 import CardsCarousel from '@/components/project/CardsCarousel';
 import HoldoHero from '@/components/project/holdo/HoldoHero';
@@ -187,11 +185,11 @@ export default function ProjectPage() {
     ];
 
     return (
-        <LangWrapper storageKey="holdo-app-lang">
+        <>
             <ScrollToTop />
             <ScrollRevealInit />
 
-            <SiteNav actions={<LangToggle />} />
+            <SiteNav />
 
             {/* EXECUTIVE HERO SECTION */}
             <HoldoHero />
@@ -222,6 +220,6 @@ export default function ProjectPage() {
 
             {/* CASE STUDY FOOTER */}
             <CaseStudyFooter />
-        </LangWrapper>
+        </>
     );
 }

@@ -5,8 +5,6 @@ import ScrollToTop from '@/components/ScrollToTop';
 import ScrollReveal from '@/components/ScrollReveal';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
 import ScrollRevealInit from '@/components/ScrollRevealInit';
-import LangWrapper from '@/components/project/LangWrapper';
-import LangToggle from '@/components/project/LangToggle';
 import { redirect } from 'next/navigation';
 import { hasProjectAccess } from '@/lib/project-auth/access';
 import styles from './page.module.css';
@@ -103,11 +101,11 @@ export default async function ProjectPage() {
   ];
 
   return (
-    <LangWrapper storageKey="agilidad-lang">
+    <>
       <ScrollToTop />
       <ScrollRevealInit />
 
-      <SiteNav actions={<LangToggle />} />
+      <SiteNav />
 
       {/* FULLSCREEN HERO (100VH) */}
       <section className={styles.fullscreenHero}>
@@ -794,6 +792,6 @@ export default async function ProjectPage() {
       </main>
 
       <CaseStudyFooter />
-    </LangWrapper>
+    </>
   );
 }

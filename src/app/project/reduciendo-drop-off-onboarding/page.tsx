@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
 import CaseStudyFooter from '@/components/project/CaseStudyFooter';
-import LangWrapper from '@/components/project/LangWrapper';
-import LangToggle from '@/components/project/LangToggle';
 import OnboardingHero from '@/components/project/onboarding/OnboardingHero';
 import OnboardingExecutiveSummary from '@/components/project/onboarding/OnboardingExecutiveSummary';
 import OnboardingChallengeSection from '@/components/project/onboarding/OnboardingChallengeSection';
@@ -49,10 +47,10 @@ export const metadata: Metadata = {
 
 export default function ProjectPage() {
   return (
-    <LangWrapper storageKey="holdo-onboarding-lang">
+    <>
       <ScrollToTop />
 
-      <SiteNav actions={<LangToggle />} />
+      <SiteNav />
 
       {/* 00 / HERO */}
       <OnboardingHero />
@@ -83,6 +81,6 @@ export default function ProjectPage() {
 
       {/* CASE STUDY FOOTER */}
       <CaseStudyFooter />
-    </LangWrapper>
+    </>
   );
 }

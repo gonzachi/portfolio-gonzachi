@@ -18,8 +18,10 @@ interface Props {
   storageKey?: string;
 }
 
-export default function LangWrapper({ children, storageKey = 'case-study-lang' }: Props) {
-  const [lang, setLang] = useState<Lang>('en');
+export default function LangWrapper({ children, storageKey = 'site-lang' }: Props) {
+  // Site default is Spanish (html lang="es", most existing copy) — English
+  // is the alternate a visitor opts into.
+  const [lang, setLang] = useState<Lang>('es');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export default function LangWrapper({ children, storageKey = 'case-study-lang' }
 
   return (
     <LangContext.Provider value={{ lang, toggle }}>
-      <div data-lang-active={mounted ? lang : 'en'} style={{ display: 'contents' }}>
+      <div data-lang-active={mounted ? lang : 'es'} style={{ display: 'contents' }}>
         {children}
       </div>
     </LangContext.Provider>

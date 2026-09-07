@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import LangToggle from '@/components/project/LangToggle';
 import ResumeModal from './ResumeModal';
 import styles from './SiteNav.module.css';
 
@@ -43,17 +44,12 @@ function ResumeIcon() {
 }
 
 const links = [
-  { href: '/', label: 'Home', Icon: HomeIcon },
-  { href: '/proyectos', label: 'Works', Icon: WorksIcon },
-  { href: '/perfil', label: 'About', Icon: AboutIcon },
+  { href: '/', en: 'Home', es: 'Inicio', Icon: HomeIcon },
+  { href: '/proyectos', en: 'Works', es: 'Proyectos', Icon: WorksIcon },
+  { href: '/perfil', en: 'About', es: 'Sobre mí', Icon: AboutIcon },
 ];
 
-interface SiteNavProps {
-  /** Extra controls rendered after the nav links (e.g. a per-page LangToggle). */
-  actions?: React.ReactNode;
-}
-
-export default function SiteNav({ actions }: SiteNavProps) {
+export default function SiteNav() {
   const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
@@ -74,25 +70,30 @@ export default function SiteNav({ actions }: SiteNavProps) {
       </a>
       <div className={styles.right}>
         <nav className={styles.links}>
-          {links.map(({ href, label, Icon }) =>
+          {links.map(({ href, en, es, Icon }) =>
             href === '/' ? (
               <a key={href} href={href} className={styles.link}>
                 <Icon />
-                <span>{label}</span>
+                <span data-lang="en">{en}</span>
+                <span data-lang="es">{es}</span>
               </a>
             ) : (
               <Link key={href} href={href} className={styles.link}>
                 <Icon />
-                <span>{label}</span>
+                <span data-lang="en">{en}</span>
+                <span data-lang="es">{es}</span>
               </Link>
             )
           )}
           <button type="button" className={styles.link} onClick={() => setResumeOpen(true)}>
             <ResumeIcon />
-            <span>Resume</span>
+            <span data-lang="en">Resume</span>
+            <span data-lang="es">CV</span>
           </button>
         </nav>
-        {actions && <div className={styles.actions}>{actions}</div>}
+        <div className={styles.actions}>
+          <LangToggle />
+        </div>
       </div>
 
       <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
