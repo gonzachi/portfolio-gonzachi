@@ -87,3 +87,11 @@
     display: none;
   }
 }
+
+/* Below this the avatar + full name no longer fit on one line and wrap,
+   eating vertical space that the chat below needs on short screens. */
+@media (max-width: 360px) {
+  .brandName {
+    display: none;
+  }
+}

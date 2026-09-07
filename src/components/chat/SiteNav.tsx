@@ -70,7 +70,7 @@ export default function SiteNav({ actions }: SiteNavProps) {
           height={26}
           className={styles.avatar}
         />
-        Gonzalo Chiavassa
+        <span className={styles.brandName}>Gonzalo Chiavassa</span>
       </a>
       <div className={styles.right}>
         <nav className={styles.links}>
