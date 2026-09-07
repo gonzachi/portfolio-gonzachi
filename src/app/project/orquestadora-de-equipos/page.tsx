@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { projects } from '@/data/content';
-import { orquestadoraDeEquiposProtected } from '@/data/protected/orquestadora-de-equipos';
+import { orquestadoraDeEquiposProtected, orquestadoraDeEquiposProtectedEn } from '@/data/protected/orquestadora-de-equipos';
 import { hasProjectAccess } from '@/lib/project-auth/access';
 import SiteNav from '@/components/chat/SiteNav';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -71,11 +71,18 @@ export default async function ProjectPage() {
         redirect('/project/orquestadora-de-equipos/gate');
     }
 
-    // Merge public metadata and protected content on the server
+    // Merge public metadata and protected content on the server. The page
+    // renders both languages side by side as data-lang="es"/"en" pairs
+    // (same CSS-toggle pattern as disenar-en-codigo) since this is a
+    // server component and can't read the client-side language toggle.
     const baseProject = projects.find((p) => p.id === 'orquestadora-de-equipos');
     const project = {
         ...baseProject,
         ...orquestadoraDeEquiposProtected,
+    } as any;
+    const projectEn = {
+        ...baseProject,
+        ...orquestadoraDeEquiposProtectedEn,
     } as any;
 
     return (
@@ -89,15 +96,20 @@ export default async function ProjectPage() {
             <section className={styles.heroSection}>
                 <div className={styles.heroContainer}>
                     <ScrollReveal delay={0.1}>
-                        <h1 className={styles.heroTitle}>{project.title}</h1>
-                        <p className={styles.heroSubtitle}>Herramienta corporativa para la creación de contenido de journeys</p>
+                        <h1 className={styles.heroTitle}>
+                            <span data-lang="es">{project.title}</span>
+                            <span data-lang="en">{projectEn.title}</span>
+                        </h1>
+                        <p className={styles.heroSubtitle} data-lang="es">Herramienta corporativa para la creación de contenido de journeys</p>
+                        <p className={styles.heroSubtitle} data-lang="en">Corporate tool for building journey content</p>
                     </ScrollReveal>
 
                     <ScrollReveal delay={0.2} className={styles.heroMetaBlock}>
                         {/* Row 1: Herramientas */}
                         <div className={styles.metaRowTop}>
                             <div className={styles.metaCell}>
-                                <span className={styles.metaLabel}>Herramientas</span>
+                                <span className={styles.metaLabel} data-lang="es">Herramientas</span>
+                                <span className={styles.metaLabel} data-lang="en">Tools</span>
                                 <p className={styles.metaVal}>{project.tools?.slice(0, 4).join(', ') || 'Figma, Next.js, AI First, Miro'}</p>
                             </div>
                         </div>
@@ -105,12 +117,17 @@ export default async function ProjectPage() {
                         {/* Row 2: Rol, Equipo, Logo */}
                         <div className={styles.metaRowBottom}>
                             <div className={styles.metaCell}>
-                                <span className={styles.metaLabel}>Mi Rol</span>
+                                <span className={styles.metaLabel} data-lang="es">Mi Rol</span>
+                                <span className={styles.metaLabel} data-lang="en">My Role</span>
                                 <p className={styles.metaVal}>{project.role}</p>
                             </div>
                             <div className={styles.metaCell}>
-                                <span className={styles.metaLabel}>Equipo</span>
-                                <p className={styles.metaVal}>{project.team}</p>
+                                <span className={styles.metaLabel} data-lang="es">Equipo</span>
+                                <span className={styles.metaLabel} data-lang="en">Team</span>
+                                <p className={styles.metaVal}>
+                                    <span data-lang="es">{project.team}</span>
+                                    <span data-lang="en">{projectEn.team}</span>
+                                </p>
                             </div>
                             <div className={styles.logoCell}>
                                 <Image
@@ -134,12 +151,19 @@ export default async function ProjectPage() {
                 <section className={styles.editorialSection}>
                     <div className={styles.sectionRow}>
                         <div className={styles.sectionSidebar}>
-                            <span className={styles.sectionNum}>01. Inicio</span>
-                            <h2 className={styles.sectionTitle}>Contexto</h2>
+                            <span className={styles.sectionNum} data-lang="es">01. Inicio</span>
+                            <span className={styles.sectionNum} data-lang="en">01. Intro</span>
+                            <h2 className={styles.sectionTitle}>
+                                <span data-lang="es">Contexto</span>
+                                <span data-lang="en">Context</span>
+                            </h2>
                         </div>
                         <div className={styles.sectionBody}>
                             {project.description?.map((p: string, i: number) => (
-                                <p key={i} className={styles.bodyText} dangerouslySetInnerHTML={{ __html: p }} />
+                                <p key={`es-${i}`} className={styles.bodyText} data-lang="es" dangerouslySetInnerHTML={{ __html: p }} />
+                            ))}
+                            {projectEn.description?.map((p: string, i: number) => (
+                                <p key={`en-${i}`} className={styles.bodyText} data-lang="en" dangerouslySetInnerHTML={{ __html: p }} />
                             ))}
                         </div>
                     </div>
@@ -149,24 +173,35 @@ export default async function ProjectPage() {
                 {project.roleDescription && (
                     <section className={`${styles.editorialSection} ${styles.fullWidthSection}`}>
                         <header className={`${styles.fullWidthHeader} ${styles.centeredHeader}`}>
-                            <span className={styles.sectionNum}>02. Mi rol</span>
+                            <span className={styles.sectionNum} data-lang="es">02. Mi rol</span>
+                            <span className={styles.sectionNum} data-lang="en">02. My role</span>
                             <h2 className={styles.sectionTitle}>Mindset Ownership & AI First</h2>
                         </header>
                         <div className={styles.fullWidthBody}>
                             {project.roleDescription.map((p: string, i: number) => (
-                                <p key={i} className={`${styles.bodyText} ${styles.centeredBodyText}`}>{p}</p>
+                                <p key={`es-${i}`} className={`${styles.bodyText} ${styles.centeredBodyText}`} data-lang="es">{p}</p>
+                            ))}
+                            {projectEn.roleDescription.map((p: string, i: number) => (
+                                <p key={`en-${i}`} className={`${styles.bodyText} ${styles.centeredBodyText}`} data-lang="en">{p}</p>
                             ))}
                             {project.highlights && project.highlights.length > 0 && (
                                 <div className={styles.roleHighlightsGrid}>
-                                    {project.highlights.map((hl: any, idx: number) => (
+                                    {project.highlights.map((hl: any, idx: number) => {
+                                        const hlEn = projectEn.highlights[idx];
+                                        return (
                                         <div key={idx} className={styles.roleHighlightCard}>
                                             <div className={styles.roleHighlightIconContainer}>
                                                 {getHighlightIcon(hl.icon)}
                                             </div>
-                                            <h4 className={styles.roleHighlightTitle}>{hl.title}</h4>
-                                            <p className={styles.roleHighlightDesc}>{hl.description}</p>
+                                            <h4 className={styles.roleHighlightTitle}>
+                                                <span data-lang="es">{hl.title}</span>
+                                                <span data-lang="en">{hlEn.title}</span>
+                                            </h4>
+                                            <p className={styles.roleHighlightDesc} data-lang="es">{hl.description}</p>
+                                            <p className={styles.roleHighlightDesc} data-lang="en">{hlEn.description}</p>
                                         </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                             )}
                         </div>
@@ -177,8 +212,11 @@ export default async function ProjectPage() {
                 <div className={styles.dividerDiscoveryWrapper}>
                     {/* DIVIDER SECTION */}
                     <section className={styles.dividerSection}>
-                        <p className={styles.dividerText}>
+                        <p className={styles.dividerText} data-lang="es">
                             A continuación profundizamos sobre las instancias clave del desarrollo, destacando <strong>metodologías, desafíos inter-equipos, aprendizajes y el impacto de construir producto con IA.</strong>
+                        </p>
+                        <p className={styles.dividerText} data-lang="en">
+                            Here&rsquo;s a closer look at the key moments of the build, covering <strong>methodology, cross-team challenges, learnings, and the impact of building product with AI.</strong>
                         </p>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className={styles.dividerChevron}>
                             <polyline points="6 9 12 15 18 9" />
@@ -191,12 +229,19 @@ export default async function ProjectPage() {
                             <div className={styles.discoveryInnerContainer}>
                                 <div className={styles.sectionRow}>
                                     <div className={styles.sectionSidebar}>
-                                        <span className={styles.sectionNum}>03. Discovery</span>
-                                        <h2 className={styles.sectionTitle}>{project.discovery.title || "Discovery"}</h2>
+                                        <span className={styles.sectionNum} data-lang="es">03. Discovery</span>
+                                        <span className={styles.sectionNum} data-lang="en">03. Discovery</span>
+                                        <h2 className={styles.sectionTitle}>
+                                            <span data-lang="es">{project.discovery.title || "Discovery"}</span>
+                                            <span data-lang="en">{projectEn.discovery.title || "Discovery"}</span>
+                                        </h2>
                                     </div>
                                     <div className={styles.sectionBody}>
                                         {project.discovery.description.map((paragraph: string, index: number) => (
-                                            <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                            <p key={`es-${index}`} className={styles.bodyText} data-lang="es">{paragraph}</p>
+                                        ))}
+                                        {projectEn.discovery.description.map((paragraph: string, index: number) => (
+                                            <p key={`en-${index}`} className={styles.bodyText} data-lang="en">{paragraph}</p>
                                         ))}
                                     </div>
                                 </div>
@@ -210,17 +255,29 @@ export default async function ProjectPage() {
                     <section className={styles.editorialSection}>
                         <div className={styles.sectionRow}>
                             <div className={styles.sectionSidebar}>
-                                <span className={styles.sectionNum}>04. Desafíos</span>
-                                <h2 className={styles.sectionTitle}>{project.problem.title || "Principales desafíos"}</h2>
+                                <span className={styles.sectionNum} data-lang="es">04. Desafíos</span>
+                                <span className={styles.sectionNum} data-lang="en">04. Challenges</span>
+                                <h2 className={styles.sectionTitle}>
+                                    <span data-lang="es">{project.problem.title || "Principales desafíos"}</span>
+                                    <span data-lang="en">{projectEn.problem.title || "Main challenges"}</span>
+                                </h2>
                             </div>
                             <div className={styles.sectionBody}>
                                 {project.problem.statement && (
-                                    <blockquote className={styles.editorialQuote}>
+                                    <blockquote className={styles.editorialQuote} data-lang="es">
                                         "{project.problem.statement}"
                                     </blockquote>
                                 )}
+                                {projectEn.problem.statement && (
+                                    <blockquote className={styles.editorialQuote} data-lang="en">
+                                        "{projectEn.problem.statement}"
+                                    </blockquote>
+                                )}
                                 {project.problem.description.map((paragraph: string, index: number) => (
-                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    <p key={`es-${index}`} className={styles.bodyText} data-lang="es">{paragraph}</p>
+                                ))}
+                                {projectEn.problem.description.map((paragraph: string, index: number) => (
+                                    <p key={`en-${index}`} className={styles.bodyText} data-lang="en">{paragraph}</p>
                                 ))}
                             </div>
                         </div>
@@ -231,11 +288,18 @@ export default async function ProjectPage() {
                 <section className={styles.iteracionSection}>
                     <div className={styles.iteracionInnerContainer}>
                         <header className={`${styles.fullWidthHeader} ${styles.centeredHeader}`}>
-                            <span className={styles.sectionNum}>05. Definiciones</span>
-                            <h2 className={styles.sectionTitle}>Iteración y decisiones clave</h2>
+                            <span className={styles.sectionNum} data-lang="es">05. Definiciones</span>
+                            <span className={styles.sectionNum} data-lang="en">05. Decisions</span>
+                            <h2 className={styles.sectionTitle}>
+                                <span data-lang="es">Iteración y decisiones clave</span>
+                                <span data-lang="en">Iteration and key decisions</span>
+                            </h2>
                         </header>
-                        <p className={`${styles.bodyText} ${styles.centeredBodyText}`} style={{ maxWidth: '720px', margin: '0 auto 2.5rem', textAlign: 'center' }}>
+                        <p className={`${styles.bodyText} ${styles.centeredBodyText}`} style={{ maxWidth: '720px', margin: '0 auto 2.5rem', textAlign: 'center' }} data-lang="es">
                             Decisiones estratégicas de arquitectura y proceso que permitieron acelerar la construcción del producto sin generar fricción en los equipos.
+                        </p>
+                        <p className={`${styles.bodyText} ${styles.centeredBodyText}`} style={{ maxWidth: '720px', margin: '0 auto 2.5rem', textAlign: 'center' }} data-lang="en">
+                            Strategic architecture and process decisions that sped up building the product without creating friction across teams.
                         </p>
                         <Carousel />
                     </div>
@@ -246,12 +310,19 @@ export default async function ProjectPage() {
                     <section className={styles.editorialSection}>
                         <div className={styles.sectionRow}>
                             <div className={styles.sectionSidebar}>
-                                <span className={styles.sectionNum}>06. Solución</span>
-                                <h2 className={styles.sectionTitle}>Solución propuesta — UX/UI</h2>
+                                <span className={styles.sectionNum} data-lang="es">06. Solución</span>
+                                <span className={styles.sectionNum} data-lang="en">06. Solution</span>
+                                <h2 className={styles.sectionTitle}>
+                                    <span data-lang="es">Solución propuesta — UX/UI</span>
+                                    <span data-lang="en">Proposed solution — UX/UI</span>
+                                </h2>
                             </div>
                             <div className={styles.sectionBody}>
                                 {project.solutionText.map((paragraph: string, index: number) => (
-                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    <p key={`es-${index}`} className={styles.bodyText} data-lang="es">{paragraph}</p>
+                                ))}
+                                {projectEn.solutionText.map((paragraph: string, index: number) => (
+                                    <p key={`en-${index}`} className={styles.bodyText} data-lang="en">{paragraph}</p>
                                 ))}
                             </div>
                         </div>
@@ -263,27 +334,41 @@ export default async function ProjectPage() {
                     <section className={styles.editorialSection}>
                         <div className={styles.sectionRow}>
                             <div className={styles.sectionSidebar}>
-                                <span className={styles.sectionNum}>07. Impacto</span>
-                                <h2 className={styles.sectionTitle}>{project.resultsReveal.title || "Impacto principal"}</h2>
+                                <span className={styles.sectionNum} data-lang="es">07. Impacto</span>
+                                <span className={styles.sectionNum} data-lang="en">07. Impact</span>
+                                <h2 className={styles.sectionTitle}>
+                                    <span data-lang="es">{project.resultsReveal.title || "Impacto principal"}</span>
+                                    <span data-lang="en">{projectEn.resultsReveal.title || "Main impact"}</span>
+                                </h2>
                             </div>
                             <div className={styles.sectionBody}>
                                 {project.resultsReveal.paragraphsBefore?.map((paragraph: string, index: number) => (
-                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    <p key={`es-${index}`} className={styles.bodyText} data-lang="es">{paragraph}</p>
+                                ))}
+                                {projectEn.resultsReveal.paragraphsBefore?.map((paragraph: string, index: number) => (
+                                    <p key={`en-${index}`} className={styles.bodyText} data-lang="en">{paragraph}</p>
                                 ))}
 
                                 {project.resultsReveal.stats && project.resultsReveal.stats.length > 0 && (
                                     <div className={styles.impactMetricsGrid}>
-                                        {project.resultsReveal.stats.map((stat: any, index: number) => (
+                                        {project.resultsReveal.stats.map((stat: any, index: number) => {
+                                            const statEn = projectEn.resultsReveal.stats[index];
+                                            return (
                                             <div key={index} className={styles.impactCard}>
                                                 <span className={styles.metricValText}>{stat.highlight}</span>
-                                                <p className={styles.metricDetailText}>{stat.detail}</p>
+                                                <p className={styles.metricDetailText} data-lang="es">{stat.detail}</p>
+                                                <p className={styles.metricDetailText} data-lang="en">{statEn.detail}</p>
                                             </div>
-                                        ))}
+                                            );
+                                        })}
                                     </div>
                                 )}
 
                                 {project.resultsReveal.paragraphsAfter?.map((paragraph: string, index: number) => (
-                                    <p key={index} className={styles.bodyText}>{paragraph}</p>
+                                    <p key={`es-after-${index}`} className={styles.bodyText} data-lang="es">{paragraph}</p>
+                                ))}
+                                {projectEn.resultsReveal.paragraphsAfter?.map((paragraph: string, index: number) => (
+                                    <p key={`en-after-${index}`} className={styles.bodyText} data-lang="en">{paragraph}</p>
                                 ))}
                             </div>
                         </div>
@@ -294,19 +379,30 @@ export default async function ProjectPage() {
                 {project.challengesText && (
                     <section className={`${styles.editorialSection} ${styles.fullWidthSection}`}>
                         <header className={`${styles.fullWidthHeader} ${styles.centeredHeader}`}>
-                            <span className={styles.sectionNum}>08. Aprendizajes</span>
-                            <h2 className={styles.sectionTitle}>Desafíos y aprendizajes</h2>
+                            <span className={styles.sectionNum} data-lang="es">08. Aprendizajes</span>
+                            <span className={styles.sectionNum} data-lang="en">08. Learnings</span>
+                            <h2 className={styles.sectionTitle}>
+                                <span data-lang="es">Desafíos y aprendizajes</span>
+                                <span data-lang="en">Challenges and learnings</span>
+                            </h2>
                         </header>
                         <div className={styles.roleHighlightsGrid}>
-                            {project.challengesText.map((text: string, index: number) => (
+                            {project.challengesText.map((text: string, index: number) => {
+                                const textEn = projectEn.challengesText[index];
+                                return (
                                 <div key={index} className={styles.roleHighlightCard}>
                                     <div className={styles.roleHighlightIconContainer}>
                                         {getHighlightIcon(index % 2 === 0 ? 'owner' : 'priority')}
                                     </div>
-                                    <h4 className={styles.roleHighlightTitle}>Aprendizaje {index + 1}</h4>
-                                    <p className={styles.roleHighlightDesc}>{text}</p>
+                                    <h4 className={styles.roleHighlightTitle}>
+                                        <span data-lang="es">Aprendizaje {index + 1}</span>
+                                        <span data-lang="en">Learning {index + 1}</span>
+                                    </h4>
+                                    <p className={styles.roleHighlightDesc} data-lang="es">{text}</p>
+                                    <p className={styles.roleHighlightDesc} data-lang="en">{textEn}</p>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </section>
                 )}

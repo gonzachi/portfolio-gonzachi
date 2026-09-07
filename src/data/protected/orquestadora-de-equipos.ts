@@ -128,3 +128,136 @@ export const orquestadoraDeEquiposProtected = {
   showcaseTitle: "Plataforma orquestadora de equipos para Mango",
   heroImage: "/assets/projects/moda.jpg"
 };
+
+// English translation of the same (already externally-shareable) case
+// study copy above — kept alongside it rather than in a separate file so
+// the two stay easy to compare and keep in sync.
+export const orquestadoraDeEquiposProtectedEn = {
+  title: "Team-orchestration platform",
+  discovery: {
+    title: "Initial discovery",
+    description: [
+      "We ran a deep discovery process, mapping the workflows of more than 5 internal teams involved in ideating, creating and distributing content for customer journeys.",
+      "We found that information lived scattered across spreadsheets, email threads and disconnected tools. Each team used its own criteria and formats, which created bottlenecks and duplicated work.",
+      "We interviewed stakeholders from each area to define the MVP requirements: we needed a centralized platform that could act as an orchestrator, letting teams ideate, build and validate journeys end-to-end before scaling to full campaigns."
+    ],
+    images: []
+  },
+  problem: {
+    title: "Main challenges",
+    statement: "5 teams working in silos, with manual processes and bureaucracy.",
+    description: [
+      "The main challenge wasn't just technical — it was operational and cultural: aligning criteria across more than 5 teams with different working dynamics, without adding bureaucratic overhead.",
+      "To pull it off, we designed a deliberately tiny team: a product lead handling both leadership and the frontend through AI-driven vibe coding, one backend developer, and integrations with the APIs the teams already used in their existing platforms."
+    ]
+  },
+  solutionText: [
+    "We designed and built an internal platform that acts as the orchestration layer for content and journeys.",
+    "Through an AI-powered conversational and visual approach, users across the different teams can ideate communication structures, configure business rules, and generate content aligned with brand guidelines.",
+    "The frontend was built by iterating directly with AI (vibe coding), which let us validate interface and flow hypotheses with real users in record time."
+  ],
+  challengesText: [
+    "Coordinating and integrating APIs from more than 5 existing platforms without disrupting the teams' day-to-day operations.",
+    "Keeping the discipline of an ultra-lean team: avoiding scope creep and resisting the usual temptation to add overhead by building complex structures.",
+    "Demonstrating that AI-driven development (vibe coding) can deliver corporate-grade software in a fraction of the traditional time and resources."
+  ],
+  resultsReveal: {
+    title: "Main impact",
+    stats: [
+      { highlight: "+5", detail: "internal teams unified on a single platform", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm8 4v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" },
+      { highlight: "-80%", detail: "reduction in journey ideation and orchestration time", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+      { highlight: "100%", detail: "of the frontend built with an AI First / Vibe Coding approach", icon: "M13 10V3L4 14h7v7l9-11h-7z" }
+    ],
+    paragraphsBefore: [
+      "The project proved it's possible to rethink how product gets built inside a corporation: fewer resources, more autonomy, and AI as a real execution lever.",
+      "Early adoption by the pilot teams confirmed a drastic drop in the operational friction of creating and iterating on content."
+    ],
+    paragraphsAfter: [
+      "The platform keeps evolving, with the goal of scaling from orchestrating simple journeys to full multichannel campaigns."
+    ],
+    footerText: "Metrics validated with the product and backend teams based on campaign preparation and integration times.",
+    footerTextShort: "Flow mapping · Internal telemetry · Team testing"
+  },
+  description: [
+    "I was asked to lead a challenging project: <b>aligning criteria across more than 5 teams to build an internal platform that orchestrates the ideation and creation of journey content</b>, with an eye toward scaling to full campaigns.",
+    "The team was small by design: me as the product lead and frontend developer through AI-driven vibe coding, one backend developer, and different teams providing the APIs for the platforms they already used. No overhead, no bureaucracy.",
+    "A project that challenges how product gets built today: fewer resources, more autonomy, AI as a real execution lever."
+  ],
+  contextImage: "",
+  roleDescription: [
+    "On this project I took on a high-impact hybrid role (Product Owner + AI-First Frontend Developer):"
+  ],
+  highlights: [
+    {
+      icon: "owner",
+      title: "Product Ownership",
+      description: "Product leadership, roadmap definition, and aligning strategic vision across more than 5 corporate teams."
+    },
+    {
+      icon: "design",
+      title: "UX/UI Design",
+      description: "Designing the information architecture, workflows, and visual prototyping of the orchestration platform."
+    },
+    {
+      icon: "priority",
+      title: "Vibe Coding / Frontend Dev",
+      description: "Building the frontend directly using AI to speed up software delivery."
+    },
+    {
+      icon: "users",
+      title: "Cross-team discovery",
+      description: "Facilitating sessions with stakeholders from each area to map needs and agree on the required APIs."
+    },
+    {
+      icon: "data",
+      title: "API Integration",
+      description: "Technical coordination with the data-providing teams to connect existing microservices."
+    },
+    {
+      icon: "test",
+      title: "Validation & Iteration",
+      description: "User testing and continuous iteration with the operating teams to optimize the experience."
+    }
+  ],
+  storySteps: [
+    {
+      number: "Decision 1",
+      title: "AI-driven vibe coding for the frontend instead of a conventional dev team",
+      description: "Instead of waiting for a full development squad with multiple frontend engineers to be assigned, I took on the frontend build myself using vibe coding and AI. This eliminated handoff time and let us iterate on screens live during sessions with the teams.",
+      illustrationTitle: "Execution speed",
+      illustrationText: "Less bureaucracy, real-time functional prototyping."
+    },
+    {
+      number: "Decision 2",
+      title: "An architecture built on APIs decoupled from existing systems",
+      description: "We decided not to build a monolith or rebuild the tools teams already used. The orchestrator consumes existing APIs as microservices, acting as an intelligent connective layer.",
+      illustrationTitle: "Frictionless integration",
+      illustrationText: "Leveraging existing infrastructure without forcing massive migrations."
+    },
+    {
+      number: "Decision 3",
+      title: "Modular evolution: from scoped journeys to global campaigns",
+      description: "To deliver value quickly without getting bogged down in unlimited scope, we limited the MVP to orchestrating content for specific journeys, laying the groundwork to later scale to full campaigns.",
+      illustrationTitle: "A progressive approach",
+      illustrationText: "Validating value in the MVP before expanding scope."
+    }
+  ],
+  results: {
+    intro: "The project represents a new way of building software in corporate environments.",
+    cards: [
+      { icon: "🚀", label: "Efficiency", title: "Agile launch", description: "Frontend development and working prototypes shipped in weeks with an AI First approach." },
+      { icon: "🤝", label: "Alignment", title: "+5 teams coordinated", description: "Unified content criteria in a centralized interface." },
+      { icon: "💡", label: "Methodology", title: "Real ownership", description: "A practical demonstration of how AI empowers a product designer to build end-to-end solutions." }
+    ]
+  },
+  images: [],
+  team: "1 Product Owner / Frontend · 1 Backend · APIs from 5+ teams",
+  tools: ["Figma", "Next.js", "AI First", "Miro"],
+  closing: {
+    title: "The wrap-up",
+    timeline: "2026 → present",
+    extra: "Built with an AI First, Vibe Coding mindset to boost productivity."
+  },
+  showcaseTitle: "Team-orchestration platform for Mango",
+  heroImage: "/assets/projects/moda.jpg"
+};
