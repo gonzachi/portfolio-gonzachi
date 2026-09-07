@@ -82,10 +82,12 @@
   }
 }
 
-/* Short/narrow phones: tighten the empty-state rhythm so the hero, chips
-   and composer all fit in one viewport without the empty state needing
-   its own internal scroll. */
-@media (max-width: 480px) {
+/* Short phones only (e.g. iPhone SE): tighten the empty-state rhythm so
+   the hero, chips and composer all fit in one viewport without the empty
+   state needing its own internal scroll. Gated on height, not just width
+   — most modern phones are plenty tall and should keep the full-size
+   type instead of shrinking needlessly. */
+@media (max-width: 480px) and (max-height: 700px) {
   .emptyState {
     gap: 0.75rem;
     padding: 1.25rem 1.25rem;
@@ -452,8 +454,17 @@
   outline: none;
   background: transparent;
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  /* iOS Safari auto-zooms the page on focus for any input under 16px —
+     keep it at exactly 16px on mobile; scale back down past the point
+     where phones stop existing. */
+  font-size: 16px;
   color: var(--color-text-primary);
+}
+
+@media (min-width: 480px) {
+  .input {
+    font-size: 0.88rem;
+  }
 }
 
 .input::placeholder {
