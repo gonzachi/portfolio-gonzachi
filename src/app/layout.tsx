@@ -62,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`} suppressHydrationWarning>
       <head>
         {/* Anti-flash: apply theme before first paint */}
         <script

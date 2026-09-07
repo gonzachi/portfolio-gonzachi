@@ -5,7 +5,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 export type Lang = 'en' | 'es';
 
 const LangContext = createContext<{ lang: Lang; toggle: () => void }>({
-  lang: 'es',
+  lang: 'en',
   toggle: () => {},
 });
 
@@ -19,9 +19,8 @@ interface Props {
 }
 
 export default function LangWrapper({ children, storageKey = 'site-lang' }: Props) {
-  // Site default is Spanish (html lang="es", most existing copy) — English
-  // is the alternate a visitor opts into.
-  const [lang, setLang] = useState<Lang>('es');
+  // Site default is English — Spanish is the alternate a visitor opts into.
+  const [lang, setLang] = useState<Lang>('en');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function LangWrapper({ children, storageKey = 'site-lang' }: Prop
 
   return (
     <LangContext.Provider value={{ lang, toggle }}>
-      <div data-lang-active={mounted ? lang : 'es'} style={{ display: 'contents' }}>
+      <div data-lang-active={mounted ? lang : 'en'} style={{ display: 'contents' }}>
         {children}
       </div>
     </LangContext.Provider>
