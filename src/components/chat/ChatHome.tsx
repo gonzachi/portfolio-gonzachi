@@ -21,7 +21,7 @@ import ResumeModal from './ResumeModal';
 import styles from './ChatHome.module.css';
 
 const STATUS_LINES: Record<Lang, string[]> = {
-  en: ['based in Barcelona 📍', '+8 years of experience 💻', 'working @ Mango 👗', 'Product Manager mindset'],
+  en: ['based in Barcelona 📍', '+8 years of experience 💻', 'working @ Mango 👗', '& Product Manager mindset'],
   es: ['con base en Barcelona 📍', '+8 años de experiencia 💻', 'trabajando en Mango 👗', 'mentalidad de Product Manager'],
 };
 
