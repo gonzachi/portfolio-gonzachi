@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { personalInfo } from '@/data/content';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './CaseStudyFooter.module.css';
 
 const EASE: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
@@ -15,6 +16,8 @@ const LINKS = [
 ];
 
 export default function CaseStudyFooter() {
+  const { lang } = useLang();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -27,10 +30,10 @@ export default function CaseStudyFooter() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: EASE }}
         >
-          <span className={styles.eyebrow}>FIN DEL CASO</span>
+          <span className={styles.eyebrow}>{lang === 'en' ? 'END OF CASE STUDY' : 'FIN DEL CASO'}</span>
           <Link href="/" className={styles.backLink}>
             <span className={styles.backArrow} aria-hidden="true">←</span>
-            Volver a la home
+            {lang === 'en' ? 'Back to home' : 'Volver a la home'}
           </Link>
         </motion.div>
 
@@ -42,7 +45,7 @@ export default function CaseStudyFooter() {
           viewport={{ once: true }}
           transition={{ duration: 0.75, delay: 0.1, ease: EASE }}
         >
-          Gracias<br />por leer.
+          {lang === 'en' ? <>Thanks<br />for reading.</> : <>Gracias<br />por leer.</>}
         </motion.h2>
 
         {/* Divider */}
