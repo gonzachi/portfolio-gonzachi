@@ -2,13 +2,24 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLang } from '@/components/project/LangWrapper';
 import styles from './page.module.css';
+
+// The API returns fixed Spanish error strings — map the known ones to an
+// English translation client-side rather than changing the API contract.
+const ERROR_TRANSLATIONS: Record<string, string> = {
+  'Contraseña incorrecta': 'Incorrect password',
+  'Demasiados intentos. Inténtalo de nuevo más tarde.': 'Too many attempts. Please try again later.',
+};
 
 export default function ProjectGateForm({ projectId }: { projectId: string }) {
   const router = useRouter();
+  const { lang } = useLang();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const localizedError = lang === 'en' ? (ERROR_TRANSLATIONS[error] ?? error) : error;
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -31,7 +42,7 @@ export default function ProjectGateForm({ projectId }: { projectId: string }) {
       const data = await res.json().catch(() => ({}));
       setError(data.error || 'Contraseña incorrecta');
     } catch {
-      setError('No se pudo verificar el acceso. Inténtalo de nuevo.');
+      setError(lang === 'en' ? "Couldn't verify access. Please try again." : 'No se pudo verificar el acceso. Inténtalo de nuevo.');
     } finally {
       setLoading(false);
       setPassword('');
@@ -41,7 +52,7 @@ export default function ProjectGateForm({ projectId }: { projectId: string }) {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.fieldLabel} htmlFor="project-password">
-        Contraseña
+        {lang === 'en' ? 'Password' : 'Contraseña'}
       </label>
       <input
         id="project-password"
@@ -53,11 +64,11 @@ export default function ProjectGateForm({ projectId }: { projectId: string }) {
         autoComplete="current-password"
         required
         disabled={loading}
-        placeholder="Introduce la contraseña"
+        placeholder={lang === 'en' ? 'Enter the password' : 'Introduce la contraseña'}
       />
-      {error && <p className={styles.error} role="alert">{error}</p>}
+      {error && <p className={styles.error} role="alert">{localizedError}</p>}
       <button className={styles.submitBtn} type="submit" disabled={loading || !password}>
-        {loading ? 'Verificando…' : 'Acceder al caso'}
+        {loading ? (lang === 'en' ? 'Verifying…' : 'Verificando…') : (lang === 'en' ? 'Access the case study' : 'Acceder al caso')}
       </button>
     </form>
   );
