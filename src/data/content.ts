@@ -32,6 +32,11 @@ export const personalInfo = {
     "En coherencia con mis formaciones, actualmente busco evolucionar hacia el rol de Product Manager, aplicando mi capacidad para conectar las necesidades del usuario con los objetivos técnicos y de negocio.",
     "Tengo más de 8 años de experiencia en diseño de producto y otros tantos en comunicación digital."
   ],
+  aboutIntro: [
+    "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. Actualmente trabajo en Mango, construyendo productos corporativos orientados a mejorar la productividad de los equipos internos.",
+    "En coherencia con mis formaciones, actualmente busco evolucionar hacia el rol de Product Manager, aplicando mi capacidad para conectar las necesidades del usuario con los objetivos técnicos y de negocio.",
+    "Tengo más de 8 años de experiencia en diseño de producto y otros tantos en comunicación digital."
+  ],
   heroBio: [
     "Soy Gonzalo Chiavassa, Product Designer con mindset de ownership y visión de producto end-to-end. Cuento con más de 8 años de experiencia laboral. <b>Actualmente trabajo en Mango</b>, construyendo productos corporativos orientados a <b>mejorar la productividad de los equipos internos</b>.",
     "A lo largo de mi carrera profesional he trabajado en contextos muy distintos: fintech (startup regulada en Chile), agencias, freelance y ahora corporate. De cada uno me llevo algo, pero el hilo común siempre fue el mismo: entender qué necesita el usuario, qué necesita el negocio, y <b>construir el producto que conecta ambas cosas</b>.",

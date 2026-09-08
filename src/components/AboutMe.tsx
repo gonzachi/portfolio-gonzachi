@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SectionLabel } from './Projects';
 import { personalInfo } from '@/data/content';
 import { useLang } from '@/components/project/LangWrapper';
@@ -9,6 +9,12 @@ import styles from './AboutMe.module.css';
 // content.ts is Spanish-only and feeds several other (Spanish) views, so
 // the English bio lives here as a local override rather than restructuring
 // the shared data — same approach as data/chat.ts's EN_COPY.
+const INTRO_EN: string[] = [
+  "I'm Gonzalo Chiavassa, a Product Designer with an ownership mindset and an end-to-end product vision. I have over 8 years of professional experience. I currently work at Mango, building corporate products focused on improving internal teams' productivity.",
+  "In line with my education, I'm currently working toward evolving into a Product Manager role, applying my ability to connect user needs with technical and business goals.",
+  "I have over 8 years of experience in product design, and just as many in digital communication.",
+];
+
 const BIO_EN: { text: string; bold: string[] }[] = [
   {
     text: "Great that you want to know more about me! My background started in Graphic Design, and then kept evolving. I recently finished my Master's in Digital Product Management, something I'm really excited about as I take on more relevance in digital product decision-making.",
@@ -68,19 +74,45 @@ function renderBio(text: string, boldPhrases: string[]) {
 
 export default function AboutMe() {
   const { lang } = useLang();
+  const intro = lang === 'en' ? INTRO_EN : personalInfo.aboutIntro;
   const bio = lang === 'en' ? BIO_EN : personalInfo.bio;
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <section id="sobre-mi" className={styles.section}>
       <div className={styles.container}>
         <SectionLabel>{lang === 'en' ? 'About me' : 'Sobre mí'}</SectionLabel>
         <div className={styles.content}>
-          {bio.map((b, i) => (
+          {intro.map((text, i) => (
             <p key={i} className={styles.paragraph}>
-              {renderBio(b.text, b.bold)}
+              {text}
             </p>
           ))}
+
+          {expanded && (
+            <>
+              {bio.map((b, i) => (
+                <p key={i} className={styles.paragraph}>
+                  {renderBio(b.text, b.bold)}
+                </p>
+              ))}
+            </>
+          )}
         </div>
+
+        <button
+          type="button"
+          className={styles.toggle}
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+        >
+          {expanded
+            ? (lang === 'en' ? 'Show less' : 'Ver menos')
+            : (lang === 'en' ? 'Read more' : 'Ver más')}
+          <span className={`${styles.toggleIcon} ${expanded ? styles.toggleIconOpen : ''}`}>
+            ↓
+          </span>
+        </button>
       </div>
     </section>
   );
