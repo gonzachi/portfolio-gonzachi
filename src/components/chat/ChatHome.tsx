@@ -28,14 +28,14 @@ const STATUS_LINES: Record<Lang, string[]> = {
 const COPY: Record<Lang, { subtitle: string; placeholder: string; heroGreeting: string; loadingModel: string; send: string }> = {
   en: {
     subtitle: 'What would you like to know about Gon?',
-    placeholder: 'Ask me about my experience in fintech, product design, AI...',
+    placeholder: 'Ask me about my experience, product design, AI...',
     heroGreeting: "Hi, I'm",
     loadingModel: 'Loading the model… (first time only, a few seconds)',
     send: 'Send',
   },
   es: {
     subtitle: '¿Qué te gustaría saber sobre Gon?',
-    placeholder: 'Preguntame sobre mi experiencia en fintech, product design, IA...',
+    placeholder: 'Preguntame sobre mi experiencia, product design, IA...',
     heroGreeting: 'Hola, soy',
     loadingModel: 'Cargando el modelo… (solo la primera vez, unos segundos)',
     send: 'Enviar',
