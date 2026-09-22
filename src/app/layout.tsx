@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import PageTransition from "@/components/PageTransition";
 import LangWrapper from "@/components/project/LangWrapper";
 import "./globals.css";
@@ -109,6 +110,7 @@ export default function RootLayout({
             {children}
           </PageTransition>
         </LangWrapper>
+        <Analytics />
       </body>
     </html>
   );
