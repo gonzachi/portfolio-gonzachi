@@ -4,6 +4,7 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import PageTransition from "@/components/PageTransition";
 import LangWrapper from "@/components/project/LangWrapper";
+import PromoToast from "@/components/PromoToast";
 import "./globals.css";
 
 const inter = Inter({
@@ -109,6 +110,7 @@ export default function RootLayout({
           <PageTransition>
             {children}
           </PageTransition>
+          <PromoToast />
         </LangWrapper>
         <Analytics />
       </body>

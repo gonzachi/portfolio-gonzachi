@@ -1,0 +1,135 @@
+.toast {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 9000;
+  width: 280px;
+  max-width: calc(100vw - 2rem);
+  padding: 1rem 1rem 0.9rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid rgba(var(--fg-rgb), 0.12);
+  box-shadow: 0 12px 40px rgba(var(--shadow-rgb), 0.18);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.3s ease,
+              visibility 0.3s ease;
+}
+
+.toast.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ── Close button ── */
+.closeBtn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.45);
+  border: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ── Image — bleeds to the card edges ── */
+.media {
+  display: block;
+  margin: -1rem -1rem 0.75rem;
+  overflow: hidden;
+}
+
+.media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.media:hover img {
+  transform: scale(1.03);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.title {
+  margin: 0 0 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.body {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+.cta {
+  display: inline-block;
+  padding: 0.45rem 0.75rem;
+  background: var(--color-accent);
+  color: var(--color-text-on-accent);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.85;
+}
+
+/* On mobile the chat composer lives at the bottom of "/", so float the
+   toast under the nav instead of covering it. */
+@media (max-width: 640px) {
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: auto;
+    top: calc(var(--nav-offset) + 0.75rem);
+    width: auto;
+    max-width: none;
+    transform: translateY(-16px);
+  }
+
+  .toast.open {
+    transform: translateY(0);
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast,
+  .toast.open {
+    transform: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+}
