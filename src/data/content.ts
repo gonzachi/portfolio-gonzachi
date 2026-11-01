@@ -58,7 +58,7 @@ export const experiences = [
     company: "Mango",
     logo: "/assets/home/logo-mango.jpg",
     location: "Presencial | Barcelona, España",
-    role: "Product designer",
+    role: "Senior Product Designer",
     period: "jun. 2024 - actualidad",
     description: "Diseño soluciones digitales innovadoras para los equipos internos de Mango, con un enfoque actual en el desarrollo de productos que integran Inteligencia Artificial, creando experiencias centradas en el usuario. Aporto valor en todas las etapas del diseño, desde el discovery con diferentes stakeholders hasta la realización de pruebas con usuarios, pasando por la etapa de handoff con el equipo de desarrollo, asegurando que cada solución sea efectiva y funcional."
   },
@@ -85,7 +85,7 @@ export const experiences = [
     company: "QUO Estrategia",
     logo: "/assets/home/quo_estrategia_y_comunicacin_logo.jpeg",
     location: "Presencial | Córdoba, Argentina",
-    role: "Lead Graphic Design",
+    role: "Lead Graphic Designer",
     period: "feb. 2016 - jul. 2022",
     description: "Comencé como diseñador gráfico y fui abriendo camino hasta llegar ser líder del área de diseño. En paralelo, conformé el área de UX/UI para brindar una nueva solución de negocio que necesitaban clientes actuales y nuevos."
   }
@@ -172,9 +172,9 @@ export const projects = [
     requiresAccess: true,
     number: "",
     title: "Diseñando una plataforma de IA para acelerar el proceso creativo de los diseñadores de moda",
-    type: "Senior Product Design · Mango · 2023 - Actualidad",
+    type: "Senior Product Design · Mango · 2024 - Actualidad",
     subtitle: "Plataforma de IA para acelerar el proceso creativo de los diseñadores de moda · Mango",
-    year: "2023 - Actualidad",
+    year: "2024 - Actualidad",
     role: "Senior Product Designer",
     client: "Mango",
     badge: "Más reciente ✨",
