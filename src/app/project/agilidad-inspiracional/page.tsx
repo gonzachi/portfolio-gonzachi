@@ -94,7 +94,7 @@ export default async function ProjectPage() {
 
   const projectSnapshot = [
     { label: 'Role', value: 'Senior Product Designer' },
-    { label: 'Timeline', value: '2023 — Present' },
+    { label: 'Timeline', value: '2024 — Present' },
     { label: 'Team', value: 'PM · 2 Product Designers · Engineers · AI Engineers' },
     { label: 'Users', value: 'Fashion Designers' },
     { label: 'Status', value: 'In Production' },

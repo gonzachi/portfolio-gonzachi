@@ -242,23 +242,31 @@
   cursor: pointer;
 }
 
-.ctaButton {
-  display: inline-block;
-  margin-top: 0.85rem;
-  padding: 0.55rem 1.05rem;
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+}
+
+.suggestion {
+  padding: 0.45rem 0.85rem;
   border-radius: 10px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  transition: border-color 0.2s ease;
+  line-height: 1.3;
+  text-align: left;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 @media (hover: hover) {
-  .ctaButton:hover {
+  .suggestion:hover {
     border-color: rgba(0, 0, 0, 0.3);
+    color: var(--color-text-primary);
   }
 }
 
@@ -284,13 +292,6 @@
 @keyframes bounce {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
   30% { transform: translateY(-4px); opacity: 1; }
-}
-
-/* ── Model loading label ── */
-.modelLoadingLabel {
-  font-size: 0.78rem;
-  color: var(--color-text-muted);
-  margin: 0 0 0.5rem;
 }
 
 /* ── Project mini-cards ── */
@@ -360,37 +361,6 @@
   flex-shrink: 0;
   padding: 0.75rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
   background: linear-gradient(180deg, transparent, var(--color-bg-primary) 30%);
-}
-
-.chipsRowWrapper {
-  max-width: 700px;
-  margin: 0 auto 0.75rem;
-}
-
-.chipsRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.chipSmall {
-  padding: 0.4rem 0.8rem;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-secondary);
-  color: var(--color-text-secondary);
-  font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-@media (hover: hover) {
-  .chipSmall:hover {
-    border-color: rgba(0, 0, 0, 0.25);
-    color: var(--color-text-primary);
-  }
 }
 
 @property --border-angle {

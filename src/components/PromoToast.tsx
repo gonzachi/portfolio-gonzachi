@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useLang } from '@/components/project/LangWrapper';
 import styles from './PromoToast.module.css';
 
-const HYPE_URL = 'https://hype-run.vercel.app';
+const HYPE_URL = 'https://gethyperun.app/';
 const SHOW_DELAY_MS = 1500;
 
 const copy = {
